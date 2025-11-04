@@ -1,9 +1,8 @@
-import type { Metadata } from "next";
+import { NextIntlClientProvider } from 'next-intl';
+import { getMessages } from 'next-intl/server';
 import { Inter } from 'next/font/google';
-import { LanguageProvider } from '@/lib/language-context';
 import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
-import "./globals.css";
 
 const inter = Inter({ 
   subsets: ['latin', 'cyrillic'],
@@ -11,20 +10,19 @@ const inter = Inter({
   display: 'swap',
 });
 
-export const metadata: Metadata = {
-  title: "Qaspilab - Innovation Laboratory", 
-  description: "Transforming ideas into cutting-edge solutions",
-};
-
-export default function RootLayout({
+export default async function LocaleLayout({
   children,
-}: Readonly<{
+  params: { locale }
+}: {
   children: React.ReactNode;
-}>) {
+  params: { locale: string };
+}) {
+  const messages = await getMessages();
+
   return (
-    <html lang="en">
+    <html lang={locale}>
       <body className={`${inter.variable} font-sans antialiased`}>
-        <LanguageProvider>
+        <NextIntlClientProvider messages={messages}>
           <div className="min-h-screen flex flex-col">
             <Header />
             <main className="flex-1">
@@ -32,7 +30,7 @@ export default function RootLayout({
             </main>
             <Footer />
           </div>
-        </LanguageProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   );
