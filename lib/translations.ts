@@ -9,9 +9,10 @@ export const translations = {
     },
     hero: {
       title: "Qaspilab",
-      subtitle: "Innovation Laboratory",
+      subtitle: "Born in Kazakhstan. Built for the world.",
+      slogan: "We create technologies that shape the future of digital innovation",
       description: "Transforming ideas into cutting-edge solutions",
-      cta: "Get Started"
+      cta: "Discuss Project"
     },
     footer: {
       copyright: "© 2024 Qaspilab. All rights reserved."
@@ -27,9 +28,10 @@ export const translations = {
     },
     hero: {
       title: "Qaspilab",
-      subtitle: "Лаборатория инноваций", 
+      subtitle: "Рождён в Казахстане. Создан для мира.",
+      slogan: "Мы создаём технологии, которые формируют будущее цифровых инноваций",
       description: "Превращаем идеи в передовые решения",
-      cta: "Начать"
+      cta: "Обсудить проект"
     },
     footer: {
       copyright: "© 2024 Qaspilab. Все права защищены."
@@ -45,9 +47,10 @@ export const translations = {
     },
     hero: {
       title: "Qaspilab",
-      subtitle: "Инновация зертханасы",
+      subtitle: "Қазақстанда туған. Әлем үшін жасалған.",
+      slogan: "Біз цифрлық инновацияның болашағын қалыптастыратын технологиялар жасаймыз",
       description: "Идеяларды озық шешімдерге айналдырамыз", 
-      cta: "Бастау"
+      cta: "Жобаны талқылау"
     },
     footer: {
       copyright: "© 2024 Qaspilab. Барлық құқықтар қорғалған."
