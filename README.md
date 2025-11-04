@@ -1,36 +1,102 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Qaspilab Landing Page
 
-## Getting Started
+Next.js приложение для лендинга Qaspilab с поддержкой мультиязычности и современным дизайном.
 
-First, run the development server:
+## Технический стек
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Next.js 14+** с App Router
+- **Tailwind CSS** для стилизации
+- **shadcn/ui** компоненты
+- **lucide-react** иконки
+- **Framer Motion** анимации
+- **Простая система переводов** с React Context
+- **next-themes** поддержка тем
+
+## Структура проекта
+
+```
+/
+├── app/
+│   ├── layout.tsx         # Главный layout с LanguageProvider
+│   ├── page.tsx           # Главная страница
+│   └── globals.css
+├── components/
+│   ├── ui/                # shadcn компоненты
+│   ├── sections/          # секции лендинга
+│   ├── layout/            # хедер, футер
+│   └── animations/        # анимации
+├── lib/
+│   ├── language-context.tsx  # React Context для языков
+│   ├── translations.ts       # переводы для всех языков
+│   └── utils.ts             # утилиты
+└── public/
+    ├── fonts/
+    └── images/
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Поддерживаемые языки
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- 🇺🇸 English (en)
+- 🇷🇺 Русский (ru) 
+- 🇰🇿 Қазақша (kk)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Цветовая схема
 
-## Learn More
+- **Graphite**: Темно-серый основной цвет
+- **Violet**: Фиолетовый акцентный цвет  
+- **Neon Blue**: Неоново-синий акцентный цвет
 
-To learn more about Next.js, take a look at the following resources:
+## Запуск проекта
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+# Установка зависимостей
+npm install
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# Запуск dev сервера
+npm run dev
 
-## Deploy on Vercel
+# Сборка проекта
+npm run build
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# Запуск production сервера
+npm start
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Добавление компонентов
+
+```bash
+# Добавить новый shadcn компонент
+npx shadcn@latest add [component-name]
+```
+
+## Локализация
+
+Переводы находятся в файле `lib/translations.ts`. Для добавления новых переводов:
+
+1. Добавьте ключ в объект `translations` для всех языков
+2. Используйте в компонентах: `const { t } = useLanguage(); ... {t.section.key}`
+3. Язык сохраняется в localStorage браузера
+
+## Компоненты
+
+- **Header**: Навигация с переключателем языка
+- **Footer**: Подвал с информацией о компании
+- **Container**: Контейнер для контента
+- **FadeIn**: Анимация появления элементов
+- **Button**: Кнопка с различными стилями
+
+## Разработка
+
+Приложение готово для добавления:
+
+1. Секций лендинга (hero, about, services, contact)
+2. Дополнительных страниц
+3. Форм обратной связи
+4. Блога или новостей
+5. CMS интеграции
+
+Следующие шаги:
+1. Добавить контент секций
+2. Настроить SEO метаданные
+3. Добавить формы
+4. Настроить аналитику
