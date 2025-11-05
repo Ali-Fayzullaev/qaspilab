@@ -7,6 +7,7 @@ import MissionSection from '@/components/sections/MissionSection';
 import WorkflowSection from '@/components/sections/WorkflowSection';
 import WhyUsSection from '@/components/sections/WhyUsSection';
 import GlobalReachSection from '@/components/sections/GlobalReachSection';
+import CTASection from '@/components/sections/CTASection';
 export default function Home() {
   const { t } = useLanguage();
 
@@ -18,6 +19,7 @@ export default function Home() {
       <WorkflowSection />
       <WhyUsSection />
       <GlobalReachSection />
+      <CTASection />
     </div>
   );
 }
