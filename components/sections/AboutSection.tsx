@@ -57,76 +57,11 @@ export default function AboutSection() {
   return (
     <section 
       ref={sectionRef} 
-      className="relative py-24 sm:py-32 bg-secondary/5 transition-colors duration-500 overflow-hidden"
+      className="relative py-24 sm:py-32 bg-gradient-to-br from-background via-secondary/10 to-primary/5 dark:from-background dark:via-secondary/20 dark:to-primary/10 transition-all duration-500 overflow-hidden"
     >
       <div className="container mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           
-          {/* --- 1. Текстовый блок (Философия) --- */}
-          <motion.div
-            className="z-10"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8 }}
-          >
-            {/* Заголовок */}
-            <motion.h2 
-              className="text-4xl md:text-5xl font-extrabold text-foreground mb-8"
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              {texts.title}
-            </motion.h2>
-            
-            {/* Абзацы */}
-            <div className="space-y-4 text-lg text-muted-foreground">
-              <motion.p 
-                initial={{ opacity: 0, y: 10 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.3 }}
-              >
-                {texts.p1}
-              </motion.p>
-              <motion.p 
-                initial={{ opacity: 0, y: 10 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.4 }}
-              >
-                {texts.p2}
-              </motion.p>
-              <motion.p 
-                initial={{ opacity: 0, y: 10 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.5 }}
-              >
-                {texts.p3}
-              </motion.p>
-              <motion.p 
-                initial={{ opacity: 0, y: 10 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.6 }}
-                className="pt-4 font-medium text-foreground/90"
-              >
-                {texts.p4}
-              </motion.p>
-              <motion.p 
-                initial={{ opacity: 0, y: 10 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.7 }}
-              >
-                {texts.p5}
-              </motion.p>
-              <motion.p 
-                initial={{ opacity: 0, y: 10 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.8 }}
-              >
-                {texts.p6}
-              </motion.p>
-            </div>
-          </motion.div>
-
           {/* --- 2. Визуальный блок (Симуляция 3D-сцены) --- */}
           <div className="relative flex items-center justify-center h-96 lg:h-full min-h-[400px]">
             
@@ -532,6 +467,72 @@ export default function AboutSection() {
             )}
 
           </div>
+          {/* --- 1. Текстовый блок (Философия) --- */}
+          <motion.div
+            className="z-10"
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8 }}
+          >
+            {/* Заголовок */}
+            <motion.h2 
+              className="text-4xl md:text-5xl font-extrabold text-foreground mb-8"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              {texts.title}
+            </motion.h2>
+            
+            {/* Абзацы */}
+            <div className="space-y-4 text-lg text-muted-foreground">
+              <motion.p 
+                initial={{ opacity: 0, y: 10 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: 0.3 }}
+              >
+                {texts.p1}
+              </motion.p>
+              <motion.p 
+                initial={{ opacity: 0, y: 10 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: 0.4 }}
+              >
+                {texts.p2}
+              </motion.p>
+              <motion.p 
+                initial={{ opacity: 0, y: 10 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: 0.5 }}
+              >
+                {texts.p3}
+              </motion.p>
+              <motion.p 
+                initial={{ opacity: 0, y: 10 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: 0.6 }}
+                className="pt-4 font-medium text-foreground/90"
+              >
+                {texts.p4}
+              </motion.p>
+              <motion.p 
+                initial={{ opacity: 0, y: 10 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: 0.7 }}
+              >
+                {texts.p5}
+              </motion.p>
+              <motion.p 
+                initial={{ opacity: 0, y: 10 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: 0.8 }}
+              >
+                {texts.p6}
+              </motion.p>
+            </div>
+          </motion.div>
+
+          
         </div>
       </div>
     </section>
