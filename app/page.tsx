@@ -14,12 +14,20 @@ export default function Home() {
   return (
     <div className="relative">
       <HeroSection />
-      <AboutSection />
-      <MissionSection />
-      <WorkflowSection />
-      <WhyUsSection />
-      <GlobalReachSection />
-      <CTASection />
+      <div id="about">
+        <AboutSection />
+      </div>
+      <div id="mission">
+        <MissionSection />
+      </div>
+      <div id="services">
+        <WorkflowSection />
+        <WhyUsSection />
+        <GlobalReachSection />
+      </div>
+      <div id="contact">
+        <CTASection />
+      </div>
     </div>
   );
 }

@@ -122,14 +122,6 @@ export default function Footer() {
               <Link href="/" className="inline-block">
                 <motion.h3 
                   className="text-3xl font-bold mb-4"
-                  style={{
-                    backgroundImage: theme === 'dark'
-                      ? 'linear-gradient(135deg, #00d4ff 0%, #8b5cf6 50%, #a855f7 100%)'
-                      : 'linear-gradient(135deg, #8b5cf6 0%, #3b82f6 50%, #9333ea 100%)',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    color: theme === 'dark' ? '#00d4ff' : '#8b5cf6'
-                  }}
                   whileHover={{ 
                     scale: 1.05,
                     transition: { duration: 0.2 }
