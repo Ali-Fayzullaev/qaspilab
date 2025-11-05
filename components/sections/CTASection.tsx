@@ -138,13 +138,13 @@ export default function CTASection() {
       className="relative py-24 sm:py-32 overflow-hidden"
       style={{
         background:
-          "linear-gradient(to bottom right, rgb(30 58 138), rgb(88 28 135), rgb(67 56 202))",
+          "linear-gradient(to bottom right, rgb(30 58 138), rgb(88 28 135), rgb(67 56 202)) bb",
       }}
     >
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40"
-        style={{ backgroundImage: "url(/fon1.jpg)" }}
+        style={{ backgroundImage: "url(/fon3.png)" }}
       />
 
       {/* Overlay */}
