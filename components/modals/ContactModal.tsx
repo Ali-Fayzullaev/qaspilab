@@ -127,18 +127,6 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
             : '0 25px 50px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.1)'
         }}
       >
-        {/* Кнопка закрытия */}
-        <Button
-          variant="ghost"
-          size="sm"
-          onClick={onClose}
-          className="absolute top-4 right-4 z-50 w-8 h-8 p-0 rounded-full"
-          style={{
-            color: theme === 'dark' ? '#ffffff' : '#1f2937'
-          }}
-        >
-          <X size={16} />
-        </Button>
 
         {/* Заголовок */}
         <DialogHeader className="p-6 pb-2">

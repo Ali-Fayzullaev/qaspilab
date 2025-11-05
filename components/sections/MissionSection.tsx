@@ -39,8 +39,8 @@ export default function MissionSection() {
 
   // Координаты городов Казахстана для нейронных узлов (расширенная сеть)
   const kazakhstanCities = [
-    { name: 'Алматы', x: 78, y: 40, delay: 0, importance: 'major' },
-    { name: 'Астана', x: 68, y: 54, delay: 0.15, importance: 'major' },
+    { name: 'Алматы', x: 88, y: 60, delay: 0, importance: 'major' },
+    { name: 'Астана', x: 68, y: 24, delay: 0.15, importance: 'major' },
     { name: 'Шымкент', x: 65, y: 38, delay: 0.3, importance: 'major' },
     { name: 'Актобе', x: 52, y: 48, delay: 0.45, importance: 'minor' },
     { name: 'Тараз', x: 68, y: 38, delay: 0.6, importance: 'minor' },
@@ -73,6 +73,12 @@ export default function MissionSection() {
     <section 
       ref={sectionRef} 
       className="relative py-24 sm:py-32 bg-muted/30 transition-colors duration-500 overflow-hidden"
+      style={{
+          background: theme === 'dark' 
+            ? 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%)'
+            : 'linear-gradient(135deg, #ffffff 0%, #f8fafc 50%, #e2e8f0 100%)',
+          color: theme === 'dark' ? '#ffffff' : '#1e293b'
+        }}
     >
       <div className="container mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-16 items-center">

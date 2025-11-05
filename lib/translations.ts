@@ -15,7 +15,14 @@ export const translations = {
       cta: "Discuss Project"
     },
     footer: {
-      copyright: "© 2024 Qaspilab. All rights reserved."
+      slogan: "Innovation Laboratory",
+      description: "Transforming ideas into cutting-edge solutions",
+      quickLinks: "Quick Links",
+      connect: "Connect",
+      location: "Almaty, Kazakhstan",
+      email: "hello@qaspilab.com",
+      copyright: "© 2024 Qaspilab. All rights reserved.",
+      madeWith: "Made with ❤️ in Kazakhstan"
     }
   },
   ru: {
@@ -34,7 +41,14 @@ export const translations = {
       cta: "Обсудить проект"
     },
     footer: {
-      copyright: "© 2024 Qaspilab. Все права защищены."
+      slogan: "Лаборатория инноваций",
+      description: "Превращаем идеи в передовые решения",
+      quickLinks: "Быстрые ссылки",
+      connect: "Связаться",
+      location: "Алматы, Казахстан",
+      email: "hello@qaspilab.com",
+      copyright: "© 2024 Qaspilab. Все права защищены.",
+      madeWith: "Сделано с ❤️ в Казахстане"
     }
   },
   kk: {
@@ -53,7 +67,14 @@ export const translations = {
       cta: "Жобаны талқылау"
     },
     footer: {
-      copyright: "© 2024 Qaspilab. Барлық құқықтар қорғалған."
+      slogan: "Инновация зертханасы",
+      description: "Идеяларды озық шешімдерге айналдырамыз",
+      quickLinks: "Жылдам сілтемелер",
+      connect: "Байланысу",
+      location: "Алматы, Қазақстан",
+      email: "hello@qaspilab.com",
+      copyright: "© 2024 Qaspilab. Барлық құқықтар қорғалған.",
+      madeWith: "❤️ арқылы Қазақстанда жасалған"
     }
   }
 };
