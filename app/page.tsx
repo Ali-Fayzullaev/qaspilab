@@ -1,7 +1,7 @@
 'use client';
 
 import { useLanguage } from '@/lib/language-context';
-import HeroSection from '@/components/sections/HeroSection';
+import HeroSection from '@/components/sections/HeroSection-old';
 import AboutSection from '@/components/sections/AboutSection';
 import MissionSection from '@/components/sections/MissionSection';
 import WorkflowSection from '@/components/sections/WorkflowSection';
