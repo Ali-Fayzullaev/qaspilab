@@ -10,7 +10,7 @@ export default function Footer() {
       <div className="container mx-auto px-4 py-8">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">
-            <h3 className="text-xl font-bold bg-gradient-to-right from-violet to-neon-blue bg-clip-text text-transparent">
+            <h3 className="text-xl font-bold bg-linear-to-right from-violet-600 to-cyan-400 bg-clip-text text-transparent">
               Qaspilab
             </h3>
             <p className="text-muted-foreground mt-2">

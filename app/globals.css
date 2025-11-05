@@ -36,24 +36,24 @@
   }
 
   .dark {
-    --background: 0 0% 10%;
+    --background: 10 10% 5%;
     --foreground: 0 0% 98%;
-    --card: 0 0% 10%;
+    --card: 10 10% 8%;
     --card-foreground: 0 0% 98%;
-    --popover: 0 0% 10%;
+    --popover: 10 10% 8%;
     --popover-foreground: 0 0% 98%;
     --primary: 0 0% 98%;
     --primary-foreground: 0 0% 10%;
-    --secondary: 0 0% 15%;
+    --secondary: 10 10% 12%;
     --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 15%;
+    --muted: 10 10% 12%;
     --muted-foreground: 0 0% 65%;
-    --accent: 0 0% 15%;
+    --accent: 10 10% 12%;
     --accent-foreground: 0 0% 98%;
     --destructive: 0 62% 30%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 15%;
-    --input: 0 0% 15%;
+    --border: 10 10% 15%;
+    --input: 10 10% 15%;
     --ring: 0 0% 83%;
   }
 
@@ -293,4 +293,41 @@ html {
       0 0 40px rgba(139, 92, 246, 0.3), 0 0 60px rgba(139, 92, 246, 0.1);
     opacity: 1;
   }
+}
+
+/* Dark Theme Specific Styles */
+.dark {
+  color-scheme: dark;
+}
+
+.dark .hero-glow {
+  background: linear-gradient(135deg, #8b5cf6, #00d4ff, #ffffff);
+  background-size: 300% 300%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dark .lab-gradient {
+  background: linear-gradient(135deg, #0f0f0f 0%, #8b5cf6 50%, #00d4ff 100%);
+}
+
+.dark .lab-gradient-subtle {
+  background: linear-gradient(
+    135deg,
+    rgba(15, 15, 15, 0.95) 0%,
+    rgba(139, 92, 246, 0.2) 50%,
+    rgba(0, 212, 255, 0.2) 100%
+  );
+}
+
+.dark .lab-card {
+  background-color: hsl(var(--card) / 0.9);
+  border: 1px solid hsl(var(--border) / 0.7);
+}
+
+.dark .lab-card:hover {
+  border-color: rgba(139, 92, 246, 0.5);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3), 0 4px 8px rgba(0, 0, 0, 0.2),
+    0 0 30px rgba(139, 92, 246, 0.2);
 }
