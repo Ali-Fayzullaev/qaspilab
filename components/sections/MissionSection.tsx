@@ -274,18 +274,16 @@ export default function MissionSection() {
                       
                       {/* Энергетические импульсы с градиентом */}
                       <motion.circle
+                        cx={city.x}
+                        cy={city.y}
                         r="1.2"
                         fill={theme === 'dark' ? 'url(#blueGradientDark)' : 'url(#blueGradientLight)'}
                         opacity="0.9"
                         initial={{ 
-                          x: city.x, 
-                          y: city.y,
                           opacity: 0,
                           scale: 0 
                         }}
                         animate={{ 
-                          x: targetCity.x, 
-                          y: targetCity.y,
                           opacity: [0, 1, 0.7, 0],
                           scale: [0, 1.2, 1, 0.8]
                         }}
@@ -303,17 +301,15 @@ export default function MissionSection() {
                       
                       {/* Быстрые малые импульсы */}
                       <motion.circle
+                        cx={city.x}
+                        cy={city.y}
                         r="0.6"
                         fill={theme === 'dark' ? '#99ddff' : '#93c5fd'}
                         opacity="0.8"
                         initial={{ 
-                          x: city.x, 
-                          y: city.y,
                           opacity: 0 
                         }}
                         animate={{ 
-                          x: targetCity.x, 
-                          y: targetCity.y,
                           opacity: [0, 0.8, 0]
                         }}
                         transition={{

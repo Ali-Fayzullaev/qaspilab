@@ -1,4 +1,62 @@
 @import "tailwindcss";
+@import "../styles/hero-optimized.css";
+
+/* Qaspilab Design System - Performance Optimized */
+
+/* ============= PERFORMANCE OPTIMIZATIONS ============= */
+* {
+  /* Оптимизация композитинга для всех элементов */
+  box-sizing: border-box;
+}
+
+html {
+  /* Плавная прокрутка с оптимизацией */
+  scroll-behavior: smooth;
+  scroll-padding-top: 4rem;
+  /* Оптимизация рендеринга */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeSpeed;
+}
+
+body {
+  /* Предотвращение layout shifts */
+  min-height: 100vh;
+  /* GPU acceleration */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  /* Оптимизация перерисовки */
+  overflow-x: hidden;
+}
+
+/* Оптимизация анимаций для всех motion элементов */
+[data-framer-motion] {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Общие классы для оптимизации */
+.performance-layer {
+  contain: layout style paint;
+  will-change: transform, opacity;
+  transform: translateZ(0);
+}
+
+.smooth-scroll {
+  scroll-behavior: smooth;
+  scroll-padding-top: 4rem;
+}
+
+/* Оптимизация для мобильных устройств */
+@media (max-width: 768px) {
+  * {
+    /* Уменьшение сложности анимаций на мобильных */
+    animation-duration: 0.5s !important;
+    transition-duration: 0.3s !important;
+  }
+}
 
 /* Qaspilab Design System */
 

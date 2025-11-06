@@ -169,11 +169,13 @@ export default function WorkflowSection() {
 
                 {/* Световой поток по линии */}
                 <motion.circle
+                  cx="10"
+                  cy="50"
                   r="1.5"
                   fill={theme === 'dark' ? '#60a5fa' : '#93c5fd'}
                   opacity="0.8"
-                  initial={{ x: 10, opacity: 0 }}
-                  animate={isInView ? { x: 90, opacity: [0, 1, 0] } : {}}
+                  initial={{ opacity: 0 }}
+                  animate={isInView ? { opacity: [0, 1, 0] } : {}}
                   transition={{
                     duration: 3,
                     delay: 2,
@@ -181,7 +183,6 @@ export default function WorkflowSection() {
                     repeat: Infinity,
                     repeatDelay: 4
                   }}
-                  cy="50"
                   style={{
                     filter: `drop-shadow(0 0 8px ${theme === 'dark' ? '#60a5fa' : '#93c5fd'})`
                   }}
