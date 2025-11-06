@@ -24,7 +24,7 @@ const WhyUsSection = dynamic(() => import('@/components/sections/WhyUsSectionPre
   loading: () => <div className="h-96 animate-pulse bg-gray-100 dark:bg-gray-900" />
 });
 
-const GlobalReachSection = dynamic(() => import('@/components/sections/GlobalReachSection'), {
+const GlobalReachSection = dynamic(() => import('@/components/sections/GlobalReachSectionPremium'), {
   loading: () => <div className="h-96 animate-pulse bg-gray-100 dark:bg-gray-900" />
 });
 

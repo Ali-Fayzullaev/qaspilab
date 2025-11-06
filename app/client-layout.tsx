@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import LanguageDebugPanel from '@/components/debug/LanguageDebugPanel';
 
 export default function ClientLayout({ children }: { children: React.ReactNode }) {
   const [mounted, setMounted] = useState(false);
@@ -14,7 +13,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
     <>
       {children}
       {/* Дебаг панель только в development после гидратации */}
-      {mounted && process.env.NODE_ENV === 'development' && <LanguageDebugPanel />}
+      {mounted && process.env.NODE_ENV === 'development'}
     </>
   );
 }

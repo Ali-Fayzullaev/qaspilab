@@ -1,0 +1,447 @@
+/* PREMIUM GlobalReachSection CSS - Голливудские VFX эффекты */
+
+/* 🎬 VFX-LEVEL GPU OPTIMIZATIONS */
+.globalreach-premium-vfx {
+  will-change: transform, opacity, filter;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+  contain: layout style paint;
+}
+
+.globalreach-premium-volumetric {
+  transform-style: preserve-3d;
+  filter: blur(0px) brightness(1.2);
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* 💫 VOLUMETRIC LIGHT EFFECTS */
+.globalreach-volumetric-beam {
+  background: linear-gradient(
+    to top,
+    rgba(0, 212, 255, 0.9) 0%,
+    rgba(139, 92, 246, 0.7) 30%,
+    rgba(168, 85, 247, 0.4) 70%,
+    transparent 100%
+  );
+  filter: blur(2px) brightness(1.5);
+  animation: globalreach-volumetric-pulse 3s ease-in-out infinite;
+}
+
+.globalreach-volumetric-beam.light-theme {
+  background: linear-gradient(
+    to top,
+    rgba(59, 130, 246, 0.8) 0%,
+    rgba(139, 92, 246, 0.6) 30%,
+    rgba(168, 85, 247, 0.3) 70%,
+    transparent 100%
+  );
+}
+
+@keyframes globalreach-volumetric-pulse {
+  0%,
+  100% {
+    filter: blur(2px) brightness(1.5);
+    transform: scaleY(1);
+  }
+  50% {
+    filter: blur(4px) brightness(1.8);
+    transform: scaleY(1.02);
+  }
+}
+
+/* ⚡ CAUSTIC LIGHT PATTERNS */
+.globalreach-caustic-effect {
+  filter: url(#causticEffect);
+  animation: globalreach-caustic-flow 8s linear infinite;
+}
+
+@keyframes globalreach-caustic-flow {
+  0% {
+    filter: url(#causticEffect) hue-rotate(0deg);
+  }
+  100% {
+    filter: url(#causticEffect) hue-rotate(360deg);
+  }
+}
+
+/* 🌟 HOLOGRAPHIC SHIMMER */
+.globalreach-holographic-sweep {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0, 212, 255, 0.3) 45%,
+    rgba(255, 255, 255, 0.8) 55%,
+    rgba(139, 92, 246, 0.3) 65%,
+    transparent 100%
+  );
+  animation: globalreach-hologram-sweep 3s linear infinite;
+}
+
+@keyframes globalreach-hologram-sweep {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* 💎 DIGITAL BREAKTHROUGH EFFECTS */
+.globalreach-data-stream {
+  background: linear-gradient(
+    to bottom,
+    var(--stream-color, #00d4ff),
+    transparent
+  );
+  animation: globalreach-data-flow 4s linear infinite;
+}
+
+@keyframes globalreach-data-flow {
+  0% {
+    transform: scaleY(0);
+    opacity: 0;
+  }
+  20% {
+    transform: scaleY(1);
+    opacity: 0.6;
+  }
+  80% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* 🔮 QUANTUM PARTICLE EFFECTS */
+.globalreach-quantum-particle {
+  background: radial-gradient(
+    circle,
+    var(--particle-color, #00d4ff) 0%,
+    transparent 70%
+  );
+  animation: globalreach-quantum-burst 4s ease-out forwards;
+}
+
+@keyframes globalreach-quantum-burst {
+  0% {
+    transform: scale(0) translate(0, 0);
+    opacity: 1;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2) translate(var(--burst-x, 100px), var(--burst-y, 80px));
+    opacity: 0;
+  }
+}
+
+/* 🗺️ KAZAKHSTAN MAP PROJECTION */
+.globalreach-map-hologram {
+  transform-style: preserve-3d;
+  animation: globalreach-map-rotate 20s linear infinite;
+}
+
+@keyframes globalreach-map-rotate {
+  0% {
+    transform: perspective(1000px) rotateY(0deg) rotateX(5deg);
+  }
+  25% {
+    transform: perspective(1000px) rotateY(90deg) rotateX(10deg);
+  }
+  50% {
+    transform: perspective(1000px) rotateY(180deg) rotateX(5deg);
+  }
+  75% {
+    transform: perspective(1000px) rotateY(270deg) rotateX(10deg);
+  }
+  100% {
+    transform: perspective(1000px) rotateY(360deg) rotateX(5deg);
+  }
+}
+
+/* ⚛️ ENERGY CORE PULSING */
+.globalreach-energy-core {
+  background: radial-gradient(
+    circle,
+    rgba(0, 212, 255, 1) 0%,
+    rgba(14, 165, 233, 0.8) 40%,
+    transparent 100%
+  );
+  animation: globalreach-energy-pulse 2s ease-in-out infinite;
+}
+
+@keyframes globalreach-energy-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.6);
+  }
+  50% {
+    transform: scale(1.2);
+    box-shadow: 0 0 40px rgba(0, 212, 255, 0.9);
+  }
+}
+
+/* 🌐 ORBITAL MECHANICS */
+.globalreach-orbital-ring-1 {
+  animation: globalreach-orbit-1 10s linear infinite;
+}
+
+.globalreach-orbital-ring-2 {
+  animation: globalreach-orbit-2 15s linear infinite reverse;
+}
+
+.globalreach-orbital-ring-3 {
+  animation: globalreach-orbit-3 20s linear infinite;
+}
+
+@keyframes globalreach-orbit-1 {
+  0% {
+    transform: rotate(0deg) translateX(30px) rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg) translateX(30px) rotate(-360deg);
+  }
+}
+
+@keyframes globalreach-orbit-2 {
+  0% {
+    transform: rotate(0deg) translateX(45px) rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg) translateX(45px) rotate(-360deg);
+  }
+}
+
+@keyframes globalreach-orbit-3 {
+  0% {
+    transform: rotate(0deg) translateX(60px) rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg) translateX(60px) rotate(-360deg);
+  }
+}
+
+/* 💫 HOLOGRAPHIC STATISTICS */
+.globalreach-stat-hologram {
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  box-shadow: 0 35px 80px -15px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.1), inset 0 0 50px rgba(0, 212, 255, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.globalreach-stat-hologram.light-theme {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  box-shadow: 0 35px 80px -15px rgba(0, 0, 0, 0.15),
+    0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+.globalreach-scan-lines {
+  background: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 212, 255, 0.1) 2px,
+    rgba(0, 212, 255, 0.1) 4px
+  );
+  animation: globalreach-scan-sweep 3s linear infinite;
+}
+
+@keyframes globalreach-scan-sweep {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* ⚡ ENERGY DISCHARGE EFFECTS */
+.globalreach-energy-discharge {
+  background: linear-gradient(
+    45deg,
+    rgba(0, 212, 255, 0.8) 0%,
+    rgba(139, 92, 246, 0.6) 50%,
+    rgba(168, 85, 247, 0.4) 100%
+  );
+  filter: blur(1px);
+  animation: globalreach-discharge 0.3s ease-out;
+}
+
+@keyframes globalreach-discharge {
+  0% {
+    opacity: 1;
+    transform: scale(1.5);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(3);
+  }
+}
+
+/* 🎭 3D PERSPECTIVE CARDS */
+.globalreach-3d-card {
+  transform-style: preserve-3d;
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.globalreach-3d-card:hover {
+  transform: perspective(1000px) rotateX(-5deg) rotateY(10deg) translateZ(30px);
+}
+
+/* 🌊 FLUID BACKGROUND MESH */
+.globalreach-mesh-gradient {
+  background: radial-gradient(
+      circle at 30% 20%,
+      rgba(0, 212, 255, 0.1) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 70% 80%,
+      rgba(139, 92, 246, 0.1) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(168, 85, 247, 0.08) 0%,
+      transparent 50%
+    );
+  animation: globalreach-mesh-flow 15s ease-in-out infinite;
+}
+
+@keyframes globalreach-mesh-flow {
+  0%,
+  100% {
+    background-position: 0% 0%, 100% 100%, 0% 100%;
+  }
+  50% {
+    background-position: 100% 0%, 0% 100%, 100% 0%;
+  }
+}
+
+/* 🔬 CIRCUIT BOARD PATTERN */
+.globalreach-circuit-pattern {
+  background-image: linear-gradient(
+      90deg,
+      transparent 24%,
+      #00d4ff 25%,
+      #00d4ff 26%,
+      transparent 27%,
+      transparent 74%,
+      #8b5cf6 75%,
+      #8b5cf6 76%,
+      transparent 77%
+    ),
+    linear-gradient(
+      0deg,
+      transparent 24%,
+      #00d4ff 25%,
+      #00d4ff 26%,
+      transparent 27%,
+      transparent 74%,
+      #8b5cf6 75%,
+      #8b5cf6 76%,
+      transparent 77%
+    );
+  background-size: 100px 100px;
+  animation: globalreach-circuit-flow 20s linear infinite;
+}
+
+@keyframes globalreach-circuit-flow {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
+/* 🎨 PREMIUM GLOW EFFECTS */
+.globalreach-cyan-glow {
+  box-shadow: 0 0 30px rgba(0, 212, 255, 0.4);
+}
+
+.globalreach-purple-glow {
+  box-shadow: 0 0 30px rgba(139, 92, 246, 0.4);
+}
+
+.globalreach-multi-glow {
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.3), 0 0 40px rgba(139, 92, 246, 0.2),
+    0 0 60px rgba(168, 85, 247, 0.1);
+}
+
+/* 📱 RESPONSIVE VFX OPTIMIZATIONS */
+@media (max-width: 768px) {
+  .globalreach-premium-vfx {
+    will-change: transform, opacity;
+    filter: none;
+  }
+
+  .globalreach-volumetric-beam {
+    filter: blur(1px) brightness(1.2);
+  }
+
+  .globalreach-3d-card:hover {
+    transform: perspective(1000px) rotateX(-2deg) rotateY(5deg) translateZ(15px);
+  }
+}
+
+/* ⚡ REDUCED MOTION SUPPORT */
+@media (prefers-reduced-motion: reduce) {
+  .globalreach-premium-vfx,
+  .globalreach-volumetric-beam,
+  .globalreach-holographic-sweep,
+  .globalreach-data-stream,
+  .globalreach-quantum-particle,
+  .globalreach-map-hologram,
+  .globalreach-energy-core,
+  .globalreach-orbital-ring-1,
+  .globalreach-orbital-ring-2,
+  .globalreach-orbital-ring-3,
+  .globalreach-scan-lines,
+  .globalreach-energy-discharge,
+  .globalreach-mesh-gradient,
+  .globalreach-circuit-pattern {
+    animation: none;
+    transition: none;
+  }
+}
+
+/* 🎯 ACCESSIBILITY IMPROVEMENTS */
+.globalreach-premium-focusable:focus-visible {
+  outline: 3px solid #00d4ff;
+  outline-offset: 4px;
+  border-radius: 12px;
+}
+
+.globalreach-premium-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* 🔥 PERFORMANCE CRITICAL CLASSES */
+.globalreach-gpu-critical {
+  will-change: transform, opacity, filter;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  contain: strict;
+}
+
+.globalreach-smooth-vfx {
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
