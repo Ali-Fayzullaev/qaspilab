@@ -1,16 +1,20 @@
-/* Hero Section Performance Optimized Styles */
+/* Performance Optimized Styles for Hero & About Sections */
 
 /* ============= GPU-ACCELERATED ANIMATIONS ============= */
-.hero-container {
-  min-height: 100vh;
+.hero-container,
+.performance-layer {
   position: relative;
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   /* GPU acceleration */
   will-change: transform;
   transform: translateZ(0);
+}
+
+.hero-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* ============= BACKGROUND EFFECTS ============= */
@@ -214,6 +218,14 @@
   .light-beam {
     right: 20%;
   }
+}
+
+/* ============= ABOUT SECTION OPTIMIZATIONS ============= */
+.optimized-text {
+  text-rendering: optimizeSpeed;
+  font-smooth: antialiased;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Reduce motion for users with motion sensitivity */

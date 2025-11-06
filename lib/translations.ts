@@ -7,7 +7,8 @@ export const translations = {
       about: "About",
       services: "Services", 
       contact: "Contact",
-      language: "Language"
+      language: "Language",
+      viewGallery: "View Gallery"
     },
     hero: {
       title: "Qaspilab",
@@ -17,9 +18,9 @@ export const translations = {
       cta: "Discuss Project"
     },
     about: {
-      title: "About Qaspilab",
+      title: "We're not an agency. We're a laboratory.",
       subtitle: "Innovation at the Heart of Everything We Do",
-      description: "We are a forward-thinking technology company based in Kazakhstan, dedicated to creating innovative solutions that transform businesses and lives around the world.",
+      description: "Qaspilab is where ideas take shape. Where entrepreneurs, designers and engineers come together to create not just code — but living products.",
       expertise: "Our Expertise",
       expertiseItems: [
         "Full-Stack Web Development",
@@ -27,6 +28,33 @@ export const translations = {
         "AI & Machine Learning Solutions",
         "Cloud Infrastructure & DevOps",
         "UI/UX Design & Branding"
+      ],
+      teamImages: [
+        {
+          alt: "Qaspilab team at work",
+          title: "Our Team", 
+          description: "Talented developers, designers and engineers creating the future of technology"
+        },
+        {
+          alt: "Qaspilab team member",
+          title: "Innovative Approach",
+          description: "Every team member brings unique skills and creativity"
+        },
+        {
+          alt: "Team workflow process",
+          title: "Collaborative Work", 
+          description: "We believe in the power of collective creativity and mutual support"
+        },
+        {
+          alt: "Creative process",
+          title: "Creative Process",
+          description: "From idea to implementation - every step is handled with attention to detail"
+        },
+        {
+          alt: "Qaspilab team",
+          title: "Unified Goal",
+          description: "United by a common mission to create outstanding products"
+        }
       ]
     },
     mission: {
@@ -136,7 +164,8 @@ export const translations = {
       about: "О нас", 
       services: "Услуги",
       contact: "Контакты",
-      language: "Язык"
+      language: "Язык",
+      viewGallery: "Посмотреть галерею"
     },
     hero: {
       title: "Qaspilab",
@@ -146,9 +175,9 @@ export const translations = {
       cta: "Обсудить проект"
     },
     about: {
-      title: "О компании Qaspilab",
+      title: "Мы не агентство. Мы лаборатория.",
       subtitle: "Инновации в основе всего, что мы делаем",
-      description: "Мы — передовая технологическая компания из Казахстана, посвятившая себя созданию инновационных решений, которые преобразуют бизнес и жизни людей по всему миру.",
+      description: "Qaspilab — это место, где идеи обретают форму. Где предприниматели, дизайнеры и инженеры собираются, чтобы создать не просто код — а живой продукт.",
       expertise: "Наша экспертиза",
       expertiseItems: [
         "Полнокомплексная веб-разработка",
@@ -156,6 +185,33 @@ export const translations = {
         "ИИ и машинное обучение",
         "Облачная инфраструктура и DevOps", 
         "UI/UX дизайн и брендинг"
+      ],
+      teamImages: [
+        {
+          alt: "Команда Qaspilab за работой",
+          title: "Наша команда",
+          description: "Талантливые разработчики, дизайнеры и инженеры, создающие будущее технологий"
+        },
+        {
+          alt: "Член команды Qaspilab",
+          title: "Инновационный подход",
+          description: "Каждый участник команды привносит уникальные навыки и креативность"
+        },
+        {
+          alt: "Рабочий процесс команды",
+          title: "Совместная работа",
+          description: "Мы верим в силу коллективного творчества и взаимной поддержки"
+        },
+        {
+          alt: "Творческий процесс",
+          title: "Творческий процесс",
+          description: "От идеи до реализации - каждый этап проходит с вниманием к деталям"
+        },
+        {
+          alt: "Команда Qaspilab",
+          title: "Единая цель",
+          description: "Объединенные общей миссией создания выдающихся продуктов"
+        }
       ]
     },
     mission: {
@@ -265,7 +321,8 @@ export const translations = {
       about: "Біз туралы",
       services: "Қызметтер",
       contact: "Байланыс", 
-      language: "Тіл"
+      language: "Тіл",
+      viewGallery: "Галереяны көру"
     },
     hero: {
       title: "Qaspilab",
@@ -275,9 +332,9 @@ export const translations = {
       cta: "Жобаны талқылау"
     },
     about: {
-      title: "Qaspilab туралы",
+      title: "Біз агенттік емеспіз. Біз зертханамыз.",
       subtitle: "Біз істейтін барлық нәрсенің негізінде инновация",
-      description: "Біз Қазақстанда орналасқан алдыңғы қатарлы технологиялық компаниямыз, бүкіл әлемдегі бизнес пен адамдардың өмірін өзгертетін инновациялық шешімдер жасауға арналған.",
+      description: "Qaspilab - бұл идеялардың пішін алатын жері. Кәсіпкерлер, дизайнерлер мен инженерлер жай ғана код емес - тірі өнім жасау үшін жиналатын жер.",
       expertise: "Біздің сараптама",
       expertiseItems: [
         "Толық веб-әзірлеу",
@@ -285,6 +342,33 @@ export const translations = {
         "Жасанды интеллект және машиналық оқыту",
         "Бұлт инфрақұрылымы және DevOps",
         "UI/UX дизайн және брендинг"
+      ],
+      teamImages: [
+        {
+          alt: "Qaspilab командасы жұмыс істеп жатыр",
+          title: "Біздің команда",
+          description: "Технологияның болашағын жасайтын талантты әзірлеушілер, дизайнерлер мен инженерлер"
+        },
+        {
+          alt: "Qaspilab команда мүшесі",
+          title: "Инновациялық тәсіл",
+          description: "Команданың әрбір мүшесі бірегей дағдылар мен шығармашылықты әкеледі"
+        },
+        {
+          alt: "Команданың жұмыс процесі",
+          title: "Ынтымақтастық жұмысы",
+          description: "Біз ұжымдық шығармашылық пен өзара қолдау күшіне сенеміз"
+        },
+        {
+          alt: "Шығармашылық процесс",
+          title: "Шығармашылық процесс",
+          description: "Идеядан іске асыруға дейін - әрбір кезең бөлшектерге назар аудара отырып өтеді"
+        },
+        {
+          alt: "Qaspilab командасы",
+          title: "Бірыңғай мақсат",
+          description: "Керемет өнімдер жасаудың ортақ миссиясымен біріккен"
+        }
       ]
     },
     mission: {

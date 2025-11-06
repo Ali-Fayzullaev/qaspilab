@@ -8,7 +8,7 @@ import dynamic from 'next/dynamic';
 import HeroSection from '@/components/sections/HeroSection';
 
 // Ленивая загрузка тяжелых секций для улучшения производительности
-const AboutSection = dynamic(() => import('@/components/sections/AboutSection'), {
+const AboutSection = dynamic(() => import('@/components/sections/AboutSectionOptimized'), {
   loading: () => <div className="h-96 animate-pulse bg-gray-100 dark:bg-gray-900" />
 });
 
