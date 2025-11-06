@@ -1,0 +1,183 @@
+/* 
+ * ОПТИМИЗИРОВАННЫЕ СТИЛИ ДЛЯ WorkflowSection
+ * Созданы для максимальной производительности и плавных анимаций
+ */
+
+/* GPU-ускоренные классы для анимируемых элементов */
+.workflow-gpu-accelerated {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Оптимизированные shadow эффекты без filter */
+.workflow-shadow-soft {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.workflow-shadow-medium {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.workflow-shadow-large {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Темные варианты теней */
+.dark .workflow-shadow-soft {
+  box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.2),
+    0 2px 4px -1px rgba(59, 130, 246, 0.1);
+}
+
+.dark .workflow-shadow-medium {
+  box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.3),
+    0 4px 6px -2px rgba(59, 130, 246, 0.15);
+}
+
+.dark .workflow-shadow-large {
+  box-shadow: 0 20px 25px -5px rgba(59, 130, 246, 0.4),
+    0 10px 10px -5px rgba(59, 130, 246, 0.2);
+}
+
+/* Производительные градиенты */
+.workflow-gradient-icon {
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+}
+
+.workflow-gradient-background-light {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+}
+
+.workflow-gradient-background-dark {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+}
+
+/* Оптимизированные переходы */
+.workflow-transition-fast {
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.workflow-transition-medium {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.workflow-transition-slow {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Микро-интерактивности для hover */
+.workflow-step-hover:hover {
+  transform: translateY(-2px) translateZ(0);
+}
+
+.workflow-step-hover:hover .workflow-step-icon {
+  transform: scale(1.1) rotateY(10deg) translateZ(0);
+}
+
+.workflow-step-hover:hover .workflow-step-title {
+  transform: translateX(5px) translateZ(0);
+  color: rgb(37 99 235); /* blue-600 */
+}
+
+.dark .workflow-step-hover:hover .workflow-step-title {
+  color: rgb(96 165 250); /* blue-400 */
+}
+
+.workflow-step-hover:hover .workflow-step-subtitle {
+  transform: translateX(3px) translateZ(0);
+  opacity: 0.9;
+}
+
+/* Оптимизированные классы для reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .workflow-gpu-accelerated {
+    will-change: auto;
+    transform: none;
+  }
+
+  .workflow-transition-fast,
+  .workflow-transition-medium,
+  .workflow-transition-slow {
+    transition: none;
+  }
+
+  .workflow-step-hover:hover {
+    transform: none;
+  }
+
+  .workflow-step-hover:hover .workflow-step-icon {
+    transform: none;
+  }
+
+  .workflow-step-hover:hover .workflow-step-title,
+  .workflow-step-hover:hover .workflow-step-subtitle {
+    transform: none;
+  }
+}
+
+/* Производительные анимации для SVG */
+.workflow-svg-optimized {
+  will-change: transform;
+  transform: translateZ(0);
+  shape-rendering: geometricPrecision;
+  text-rendering: geometricPrecision;
+}
+
+/* Backdrop blur оптимизация */
+.workflow-backdrop-blur {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Содержит анимации в пределах элемента */
+.workflow-contain-layout {
+  contain: layout style paint;
+}
+
+/* Специальные классы для временной линии */
+.workflow-timeline-container {
+  contain: layout style paint;
+  isolation: isolate;
+}
+
+.workflow-timeline-point {
+  will-change: transform, opacity;
+  contain: layout style;
+}
+
+.workflow-dialog-bubble {
+  will-change: transform, opacity;
+  contain: layout style paint;
+  isolation: isolate;
+}
+
+/* Оптимизированные z-index уровни */
+.workflow-z-background {
+  z-index: 0;
+}
+.workflow-z-timeline {
+  z-index: 10;
+}
+.workflow-z-dialogs {
+  z-index: 20;
+}
+.workflow-z-content {
+  z-index: 30;
+}
+
+/* Производительные filter эффекты для изображений */
+.workflow-image-optimized {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+/* Улучшенная читаемость текста */
+.workflow-text-optimized {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

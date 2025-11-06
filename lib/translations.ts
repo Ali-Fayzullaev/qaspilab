@@ -77,8 +77,17 @@ export const translations = {
         }
       ]
     },
+    missionSection: {
+      title: "We are building the digital future of Kazakhstan.",
+      p1: "Our products help companies work faster,",
+      p2: "entrepreneurs launch new ideas,",
+      p3: "and people interact with technology easily and with pleasure.",
+      p4: "We believe that Kazakhstan is capable of creating not just IT solutions,",
+      p5: "but global products that will be used all over the world."
+    },
     workflow: {
-      title: "Our Process",
+      title: "We create as we think. Simple. Transparent. Fast.",
+      processTitle: "Our Process",
       subtitle: "From Concept to Reality",
       steps: [
         {
@@ -234,8 +243,17 @@ export const translations = {
         }
       ]
     },
+    missionSection: {
+      title: "Мы строим цифровое будущее Казахстана.",
+      p1: "Наши продукты помогают компаниям работать быстрее,",
+      p2: "предпринимателям — запускать новые идеи,",
+      p3: "а людям — взаимодействовать с технологиями легко и с удовольствием.",
+      p4: "Мы верим, что Казахстан способен создавать не просто IT-решения,",
+      p5: "а глобальные продукты, которыми будут пользоваться во всём мире."
+    },
     workflow: {
-      title: "Наш процесс",
+      title: "Мы создаём, как думаем. Просто. Прозрачно. Быстро.",
+      processTitle: "Наш процесс",
       subtitle: "От концепции к реальности",
       steps: [
         {
@@ -390,6 +408,14 @@ export const translations = {
           description: "Сіздің табысыңыз - біздің жетістігіміздің негізгі көрсеткіші"
         }
       ]
+    },
+    missionSection: {
+      title: "Біз Қазақстанның цифрлық болашағын құрып жатырмыз.",
+      p1: "Біздің өнімдер компанияларға жылдамырақ жұмыс істеуге көмектеседі,",
+      p2: "кәсіпкерлерге — жаңа идеяларды іске қосуға,",
+      p3: "ал адамдарға — технологиялармен оңай әрі қуана отырып өзара әрекеттесуге.",
+      p4: "Біз Қазақстан жай ғана IT-шешімдер ғана емес,",
+      p5: "бүкіл әлемде пайдаланылатын жаһандық өнімдер жасауға қабілетті деп сенеміз."
     },
     workflow: {
       title: "Біздің процесс",

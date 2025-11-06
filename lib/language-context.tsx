@@ -12,23 +12,44 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | null>(null);
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [locale, setLocale] = useState<Locale>('en');
+  // По умолчанию русский для Казахстана
+  const [locale, setLocale] = useState<Locale>('ru');
 
   useEffect(() => {
-    // Получаем язык из localStorage или браузера
+    // Получаем язык из localStorage или определяем автоматически
     const saved = localStorage.getItem('locale') as Locale;
     if (saved && translations[saved]) {
       setLocale(saved);
     } else {
-      // Определяем язык браузера
-      const browserLang = navigator.language.split('-')[0] as Locale;
-      if (translations[browserLang]) {
-        setLocale(browserLang);
+      // Улучшенное определение языка браузера
+      const browserLang = navigator.language.toLowerCase();
+      let detectedLocale: Locale = 'ru'; // По умолчанию русский для Казахстана
+      
+      // Проверяем полный код языка и его варианты
+      if (browserLang.startsWith('kk') || browserLang.includes('kz')) {
+        detectedLocale = 'kk'; // Казахский
+      } else if (browserLang.startsWith('en')) {
+        detectedLocale = 'en'; // Английский
+      } else if (browserLang.startsWith('ru')) {
+        detectedLocale = 'ru'; // Русский
       }
+      
+      // Дополнительная проверка для стран
+      const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+      if (timezone.includes('Almaty') || timezone.includes('Astana')) {
+        detectedLocale = 'kk'; // Казахское время = казахский язык
+      }
+      
+      setLocale(detectedLocale);
+      // Сохраняем автоматически определенный язык
+      localStorage.setItem('locale', detectedLocale);
     }
   }, []);
 
   const handleSetLocale = (newLocale: Locale) => {
+    if (process.env.NODE_ENV === 'development') {
+      console.log('🌍 Language changed from', locale, 'to', newLocale);
+    }
     setLocale(newLocale);
     localStorage.setItem('locale', newLocale);
   };
@@ -38,6 +59,13 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     t: translations[locale],
     setLocale: handleSetLocale,
   };
+
+  // Дебаг информация в development
+  if (process.env.NODE_ENV === 'development') {
+    console.log('🌍 LanguageProvider - Current locale:', locale);
+    console.log('📚 Available translations:', Object.keys(translations));
+    console.log('🔍 Current translation object:', translations[locale]);
+  }
 
   return (
     <LanguageContext.Provider value={value}>
