@@ -16,11 +16,11 @@ const MissionSection = dynamic(() => import('@/components/sections/MissionSectio
   loading: () => <div className="h-96 animate-pulse bg-gray-100 dark:bg-gray-900" />
 });
 
-const WorkflowSection = dynamic(() => import('@/components/sections/WorkflowSection'), {
+const WorkflowSection = dynamic(() => import('@/components/sections/WorkflowSectionPremium'), {
   loading: () => <div className="h-96 animate-pulse bg-gray-100 dark:bg-gray-900" />
 });
 
-const WhyUsSection = dynamic(() => import('@/components/sections/WhyUsSection'), {
+const WhyUsSection = dynamic(() => import('@/components/sections/WhyUsSectionPremium'), {
   loading: () => <div className="h-96 animate-pulse bg-gray-100 dark:bg-gray-900" />
 });
 
