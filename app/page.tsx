@@ -12,7 +12,7 @@ const AboutSection = dynamic(() => import('@/components/sections/AboutSectionOpt
   loading: () => <div className="h-96 animate-pulse bg-gray-100 dark:bg-gray-900" />
 });
 
-const MissionSection = dynamic(() => import('@/components/sections/MissionSectionOptimized'), {
+const MissionSection = dynamic(() => import('@/components/sections/MissionSection'), {
   loading: () => <div className="h-96 animate-pulse bg-gray-100 dark:bg-gray-900" />
 });
 

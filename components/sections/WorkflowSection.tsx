@@ -85,7 +85,7 @@ export default function WorkflowSection() {
   return (
     <section 
       ref={sectionRef} 
-      className="relative py-24 sm:py-32 bg-background transition-colors duration-500 overflow-hidden"
+      className="relative py-24 sm:py-32 bg-background transition-colors duration-500 overflow-hidden "
       style={{
         ...backgroundStyles,
         willChange: 'transform',

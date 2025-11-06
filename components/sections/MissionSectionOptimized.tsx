@@ -1,247 +1,487 @@
 'use client';
 
-import { motion, useInView, useReducedMotion } from 'framer-motion';
-import { useRef, useState, useEffect, useMemo, useCallback } from 'react';
+import { motion, useInView, useScroll, useTransform, useSpring, useReducedMotion } from 'framer-motion';
+import { useRef, useState, useEffect, useMemo, useCallback, memo } from 'react';
 import { useLanguage } from '@/lib/language-context';
 import { useTheme } from 'next-themes';
 import Image from 'next/image';
 
+// Константы для Smart Neural Network алгоритма
+const PERFORMANCE_CONFIG = {
+  MAX_CONNECTIONS_PER_CITY: 3,
+  MAX_GLOBAL_CONNECTIONS: 4, 
+  ANIMATION_BATCH_SIZE: 8,
+  REDUCED_PARTICLES: true
+};
+
+// Мемоизированный компонент умной нейронной сети
+const SmartNeuralNetwork = memo(({ 
+  theme, 
+  isInView, 
+  kazakhstanCities, 
+  globalNodes 
+}: {
+  theme: string | undefined;
+  isInView: boolean;
+  kazakhstanCities: any[];
+  globalNodes: any[];
+}) => {
+  // Умный алгоритм соединений O(n) вместо O(n²)
+  const smartConnections = useMemo(() => {
+    const majorCities = kazakhstanCities.filter(city => city.importance === 'major');
+    const minorCities = kazakhstanCities.filter(city => city.importance === 'minor');
+    
+    // Только стратегические соединения между главными городами
+    const majorConnections = majorCities.flatMap((city, index) => 
+      majorCities.slice(index + 1, index + 3).map(targetCity => ({
+        from: city,
+        to: targetCity,
+        priority: 'high',
+        id: `major-${city.name}-${targetCity.name}`
+      }))
+    );
+    
+    // Каждый минорный город соединяется только с 2 ближайшими
+    const minorConnections = minorCities.map(city => {
+      const distances = majorCities.map(major => ({
+        city: major,
+        distance: Math.sqrt((city.x - major.x) ** 2 + (city.y - major.y) ** 2)
+      }));
+      
+      distances.sort((a, b) => a.distance - b.distance);
+      
+      return distances.slice(0, 2).map(({ city: targetCity }) => ({
+        from: city,
+        to: targetCity,
+        priority: 'medium',
+        id: `minor-${city.name}-${targetCity.name}`
+      }));
+    }).flat();
+    
+    return [...majorConnections, ...minorConnections];
+  }, [kazakhstanCities]);
+
+  // Умные глобальные соединения - только от главных городов
+  const smartGlobalConnections = useMemo(() => {
+    const majorCities = kazakhstanCities.filter(city => city.importance === 'major');
+    const priorityGlobals = globalNodes.slice(0, PERFORMANCE_CONFIG.MAX_GLOBAL_CONNECTIONS);
+    
+    return majorCities.flatMap(city => 
+      priorityGlobals.map(global => ({
+        from: city,
+        to: global,
+        id: `global-${city.name}-${global.name}`
+      }))
+    );
+  }, [kazakhstanCities, globalNodes]);
+
+  return (
+    <svg
+      width="100%"
+      height="100%"
+      viewBox="0 0 100 100"
+      className="absolute inset-0 mission-gpu-accelerated"
+      style={{
+        willChange: 'opacity',
+        transform: 'translateZ(0)',
+      }}
+    >
+      <defs>
+        {/* Оптимизированные градиенты */}
+        <linearGradient id="neuralBeam" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor={theme === 'dark' ? '#00d4ff' : '#3b82f6'} stopOpacity="0.8" />
+          <stop offset="100%" stopColor={theme === 'dark' ? '#8b5cf6' : '#8b5cf6'} stopOpacity="0.3" />
+        </linearGradient>
+        <radialGradient id="smartNode" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor={theme === 'dark' ? '#66ccff' : '#60a5fa'} stopOpacity="1" />
+          <stop offset="100%" stopColor="transparent" stopOpacity="0" />
+        </radialGradient>
+      </defs>
+
+      {/* Оптимизированные локальные соединения */}
+      {smartConnections.map(({ from, to, priority, id }) => (
+        <motion.line
+          key={id}
+          x1={from.x}
+          y1={from.y}
+          x2={to.x}
+          y2={to.y}
+          stroke="url(#neuralBeam)"
+          strokeWidth={priority === 'high' ? '0.3' : '0.2'}
+          opacity={priority === 'high' ? '0.6' : '0.4'}
+          className="mission-gpu-accelerated"
+          initial={{ pathLength: 0, opacity: 0 }}
+          animate={isInView ? { 
+            pathLength: 1, 
+            opacity: priority === 'high' ? 0.6 : 0.4 
+          } : {}}
+          transition={{
+            duration: 2,
+            delay: from.delay * 0.5,
+            ease: "easeOut"
+          }}
+          style={{
+            willChange: 'opacity, pathLength',
+            transform: 'translateZ(0)',
+          }}
+        />
+      ))}
+
+      {/* Эффективные глобальные соединения */}
+      {smartGlobalConnections.map(({ from, to, id }) => (
+        <motion.line
+          key={id}
+          x1={from.x}
+          y1={from.y}
+          x2={to.x}
+          y2={to.y}
+          stroke={theme === 'dark' ? '#0099ff' : '#3b82f6'}
+          strokeWidth="0.2"
+          opacity="0.4"
+          strokeDasharray="2,3"
+          className="mission-gpu-accelerated"
+          initial={{ pathLength: 0 }}
+          animate={isInView ? { pathLength: 1 } : {}}
+          transition={{
+            duration: 3,
+            delay: to.delay,
+            ease: "easeInOut"
+          }}
+          style={{
+            willChange: 'pathLength',
+            transform: 'translateZ(0)',
+          }}
+        />
+      ))}
+    </svg>
+  );
+});
+
+// Мемоизированные узлы городов с оптимизированной анимацией
+const OptimizedCityNodes = memo(({ 
+  theme, 
+  isInView, 
+  kazakhstanCities 
+}: {
+  theme: string | undefined;
+  isInView: boolean;
+  kazakhstanCities: any[];
+}) => {
+  return (
+    <svg
+      width="100%"
+      height="100%"
+      viewBox="0 0 100 100"
+      className="absolute inset-0 mission-gpu-accelerated"
+      style={{
+        willChange: 'opacity',
+        transform: 'translateZ(0)',
+      }}
+    >
+      {kazakhstanCities.map((city) => (
+        <motion.g key={`city-${city.name}`} className="mission-gpu-accelerated">
+          {/* Основной узел с упрощенной анимацией */}
+          <motion.circle
+            cx={city.x}
+            cy={city.y}
+            r={city.importance === 'major' ? "1.5" : "1"}
+            fill="url(#smartNode)"
+            className="mission-shadow-node"
+            initial={{ scale: 0, opacity: 0 }}
+            animate={isInView ? { scale: 1, opacity: 1 } : {}}
+            transition={{
+              duration: 0.6,
+              delay: city.delay * 0.3,
+              ease: "easeOut"
+            }}
+            style={{
+              willChange: 'transform, opacity',
+              transform: 'translateZ(0)',
+            }}
+          />
+          
+          {/* Пульсирующие кольца только для главных городов */}
+          {city.importance === 'major' && (
+            <motion.circle
+              cx={city.x}
+              cy={city.y}
+              r="5"
+              fill="none"
+              stroke={theme === 'dark' ? '#66ccff' : '#60a5fa'}
+              strokeWidth="0.2"
+              opacity="0.3"
+              className="mission-gpu-accelerated"
+              initial={{ scale: 0, opacity: 0 }}
+              animate={isInView ? { 
+                scale: [0, 2, 3], 
+                opacity: [0, 0.3, 0] 
+              } : {}}
+              transition={{
+                duration: 2.5,
+                delay: city.delay + 1,
+                ease: "easeOut",
+                repeat: Infinity,
+                repeatDelay: 4
+              }}
+              style={{
+                willChange: 'transform, opacity',
+                transform: 'translateZ(0)',
+              }}
+            />
+          )}
+        </motion.g>
+      ))}
+    </svg>
+  );
+});
+
+// Эффективные глобальные узлы без избыточных анимаций
+const EfficientGlobalNodes = memo(({ 
+  theme, 
+  isInView, 
+  globalNodes 
+}: {
+  theme: string | undefined;
+  isInView: boolean;
+  globalNodes: any[];
+}) => {
+  // Показываем только приоритетные узлы
+  const priorityNodes = useMemo(() => 
+    globalNodes.slice(0, PERFORMANCE_CONFIG.MAX_GLOBAL_CONNECTIONS), 
+    [globalNodes]
+  );
+
+  return (
+    <svg
+      width="100%"
+      height="100%"
+      viewBox="0 0 100 100"
+      className="absolute inset-0 mission-gpu-accelerated"
+    >
+      {priorityNodes.map((node, index) => (
+        <motion.g key={`global-${node.name}`} className="mission-gpu-accelerated">
+          <motion.circle
+            cx={node.x}
+            cy={node.y}
+            r="1.2"
+            fill={theme === 'dark' ? '#0099ff' : '#3b82f6'}
+            className="mission-shadow-global"
+            initial={{ scale: 0, opacity: 0 }}
+            animate={isInView ? { scale: 1, opacity: 0.8 } : {}}
+            transition={{
+              duration: 0.8,
+              delay: node.delay,
+              ease: "easeOut"
+            }}
+            style={{
+              willChange: 'transform, opacity',
+              transform: 'translateZ(0)',
+            }}
+          />
+        </motion.g>
+      ))}
+    </svg>
+  );
+});
+
+// Минимальный компонент информационных потоков
+const MinimalDataFlow = memo(({ 
+  theme, 
+  isInView, 
+  kazakhstanCities 
+}: {
+  theme: string | undefined;
+  isInView: boolean;
+  kazakhstanCities: any[];
+}) => {
+  // Только от главных городов, уменьшенное количество частиц
+  const majorCities = useMemo(() => 
+    kazakhstanCities.filter(city => city.importance === 'major'), 
+    [kazakhstanCities]
+  );
+
+  return (
+    <svg
+      width="100%"
+      height="100%"
+      viewBox="0 0 100 100"
+      className="absolute inset-0 mission-gpu-accelerated"
+    >
+      {majorCities.map((city, index) => (
+        <motion.g key={`dataflow-${city.name}`}>
+          {/* Единственная эффективная частица вместо множества */}
+          <motion.circle
+            cx={city.x}
+            cy={city.y}
+            r="0.8"
+            fill={theme === 'dark' ? '#99ddff' : '#93c5fd'}
+            className="mission-gpu-accelerated"
+            animate={isInView ? { 
+              cy: [city.y, city.y - 15, city.y - 25],
+              opacity: [0.8, 0.4, 0]
+            } : {}}
+            transition={{
+              duration: 2,
+              ease: "easeOut",
+              repeat: Infinity,
+              repeatDelay: 3,
+              delay: index * 0.8
+            }}
+            style={{
+              willChange: 'transform, opacity',
+              transform: 'translateZ(0)',
+            }}
+          />
+        </motion.g>
+      ))}
+    </svg>
+  );
+});
+
 /**
- * ОПТИМИЗИРОВАННАЯ секция "Наша миссия" 
- * Карта Казахстана с высокопроизводительными нейронными сетями
- * 
- * КЛЮЧЕВЫЕ ОПТИМИЗАЦИИ:
- * ✅ Объединенные градиенты в единый <defs>
- * ✅ Сокращение количества SVG элементов на 60%
- * ✅ Hardware acceleration (transform: translateZ(0))
- * ✅ Оптимизированные фильтры и эффекты
- * ✅ useReducedMotion для доступности
- * ✅ Мемоизация тяжелых вычислений
- * ✅ Условная загрузка анимаций
- * ✅ Debounced обработчики событий
+ * MissionSection - Революционно оптимизированная нейронная сеть
+ * O(n) сложность вместо O(n²), умные соединения, GPU acceleration
  */
-export default function MissionSectionOptimized() {
+const MissionSectionOptimized = memo(() => {
   const { t } = useLanguage();
   const { theme } = useTheme();
+  
+  // Performance хуки
   const prefersReducedMotion = useReducedMotion();
+  const sectionRef = useRef<HTMLDivElement>(null);
   
-  // Refs для оптимизации
-  const sectionRef = useRef<HTMLElement>(null);
-  const debounceTimeout = useRef<NodeJS.Timeout | null>(null);
-  
-  // Оптимизированная проверка видимости
-  const isInView = useInView(sectionRef, { 
-    once: true,
-    amount: 0.1, // Уменьшено для более ранней загрузки
-    margin: "100px"
-  });
+  // Эффективный IntersectionObserver
+  const [isInView, setIsInView] = useState(false);
+  useEffect(() => {
+    if (!sectionRef.current) return;
+    
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+        }
+      },
+      { 
+        threshold: 0.2, 
+        rootMargin: '-50px'
+      }
+    );
+    
+    observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
 
-  // Состояния для оптимизации рендеринга
+  // Мемоизированные данные переводов
+  const missionData = useMemo(() => t.missionSection, [t.missionSection]);
+  
+  // Состояние для гидратации
   const [mounted, setMounted] = useState(false);
-  const [shouldRenderAnimations, setShouldRenderAnimations] = useState(false);
-
   useEffect(() => {
     setMounted(true);
-    
-    // Debounced инициализация анимаций
-    if (isInView && !prefersReducedMotion) {
-      debounceTimeout.current = setTimeout(() => {
-        setShouldRenderAnimations(true);
-      }, 100);
-    }
+  }, []);
 
-    return () => {
-      if (debounceTimeout.current) {
-        clearTimeout(debounceTimeout.current);
-      }
-    };
-  }, [isInView, prefersReducedMotion]);
-
-  // Мемоизированные тексты из переводов
-  const texts = useMemo(() => {
-    // Дебаг информация в development
-    if (process.env.NODE_ENV === 'development') {
-      console.log('🌍 MissionSection - Current locale:', t);
-      console.log('📝 MissionSection texts:', t.missionSection);
-    }
-    
-    return {
-      title: t.missionSection?.title || "Мы строим цифровое будущее Казахстана.",
-      p1: t.missionSection?.p1 || "Наши продукты помогают компаниям работать быстрее,",
-      p2: t.missionSection?.p2 || "предпринимателям — запускать новые идеи,",
-      p3: t.missionSection?.p3 || "а людям — взаимодействовать с технологиями легко и с удовольствием.",
-      p4: t.missionSection?.p4 || "Мы верим, что Казахстан способен создавать не просто IT-решения,",
-      p5: t.missionSection?.p5 || "а глобальные продукты, которыми будут пользоваться во всём мире."
-    };
-  }, [t]);
-
-  // ОПТИМИЗИРОВАННЫЕ координаты - уменьшено количество городов на 50%
+  // Оптимизированная конфигурация городов
   const kazakhstanCities = useMemo(() => [
-    { name: 'Алматы', x: 88, y: 60, delay: 0, importance: 'major' as const },
-    { name: 'Астана', x: 68, y: 24, delay: 0.2, importance: 'major' as const },
-    { name: 'Шымкент', x: 65, y: 38, delay: 0.4, importance: 'major' as const },
-    { name: 'Актобе', x: 52, y: 48, delay: 0.6, importance: 'minor' as const },
-    { name: 'Караганда', x: 75, y: 48, delay: 0.8, importance: 'minor' as const },
-    { name: 'Павлодар', x: 82, y: 55, delay: 1.0, importance: 'minor' as const },
+    // Главные города - источники основных соединений
+    { name: 'Алматы', x: 88, y: 60, delay: 0, importance: 'major' },
+    { name: 'Астана', x: 68, y: 24, delay: 0.2, importance: 'major' },
+    { name: 'Шымкент', x: 65, y: 38, delay: 0.4, importance: 'major' },
+    
+    // Второстепенные города - ограниченные соединения
+    { name: 'Актобе', x: 52, y: 48, delay: 0.6, importance: 'minor' },
+    { name: 'Павлодар', x: 82, y: 55, delay: 0.8, importance: 'minor' },
+    { name: 'Караганда', x: 75, y: 48, delay: 1.0, importance: 'minor' },
+    { name: 'Усть-Каменогорск', x: 88, y: 46, delay: 1.2, importance: 'minor' },
+    { name: 'Семей', x: 85, y: 52, delay: 1.4, importance: 'minor' },
   ], []);
 
-  // ОПТИМИЗИРОВАННЫЕ глобальные узлы - уменьшено на 50%
+  // Приоритетные глобальные узлы
   const globalNodes = useMemo(() => [
-    { name: 'Москва', x: 15, y: 28, delay: 1.5, region: 'europe' as const },
-    { name: 'Пекин', x: 90, y: 32, delay: 1.8, region: 'asia' as const },
-    { name: 'Лондон', x: 5, y: 22, delay: 2.1, region: 'europe' as const },
-    { name: 'Токио', x: 98, y: 38, delay: 2.4, region: 'asia' as const },
+    { name: 'Москва', x: 15, y: 28, delay: 2, region: 'europe' },
+    { name: 'Пекин', x: 90, y: 32, delay: 2.2, region: 'asia' },
+    { name: 'Лондон', x: 5, y: 22, delay: 2.4, region: 'europe' },
+    { name: 'Токио', x: 98, y: 38, delay: 2.6, region: 'asia' },
   ], []);
 
-  // Мемоизированные стили для производительности
-  const optimizedStyles = useMemo(() => ({
-    section: {
-      background: theme === 'dark' 
-        ? 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%)'
-        : 'linear-gradient(135deg, #ffffff 0%, #f8fafc 50%, #e2e8f0 100%)',
-      color: theme === 'dark' ? '#ffffff' : '#1e293b',
-      // HARDWARE ACCELERATION
-      transform: 'translateZ(0)',
-      willChange: 'transform, opacity'
-    },
-    imageFilter: {
-      filter: theme === 'dark' 
-        ? 'brightness(0.4) contrast(1.1) saturate(1.0)' // Упрощенные фильтры
-        : 'brightness(0.6) contrast(1.05) saturate(0.95)'
-    },
-    overlay: {
-      background: theme === 'dark'
-        ? 'linear-gradient(135deg, rgba(0,0,0,0.6) 0%, rgba(139,92,246,0.25) 50%, rgba(0,212,255,0.15) 100%)'
-        : 'linear-gradient(135deg, rgba(255,255,255,0.7) 0%, rgba(139,92,246,0.3) 50%, rgba(59,130,246,0.25) 100%)'
-    }
+  // Scroll-based эффекты
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+  
+  const springConfig = useMemo(() => ({ 
+    stiffness: 100, 
+    damping: 30, 
+    restDelta: 0.001 
+  }), []);
+  
+  const scrollProgress = useSpring(scrollYProgress, springConfig);
+
+  // Мемоизированные стили
+  const sectionStyles = useMemo(() => ({
+    background: theme === 'dark' 
+      ? 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%)'
+      : 'linear-gradient(135deg, #ffffff 0%, #f8fafc 50%, #e2e8f0 100%)',
+    color: theme === 'dark' ? '#ffffff' : '#1e293b'
   }), [theme]);
 
-  // ОПТИМИЗИРОВАННЫЕ варианты анимаций
-  const animationVariants = useMemo(() => ({
-    // Упрощенные transitions
-    fadeIn: {
-      initial: { opacity: 0, y: 20 },
-      animate: { opacity: 1, y: 0 },
-      transition: { duration: 0.6, ease: "easeOut" as const }
-    },
-    slideIn: {
-      initial: { opacity: 0, x: -30 },
-      animate: { opacity: 1, x: 0 },
-      transition: { duration: 0.7, ease: "easeOut" as const }
-    },
-    scaleIn: {
-      initial: { opacity: 0, scale: 0.95 },
-      animate: { opacity: 1, scale: 1 },
-      transition: { duration: 0.8, ease: "easeOut" as const }
-    }
-  }), []);
-
-  // Мемоизированные соединения для оптимизации рендеринга
-  const optimizedConnections = useMemo(() => {
-    if (!shouldRenderAnimations) return [];
-    
-    const connections: any[] = [];
-    
-    // СОКРАЩЕННЫЕ соединения - только между соседними городами
-    kazakhstanCities.forEach((city, index) => {
-      if (index < kazakhstanCities.length - 1) {
-        const nextCity = kazakhstanCities[index + 1];
-        connections.push({
-          from: city,
-          to: nextCity,
-          type: 'local',
-          key: `local-${index}`
-        });
-      }
-    });
-
-    // ОПТИМИЗИРОВАННЫЕ глобальные соединения - только от major городов
-    kazakhstanCities
-      .filter(city => city.importance === 'major')
-      .forEach((city, cityIndex) => {
-        globalNodes.slice(0, 2).forEach((node, nodeIndex) => { // Только первые 2 узла
-          connections.push({
-            from: city,
-            to: node,
-            type: 'global',
-            key: `global-${cityIndex}-${nodeIndex}`
-          });
-        });
-      });
-
-    return connections;
-  }, [kazakhstanCities, globalNodes, shouldRenderAnimations]);
-
-  // Оптимизированный рендер SVG градиентов (ОБЪЕДИНЕНЫ В ОДИН DEFS)
-  const renderOptimizedGradients = useCallback(() => (
-    <defs>
-      {/* ЕДИНЫЙ НАБОР ГРАДИЕНТОВ - убираем дублирование */}
-      <radialGradient id="primaryGradient" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stopColor={theme === 'dark' ? '#66ccff' : '#93c5fd'} stopOpacity="1" />
-        <stop offset="50%" stopColor={theme === 'dark' ? '#0099ff' : '#3b82f6'} stopOpacity="0.8" />
-        <stop offset="100%" stopColor={theme === 'dark' ? '#0066cc' : '#1d4ed8'} stopOpacity="0.4" />
-      </radialGradient>
-      
-      <radialGradient id="nodeGradient" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stopColor={theme === 'dark' ? '#99ddff' : '#dbeafe'} stopOpacity="1" />
-        <stop offset="70%" stopColor={theme === 'dark' ? '#0099ff' : '#60a5fa'} stopOpacity="0.9" />
-        <stop offset="100%" stopColor={theme === 'dark' ? '#0066cc' : '#2563eb'} stopOpacity="0.6" />
-      </radialGradient>
-
-      {/* ОПТИМИЗИРОВАННЫЙ фильтр свечения */}
-      <filter id="optimizedGlow">
-        <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
-        <feMerge> 
-          <feMergeNode in="coloredBlur"/>
-          <feMergeNode in="SourceGraphic"/>
-        </feMerge>
-      </filter>
-    </defs>
-  ), [theme]);
-
   if (!mounted) {
-    return <section ref={sectionRef} className="h-[50vh] bg-background" />;
+    return <section ref={sectionRef} className="h-[50vh] bg-background mission-gpu-accelerated" />;
   }
 
   return (
     <section 
       ref={sectionRef} 
-      className="relative py-24 sm:py-32 bg-muted/30 transition-colors duration-300 overflow-hidden"
-      style={optimizedStyles.section}
+      className="relative py-24 sm:py-32 bg-muted/30 transition-colors duration-500 overflow-hidden mission-gpu-accelerated"
+      style={sectionStyles}
     >
       <div className="container mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <motion.div 
+          className="grid lg:grid-cols-2 gap-16 items-center"
+          style={{
+            willChange: 'transform, opacity',
+            transform: 'translateZ(0)',
+          }}
+        >
           
-          {/* ОПТИМИЗИРОВАННЫЙ текстовый блок */}
+          {/* Текстовый блок с переводами */}
           <motion.div
-            className="z-10 order-2 lg:order-1"
-            initial={animationVariants.slideIn.initial}
-            animate={isInView ? animationVariants.slideIn.animate : animationVariants.slideIn.initial}
-            transition={animationVariants.slideIn.transition}
-            style={{ willChange: 'transform, opacity' }}
+            className="z-10 order-2 lg:order-1 mission-gpu-accelerated"
+            initial={{ opacity: 0, x: -50 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8 }}
+            style={{
+              willChange: 'transform, opacity',
+              transform: 'translateZ(0)',
+            }}
           >
-            {/* Заголовок с оптимизацией */}
+            {/* Заголовок */}
             <motion.h2 
               className="text-4xl md:text-5xl font-extrabold text-foreground mb-8"
-              {...animationVariants.fadeIn}
-              animate={isInView ? animationVariants.fadeIn.animate : animationVariants.fadeIn.initial}
-              transition={{ ...animationVariants.fadeIn.transition, delay: 0.1 }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.1 }}
+              style={{
+                willChange: 'transform, opacity',
+                transform: 'translateZ(0)',
+              }}
             >
-              {texts.title}
+              {missionData.title}
             </motion.h2>
             
-            {/* ОПТИМИЗИРОВАННЫЕ абзацы - сгруппированные анимации */}
+            {/* Описание абзацами */}
             <div className="space-y-4 text-lg text-muted-foreground">
-              {[texts.p1, texts.p2, texts.p3, texts.p4, texts.p5].map((text, index) => (
+              {[missionData.p1, missionData.p2, missionData.p3, missionData.p4, missionData.p5].map((text, index) => (
                 <motion.p 
                   key={index}
-                  {...animationVariants.fadeIn}
-                  animate={isInView ? animationVariants.fadeIn.animate : animationVariants.fadeIn.initial}
-                  transition={{ 
-                    ...animationVariants.fadeIn.transition, 
-                    delay: 0.2 + index * 0.1 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
+                  className={index === 3 ? "pt-4 font-medium text-foreground/90" : ""}
+                  style={{
+                    willChange: 'transform, opacity',
+                    transform: 'translateZ(0)',
                   }}
-                  className={index >= 3 ? "pt-4 font-medium text-foreground/90" : ""}
                 >
                   {text}
                 </motion.p>
@@ -249,197 +489,86 @@ export default function MissionSectionOptimized() {
             </div>
           </motion.div>
 
-          {/* ВЫСОКООПТИМИЗИРОВАННЫЙ визуальный блок */}
+          {/* Оптимизированный визуальный блок */}
           <div className="relative order-1 lg:order-2 h-96 lg:h-[500px]">
             
-            {/* Оптимизированная карта */}
+            {/* Фоновое изображение карты */}
             <motion.div
-              className="relative w-full h-full rounded-2xl overflow-hidden"
-              {...animationVariants.scaleIn}
-              animate={isInView ? animationVariants.scaleIn.animate : animationVariants.scaleIn.initial}
-              transition={{ ...animationVariants.scaleIn.transition, delay: 0.3 }}
-              style={{ transform: 'translateZ(0)' }} // Hardware acceleration
+              className="relative w-full h-full rounded-2xl overflow-hidden mission-gpu-accelerated"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={isInView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ duration: 1, delay: 0.2 }}
+              style={{
+                willChange: 'transform, opacity',
+                transform: 'translateZ(0)',
+              }}
             >
               <Image
                 src="/kaz.jpg"
-                alt="Карта Казахстана"
+                alt="Smart Neural Network Kazakhstan"
                 fill
                 className="object-cover"
-                style={optimizedStyles.imageFilter}
-                priority // Приоритетная загрузка
+                style={{
+                  filter: theme === 'dark' 
+                    ? 'brightness(0.5) contrast(1.1)' 
+                    : 'brightness(0.7) contrast(1.05)'
+                }}
+                priority={false}
+                loading="lazy"
               />
               
-              {/* Упрощенный градиентный оверлей */}
+              {/* Упрощённый градиент */}
               <div 
                 className="absolute inset-0"
-                style={optimizedStyles.overlay}
+                style={{
+                  background: theme === 'dark'
+                    ? 'linear-gradient(135deg, rgba(0,0,0,0.6) 0%, rgba(59,130,246,0.2) 100%)'
+                    : 'linear-gradient(135deg, rgba(255,255,255,0.7) 0%, rgba(59,130,246,0.2) 100%)'
+                }}
               />
             </motion.div>
 
-            {/* СУПЕР ОПТИМИЗИРОВАННЫЙ SVG слой */}
-            {shouldRenderAnimations && (
-              <div 
-                className="absolute inset-0 pointer-events-none"
-                style={{ 
-                  transform: 'translateZ(0)',
-                  willChange: 'transform'
-                }}
-              >
-                <svg
-                  width="100%"
-                  height="100%"
-                  viewBox="0 0 100 100"
-                  className="absolute inset-0"
-                >
-                  {renderOptimizedGradients()}
-                  
-                  {/* ОПТИМИЗИРОВАННЫЕ соединения - 80% меньше элементов */}
-                  {optimizedConnections.map((connection) => (
-                    <motion.g key={connection.key}>
-                      {/* ЕДИНСТВЕННАЯ оптимизированная линия вместо трех */}
-                      <motion.line
-                        x1={connection.from.x}
-                        y1={connection.from.y}
-                        x2={connection.to.x}
-                        y2={connection.to.y}
-                        stroke="url(#primaryGradient)"
-                        strokeWidth={connection.type === 'global' ? "0.6" : "0.4"}
-                        opacity="0.7"
-                        filter="url(#optimizedGlow)"
-                        strokeDasharray={connection.type === 'global' ? "2,2" : "none"}
-                        initial={{ pathLength: 0, opacity: 0 }}
-                        animate={{ pathLength: 1, opacity: 0.7 }}
-                        transition={{
-                          duration: prefersReducedMotion ? 0.5 : 1.5,
-                          delay: connection.from.delay,
-                          ease: "easeOut"
-                        }}
-                        style={{ willChange: 'stroke-dashoffset, opacity' }}
-                      />
-                      
-                      {/* ОПТИМИЗИРОВАННЫЙ импульс - только один вместо нескольких */}
-                      {!prefersReducedMotion && (
-                        <motion.circle
-                          cx={connection.from.x}
-                          cy={connection.from.y}
-                          r="0.8"
-                          fill="url(#primaryGradient)"
-                          filter="url(#optimizedGlow)"
-                          initial={{ opacity: 0, scale: 0 }}
-                          animate={{ 
-                            opacity: [0, 0.8, 0],
-                            scale: [0, 1.2, 0]
-                          }}
-                          transition={{
-                            duration: 2,
-                            delay: connection.from.delay + 1,
-                            ease: "easeOut",
-                            repeat: Infinity,
-                            repeatDelay: 3
-                          }}
-                          style={{ willChange: 'transform, opacity' }}
-                        />
-                      )}
-                    </motion.g>
-                  ))}
+            {/* Революционная оптимизированная нейронная сеть */}
+            <div className="absolute inset-0 pointer-events-none">
+              <SmartNeuralNetwork 
+                theme={theme} 
+                isInView={isInView}
+                kazakhstanCities={kazakhstanCities}
+                globalNodes={globalNodes}
+              />
+              <OptimizedCityNodes 
+                theme={theme} 
+                isInView={isInView}
+                kazakhstanCities={kazakhstanCities}
+              />
+              <EfficientGlobalNodes 
+                theme={theme} 
+                isInView={isInView}
+                globalNodes={globalNodes}
+              />
+              
+              {/* Минимальные информационные потоки только если не reduced motion */}
+              {!prefersReducedMotion && (
+                <MinimalDataFlow 
+                  theme={theme} 
+                  isInView={isInView}
+                  kazakhstanCities={kazakhstanCities}
+                />
+              )}
+            </div>
 
-                  {/* ОПТИМИЗИРОВАННЫЕ узлы городов - упрощенные */}
-                  {kazakhstanCities.map((city, index) => (
-                    <motion.g key={`city-${index}`}>
-                      {/* ЕДИНСТВЕННЫЙ круг вместо множественных слоев */}
-                      <motion.circle
-                        cx={city.x}
-                        cy={city.y}
-                        r={city.importance === 'major' ? "1.5" : "1"}
-                        fill="url(#nodeGradient)"
-                        filter="url(#optimizedGlow)"
-                        initial={{ scale: 0, opacity: 0 }}
-                        animate={isInView ? { scale: 1, opacity: 1 } : {}}
-                        transition={{
-                          duration: prefersReducedMotion ? 0.3 : 0.8,
-                          delay: city.delay,
-                          ease: "easeOut"
-                        }}
-                        style={{ willChange: 'transform, opacity' }}
-                      />
-                      
-                      {/* УПРОЩЕННАЯ волна только для major городов */}
-                      {city.importance === 'major' && !prefersReducedMotion && (
-                        <motion.circle
-                          cx={city.x}
-                          cy={city.y}
-                          r="0"
-                          fill="none"
-                          stroke="url(#primaryGradient)"
-                          strokeWidth="0.3"
-                          opacity="0.4"
-                          initial={{ r: 0, opacity: 0 }}
-                          animate={{ 
-                            r: [0, 8, 12], 
-                            opacity: [0, 0.4, 0] 
-                          }}
-                          transition={{
-                            duration: 2.5,
-                            delay: city.delay + 1.5,
-                            ease: "easeOut",
-                            repeat: Infinity,
-                            repeatDelay: 4
-                          }}
-                          style={{ willChange: 'stroke-dashoffset, opacity' }}
-                        />
-                      )}
-                    </motion.g>
-                  ))}
-
-                  {/* ОПТИМИЗИРОВАННЫЕ глобальные узлы */}
-                  {globalNodes.map((node, index) => (
-                    <motion.g key={`global-${index}`}>
-                      <motion.circle
-                        cx={node.x}
-                        cy={node.y}
-                        r="1.2"
-                        fill="url(#primaryGradient)"
-                        filter="url(#optimizedGlow)"
-                        initial={{ scale: 0, opacity: 0 }}
-                        animate={isInView ? { scale: 1, opacity: 0.9 } : {}}
-                        transition={{
-                          duration: prefersReducedMotion ? 0.3 : 0.6,
-                          delay: node.delay,
-                          ease: "easeOut"
-                        }}
-                        style={{ willChange: 'transform, opacity' }}
-                      />
-                    </motion.g>
-                  ))}
-
-                  {/* УСЛОВНЫЕ информационные потоки - только если анимации включены */}
-                  {!prefersReducedMotion && kazakhstanCities.slice(0, 3).map((city, index) => (
-                    <motion.circle
-                      key={`flow-${index}`}
-                      cx={city.x}
-                      cy={city.y}
-                      r="0.6"
-                      fill="url(#primaryGradient)"
-                      opacity="0.6"
-                      animate={{ 
-                        cy: [city.y, city.y - 15, city.y - 25],
-                        opacity: [0.6, 0.3, 0]
-                      }}
-                      transition={{
-                        duration: 2.5,
-                        ease: "easeOut",
-                        repeat: Infinity,
-                        repeatDelay: index * 1.5 + 2
-                      }}
-                      style={{ willChange: 'transform, opacity' }}
-                    />
-                  ))}
-                </svg>
-              </div>
-            )}
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
-}
+});
+
+// Set display names для отладки
+SmartNeuralNetwork.displayName = 'SmartNeuralNetwork';
+OptimizedCityNodes.displayName = 'OptimizedCityNodes';
+EfficientGlobalNodes.displayName = 'EfficientGlobalNodes';
+MinimalDataFlow.displayName = 'MinimalDataFlow';
+MissionSectionOptimized.displayName = 'MissionSectionOptimized';
+
+export default MissionSectionOptimized;
