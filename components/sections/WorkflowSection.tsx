@@ -21,41 +21,8 @@ import '@/styles/workflow-optimized.css';
  * - Ленивая загрузка тяжелых анимаций
  */
 
-// Мемоизированные статические данные
-const WORKFLOW_STEPS = [
-  {
-    id: 1,
-    icon: Lightbulb,
-    title: "Идея",
-    subtitle: "вы приходите с мечтой",
-    clientDialog: "У меня есть идея...",
-    qaspilabDialog: "Расскажите подробнее!",
-  },
-  {
-    id: 2,
-    icon: PuzzleIcon,
-    title: "Концепт",
-    subtitle: "мы превращаем её в план",
-    clientDialog: "Как это реализовать?",
-    qaspilabDialog: "Вот наш план действий:",
-  },
-  {
-    id: 3,
-    icon: Code,
-    title: "Продукт",
-    subtitle: "за 30 дней появляется MVP",
-    clientDialog: "Когда будет готово?",
-    qaspilabDialog: "MVP через 30 дней!",
-  },
-  {
-    id: 4,
-    icon: Rocket,
-    title: "Рост",
-    subtitle: "продукт начинает жить, мы остаёмся рядом",
-    clientDialog: "А что дальше?",
-    qaspilabDialog: "Растём вместе с вами!",
-  }
-] as const;
+// Мемоизированные статические данные для иконок
+const WORKFLOW_ICONS = [Lightbulb, PuzzleIcon, Code, Rocket] as const;
 
 
 
@@ -89,10 +56,13 @@ export default function WorkflowSection() {
     return () => observer.disconnect();
   }, [mounted]);
 
-  // Мемоизированные тексты
-  const texts = useMemo(() => ({
-    title: "Мы создаём, как думаем. Просто. Прозрачно. Быстро.",
-  }), []);
+  // Мемоизированные тексты из переводов
+  const workflowData = useMemo(() => {
+    return {
+      title: t.workflow?.title || "We create as we think. Simple. Transparent. Fast.",
+      steps: t.workflow?.steps || []
+    };
+  }, [t]);
 
   // Оптимизированные стили для фона
   const backgroundStyles = useMemo(() => ({
@@ -210,8 +180,8 @@ export default function WorkflowSection() {
                 />
 
                 {/* Точки этапов */}
-                {WORKFLOW_STEPS.map((step, index) => (
-                  <motion.g key={`step-simple-${step.id}`}>
+                {workflowData.steps.map((step, index) => (
+                  <motion.g key={`step-simple-${index}`}>
                     <motion.circle
                       cx={20 + index * 20}
                       cy="50"
@@ -240,18 +210,22 @@ export default function WorkflowSection() {
                         duration: 0.4,
                       }}
                     >
-                      {step.id}
+                      {step.step}
                     </motion.text>
                   </motion.g>
                 ))}
               </svg>
             </div>
 
-            {/* Диалоговые окна */}
-            {WORKFLOW_STEPS.map((step, index) => {
+            {/* Диалоговые окна с переводами */}
+            {workflowData.steps.map((step, index) => {
               const dialogDelay = 2 + index * 0.2;
+              // Для диалогов используем описания из переводов
+              const clientDialog = step.description?.split('.')[0] + '?' || `Этап ${step.step}`;
+              const qaspilabDialog = step.title || 'Готово!';
+              
               return (
-                <div key={`dialog-container-${step.id}`}>
+                <div key={`dialog-container-${index}`}>
                   {/* Диалог клиента */}
                   <motion.div
                     className="absolute bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm rounded-lg px-3 py-2 shadow-lg border border-gray-200/50 dark:border-gray-700/50 max-w-[120px]"
@@ -268,7 +242,7 @@ export default function WorkflowSection() {
                     }}
                   >
                     <p className="text-xs text-gray-700 dark:text-gray-300 font-medium">
-                      {step.clientDialog}
+                      {clientDialog}
                     </p>
                     <div 
                       className="absolute w-2 h-2 bg-white/95 dark:bg-gray-800/95 rotate-45 border-r border-b border-gray-200/50 dark:border-gray-700/50"
@@ -296,7 +270,7 @@ export default function WorkflowSection() {
                     }}
                   >
                     <p className="text-xs text-white font-medium">
-                      {step.qaspilabDialog}
+                      {qaspilabDialog}
                     </p>
                     <div 
                       className="absolute w-2 h-2 bg-blue-500/95 dark:bg-blue-600/95 rotate-45 border-r border-b border-blue-300/50"
@@ -325,62 +299,65 @@ export default function WorkflowSection() {
                 transform: 'translateZ(0)',
               }}
             >
-              {texts.title}
+              {workflowData.title}
             </motion.h2>
             
             {/* Этапы работы */}
             <div className="space-y-8">
-              {WORKFLOW_STEPS.map((step, index) => (
-                <motion.div
-                  key={step.id}
-                  className="flex items-start gap-4 group cursor-pointer"
-                  initial={{ opacity: 0, x: 30 }}
-                  animate={isInView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ 
-                    duration: 0.6, 
-                    delay: 0.3 + index * 0.1 
-                  }}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  style={{
-                    willChange: 'transform, opacity',
-                    transform: 'translateZ(0)',
-                  }}
-                >
-                  {/* Оптимизированная иконка */}
-                  <motion.div 
-                    className="shrink-0 w-12 h-12 rounded-xl flex items-center justify-center text-white shadow-lg transition-all duration-300 group-hover:shadow-xl"
+              {workflowData.steps.map((step, index) => {
+                const IconComponent = WORKFLOW_ICONS[index] || Lightbulb;
+                return (
+                  <motion.div
+                    key={`${step.step}-${index}`}
+                    className="flex items-start gap-4 group cursor-pointer"
+                    initial={{ opacity: 0, x: 30 }}
+                    animate={isInView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ 
+                      duration: 0.6, 
+                      delay: 0.3 + index * 0.1 
+                    }}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
                     style={{
-                      background: `linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%)`,
-                      willChange: 'transform',
+                      willChange: 'transform, opacity',
                       transform: 'translateZ(0)',
                     }}
-                    whileHover={{ 
-                      scale: 1.1,
-                      rotateY: 10,
-                    }}
-                    transition={{ type: "spring", stiffness: 400, damping: 17 }}
                   >
-                    <step.icon size={24} />
+                    {/* Оптимизированная иконка */}
+                    <motion.div 
+                      className="shrink-0 w-12 h-12 rounded-xl flex items-center justify-center text-white shadow-lg transition-all duration-300 group-hover:shadow-xl"
+                      style={{
+                        background: `linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%)`,
+                        willChange: 'transform',
+                        transform: 'translateZ(0)',
+                      }}
+                      whileHover={{ 
+                        scale: 1.1,
+                        rotateY: 10,
+                      }}
+                      transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                    >
+                      <IconComponent size={24} />
+                    </motion.div>
+                    
+                    {/* Описание этапа */}
+                    <div className="flex-1">
+                      <motion.h3 
+                        className="text-xl font-bold text-foreground mb-1 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors"
+                        whileHover={{ x: 5 }}
+                      >
+                        {step.title}
+                      </motion.h3>
+                      <motion.p 
+                        className="text-muted-foreground group-hover:text-foreground/80 transition-colors"
+                        whileHover={{ x: 3 }}
+                      >
+                        {step.description}
+                      </motion.p>
+                    </div>
                   </motion.div>
-                  
-                  {/* Описание этапа */}
-                  <div className="flex-1">
-                    <motion.h3 
-                      className="text-xl font-bold text-foreground mb-1 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors"
-                      whileHover={{ x: 5 }}
-                    >
-                      {step.title}
-                    </motion.h3>
-                    <motion.p 
-                      className="text-muted-foreground group-hover:text-foreground/80 transition-colors"
-                      whileHover={{ x: 3 }}
-                    >
-                      {step.subtitle}
-                    </motion.p>
-                  </div>
-                </motion.div>
-              ))}
+                );
+              })}
             </div>
           </div>
 
