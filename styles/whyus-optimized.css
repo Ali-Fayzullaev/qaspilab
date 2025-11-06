@@ -1,0 +1,127 @@
+/* WhyUs Section Performance Optimized Styles */
+
+/* GPU Acceleration Classes */
+.whyus-gpu-accelerated {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+.whyus-gpu-transform {
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+}
+
+/* Optimized Shadow Classes (avoiding expensive drop-shadow) */
+.whyus-shadow-glow {
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.15), 0 4px 25px rgba(0, 0, 0, 0.1);
+}
+
+.whyus-shadow-card {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.whyus-shadow-elevated {
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15), 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Performance Transitions */
+.whyus-transition-smooth {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.whyus-transition-bounce {
+  transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Optimized Gradient Backgrounds */
+.whyus-gradient-blue {
+  background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+}
+
+.whyus-gradient-purple {
+  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+}
+
+.whyus-gradient-cyan {
+  background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+}
+
+.whyus-gradient-indigo {
+  background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+}
+
+/* Laboratory Effect Containers */
+.lab-particle-container {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  border-radius: 1rem;
+}
+
+.lab-particle {
+  position: absolute;
+  border-radius: 50%;
+  will-change: transform, opacity;
+  transform: translateZ(0);
+}
+
+.lab-data-line {
+  position: absolute;
+  height: 2px;
+  will-change: transform, opacity;
+  transform: translateZ(0);
+}
+
+/* Performance Media Queries */
+@media (prefers-reduced-motion: reduce) {
+  .whyus-gpu-accelerated,
+  .lab-particle,
+  .lab-data-line {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Dark Theme Optimizations */
+[data-theme="dark"] .whyus-shadow-glow {
+  box-shadow: 0 0 25px rgba(0, 212, 255, 0.2), 0 4px 30px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .whyus-shadow-card {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Intersection Observer Optimizations */
+.whyus-animate-in {
+  opacity: 0;
+  transform: translateY(30px) translateZ(0);
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.whyus-animate-in.visible {
+  opacity: 1;
+  transform: translateY(0) translateZ(0);
+}
+
+/* Stagger Animation Delays */
+.whyus-stagger-1 {
+  transition-delay: 0.1s;
+}
+.whyus-stagger-2 {
+  transition-delay: 0.2s;
+}
+.whyus-stagger-3 {
+  transition-delay: 0.3s;
+}
+.whyus-stagger-4 {
+  transition-delay: 0.4s;
+}
+.whyus-stagger-5 {
+  transition-delay: 0.5s;
+}
