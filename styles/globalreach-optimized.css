@@ -1,0 +1,275 @@
+/* GlobalReach Section Performance Optimized Styles */
+
+/* GPU Acceleration Classes */
+.globalreach-gpu-accelerated {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+.globalreach-gpu-transform {
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+}
+
+/* Optimized Shadow Classes (avoiding expensive drop-shadow filters) */
+.globalreach-shadow-glow {
+  box-shadow: 
+    0 0 15px rgba(59, 130, 246, 0.3),
+    0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.globalreach-shadow-card {
+  box-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.15),
+    0 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+.globalreach-shadow-beam {
+  box-shadow: 
+    0 0 25px rgba(0, 212, 255, 0.4),
+    0 0 50px rgba(139, 92, 246, 0.2);
+}
+
+/* Performance Optimized Light Effects */
+.globalreach-light-core {
+  background: radial-gradient(circle, #00d4ff 0%, #8b5cf6 50%, transparent 70%);
+  filter: blur(1px);
+  will-change: transform, opacity;
+  transform: translateZ(0);
+}
+
+.globalreach-light-beam {
+  background: linear-gradient(to top, 
+    rgba(0, 212, 255, 0.8) 0%, 
+    rgba(139, 92, 246, 0.6) 50%, 
+    transparent 100%);
+  will-change: transform, opacity;
+  transform: translateZ(0);
+}
+
+/* Digital Particle Effects */
+.globalreach-digital-pixel {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  border-radius: 2px;
+}
+
+.globalreach-data-particle {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  border-radius: 50%;
+}
+
+/* Performance Transitions */
+.globalreach-transition-smooth {
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.globalreach-transition-spring {
+  transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.globalreach-transition-beam {
+  transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Optimized Gradient Backgrounds */
+.globalreach-gradient-light {
+  background: linear-gradient(135deg, #00d4ff 0%, #8b5cf6 100%);
+}
+
+.globalreach-gradient-digital {
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #a855f7 100%);
+}
+
+.globalreach-gradient-beam {
+  background: linear-gradient(180deg, 
+    rgba(0, 212, 255, 0.9) 0%, 
+    rgba(139, 92, 246, 0.7) 50%, 
+    transparent 100%);
+}
+
+/* SVG Optimization Classes */
+.globalreach-svg-optimized {
+  will-change: opacity;
+  transform: translateZ(0);
+  shape-rendering: optimizeSpeed;
+}
+
+.globalreach-svg-element {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  vector-effect: non-scaling-stroke;
+}
+
+/* Animation State Classes */
+.globalreach-animate-in {
+  opacity: 0;
+  transform: translateY(30px) translateZ(0);
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.globalreach-animate-in.visible {
+  opacity: 1;
+  transform: translateY(0) translateZ(0);
+}
+
+/* Stagger Animation Delays */
+.globalreach-stagger-1 { transition-delay: 0.1s; }
+.globalreach-stagger-2 { transition-delay: 0.2s; }
+.globalreach-stagger-3 { transition-delay: 0.3s; }
+.globalreach-stagger-4 { transition-delay: 0.4s; }
+.globalreach-stagger-5 { transition-delay: 0.5s; }
+
+/* Light Beam Animation Optimizations */
+.globalreach-beam-container {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  will-change: opacity;
+  transform: translateZ(0);
+}
+
+.globalreach-beam-core {
+  position: absolute;
+  left: 50%;
+  top: 70%;
+  transform: translate(-50%, -50%) translateZ(0);
+  will-change: transform, opacity;
+}
+
+.globalreach-beam-ray {
+  position: absolute;
+  transform-origin: 50% 100%;
+  will-change: transform, opacity;
+  transform: translateZ(0);
+}
+
+/* Digital Effects Container */
+.globalreach-digital-container {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  will-change: opacity;
+  transform: translateZ(0);
+}
+
+.globalreach-pixel-grid {
+  position: absolute;
+  top: 10%;
+  left: 30%;
+  width: 40%;
+  height: 30%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 8%;
+}
+
+/* Performance Media Queries */
+@media (prefers-reduced-motion: reduce) {
+  .globalreach-gpu-accelerated,
+  .globalreach-digital-pixel,
+  .globalreach-data-particle,
+  .globalreach-beam-ray {
+    animation: none !important;
+    transition: none !important;
+  }
+  
+  .globalreach-shadow-glow,
+  .globalreach-shadow-beam {
+    box-shadow: none !important;
+  }
+}
+
+/* Dark Theme Optimizations */
+[data-theme="dark"] .globalreach-shadow-glow {
+  box-shadow: 
+    0 0 20px rgba(0, 212, 255, 0.4),
+    0 2px 15px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .globalreach-shadow-beam {
+  box-shadow: 
+    0 0 30px rgba(0, 212, 255, 0.5),
+    0 0 60px rgba(139, 92, 246, 0.3);
+}
+
+[data-theme="dark"] .globalreach-light-core {
+  background: radial-gradient(circle, #00d4ff 0%, #8b5cf6 50%, transparent 70%);
+  filter: blur(1.5px);
+}
+
+/* Light Theme Optimizations */
+[data-theme="light"] .globalreach-shadow-glow {
+  box-shadow: 
+    0 0 15px rgba(59, 130, 246, 0.25),
+    0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .globalreach-light-core {
+  background: radial-gradient(circle, #3b82f6 0%, #8b5cf6 50%, transparent 70%);
+  filter: blur(1px);
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  .globalreach-gpu-accelerated {
+    will-change: auto;
+  }
+  
+  .globalreach-shadow-glow,
+  .globalreach-shadow-beam {
+    box-shadow: 
+      0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+  
+  .globalreach-pixel-grid {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+  }
+}
+
+/* High Performance Mode */
+@media (min-width: 1920px) and (min-resolution: 2dppx) {
+  .globalreach-light-core {
+    filter: blur(2px);
+  }
+  
+  .globalreach-shadow-beam {
+    box-shadow: 
+      0 0 40px rgba(0, 212, 255, 0.6),
+      0 0 80px rgba(139, 92, 246, 0.4);
+  }
+}
+
+/* Container Layout Optimizations */
+.globalreach-container {
+  position: relative;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+.globalreach-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+@media (max-width: 1024px) {
+  .globalreach-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
