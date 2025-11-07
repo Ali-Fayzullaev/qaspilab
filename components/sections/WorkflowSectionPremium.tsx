@@ -95,7 +95,7 @@ const PremiumWorkflowCard = ({ step, index, isInView, theme }: any) => {
       }}
     >
       <motion.div 
-        className="relative p-8 bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl rounded-3xl border border-white/20 dark:border-gray-800/30 overflow-hidden"
+        className="relative p-4 sm:p-6 lg:p-8 bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl rounded-2xl lg:rounded-3xl border border-white/20 dark:border-gray-800/30 overflow-hidden"
         style={{
           transform: 'translateZ(0)',
           willChange: 'transform',
@@ -132,7 +132,7 @@ const PremiumWorkflowCard = ({ step, index, isInView, theme }: any) => {
           }}
         />
         
-        <div className="flex items-start gap-6 relative z-10">
+        <div className="flex items-start gap-3 sm:gap-4 lg:gap-6 relative z-10">
           {/* 3D Animated Icon */}
           <motion.div 
             className={`shrink-0 w-16 h-16 rounded-2xl flex items-center justify-center text-white ${shadow} transition-all duration-500`}
@@ -156,7 +156,7 @@ const PremiumWorkflowCard = ({ step, index, isInView, theme }: any) => {
           <div className="flex-1" style={{ transform: 'translateZ(10px)' }}>
             <motion.div className="flex items-center gap-3 mb-3">
               <motion.h3 
-                className="text-2xl font-bold"
+                className="text-lg sm:text-xl lg:text-2xl font-bold"
                 style={{
                   backgroundImage: theme === 'dark' 
                     ? 'linear-gradient(to right, #ffffff, #d1d5db)' 
@@ -262,7 +262,7 @@ const CinematicWorkflowVisual = ({ theme, isInView, workflowData }: any) => {
   return (
     <motion.div
       ref={visualRef}
-      className="relative h-[600px] rounded-3xl overflow-hidden"
+      className="relative h-[300px] sm:h-[400px] lg:h-[600px] rounded-2xl lg:rounded-3xl overflow-hidden"
       style={{ scale }}
       onMouseMove={handleMouseMove}
       onMouseLeave={() => setMousePosition({ x: 0, y: 0 })}
@@ -419,7 +419,7 @@ const CinematicWorkflowVisual = ({ theme, isInView, workflowData }: any) => {
           <div key={`premium-dialog-${index}`}>
             {/* Premium Client Dialog */}
             <motion.div
-              className="absolute backdrop-blur-xl rounded-2xl px-4 py-3 shadow-2xl max-w-[140px] z-20"
+              className="absolute backdrop-blur-xl rounded-xl lg:rounded-2xl px-2 py-1 sm:px-3 sm:py-2 lg:px-4 lg:py-3 shadow-2xl max-w-[100px] sm:max-w-[120px] lg:max-w-[140px] z-20"
               style={{
                 background: theme === 'dark' 
                   ? 'rgba(30, 41, 59, 0.95)' 
@@ -479,7 +479,7 @@ const CinematicWorkflowVisual = ({ theme, isInView, workflowData }: any) => {
 
             {/* Premium Qaspilab Dialog */}
             <motion.div
-              className="absolute backdrop-blur-xl rounded-2xl px-4 py-3 shadow-2xl max-w-[150px] z-20"
+              className="absolute backdrop-blur-xl rounded-xl lg:rounded-2xl px-2 py-1 sm:px-3 sm:py-2 lg:px-4 lg:py-3 shadow-2xl max-w-[110px] sm:max-w-[130px] lg:max-w-[150px] z-20"
               style={{
                 background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.95), rgba(139, 92, 246, 0.95))',
                 border: '1px solid rgba(255, 255, 255, 0.2)',
@@ -615,7 +615,7 @@ export default function WorkflowSectionPremium() {
   return (
     <section 
       ref={sectionRef} 
-      className="relative min-h-screen py-32 overflow-hidden"
+      className="relative min-h-screen py-16 sm:py-24 lg:py-32 overflow-hidden"
       style={{
         ...premiumBackgroundStyles,
         willChange: 'transform',
@@ -661,14 +661,14 @@ export default function WorkflowSectionPremium() {
         />
       </motion.div>
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <motion.div 
-          className="grid lg:grid-cols-2 gap-20 items-center"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-center"
           style={{ y: contentY }}
         >
           
           {/* Premium Visual Block */}
-          <div className="relative order-1 lg:order-1">
+          <div className="relative order-2 lg:order-1 mb-8 lg:mb-0">
             <CinematicWorkflowVisual 
               theme={theme} 
               isInView={isInView}
@@ -677,7 +677,7 @@ export default function WorkflowSectionPremium() {
           </div>
 
           {/* Premium Content Block */}
-          <div className="z-10 order-2 lg:order-2">
+          <div className="z-10 order-1 lg:order-2">
             {/* Cinematic title */}
             <motion.div
               initial={{ opacity: 0, y: 60 }}
@@ -689,7 +689,7 @@ export default function WorkflowSectionPremium() {
               }}
             >
               <motion.h2 
-                className="text-5xl md:text-6xl font-black mb-6"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-4 lg:mb-6"
                 style={{
                   backgroundImage: theme === 'dark'
                     ? 'linear-gradient(135deg, #ffffff 0%, #e2e8f0 50%, #cbd5e1 100%)'
@@ -705,7 +705,7 @@ export default function WorkflowSectionPremium() {
               
               {/* Premium subtitle */}
               <motion.p
-                className="text-xl text-muted-foreground mb-16 max-w-lg"
+                className="text-lg sm:text-xl text-muted-foreground mb-8 lg:mb-16 max-w-lg"
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ 
@@ -719,7 +719,7 @@ export default function WorkflowSectionPremium() {
             </motion.div>
             
             {/* Premium Workflow Cards */}
-            <div className="space-y-8">
+            <div className="space-y-4 lg:space-y-8">
               {workflowData.steps?.map((step: any, index: number) => (
                 <PremiumWorkflowCard
                   key={`premium-step-${index}`}
@@ -733,7 +733,7 @@ export default function WorkflowSectionPremium() {
 
             {/* Call-to-action */}
             <motion.div
-              className="mt-16"
+              className="mt-8 lg:mt-16"
               initial={{ opacity: 0, y: 40 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ 
@@ -782,7 +782,7 @@ export default function WorkflowSectionPremium() {
 
       {/* Floating action indicators */}
       <motion.div
-        className="fixed bottom-8 right-8 z-50"
+        className="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 z-50 hidden sm:block"
         animate={{
           y: [0, -10, 0],
         }}
