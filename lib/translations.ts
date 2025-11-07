@@ -425,6 +425,7 @@ export const translations = {
     workflow: {
       exploreGlobalNetwork : "Біздің жаһандық желіні зерттеңіз",
       title: "Біз ойлағанымыздай жасаймыз. Қарапайым. Ашық. Жылдам.",
+      processTitle: "Біздің процесс",
       subtitle: "Концепциядан шындыққа дейін",
       steps: [
         {
