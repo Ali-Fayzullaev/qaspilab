@@ -59,6 +59,7 @@ export const translations = {
     },
     mission: {
       title: "Our Mission",
+      startPremiumJourney : "Start the Premium Journey",
       subtitle: "Bridging Innovation and Reality",
       description: "To empower businesses through cutting-edge technology solutions that drive growth, efficiency, and digital transformation in an ever-evolving world.",
       values: "Core Values",
@@ -86,6 +87,7 @@ export const translations = {
       p5: "but global products that will be used all over the world."
     },
     workflow: {
+      exploreGlobalNetwork : "Explore Our Global Network",
       title: "We create as we think. Simple. Transparent. Fast.",
       processTitle: "Our Process",
       subtitle: "From Concept to Reality",
@@ -225,6 +227,7 @@ export const translations = {
     },
     mission: {
       title: "Наша миссия",
+      startPremiumJourney : "Начать премиальное путешествие",
       subtitle: "Связываем инновации с реальностью",
       description: "Расширять возможности бизнеса через передовые технологические решения, которые стимулируют рост, эффективность и цифровую трансформацию в постоянно развивающемся мире.",
       values: "Основные ценности",
@@ -252,6 +255,7 @@ export const translations = {
       p5: "а глобальные продукты, которыми будут пользоваться во всём мире."
     },
     workflow: {
+      exploreGlobalNetwork : "Изучите нашу глобальную сеть",
       title: "Мы создаём, как думаем. Просто. Прозрачно. Быстро.",
       processTitle: "Наш процесс",
       subtitle: "От концепции к реальности",
@@ -391,6 +395,7 @@ export const translations = {
     },
     mission: {
       title: "Біздің миссия",
+      startPremiumJourney : "Премиум саяхатты бастау",
       subtitle: "Инновация мен шындықты байланыстыру",
       description: "Үнемі дамып келе жатқан әлемде өсу, тиімділік және цифрлық трансформацияны қамтамасыз ететін алдыңғы қатарлы технологиялық шешімдер арқылы бизнесті күшейту.",
       values: "Негізгі құндылықтар",
@@ -418,6 +423,7 @@ export const translations = {
       p5: "бүкіл әлемде пайдаланылатын жаһандық өнімдер жасауға қабілетті деп сенеміз."
     },
     workflow: {
+      exploreGlobalNetwork : "Біздің жаһандық желіні зерттеңіз",
       title: "Біз ойлағанымыздай жасаймыз. Қарапайым. Ашық. Жылдам.",
       subtitle: "Концепциядан шындыққа дейін",
       steps: [

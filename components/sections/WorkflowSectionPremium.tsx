@@ -753,8 +753,10 @@ export default function WorkflowSectionPremium() {
                 }}
                 whileTap={{ scale: 0.95 }}
               >
+                <a href="#contact">
+
                 <span className="relative z-10 flex items-center gap-2">
-                  Start Your Premium Journey
+                  {t.mission.startPremiumJourney}
                   <motion.div
                     animate={{ x: [0, 5, 0] }}
                     transition={{ duration: 1.5, repeat: Infinity }}
@@ -762,6 +764,7 @@ export default function WorkflowSectionPremium() {
                     <Zap size={20} />
                   </motion.div>
                 </span>
+                </a>
                 
                 {/* Animated background */}
                 <motion.div
@@ -792,14 +795,6 @@ export default function WorkflowSectionPremium() {
           ease: 'easeInOut'
         }}
       >
-        <div 
-          className="w-12 h-12 rounded-full flex items-center justify-center shadow-lg backdrop-blur-sm"
-          style={{
-            background: 'linear-gradient(to right, #3b82f6, #8b5cf6)'
-          }}
-        >
-          <ArrowRight className="text-white" size={20} />
-        </div>
       </motion.div>
     </section>
   );

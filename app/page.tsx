@@ -1,3 +1,4 @@
+// app/page.tsx
 'use client';
 
 import { useLanguage } from '@/lib/language-context';

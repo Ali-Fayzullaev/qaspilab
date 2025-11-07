@@ -8,6 +8,7 @@ import { useTheme } from 'next-themes';
 import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import ContactModal from '@/components/modals/ContactModal';
 
+
 // ============= PERFORMANCE OPTIMIZED ANIMATIONS =============
 
 // Мемоизированные константы анимации
@@ -325,7 +326,7 @@ export default function HeroSection() {
               }}
               whileTap={{ scale: 0.95 }}
             >
-              <Button 
+              {/* <Button 
                 size="lg" 
                 onClick={handleModalOpen}
                 className="hero-cta-button px-8 py-6 text-xl font-bold transition-all duration-300 shadow-xl group"
@@ -344,7 +345,15 @@ export default function HeroSection() {
                 >
                   <ArrowRight className="h-6 w-6 group-hover:translate-x-1 transition-transform duration-300" />
                 </motion.div>
+              </Button> */}
+                <a href="#contact">
+              <Button className="hero-cta-button px-8 py-6 text-xl font-bold transition-all duration-300 shadow-xl group"
+                style={buttonStyles}>
+
+                {t.hero?.cta}
+                <ArrowRight className="h-6 w-6 group-hover:translate-x-1 transition-transform duration-300" />
               </Button>
+                </a>
             </motion.div>
           </div>
         </div>

@@ -127,7 +127,7 @@ const HollywoodAdvantageCard = ({ advantage, index, isInView, theme }: any) => {
       }}
     >
       <motion.div 
-        className="relative p-8 backdrop-blur-xl rounded-3xl border border-white/30 dark:border-gray-800/40 overflow-hidden"
+        className="relative p-8 backdrop-blur-xl  rounded-3xl border border-white/30 dark:border-gray-800/40 overflow-hidden"
         style={{
           background: backgroundGradient,
           transform: 'translateZ(0)',
