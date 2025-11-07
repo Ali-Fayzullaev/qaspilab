@@ -127,7 +127,7 @@ const HollywoodAdvantageCard = ({ advantage, index, isInView, theme }: any) => {
       }}
     >
       <motion.div 
-        className="relative p-8 bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl rounded-3xl border border-white/30 dark:border-gray-800/40 overflow-hidden"
+        className="relative p-8 backdrop-blur-xl rounded-3xl border border-white/30 dark:border-gray-800/40 overflow-hidden"
         style={{
           background: backgroundGradient,
           transform: 'translateZ(0)',
@@ -198,7 +198,8 @@ const HollywoodAdvantageCard = ({ advantage, index, isInView, theme }: any) => {
             
             {/* Orbital rings */}
             <motion.div
-              className="absolute inset-0 border-2 border-white/20 rounded-3xl"
+              className="absolute inset-0 rounded-3xl"
+              style={{border: '2px solid rgba(255, 255, 255, 0.2)'}}
               animate={isHovered ? {
                 scale: [1, 1.5, 1],
                 opacity: [0.2, 0, 0.2]
@@ -216,7 +217,7 @@ const HollywoodAdvantageCard = ({ advantage, index, isInView, theme }: any) => {
               <motion.h3 
                 className="text-2xl font-bold"
                 style={{
-                  background: theme === 'dark' 
+                  backgroundImage: theme === 'dark' 
                     ? 'linear-gradient(to right, #ffffff, #e2e8f0)' 
                     : 'linear-gradient(to right, #0f172a, #334155)',
                   backgroundClip: 'text',
@@ -389,8 +390,9 @@ const HollywoodLabEffects = ({ theme, isInView, scrollProgress }: any) => {
           {[...Array(3)].map((_, i) => (
             <motion.div
               key={`ring-${i}`}
-              className="absolute inset-0 border-2 border-purple-400/30 rounded-full"
+              className="absolute inset-0 rounded-full"
               style={{
+                border: '2px solid rgba(168, 85, 247, 0.3)',
                 scale: 1 + i * 0.3
               }}
               animate={{
@@ -520,7 +522,8 @@ export default function WhyUsSectionPremium() {
         <motion.div
           className="absolute inset-0 opacity-10"
           animate={{
-            backgroundPosition: ['0% 0%', '100% 100%'],
+            x: ['0%', '100%'],
+            y: ['0%', '100%'],
           }}
           transition={{
             duration: 30,
@@ -529,6 +532,7 @@ export default function WhyUsSectionPremium() {
           }}
           style={{
             backgroundImage: `radial-gradient(circle at 1px 1px, ${theme === 'dark' ? '#60a5fa' : '#94a3b8'} 1px, transparent 0)`,
+            backgroundRepeat: 'repeat',
             backgroundSize: '50px 50px'
           }}
         />
@@ -555,7 +559,7 @@ export default function WhyUsSectionPremium() {
               <motion.h2 
                 className="text-5xl md:text-6xl font-black mb-4"
                 style={{
-                  background: theme === 'dark'
+                  backgroundImage: theme === 'dark'
                     ? 'linear-gradient(135deg, #ffffff 0%, #e2e8f0 50%, #cbd5e1 100%)'
                     : 'linear-gradient(135deg, #0f172a 0%, #475569 50%, #64748b 100%)',
                   backgroundClip: 'text',

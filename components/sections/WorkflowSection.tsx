@@ -85,7 +85,7 @@ export default function WorkflowSection() {
   return (
     <section 
       ref={sectionRef} 
-      className="relative py-24 sm:py-32 bg-background transition-colors duration-500 overflow-hidden "
+      className="relative py-24 sm:py-32 transition-colors duration-500 overflow-hidden "
       style={{
         ...backgroundStyles,
         willChange: 'transform',
@@ -245,21 +245,24 @@ export default function WorkflowSection() {
                       {clientDialog}
                     </p>
                     <div 
-                      className="absolute w-2 h-2 bg-white/95 dark:bg-gray-800/95 rotate-45 border-r border-b border-gray-200/50 dark:border-gray-700/50"
+                      className="absolute w-2 h-2 bg-white/95 dark:bg-gray-800/95 rotate-45"
                       style={{
                         bottom: index % 2 === 0 ? '-4px' : 'auto',
                         top: index % 2 === 0 ? 'auto' : '-4px',
-                        left: '20px'
+                        left: '20px',
+                        borderRight: '1px solid rgba(0, 0, 0, 0.1)',
+                        borderBottom: '1px solid rgba(0, 0, 0, 0.1)'
                       }}
                     />
                   </motion.div>
 
                   {/* Диалог Qaspilab */}
                   <motion.div
-                    className="absolute bg-blue-500/95 dark:bg-blue-600/95 backdrop-blur-sm rounded-lg px-3 py-2 shadow-lg border border-blue-300/50 max-w-[130px]"
+                    className="absolute bg-blue-500/95 dark:bg-blue-600/95 backdrop-blur-sm rounded-lg px-3 py-2 shadow-lg max-w-[130px]"
                     style={{
                       left: `${18 + index * 20}%`,
                       top: index % 2 === 0 ? '65%' : '25%',
+                      border: '1px solid rgba(59, 130, 246, 0.5)'
                     }}
                     initial={{ opacity: 0, y: 20, scale: 0.8 }}
                     animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
@@ -273,11 +276,13 @@ export default function WorkflowSection() {
                       {qaspilabDialog}
                     </p>
                     <div 
-                      className="absolute w-2 h-2 bg-blue-500/95 dark:bg-blue-600/95 rotate-45 border-r border-b border-blue-300/50"
+                      className="absolute w-2 h-2 bg-blue-500/95 dark:bg-blue-600/95 rotate-45"
                       style={{
                         bottom: index % 2 === 0 ? 'auto' : '-4px',
                         top: index % 2 === 0 ? '-4px' : 'auto',
-                        right: '20px'
+                        right: '20px',
+                        borderRight: '1px solid rgba(59, 130, 246, 0.3)',
+                        borderBottom: '1px solid rgba(59, 130, 246, 0.3)'
                       }}
                     />
                   </motion.div>

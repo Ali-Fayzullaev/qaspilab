@@ -158,7 +158,7 @@ const PremiumWorkflowCard = ({ step, index, isInView, theme }: any) => {
               <motion.h3 
                 className="text-2xl font-bold"
                 style={{
-                  background: theme === 'dark' 
+                  backgroundImage: theme === 'dark' 
                     ? 'linear-gradient(to right, #ffffff, #d1d5db)' 
                     : 'linear-gradient(to right, #111827, #4b5563)',
                   backgroundClip: 'text',
@@ -419,14 +419,14 @@ const CinematicWorkflowVisual = ({ theme, isInView, workflowData }: any) => {
           <div key={`premium-dialog-${index}`}>
             {/* Premium Client Dialog */}
             <motion.div
-              className="absolute backdrop-blur-xl rounded-2xl px-4 py-3 shadow-2xl border max-w-[140px] z-20"
+              className="absolute backdrop-blur-xl rounded-2xl px-4 py-3 shadow-2xl max-w-[140px] z-20"
               style={{
                 background: theme === 'dark' 
                   ? 'rgba(30, 41, 59, 0.95)' 
                   : 'rgba(255, 255, 255, 0.95)',
-                borderColor: theme === 'dark' 
+                border: `1px solid ${theme === 'dark' 
                   ? 'rgba(71, 85, 105, 0.3)' 
-                  : 'rgba(226, 232, 240, 0.5)',
+                  : 'rgba(226, 232, 240, 0.5)'}`,
                 left: `${15 + index * 20}%`,
                 top: index % 2 === 0 ? '15%' : '70%',
                 boxShadow: theme === 'dark'
@@ -457,16 +457,19 @@ const CinematicWorkflowVisual = ({ theme, isInView, workflowData }: any) => {
               </p>
               {/* Premium dialog tail */}
               <div 
-                className="absolute w-3 h-3 rotate-45 border"
+                className="absolute w-3 h-3 rotate-45"
                 style={{
                   background: theme === 'dark' 
                     ? 'rgba(30, 41, 59, 0.95)' 
                     : 'rgba(255, 255, 255, 0.95)',
-                  borderColor: theme === 'dark' 
-                    ? 'rgba(71, 85, 105, 0.3)' 
-                    : 'rgba(226, 232, 240, 0.5)',
                   borderTop: 'none',
                   borderLeft: 'none',
+                  borderRight: `1px solid ${theme === 'dark' 
+                    ? 'rgba(71, 85, 105, 0.3)' 
+                    : 'rgba(226, 232, 240, 0.5)'}`,
+                  borderBottom: `1px solid ${theme === 'dark' 
+                    ? 'rgba(71, 85, 105, 0.3)' 
+                    : 'rgba(226, 232, 240, 0.5)'}`,
                   bottom: index % 2 === 0 ? '-6px' : 'auto',
                   top: index % 2 === 0 ? 'auto' : '-6px',
                   left: '24px'
@@ -476,10 +479,10 @@ const CinematicWorkflowVisual = ({ theme, isInView, workflowData }: any) => {
 
             {/* Premium Qaspilab Dialog */}
             <motion.div
-              className="absolute backdrop-blur-xl rounded-2xl px-4 py-3 shadow-2xl border max-w-[150px] z-20"
+              className="absolute backdrop-blur-xl rounded-2xl px-4 py-3 shadow-2xl max-w-[150px] z-20"
               style={{
                 background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.95), rgba(139, 92, 246, 0.95))',
-                borderColor: 'rgba(255, 255, 255, 0.2)',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
                 left: `${20 + index * 20}%`,
                 top: index % 2 === 0 ? '60%' : '20%',
                 boxShadow: '0 25px 50px -12px rgba(59, 130, 246, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1)'
@@ -508,11 +511,13 @@ const CinematicWorkflowVisual = ({ theme, isInView, workflowData }: any) => {
               </p>
               {/* Premium dialog tail */}
               <div 
-                className="absolute w-3 h-3 rotate-45 border border-white/20"
+                className="absolute w-3 h-3 rotate-45"
                 style={{
                   background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.95), rgba(139, 92, 246, 0.95))',
                   borderTop: 'none',
                   borderLeft: 'none',
+                  borderRight: '1px solid rgba(255, 255, 255, 0.2)',
+                  borderBottom: '1px solid rgba(255, 255, 255, 0.2)',
                   bottom: index % 2 === 0 ? 'auto' : '-6px',
                   top: index % 2 === 0 ? '-6px' : 'auto',
                   right: '24px'
@@ -641,7 +646,8 @@ export default function WorkflowSectionPremium() {
         <motion.div
           className="absolute inset-0 opacity-20"
           animate={{
-            backgroundPosition: ['0% 0%', '100% 100%'],
+            x: [-30, 30],
+            y: [-30, 30],
           }}
           transition={{
             duration: 20,
@@ -685,7 +691,7 @@ export default function WorkflowSectionPremium() {
               <motion.h2 
                 className="text-5xl md:text-6xl font-black mb-6"
                 style={{
-                  background: theme === 'dark'
+                  backgroundImage: theme === 'dark'
                     ? 'linear-gradient(135deg, #ffffff 0%, #e2e8f0 50%, #cbd5e1 100%)'
                     : 'linear-gradient(135deg, #1e293b 0%, #475569 50%, #64748b 100%)',
                   backgroundClip: 'text',
