@@ -104,8 +104,8 @@ const LightBeamEffect = memo(({ theme, isInView }: {
           className="globalreach-gpu-accelerated"
           initial={{ scale: 0, opacity: 0 }}
           animate={isInView ? { 
-            scale: [0, 3, 5], 
-            opacity: [0, 0.3, 0] 
+            scale: 5, 
+            opacity: 0 
           } : {}}
           transition={{
             duration: 2,
@@ -156,13 +156,16 @@ const DigitalEffects = memo(({ theme, isInView }: {
             y: 30
           }}
           animate={isInView ? {
-            scale: [0, 1.2, 1],
-            opacity: [0, 1, 0.8],
-            y: [30, 0, -5],
+            scale: 1,
+            opacity: 0.8,
+            y: -5,
           } : {}}
           transition={{
             duration: 1.5,
             delay: 1.5 + index * 0.05,
+            type: "spring",
+            stiffness: 100,
+            damping: 15,
             ease: "easeOut"
           }}
         />

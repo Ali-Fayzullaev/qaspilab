@@ -160,8 +160,8 @@ const HollywoodAdvantageCard = ({ advantage, index, isInView, theme }: any) => {
                   }}
                   initial={{ scale: 0, opacity: 1 }}
                   animate={{
-                    scale: [0, 1.5, 0],
-                    opacity: [1, 0.8, 0],
+                    scale: [0, 1.5],
+                    opacity: [1, 0],
                     x: Math.cos((i / HOLLYWOOD_CONFIG.particles.count) * Math.PI * 2) * 100,
                     y: Math.sin((i / HOLLYWOOD_CONFIG.particles.count) * Math.PI * 2) * 100,
                   }}
@@ -201,12 +201,13 @@ const HollywoodAdvantageCard = ({ advantage, index, isInView, theme }: any) => {
               className="absolute inset-0 rounded-3xl"
               style={{border: '2px solid rgba(255, 255, 255, 0.2)'}}
               animate={isHovered ? {
-                scale: [1, 1.5, 1],
-                opacity: [0.2, 0, 0.2]
+                scale: [1, 1.5],
+                opacity: [0.2, 0]
               } : {}}
               transition={{
                 duration: 2,
                 repeat: isHovered ? Infinity : 0,
+                repeatType: "reverse",
               }}
             />
           </motion.div>
@@ -259,20 +260,6 @@ const HollywoodAdvantageCard = ({ advantage, index, isInView, theme }: any) => {
             >
               {advantage.description}
             </motion.p>
-            
-            {/* Interactive arrow */}
-            <motion.div
-              className="flex items-center gap-2 mt-4 text-blue-500 font-medium"
-              initial={{ opacity: 0 }}
-              animate={{ 
-                opacity: isHovered ? 1 : 0,
-                x: isHovered ? 0 : -20
-              }}
-              transition={{ duration: HOLLYWOOD_CONFIG.duration.fast }}
-            >
-              Learn more 
-              <ArrowRight size={16} />
-            </motion.div>
           </div>
         </div>
         
@@ -292,11 +279,12 @@ const HollywoodAdvantageCard = ({ advantage, index, isInView, theme }: any) => {
           className="absolute top-4 right-4 w-3 h-3 rounded-full"
           style={{ background: color }}
           animate={{
-            scale: [1, 1.5, 1],
-            opacity: [0.6, 1, 0.6]
+            scale: [1, 1.5],
+            opacity: [0.6, 1]
           }}
           transition={{
             duration: 3,
+            repeatType: "reverse",
             repeat: Infinity,
             delay: index * 0.5
           }}
@@ -332,10 +320,11 @@ const HollywoodLabEffects = ({ theme, isInView, scrollProgress }: any) => {
             }}
             animate={{
               rotateZ: [0, 360],
-              scale: [1, 1.3, 1],
+              scale: [1, 1.3],
             }}
             transition={{
               duration: 8,
+              repeatType: "reverse",
               repeat: Infinity,
               delay: i * 0.2
             }}
@@ -353,8 +342,8 @@ const HollywoodLabEffects = ({ theme, isInView, scrollProgress }: any) => {
             top: `${20 + Math.random() * 60}%`,
           }}
           animate={{
-            scale: [0, 1, 0],
-            opacity: [0, 1, 0],
+            scale: [0, 1],
+            opacity: [0, 1],
             x: Math.sin(i) * 50,
             y: Math.cos(i) * 50,
           }}

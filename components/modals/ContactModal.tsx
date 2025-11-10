@@ -145,11 +145,11 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
               <motion.div
                 className="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center bg-linear-to-br from-green-500 to-green-600"
                 animate={{
-                  scale: [1, 1.1, 1],
+                  scale: [1, 1.1],
                   rotate: [0, 360],
                 }}
                 transition={{
-                  scale: { duration: 2, repeat: Infinity },
+                  scale: { duration: 2, repeat: Infinity, repeatType: "reverse" },
                   rotate: { duration: 3, ease: "linear" },
                 }}
               >

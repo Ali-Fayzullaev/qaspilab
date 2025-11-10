@@ -15,7 +15,7 @@ import ContactModal from '@/components/modals/ContactModal';
 const ANIMATION_VARIANTS = {
   // Оптимизированная пульсация (только transform)
   titlePulse: {
-    scale: [1, 1.002, 1], // Минимальная пульсация для GPU
+    scale: [1, 1.002], // Минимальная пульсация для GPU
     transition: { 
       duration: 4, 
       repeat: Infinity, 
@@ -43,15 +43,15 @@ const ANIMATION_VARIANTS = {
 
   // Орбы (только transform)
   orb1: {
-    scale: [1, 1.1, 1],
-    rotate: [0, 10, 0],
-    transition: { duration: 15, repeat: Infinity, ease: "linear" as const }
+    scale: [1, 1.1],
+    rotate: [0, 10],
+    transition: { duration: 15, repeat: Infinity, repeatType: "reverse" as const, ease: "linear" as const }
   },
 
   orb2: {
-    scale: [1, 0.9, 1],
-    rotate: [0, -15, 0],
-    transition: { duration: 18, repeat: Infinity, ease: "linear" as const, delay: 2 }
+    scale: [1, 0.9],
+    rotate: [0, -15],
+    transition: { duration: 18, repeat: Infinity, repeatType: "reverse" as const, ease: "linear" as const, delay: 2 }
   },
 
   // Луч света (только scaleY)

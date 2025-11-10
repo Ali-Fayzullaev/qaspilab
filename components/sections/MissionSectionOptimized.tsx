@@ -213,8 +213,8 @@ const OptimizedCityNodes = memo(({
               className="mission-gpu-accelerated"
               initial={{ scale: 0, opacity: 0 }}
               animate={isInView ? { 
-                scale: [0, 2, 3], 
-                opacity: [0, 0.3, 0] 
+                scale: 3, 
+                opacity: 0 
               } : {}}
               transition={{
                 duration: 2.5,

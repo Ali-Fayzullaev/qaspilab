@@ -314,13 +314,15 @@ const CinematicWorkflowVisual = ({ theme, isInView, workflowData }: any) => {
             rotate: rotate,
           }}
           animate={{
-            scale: [1, 1.5, 1],
-            opacity: [0.6, 1, 0.6],
+            scale: [1, 1.5],
+            opacity: [0.6, 1],
           }}
           transition={{
             duration: 3 + i * 0.5,
             repeat: Infinity,
+            repeatType: "reverse",
             delay: i * 0.2,
+            ease: "easeInOut",
           }}
         />
       ))}
@@ -376,13 +378,16 @@ const CinematicWorkflowVisual = ({ theme, isInView, workflowData }: any) => {
               filter="url(#glow)"
               initial={{ scale: 0, opacity: 0 }}
               animate={isInView ? { 
-                scale: [0, 1.5, 1], 
+                scale: 1, 
                 opacity: 1 
               } : {}}
               transition={{
                 delay: 1 + index * 0.2,
                 duration: 0.8,
-                ease: "easeInOut"
+                ease: "backOut",
+                type: "spring",
+                stiffness: 100,
+                damping: 15
               }}
             />
             
@@ -533,11 +538,12 @@ const CinematicWorkflowVisual = ({ theme, isInView, workflowData }: any) => {
         className="absolute top-4 right-4"
         animate={{
           rotate: [0, 360],
-          scale: [1, 1.2, 1],
+          scale: [1, 1.2],
         }}
         transition={{
           duration: 4,
           repeat: Infinity,
+          repeatType: "reverse",
           ease: 'easeInOut'
         }}
       >
