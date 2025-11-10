@@ -210,71 +210,7 @@ useEffect(() => {
               <ThemeToggle />
             </motion.div>
 
-            {/* Улучшенный переключатель языка */}
-            <div className="relative group">
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="flex items-center space-x-2 bg-background/50 backdrop-blur-sm border-border/50 hover:border-primary/30 transition-all duration-300"
-                >
-                  <span className="text-lg">
-                    {locales.find((l) => l.code === locale)?.flag}
-                  </span>
-                  <Languages className="w-4 h-4" />
-                  <span className="hidden sm:inline">
-                    {locales.find((l) => l.code === locale)?.name.split(" ")[0]}
-                  </span>
-                </Button>
-              </motion.div>
-
-              {/* Выпадающее меню языков */}
-              <motion.div
-                className="absolute right-0 top-full mt-2 w-44 bg-background/95 backdrop-blur-lg border border-border/50 rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 overflow-hidden"
-                initial={{ y: -10, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                style={{
-                  boxShadow:
-                    theme === "dark"
-                      ? "0 20px 40px rgba(0,0,0,0.3), 0 0 20px rgba(139,92,246,0.1)"
-                      : "0 20px 40px rgba(0,0,0,0.15), 0 0 20px rgba(139,92,246,0.05)",
-                }}
-              >
-                {locales.map((localeOption, index) => (
-                  <motion.button
-                    key={localeOption.code}
-                    onClick={() => setLocale(localeOption.code)}
-                    className={`w-full px-4 py-3 text-left hover:bg-primary/10 transition-all duration-200 flex items-center space-x-3 ${
-                      locale === localeOption.code
-                        ? "bg-primary/20 text-primary"
-                        : "text-foreground/80 hover:text-foreground"
-                    } ${index === 0 ? "rounded-t-xl" : ""} ${
-                      index === locales.length - 1 ? "rounded-b-xl" : ""
-                    }`}
-                    whileHover={{ x: 4 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    <span className="text-lg">{localeOption.flag}</span>
-                    <span className="font-medium">{localeOption.name}</span>
-                    {locale === localeOption.code && (
-                      <motion.div
-                        className="ml-auto w-2 h-2 rounded-full"
-                        style={{
-                          backgroundColor:
-                            theme === "dark" ? "#00d4ff" : "#8b5cf6",
-                        }}
-                        initial={{ scale: 0 }}
-                        animate={{ scale: 1 }}
-                        transition={{ duration: 0.2 }}
-                      />
-                    )}
-                  </motion.button>
-                ))}
-              </motion.div>
-            </div>
+           
 
             {/* Мобильное меню - кнопка */}
             <motion.button
@@ -534,12 +470,15 @@ useEffect(() => {
               </p>
             </div>
 
-            {/* Мини переключатель языков */}
+            {/* Мини переключатель языков - текущий: {locale} */}
             <div className="flex space-x-1">
               {locales.map((localeOption) => (
                 <motion.button
                   key={localeOption.code}
-                  onClick={() => setLocale(localeOption.code)}
+                  onClick={() => {
+                    console.log('🔄 Language switch:', localeOption.code);
+                    setLocale(localeOption.code);
+                  }}
                   className={`w-8 h-8 rounded-lg flex items-center justify-center text-sm transition-all duration-300 ${
                     locale === localeOption.code
                       ? "bg-primary text-primary-foreground shadow-lg"
@@ -547,6 +486,7 @@ useEffect(() => {
                   }`}
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
+                  title={`${localeOption.name} (${locale === localeOption.code ? 'active' : 'inactive'})`}
                 >
                   {localeOption.flag}
                 </motion.button>

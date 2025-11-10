@@ -12,39 +12,40 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | null>(null);
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  // По умолчанию русский для Казахстана
+  // ПРИНУДИТЕЛЬНО устанавливаем русский язык по умолчанию
   const [locale, setLocale] = useState<Locale>('ru');
 
   useEffect(() => {
-    // Получаем язык из localStorage или определяем автоматически
+    // ПРОСТАЯ и НАДЁЖНАЯ логика: русский по умолчанию
     const saved = localStorage.getItem('locale') as Locale;
-    if (saved && translations[saved]) {
+    
+    // Если пользователь УЖЕ выбрал язык сам - используем его выбор
+    const userChoseLanguage = localStorage.getItem('user-language-changed') === 'true';
+    
+    if (saved && translations[saved] && userChoseLanguage) {
+      // Пользователь сам выбрал язык - используем его
+      console.log('👤 User manually chose language:', saved);
       setLocale(saved);
     } else {
-      // Улучшенное определение языка браузера
-      const browserLang = navigator.language.toLowerCase();
-      let detectedLocale: Locale = 'ru'; // По умолчанию русский для Казахстана
-      
-      // Проверяем полный код языка и его варианты
-      if (browserLang.startsWith('kk') || browserLang.includes('kz')) {
-        detectedLocale = 'kk'; // Казахский
-      } else if (browserLang.startsWith('en')) {
-        detectedLocale = 'en'; // Английский
-      } else if (browserLang.startsWith('ru')) {
-        detectedLocale = 'ru'; // Русский
-      }
-      
-      // Дополнительная проверка для стран
-      const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-      if (timezone.includes('Almaty') || timezone.includes('Astana')) {
-        detectedLocale = 'kk'; // Казахское время = казахский язык
-      }
-      
-      setLocale(detectedLocale);
-      // Сохраняем автоматически определенный язык
-      localStorage.setItem('locale', detectedLocale);
+      // Новый пользователь или сброс - ВСЕГДА русский
+      console.log('🔧 Setting default Russian language');
+      setLocale('ru');
+      localStorage.setItem('locale', 'ru');
     }
   }, []);
+
+  // Дополнительная проверка для принудительного установления русского по умолчанию
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (locale !== 'ru' && !localStorage.getItem('user-language-changed')) {
+        console.log('🔧 Force setting Russian as default language');
+        setLocale('ru');
+        localStorage.setItem('locale', 'ru');
+      }
+    }, 100);
+    
+    return () => clearTimeout(timer);
+  }, [locale]);
 
   const handleSetLocale = (newLocale: Locale) => {
     if (process.env.NODE_ENV === 'development') {
@@ -52,6 +53,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     }
     setLocale(newLocale);
     localStorage.setItem('locale', newLocale);
+    localStorage.setItem('user-language-changed', 'true'); // Отмечаем, что пользователь сам выбрал язык
   };
 
   const value = {
@@ -64,7 +66,9 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   if (process.env.NODE_ENV === 'development') {
     console.log('🌍 LanguageProvider - Current locale:', locale);
     console.log('📚 Available translations:', Object.keys(translations));
-    console.log('🔍 Current translation object:', translations[locale]);
+    console.log('🔍 Settings version check passed');
+    console.log('💾 localStorage locale:', localStorage.getItem('locale'));
+    console.log('🌐 Browser language:', navigator.language);
   }
 
   return (

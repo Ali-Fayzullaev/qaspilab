@@ -2,7 +2,7 @@
 'use client';
 
 import { useLanguage } from '@/lib/language-context';
-import { useMemo, Suspense } from 'react';
+import { useMemo, Suspense, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 
 // Оптимизированный импорт HeroSection
@@ -34,7 +34,13 @@ const CTASection = dynamic(() => import('@/components/sections/CTASection'), {
 });
 
 export default function Home() {
-  const { t } = useLanguage();
+  const { t, locale } = useLanguage();
+
+  // Debug информация для проверки языка
+  useEffect(() => {
+    console.log('🏠 HomePage - Current locale:', locale);
+    console.log('📝 HomePage - Hero title:', t.hero.title);
+  }, [locale, t.hero.title]);
 
   // Мемоизируем разметку для предотвращения ненужных рендеров
   const pageContent = useMemo(() => (
