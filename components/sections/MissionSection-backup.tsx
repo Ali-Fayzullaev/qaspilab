@@ -139,14 +139,6 @@ export default function MissionSection() {
                 variants={textAnimation} 
                 custom={4}
                 className="pt-6 font-semibold text-foreground/95 text-xl"
-                style={{
-                  background: theme === 'dark' 
-                    ? 'linear-gradient(90deg, #66ccff, #ff00ff)' 
-                    : 'linear-gradient(90deg, #2563eb, #7c3aed)',
-                  backgroundClip: 'text',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent'
-                }}
               >
                 {texts.p4}
               </motion.p>
