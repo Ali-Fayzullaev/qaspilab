@@ -91,6 +91,7 @@ export const translations = {
       title: "We create as we think. Simple. Transparent. Fast.",
       processTitle: "Our Process",
       subtitle: "From Concept to Reality",
+      premiumWorkflowDescription : "Experience our enhanced premium workflow, designed to deliver exceptional results with added transparency, efficiency, and collaboration at every step.",
       steps: [
         {
           step: "01",
@@ -258,6 +259,7 @@ export const translations = {
       exploreGlobalNetwork : "Изучите нашу глобальную сеть",
       title: "Мы создаём, как думаем. Просто. Прозрачно. Быстро.",
       processTitle: "Наш процесс",
+      premiumWorkflowDescription : "Ощутите наш улучшенный премиальный рабочий процесс, разработанный для достижения исключительных результатов с повышенной прозрачностью, эффективностью и сотрудничеством на каждом этапе.",
       subtitle: "От концепции к реальности",
       steps: [
         {
@@ -426,6 +428,7 @@ export const translations = {
       exploreGlobalNetwork : "Біздің жаһандық желіні зерттеңіз",
       title: "Біз ойлағанымыздай жасаймыз. Қарапайым. Ашық. Жылдам.",
       processTitle: "Біздің процесс",
+      premiumWorkflowDescription : "Әрбір қадамда қосымша ашықтықты, тиімділікті және ынтымақтастықты қамтамасыз ететін ерекше нәтижелерге қол жеткізуге арналған біздің жетілдірілген премиум жұмыс процесін сезініңіз.",
       subtitle: "Концепциядан шындыққа дейін",
       steps: [
         {

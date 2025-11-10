@@ -713,7 +713,7 @@ export default function WorkflowSectionPremium() {
                   ease: "easeInOut"
                 }}
               >
-                Experience our premium workflow that transforms ideas into exceptional products with cinematic precision.
+                {t.workflow.premiumWorkflowDescription || "Experience a premium workflow designed for excellence, combining innovation, efficiency, and collaboration to bring your vision to life."}
               </motion.p>
             </motion.div>
             
