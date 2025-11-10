@@ -577,34 +577,54 @@ export default function CTASection() {
                     style={{
                       background:
                         theme === "dark"
-                          ? "rgba(255, 255, 255, 0.1)"
-                          : "rgba(255, 255, 255, 0.9)",
+                          ? "rgba(15, 23, 42, 0.9)"
+                          : "rgba(255, 255, 255, 0.95)",
                       borderColor:
                         theme === "dark"
-                          ? "rgba(255, 255, 255, 0.2)"
-                          : "rgba(59, 130, 246, 0.3)",
-                      color: theme === "dark" ? "#1f2937" : "#1f2937",
-                      boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)",
+                          ? "rgba(100, 116, 139, 0.4)"
+                          : "rgba(148, 163, 184, 0.4)",
+                      color: theme === "dark" ? "#f8fafc" : "#1e293b",
+                      boxShadow:
+                        theme === "dark"
+                          ? "0 8px 32px rgba(0, 0, 0, 0.3)"
+                          : "0 8px 32px rgba(0, 0, 0, 0.1)",
                     }}
                     onFocus={(e) => {
                       e.target.style.borderColor =
                         theme === "dark" ? "#00d4ff" : "#3b82f6";
                       e.target.style.boxShadow =
                         theme === "dark"
-                          ? "0 0 20px rgba(0, 212, 255, 0.4)"
-                          : "0 0 20px rgba(59, 130, 246, 0.4)";
+                          ? "0 0 0 3px rgba(0, 212, 255, 0.2), 0 8px 32px rgba(0, 0, 0, 0.3)"
+                          : "0 0 0 3px rgba(59, 130, 246, 0.2), 0 8px 32px rgba(0, 0, 0, 0.1)";
+                      e.target.style.background =
+                        theme === "dark"
+                          ? "rgba(15, 23, 42, 0.95)"
+                          : "rgba(255, 255, 255, 0.98)";
                     }}
                     onBlur={(e) => {
                       e.target.style.borderColor =
                         theme === "dark"
-                          ? "rgba(255, 255, 255, 0.2)"
-                          : "rgba(59, 130, 246, 0.3)";
+                          ? "rgba(100, 116, 139, 0.4)"
+                          : "rgba(148, 163, 184, 0.4)";
                       e.target.style.boxShadow =
-                        "0 8px 32px rgba(0, 0, 0, 0.1)";
+                        theme === "dark"
+                          ? "0 8px 32px rgba(0, 0, 0, 0.3)"
+                          : "0 8px 32px rgba(0, 0, 0, 0.1)";
+                      e.target.style.background =
+                        theme === "dark"
+                          ? "rgba(15, 23, 42, 0.9)"
+                          : "rgba(255, 255, 255, 0.95)";
                     }}
                   >
                     {budgetOptions.map((option) => (
-                      <option key={option.value} value={option.value}>
+                      <option
+                        key={option.value}
+                        value={option.value}
+                        style={{
+                          background: theme === "dark" ? "#0f172a" : "#ffffff",
+                          color: theme === "dark" ? "#f8fafc" : "#1e293b",
+                        }}
+                      >
                         {option.label}
                       </option>
                     ))}

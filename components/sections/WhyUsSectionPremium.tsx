@@ -187,7 +187,7 @@ const HollywoodAdvantageCard = ({ advantage, index, isInView, theme }: any) => {
             }}
             animate={{
               rotateY: isHovered ? [0, 180, 360] : 0,
-              scale: isHovered ? [1, 1.2, 1] : 1,
+              scale: isHovered ? 1.2 : 1,
             }}
             transition={{
               rotateY: { duration: 2, ease: 'easeInOut' },
