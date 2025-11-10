@@ -5,78 +5,86 @@ export const translations = {
     common: {
       home: "Home",
       about: "About",
-      services: "Services", 
+      services: "Services",
       contact: "Contact",
       language: "Language",
-      viewGallery: "View Gallery"
+      viewGallery: "View Gallery",
     },
     hero: {
       title: "Qaspilab",
       subtitle: "Born in Kazakhstan. Built for the world.",
-      slogan: "We create technologies that shape the future of digital innovation",
+      slogan:
+        "We create technologies that shape the future of digital innovation",
       description: "Transforming ideas into cutting-edge solutions",
-      cta: "Discuss Project"
+      cta: "Discuss Project",
     },
     about: {
       title: "We're not an agency. We're a laboratory.",
       subtitle: "Innovation at the Heart of Everything We Do",
-      description: "Qaspilab is where ideas take shape. Where entrepreneurs, designers and engineers come together to create not just code — but living products.",
+      description:
+        "Qaspilab is where ideas take shape. Where entrepreneurs, designers and engineers come together to create not just code — but living products.",
       expertise: "Our Expertise",
       expertiseItems: [
         "Full-Stack Web Development",
-        "Mobile App Development", 
+        "Mobile App Development",
         "AI & Machine Learning Solutions",
         "Cloud Infrastructure & DevOps",
-        "UI/UX Design & Branding"
+        "UI/UX Design & Branding",
       ],
       teamImages: [
         {
           alt: "Qaspilab team at work",
-          title: "Our Team", 
-          description: "Talented developers, designers and engineers creating the future of technology"
+          title: "Our Team",
+          description:
+            "Talented developers, designers and engineers creating the future of technology",
         },
         {
           alt: "Qaspilab team member",
           title: "Innovative Approach",
-          description: "Every team member brings unique skills and creativity"
+          description:
+            "Every team member brings unique skills and creativity",
         },
         {
           alt: "Team workflow process",
-          title: "Collaborative Work", 
-          description: "We believe in the power of collective creativity and mutual support"
+          title: "Collaborative Work",
+          description:
+            "We believe in the power of collective creativity and mutual support",
         },
         {
           alt: "Creative process",
           title: "Creative Process",
-          description: "From idea to implementation - every step is handled with attention to detail"
+          description:
+            "From idea to implementation - every step is handled with attention to detail",
         },
         {
           alt: "Qaspilab team",
           title: "Unified Goal",
-          description: "United by a common mission to create outstanding products"
-        }
-      ]
+          description:
+            "United by a common mission to create outstanding products",
+        },
+      ],
     },
     mission: {
       title: "Our Mission",
-      startPremiumJourney : "Start the Premium Journey",
+      startPremiumJourney: "Start the Premium Journey",
       subtitle: "Bridging Innovation and Reality",
-      description: "To empower businesses through cutting-edge technology solutions that drive growth, efficiency, and digital transformation in an ever-evolving world.",
+      description:
+        "To empower businesses through cutting-edge technology solutions that drive growth, efficiency, and digital transformation in an ever-evolving world.",
       values: "Core Values",
       valuesItems: [
         {
           title: "Innovation First",
-          description: "Constantly pushing boundaries with creative solutions"
+          description: "Constantly pushing boundaries with creative solutions",
         },
         {
-          title: "Quality Excellence", 
-          description: "Delivering robust, scalable, and maintainable code"
+          title: "Quality Excellence",
+          description: "Delivering robust, scalable, and maintainable code",
         },
         {
           title: "Client Success",
-          description: "Your success is our ultimate measure of achievement"
-        }
-      ]
+          description: "Your success is our ultimate measure of achievement",
+        },
+      ],
     },
     missionSection: {
       title: "We are building the digital future of Kazakhstan.",
@@ -84,36 +92,40 @@ export const translations = {
       p2: "entrepreneurs launch new ideas,",
       p3: "and people interact with technology easily and with pleasure.",
       p4: "We believe that Kazakhstan is capable of creating not just IT solutions,",
-      p5: "but global products that will be used all over the world."
+      p5: "but global products that will be used all over the world.",
     },
     workflow: {
-      exploreGlobalNetwork : "Explore Our Global Network",
+      exploreGlobalNetwork: "Explore Our Global Network",
       title: "We create as we think. Simple. Transparent. Fast.",
       processTitle: "Our Process",
       subtitle: "From Concept to Reality",
-      premiumWorkflowDescription : "Experience our enhanced premium workflow, designed to deliver exceptional results with added transparency, efficiency, and collaboration at every step.",
+      premiumWorkflowDescription:
+        "Experience our enhanced premium workflow, designed to deliver exceptional results with added transparency, efficiency, and collaboration at every step.",
       steps: [
         {
           step: "01",
           title: "Discovery & Strategy",
-          description: "Understanding your needs, goals, and market requirements"
+          description:
+            "Understanding your needs, goals, and market requirements",
         },
         {
-          step: "02", 
+          step: "02",
           title: "Design & Planning",
-          description: "Creating user-centered designs and technical architecture"
+          description:
+            "Creating user-centered designs and technical architecture",
         },
         {
           step: "03",
-          title: "Development & Testing", 
-          description: "Building robust solutions with rigorous quality assurance"
+          title: "Development & Testing",
+          description:
+            "Building robust solutions with rigorous quality assurance",
         },
         {
           step: "04",
           title: "Launch & Support",
-          description: "Deployment, monitoring, and ongoing maintenance"
-        }
-      ]
+          description: "Deployment, monitoring, and ongoing maintenance",
+        },
+      ],
     },
     whyUs: {
       title: "Why Choose Qaspilab",
@@ -121,44 +133,82 @@ export const translations = {
       reasons: [
         {
           title: "Proven Expertise",
-          description: "Years of experience delivering successful projects across industries"
+          description:
+            "Years of experience delivering successful projects across industries",
         },
         {
           title: "Cutting-Edge Technology",
-          description: "Always using the latest tools and frameworks for optimal results"
+          description:
+            "Always using the latest tools and frameworks for optimal results",
         },
         {
-          title: "Agile Methodology", 
-          description: "Flexible, iterative approach ensuring project success"
+          title: "Agile Methodology",
+          description: "Flexible, iterative approach ensuring project success",
         },
         {
           title: "24/7 Support",
-          description: "Round-the-clock support to keep your systems running smoothly"
-        }
-      ]
+          description:
+            "Round-the-clock support to keep your systems running smoothly",
+        },
+      ],
     },
     globalReach: {
       title: "Global Reach, Local Expertise",
       subtitle: "Serving Clients Worldwide",
-      description: "From our base in Almaty, Kazakhstan, we've successfully delivered projects for clients across continents, bringing world-class technology solutions to businesses of all sizes.",
+      description:
+        "From our base in Almaty, Kazakhstan, we've successfully delivered projects for clients across continents, bringing world-class technology solutions to businesses of all sizes.",
       stats: {
         projects: "100+ Projects Delivered",
-        clients: "50+ Happy Clients", 
+        clients: "50+ Happy Clients",
         countries: "15+ Countries Served",
-        experience: "5+ Years Experience"
-      }
+        experience: "5+ Years Experience",
+      },
     },
     cta: {
       title: "Ready to Transform Your Ideas?",
-      subtitle: "Let's Build Something Amazing Together", 
-      description: "Get in touch with our team to discuss your project and discover how we can help you achieve your digital goals.",
+      subtitle: "Let's Build Something Amazing Together",
+      description:
+        "Get in touch with our team to discuss your project and discover how we can help you achieve your digital goals.",
       button: "Start Your Project",
       contactInfo: {
         email: "hello@qaspilab.com",
         phone: "+7 (727) 123-4567",
-        address: "Almaty, Kazakhstan"
-      }
+        address: "Almaty, Kazakhstan",
+      },
     },
+    // --- НОВЫЙ БЛОК ---
+    ctaForm: {
+      title: "Have an idea?",
+      subtitle: "Come to the laboratory.",
+      description: "We will turn it into a product people will use.",
+      buttonText: "Send Idea",
+
+      nameLabel: "💫 Your Name *",
+      namePlaceholder: "Enter your name",
+      contactLabel: "📞 Phone Number or Email *",
+      contactPlaceholder: "+7 777 123 45 67 or email@example.com",
+      descriptionLabel: "💡 Brief description of your idea *",
+      descriptionPlaceholder:
+        "Describe your idea in detail, what you want to create, what features it should have...",
+      budgetLabel: "💰 Estimated Budget",
+
+      budgetOptions: [
+        { value: "", label: "Select budget" },
+        { value: "0-50000", label: "Up to 50,000 ₸" },
+        { value: "50000-200000", label: "50,000 - 200,000 ₸" },
+        { value: "200000-500000", label: "200,000 - 500,000 ₸" },
+        { value: "500000-1000000", label: "500,000 - 1,000,000 ₸" },
+        { value: "1000000+", label: "Over 1,000,000 ₸" },
+        { value: "discuss", label: "Discussed individually" },
+      ],
+
+      submitLoading: "🚀 Sending your idea...",
+      submitError: "An error occurred while sending. Please try again.",
+      successTitle: "🎉 Great!",
+      successMessage: "Your idea has been successfully submitted! We will contact you soon to discuss the project.",
+      successThankYou: "Thank you for trusting our laboratory! Your idea is already in the reliable hands of our experts."
+    },
+    // --- КОНЕЦ НОВОГО БЛОКА ---
     footer: {
       slogan: "Innovation Laboratory",
       description: "Transforming ideas into cutting-edge solutions",
@@ -167,85 +217,93 @@ export const translations = {
       location: "Almaty, Kazakhstan",
       email: "hello@qaspilab.com",
       copyright: "© 2024 Qaspilab. All rights reserved.",
-      madeWith: "Made with ❤️ in Kazakhstan"
-    }
+      madeWith: "Made with ❤️ in Kazakhstan",
+    },
   },
   ru: {
     common: {
       home: "Главная",
-      about: "О нас", 
+      about: "О нас",
       services: "Услуги",
       contact: "Контакты",
       language: "Язык",
-      viewGallery: "Посмотреть галерею"
+      viewGallery: "Посмотреть галерею",
     },
     hero: {
       title: "Qaspilab",
       subtitle: "Рождён в Казахстане. Создан для мира.",
-      slogan: "Мы создаём технологии, которые формируют будущее цифровых инноваций",
+      slogan:
+        "Мы создаём технологии, которые формируют будущее цифровых инноваций",
       description: "Превращаем идеи в передовые решения",
-      cta: "Обсудить проект"
+      cta: "Обсудить проект",
     },
     about: {
       title: "Мы не агентство. Мы лаборатория.",
       subtitle: "Инновации в основе всего, что мы делаем",
-      description: "Qaspilab — это место, где идеи обретают форму. Где предприниматели, дизайнеры и инженеры собираются, чтобы создать не просто код — а живой продукт.",
+      description:
+        "Qaspilab — это место, где идеи обретают форму. Где предприниматели, дизайнеры и инженеры собираются, чтобы создать не просто код — а живой продукт.",
       expertise: "Наша экспертиза",
       expertiseItems: [
         "Полнокомплексная веб-разработка",
         "Разработка мобильных приложений",
         "ИИ и машинное обучение",
-        "Облачная инфраструктура и DevOps", 
-        "UI/UX дизайн и брендинг"
+        "Облачная инфраструктура и DevOps",
+        "UI/UX дизайн и брендинг",
       ],
       teamImages: [
         {
           alt: "Команда Qaspilab за работой",
           title: "Наша команда",
-          description: "Талантливые разработчики, дизайнеры и инженеры, создающие будущее технологий"
+          description:
+            "Талантливые разработчики, дизайнеры и инженеры, создающие будущее технологий",
         },
         {
           alt: "Член команды Qaspilab",
           title: "Инновационный подход",
-          description: "Каждый участник команды привносит уникальные навыки и креативность"
+          description:
+            "Каждый участник команды привносит уникальные навыки и креативность",
         },
         {
           alt: "Рабочий процесс команды",
           title: "Совместная работа",
-          description: "Мы верим в силу коллективного творчества и взаимной поддержки"
+          description:
+            "Мы верим в силу коллективного творчества и взаимной поддержки",
         },
         {
           alt: "Творческий процесс",
           title: "Творческий процесс",
-          description: "От идеи до реализации - каждый этап проходит с вниманием к деталям"
+          description:
+            "От идеи до реализации - каждый этап проходит с вниманием к деталям",
         },
         {
           alt: "Команда Qaspilab",
           title: "Единая цель",
-          description: "Объединенные общей миссией создания выдающихся продуктов"
-        }
-      ]
+          description:
+            "Объединенные общей миссией создания выдающихся продуктов",
+        },
+      ],
     },
     mission: {
       title: "Наша миссия",
-      startPremiumJourney : "Начать премиальное путешествие",
+      startPremiumJourney: "Начать премиальное путешествие",
       subtitle: "Связываем инновации с реальностью",
-      description: "Расширять возможности бизнеса через передовые технологические решения, которые стимулируют рост, эффективность и цифровую трансформацию в постоянно развивающемся мире.",
+      description:
+        "Расширять возможности бизнеса через передовые технологические решения, которые стимулируют рост, эффективность и цифровую трансформацию в постоянно развивающемся мире.",
       values: "Основные ценности",
       valuesItems: [
         {
           title: "Инновации прежде всего",
-          description: "Постоянно расширяем границы с креативными решениями"
+          description: "Постоянно расширяем границы с креативными решениями",
         },
         {
           title: "Превосходное качество",
-          description: "Создаём надёжный, масштабируемый и поддерживаемый код"
+          description: "Создаём надёжный, масштабируемый и поддерживаемый код",
         },
         {
           title: "Успех клиентов",
-          description: "Ваш успех — наш главный показатель достижений"
-        }
-      ]
+          description: "Ваш успех — наш главный показатель достижений",
+        },
+      ],
     },
     missionSection: {
       title: "Мы строим цифровое будущее Казахстана.",
@@ -253,36 +311,38 @@ export const translations = {
       p2: "предпринимателям — запускать новые идеи,",
       p3: "а людям — взаимодействовать с технологиями легко и с удовольствием.",
       p4: "Мы верим, что Казахстан способен создавать не просто IT-решения,",
-      p5: "а глобальные продукты, которыми будут пользоваться во всём мире."
+      p5: "а глобальные продукты, которыми будут пользоваться во всём мире.",
     },
     workflow: {
-      exploreGlobalNetwork : "Изучите нашу глобальную сеть",
+      exploreGlobalNetwork: "Изучите нашу глобальную сеть",
       title: "Мы создаём, как думаем. Просто. Прозрачно. Быстро.",
       processTitle: "Наш процесс",
-      premiumWorkflowDescription : "Ощутите наш улучшенный премиальный рабочий процесс, разработанный для достижения исключительных результатов с повышенной прозрачностью, эффективностью и сотрудничеством на каждом этапе.",
+      premiumWorkflowDescription:
+        "Ощутите наш улучшенный премиальный рабочий процесс, разработанный для достижения исключительных результатов с повышенной прозрачностью, эффективностью и сотрудничеством на каждом этапе.",
       subtitle: "От концепции к реальности",
       steps: [
         {
           step: "01",
           title: "Исследование и стратегия",
-          description: "Понимание ваших потребностей, целей и требований рынка"
+          description: "Понимание ваших потребностей, целей и требований рынка",
         },
         {
           step: "02",
-          title: "Дизайн и планирование", 
-          description: "Создание пользовательского дизайна и технической архитектуры"
+          title: "Дизайн и планирование",
+          description:
+            "Создание пользовательского дизайна и технической архитектуры",
         },
         {
           step: "03",
           title: "Разработка и тестирование",
-          description: "Создание надёжных решений с тщательным контролем качества"
+          description: "Создание надёжных решений с тщательным контролем качества",
         },
         {
           step: "04",
           title: "Запуск и поддержка",
-          description: "Развёртывание, мониторинг и постоянное обслуживание"
-        }
-      ]
+          description: "Развёртывание, мониторинг и постоянное обслуживание",
+        },
+      ],
     },
     whyUs: {
       title: "Почему выбирают Qaspilab",
@@ -290,44 +350,83 @@ export const translations = {
       reasons: [
         {
           title: "Проверенная экспертиза",
-          description: "Годы опыта успешной реализации проектов в различных отраслях"
+          description:
+            "Годы опыта успешной реализации проектов в различных отраслях",
         },
         {
           title: "Передовые технологии",
-          description: "Всегда используем новейшие инструменты и фреймворки для оптимальных результатов"
+          description:
+            "Всегда используем новейшие инструменты и фреймворки для оптимальных результатов",
         },
         {
           title: "Agile методология",
-          description: "Гибкий, итеративный подход, обеспечивающий успех проекта"
+          description: "Гибкий, итеративный подход, обеспечивающий успех проекта",
         },
         {
           title: "Поддержка 24/7",
-          description: "Круглосуточная поддержка для бесперебойной работы ваших систем"
-        }
-      ]
+          description:
+            "Круглосуточная поддержка для бесперебойной работы ваших систем",
+        },
+      ],
     },
     globalReach: {
       title: "Глобальный охват, местная экспертиза",
       subtitle: "Обслуживаем клиентов по всему миру",
-      description: "Из нашего офиса в Алматы, Казахстан, мы успешно реализовали проекты для клиентов на разных континентах, предоставляя технологические решения мирового класса компаниям любого размера.",
+      description:
+        "Из нашего офиса в Алматы, Казахстан, мы успешно реализовали проекты для клиентов на разных континентах, предоставляя технологические решения мирового класса компаниям любого размера.",
       stats: {
         projects: "100+ реализованных проектов",
         clients: "50+ довольных клиентов",
-        countries: "15+ обслуживаемых стран", 
-        experience: "5+ лет опыта"
-      }
+        countries: "15+ обслуживаемых стран",
+        experience: "5+ лет опыта",
+      },
     },
     cta: {
       title: "Готовы воплотить свои идеи?",
       subtitle: "Давайте создадим что-то удивительное вместе",
-      description: "Свяжитесь с нашей командой, чтобы обсудить ваш проект и узнать, как мы можем помочь достичь ваших цифровых целей.",
+      description:
+        "Свяжитесь с нашей командой, чтобы обсудить ваш проект и узнать, как мы можем помочь достичь ваших цифровых целей.",
       button: "Начать проект",
       contactInfo: {
         email: "hello@qaspilab.com",
         phone: "+7 (727) 123-4567",
-        address: "Алматы, Казахстан"
-      }
+        address: "Алматы, Казахстан",
+      },
     },
+    // --- НОВЫЙ БЛОК ---
+    ctaForm: {
+      title: "У вас есть идея?",
+      subtitle: "Приходите в лабораторию.",
+      description: "Мы превратим её в продукт, которым будут пользоваться люди.",
+      buttonText: "Отправить идею",
+
+      nameLabel: "💫 Ваше имя *",
+      namePlaceholder: "Введите ваше имя",
+      contactLabel: "📞 Номер телефона или Email *",
+      contactPlaceholder: "+7 777 123 45 67 или email@example.com",
+      descriptionLabel: "💡 Краткое описание вашей идеи *",
+      descriptionPlaceholder:
+        "Расскажите подробно о вашей идее, что вы хотите создать, какие функции должны быть...",
+      budgetLabel: "💰 Предполагаемый бюджет",
+
+      budgetOptions: [
+        { value: "", label: "Выберите бюджет" },
+        { value: "0-50000", label: "До 50,000 ₸" },
+        { value: "50000-200000", label: "50,000 - 200,000 ₸" },
+        { value: "200000-500000", label: "200,000 - 500,000 ₸" },
+        { value: "500000-1000000", label: "500,000 - 1,000,000 ₸" },
+        { value: "1000000+", label: "Свыше 1,000,000 ₸" },
+        { value: "discuss", label: "Обсуждается индивидуально" },
+      ],
+
+      submitLoading: "🚀 Отправляем вашу идею...",
+      submitError:
+        "Произошла ошибка при отправке. Пожалуйста, попробуйте еще раз.",
+      successTitle: "🎉 Отлично!",
+      successMessage: "Ваша идея успешно отправлена! Мы свяжемся с вами в ближайшее время для обсуждения проекта.",
+      successThankYou: "Спасибо за доверие к нашей лаборатории! Ваша идея уже в надежных руках наших экспертов."
+    },
+    // --- КОНЕЦ НОВОГО БЛОКА ---
     footer: {
       slogan: "Лаборатория инноваций",
       description: "Превращаем идеи в передовые решения",
@@ -336,85 +435,94 @@ export const translations = {
       location: "Алматы, Казахстан",
       email: "hello@qaspilab.com",
       copyright: "© 2024 Qaspilab. Все права защищены.",
-      madeWith: "Сделано с ❤️ в Казахстане"
-    }
+      madeWith: "Сделано с ❤️ в Казахстане",
+    },
   },
   kk: {
     common: {
       home: "Басты бет",
       about: "Біз туралы",
       services: "Қызметтер",
-      contact: "Байланыс", 
+      contact: "Байланыс",
       language: "Тіл",
-      viewGallery: "Галереяны көру"
+      viewGallery: "Галереяны көру",
     },
     hero: {
       title: "Qaspilab",
       subtitle: "Қазақстанда туған. Әлем үшін жасалған.",
-      slogan: "Біз цифрлық инновацияның болашағын қалыптастыратын технологиялар жасаймыз",
-      description: "Идеяларды озық шешімдерге айналдырамыз", 
-      cta: "Жобаны талқылау"
+      slogan:
+        "Біз цифрлық инновацияның болашағын қалыптастыратын технологиялар жасаймыз",
+      description: "Идеяларды озық шешімдерге айналдырамыз",
+      cta: "Жобаны талқылау",
     },
     about: {
       title: "Біз агенттік емеспіз. Біз зертханамыз.",
       subtitle: "Біз істейтін барлық нәрсенің негізінде инновация",
-      description: "Qaspilab - бұл идеялардың пішін алатын жері. Кәсіпкерлер, дизайнерлер мен инженерлер жай ғана код емес - тірі өнім жасау үшін жиналатын жер.",
+      description:
+        "Qaspilab - бұл идеялардың пішін алатын жері. Кәсіпкерлер, дизайнерлер мен инженерлер жай ғана код емес - тірі өнім жасау үшін жиналатын жер.",
       expertise: "Біздің сараптама",
       expertiseItems: [
         "Толық веб-әзірлеу",
         "Мобильді қолданбаларды әзірлеу",
         "Жасанды интеллект және машиналық оқыту",
         "Бұлт инфрақұрылымы және DevOps",
-        "UI/UX дизайн және брендинг"
+        "UI/UX дизайн және брендинг",
       ],
       teamImages: [
         {
           alt: "Qaspilab командасы жұмыс істеп жатыр",
           title: "Біздің команда",
-          description: "Технологияның болашағын жасайтын талантты әзірлеушілер, дизайнерлер мен инженерлер"
+          description:
+            "Технологияның болашағын жасайтын талантты әзірлеушілер, дизайнерлер мен инженерлер",
         },
         {
           alt: "Qaspilab команда мүшесі",
           title: "Инновациялық тәсіл",
-          description: "Команданың әрбір мүшесі бірегей дағдылар мен шығармашылықты әкеледі"
+          description:
+            "Команданың әрбір мүшесі бірегей дағдылар мен шығармашылықты әкеледі",
         },
         {
           alt: "Команданың жұмыс процесі",
           title: "Ынтымақтастық жұмысы",
-          description: "Біз ұжымдық шығармашылық пен өзара қолдау күшіне сенеміз"
+          description:
+            "Біз ұжымдық шығармашылық пен өзара қолдау күшіне сенеміз",
         },
         {
           alt: "Шығармашылық процесс",
           title: "Шығармашылық процесс",
-          description: "Идеядан іске асыруға дейін - әрбір кезең бөлшектерге назар аудара отырып өтеді"
+          description:
+            "Идеядан іске асыруға дейін - әрбір кезең бөлшектерге назар аудара отырып өтеді",
         },
         {
           alt: "Qaspilab командасы",
           title: "Бірыңғай мақсат",
-          description: "Керемет өнімдер жасаудың ортақ миссиясымен біріккен"
-        }
-      ]
+          description:
+            "Керемет өнімдер жасаудың ортақ миссиясымен біріккен",
+        },
+      ],
     },
     mission: {
       title: "Біздің миссия",
-      startPremiumJourney : "Премиум саяхатты бастау",
+      startPremiumJourney: "Премиум саяхатты бастау",
       subtitle: "Инновация мен шындықты байланыстыру",
-      description: "Үнемі дамып келе жатқан әлемде өсу, тиімділік және цифрлық трансформацияны қамтамасыз ететін алдыңғы қатарлы технологиялық шешімдер арқылы бизнесті күшейту.",
+      description:
+        "Үнемі дамып келе жатқан әлемде өсу, тиімділік және цифрлық трансформацияны қамтамасыз ететін алдыңғы қатарлы технологиялық шешімдер арқылы бизнесті күшейту.",
       values: "Негізгі құндылықтар",
       valuesItems: [
         {
           title: "Инновация бірінші",
-          description: "Креативті шешімдермен шектерді үнемі кеңейту"
+          description: "Креативті шешімдермен шектерді үнемі кеңейту",
         },
         {
           title: "Сапа керемет",
-          description: "Сенімді, масштабталатын және қолдауға болатын код жасау"
+          description: "Сенімді, масштабталатын және қолдауға болатын код жасау",
         },
         {
           title: "Клиенттердің табысы",
-          description: "Сіздің табысыңыз - біздің жетістігіміздің негізгі көрсеткіші"
-        }
-      ]
+          description:
+            "Сіздің табысыңыз - біздің жетістігіміздің негізгі көрсеткіші",
+        },
+      ],
     },
     missionSection: {
       title: "Біз Қазақстанның цифрлық болашағын құрып жатырмыз.",
@@ -422,36 +530,39 @@ export const translations = {
       p2: "кәсіпкерлерге — жаңа идеяларды іске қосуға,",
       p3: "ал адамдарға — технологиялармен оңай әрі қуана отырып өзара әрекеттесуге.",
       p4: "Біз Қазақстан жай ғана IT-шешімдер ғана емес,",
-      p5: "бүкіл әлемде пайдаланылатын жаһандық өнімдер жасауға қабілетті деп сенеміз."
+      p5: "бүкіл әлемде пайдаланылатын жаһандық өнімдер жасауға қабілетті деп сенеміз.",
     },
     workflow: {
-      exploreGlobalNetwork : "Біздің жаһандық желіні зерттеңіз",
+      exploreGlobalNetwork: "Біздің жаһандық желіні зерттеңіз",
       title: "Біз ойлағанымыздай жасаймыз. Қарапайым. Ашық. Жылдам.",
       processTitle: "Біздің процесс",
-      premiumWorkflowDescription : "Әрбір қадамда қосымша ашықтықты, тиімділікті және ынтымақтастықты қамтамасыз ететін ерекше нәтижелерге қол жеткізуге арналған біздің жетілдірілген премиум жұмыс процесін сезініңіз.",
+      premiumWorkflowDescription:
+        "Әрбір қадамда қосымша ашықтықты, тиімділікті және ынтымақтастықты қамтамасыз ететін ерекше нәтижелерге қол жеткізуге арналған біздің жетілдірілген премиум жұмыс процесін сезініңіз.",
       subtitle: "Концепциядан шындыққа дейін",
       steps: [
         {
           step: "01",
           title: "Зерттеу және стратегия",
-          description: "Сіздің қажеттіліктеріңіз, мақсаттарыңыз және нарық талаптарын түсіну"
+          description:
+            "Сіздің қажеттіліктеріңіз, мақсаттарыңыз және нарық талаптарын түсіну",
         },
         {
           step: "02",
           title: "Дизайн және жоспарлау",
-          description: "Пайдаланушы-орталықты дизайн және техникалық архитектура жасау"
+          description:
+            "Пайдаланушы-орталықты дизайн және техникалық архитектура жасау",
         },
         {
-          step: "03", 
+          step: "03",
           title: "Әзірлеу және тестілеу",
-          description: "Қатаң сапа бақылауымен сенімді шешімдер құру"
+          description: "Қатаң сапа бақылауымен сенімді шешімдер құру",
         },
         {
           step: "04",
           title: "Іске қосу және қолдау",
-          description: "Орналастыру, мониторинг және үнемі қызмет көрсету"
-        }
-      ]
+          description: "Орналастыру, мониторинг және үнемі қызмет көрсету",
+        },
+      ],
     },
     whyUs: {
       title: "Неліктен Qaspilab таңдайды",
@@ -459,44 +570,84 @@ export const translations = {
       reasons: [
         {
           title: "Дәлелденген сараптама",
-          description: "Әртүрлі салаларда сәтті жобаларды жүзеге асыру тәжірибесі"
+          description:
+            "Әртүрлі салаларда сәтті жобаларды жүзеге асыру тәжірибесі",
         },
         {
           title: "Озық технологиялар",
-          description: "Оңтайлы нәтижелер үшін әрқашан ең соңғы құралдар мен фреймворктерді пайдалану"
+          description:
+            "Оңтайлы нәтижелер үшін әрқашан ең соңғы құралдар мен фреймворктерді пайдалану",
         },
         {
           title: "Agile әдістемесі",
-          description: "Жоба табысын қамтамасыз ететін икемді, қайталанатын тәсіл"
+          description: "Жоба табысын қамтамасыз ететін икемді, қайталанатын тәсіл",
         },
         {
           title: "24/7 қолдау",
-          description: "Сіздің жүйелеріңіздің үздіксіз жұмыс істеуі үшін тәулік бойы қолдау"
-        }
-      ]
+          description:
+            "Сіздің жүйелеріңіздің үздіксіз жұмыс істеуі үшін тәулік бойы қолдау",
+        },
+      ],
     },
     globalReach: {
       title: "Жаһандық қол жетімділік, жергілікті сараптама",
       subtitle: "Бүкіл әлемдегі клиенттерге қызмет көрсету",
-      description: "Алматы, Қазақстандағы біздің офисімізден біз әртүрлі континенттердегі клиенттер үшін жобаларды сәтті жүзеге асырдық, кез келген өлшемдегі бизнеске әлемдік деңгейдегі технологиялық шешімдер ұсына отырып.",
+      description:
+        "Алматы, Қазақстандағы біздің офисімізден біз әртүрлі континенттердегі клиенттер үшін жобаларды сәтті жүзеге асырдық, кез келген өлшемдегі бизнеске әлемдік деңгейдегі технологиялық шешімдер ұсына отырып.",
       stats: {
         projects: "100+ жүзеге асырылған жоба",
         clients: "50+ қанағаттанған клиент",
         countries: "15+ қызмет көрсетілетін ел",
-        experience: "5+ жыл тәжірибе"
-      }
+        experience: "5+ жыл тәжірибе",
+      },
     },
     cta: {
       title: "Өз идеяларыңызды іске асыруға дайынсыз ба?",
       subtitle: "Келіңіз, бірге керемет нәрсе жасайық",
-      description: "Жобаңызды талқылау және сіздің цифрлық мақсаттарыңызға жетуге қалай көмектесе алатынымызды білу үшін командамызбен хабарласыңыз.",
+      description:
+        "Жобаңызды талқылау және сіздің цифрлық мақсаттарыңызға жетуге қалай көмектесе алатынымызды білу үшін командамызбен хабарласыңыз.",
       button: "Жобаны бастау",
       contactInfo: {
         email: "hello@qaspilab.com",
         phone: "+7 (727) 123-4567",
-        address: "Алматы, Қазақстан"
-      }
+        address: "Алматы, Қазақстан",
+      },
     },
+    
+    // --- НОВЫЙ БЛОК ---
+    ctaForm: {
+      title: "Идеяңыз бар ма?",
+      subtitle: "Зертханаға келіңіз.",
+      description: "Біз оны адамдар қолданатын өнімге айналдырамыз.",
+      buttonText: "Идеяны жіберу",
+
+      nameLabel: "💫 Сіздің есіміңіз *",
+      namePlaceholder: "Есіміңізді енгізіңіз",
+      contactLabel: "📞 Телефон нөмірі немесе Email *",
+      contactPlaceholder: "+7 777 123 45 67 немесе email@example.com",
+      descriptionLabel: "💡 Идеяңыздың қысқаша сипаттамасы *",
+      descriptionPlaceholder:
+        "Идеяңыз туралы, не жасағыңыз келетінін, қандай функциялары болуы керектігін егжей-тегжейлі айтып беріңіз...",
+      budgetLabel: "💰 Болжамды бюджет",
+      
+
+      budgetOptions: [
+        { value: "", label: "Бюджетті таңдаңыз" },
+        { value: "0-50000", label: "50,000 ₸ дейін" },
+        { value: "50000-200000", label: "50,000 - 200,000 ₸" },
+        { value: "200000-500000", label: "200,000 - 500,000 ₸" },
+        { value: "500000-1000000", label: "500,000 - 1,000,000 ₸" },
+        { value: "1000000+", label: "1,000,000 ₸ астам" },
+        { value: "discuss", label: "Жеке талқыланады" },
+      ],
+
+      submitLoading: "🚀 Идеяңыз жіберілуде...",
+      submitError: "Жіберу кезінде қате пайда болды. Қайталап көріңіз.",
+      successTitle: "🎉 Керемет!",
+      successMessage: "Сіздің идеяңыз сәтті жіберілді! Жобаны талқылау үшін жақын арада сізбен хабарласамыз.",
+      successThankYou: "Біздің зертханамызға сенім артқаныңыз үшін рахмет! Сіздің идеяңыз біздің сарапшылардың сенімді қолында."
+    },
+    // --- КОНЕЦ НОВОГО БЛОКА ---
     footer: {
       slogan: "Инновация зертханасы",
       description: "Идеяларды озық шешімдерге айналдырамыз",
@@ -505,9 +656,9 @@ export const translations = {
       location: "Алматы, Қазақстан",
       email: "hello@qaspilab.com",
       copyright: "© 2024 Qaspilab. Барлық құқықтар қорғалған.",
-      madeWith: "❤️ арқылы Қазақстанда жасалған"
-    }
-  }
+      madeWith: "❤️ арқылы Қазақстанда жасалған",
+    },
+  },
 };
 
 export type Locale = keyof typeof translations;

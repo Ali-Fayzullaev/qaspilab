@@ -11,7 +11,7 @@ import { Send, CheckCircle, AlertCircle, Loader2 } from "lucide-react";
  * Форма отправки идеи с анимацией световых импульсов
  */
 export default function CTASection() {
-  const { t } = useLanguage();
+  const { t } = useLanguage(); // Используем хук для получения переводов
   const { theme } = useTheme();
 
   // Ref для отслеживания видимости секции
@@ -46,25 +46,8 @@ export default function CTASection() {
     setMounted(true);
   }, []);
 
-  // Тексты согласно требованию
-  const texts = {
-    title: "У вас есть идея?",
-    subtitle: "Приходите в лабораторию.",
-    description: "Мы превратим её в продукт, которым будут пользоваться люди.",
-    buttonText: "Отправить идею",
-  };
-
-  // Опции бюджета
-  const budgetOptions = [
-    { value: "", label: "Выберите бюджет" },
-    { value: "0-50000", label: "До 50,000 ₸" },
-    { value: "50000-200000", label: "50,000 - 200,000 ₸" },
-    { value: "200000-500000", label: "200,000 - 500,000 ₸" },
-    { value: "500000-1000000", label: "500,000 - 1,000,000 ₸" },
-    { value: "1000000+", label: "Свыше 1,000,000 ₸" },
-    { value: "discuss", label: "Обсуждается индивидуально" },
-  ];
-
+  // // Тексты и опции бюджета УДАЛЕНЫ, так как теперь они берутся из `t.ctaForm`
+  
   // Обработка изменения полей формы
   const handleInputChange = (
     e: React.ChangeEvent<
@@ -120,8 +103,7 @@ export default function CTASection() {
     } catch (error) {
       setSubmitStatus({
         type: "error",
-        message:
-          "Произошла ошибка при отправке. Пожалуйста, попробуйте еще раз.",
+        message: t.ctaForm.submitError, // <-- Используем перевод
       });
     } finally {
       setIsSubmitting(false);
@@ -173,7 +155,7 @@ export default function CTASection() {
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
-                {texts.title}
+                {t.ctaForm.title} {/* <-- Используем перевод */}
               </motion.h2>
 
               <motion.h3
@@ -189,7 +171,7 @@ export default function CTASection() {
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.8, delay: 0.4 }}
               >
-                {texts.subtitle}
+                {t.ctaForm.subtitle} {/* <-- Используем перевод */}
               </motion.h3>
 
               <motion.p
@@ -205,7 +187,7 @@ export default function CTASection() {
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.8, delay: 0.6 }}
               >
-                {texts.description}
+                {t.ctaForm.description} {/* <-- Используем перевод */}
               </motion.p>
 
               {/* Декоративная линия */}
@@ -302,7 +284,9 @@ export default function CTASection() {
                           left: "50%",
                           top: "50%",
                           transformOrigin: "0 50%",
-                          transform: `rotate(${i * 60}deg) translateX(35px)`,
+                          transform: `rotate(${
+                            i * 60
+                          }deg) translateX(35px)`,
                         }}
                         animate={{
                           opacity: [0, 1, 0],
@@ -325,7 +309,7 @@ export default function CTASection() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5 }}
                 >
-                  🎉 Отлично!
+                  🎉 {t.ctaForm.successTitle} {/* <-- Используем перевод */}
                 </motion.h3>
 
                 {/* Основное сообщение */}
@@ -395,7 +379,7 @@ export default function CTASection() {
                         theme === "dark" ? "0 2px 4px rgba(0,0,0,0.5)" : "none",
                     }}
                   >
-                    💫 Ваше имя *
+                    {t.ctaForm.nameLabel} {/* <-- Используем перевод */}
                   </label>
                   <input
                     type="text"
@@ -417,7 +401,7 @@ export default function CTASection() {
                       color: theme === "dark" ? "#ffffff" : "#1f2937",
                       boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)",
                     }}
-                    placeholder="Введите ваше имя"
+                    placeholder={t.ctaForm.namePlaceholder}
                     onFocus={(e) => {
                       e.target.style.borderColor =
                         theme === "dark" ? "#00d4ff" : "#3b82f6";
@@ -452,7 +436,7 @@ export default function CTASection() {
                         theme === "dark" ? "0 2px 4px rgba(0,0,0,0.5)" : "none",
                     }}
                   >
-                    📞 Номер телефона или Email *
+                    {t.ctaForm.contactLabel} {/* <-- Используем перевод */}
                   </label>
                   <input
                     type="text"
@@ -474,7 +458,7 @@ export default function CTASection() {
                       color: theme === "dark" ? "#ffffff" : "#1f2937",
                       boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)",
                     }}
-                    placeholder="+7 777 123 45 67 или email@example.com"
+                    placeholder={t.ctaForm.contactPlaceholder}
                     onFocus={(e) => {
                       e.target.style.borderColor =
                         theme === "dark" ? "#00d4ff" : "#3b82f6";
@@ -509,7 +493,7 @@ export default function CTASection() {
                         theme === "dark" ? "0 2px 4px rgba(0,0,0,0.5)" : "none",
                     }}
                   >
-                    💡 Краткое описание вашей идеи *
+                    {t.ctaForm.descriptionLabel} {/* <-- Используем перевод */}
                   </label>
                   <textarea
                     id="description"
@@ -531,7 +515,7 @@ export default function CTASection() {
                       color: theme === "dark" ? "#ffffff" : "#1f2937",
                       boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)",
                     }}
-                    placeholder="Расскажите подробно о вашей идее, что вы хотите создать, какие функции должны быть..."
+                    placeholder={t.ctaForm.descriptionPlaceholder}
                     onFocus={(e) => {
                       e.target.style.borderColor =
                         theme === "dark" ? "#00d4ff" : "#3b82f6";
@@ -566,7 +550,7 @@ export default function CTASection() {
                         theme === "dark" ? "0 2px 4px rgba(0,0,0,0.5)" : "none",
                     }}
                   >
-                    💰 Предполагаемый бюджет
+                    {t.ctaForm.budgetLabel} {/* <-- Используем перевод */}
                   </label>
                   <select
                     id="budget"
@@ -616,7 +600,8 @@ export default function CTASection() {
                           : "rgba(255, 255, 255, 0.95)";
                     }}
                   >
-                    {budgetOptions.map((option) => (
+                    {/* <-- Используем массив из переводов --> */}
+                    {t.ctaForm.budgetOptions.map((option) => (
                       <option
                         key={option.value}
                         value={option.value}
@@ -675,12 +660,12 @@ export default function CTASection() {
                     {isSubmitting ? (
                       <div className="relative flex items-center justify-center gap-3">
                         <Loader2 size={24} className="animate-spin" />
-                        <span>🚀 Отправляем вашу идею...</span>
+                        <span>{t.ctaForm.submitLoading}</span> {/* <-- Используем перевод */}
                       </div>
                     ) : (
                       <div className="relative flex items-center justify-center gap-3">
                         <Send size={24} />
-                        <span>✨ {texts.buttonText}</span>
+                        <span>✨ {t.ctaForm.buttonText}</span> {/* <-- Используем перевод */}
                       </div>
                     )}
                   </motion.button>
