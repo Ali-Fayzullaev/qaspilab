@@ -8,16 +8,14 @@ import Image from 'next/image';
 import { Lightbulb, PuzzleIcon, Code, Rocket, ArrowRight, Zap, Sparkles } from 'lucide-react';
 
 /**
- * PREMIUM WorkflowSection - Кинематографичные анимации в стиле Apple, Stripe, Linear
+ * PREMIUM WorkflowSection - Mobile-optimized cinematic experience
  * 
- * 🎬 КИНЕМАТОГРАФИЧЕСКИЕ ЭФФЕКТЫ:
- * - Unified premium background как в других секциях
- * - Scroll-triggered parallax с плавными трансформациями
- * - Magnetic interactive elements с hover эффектами
- * - 3D depth и layered animations
- * - Morphing transitions между состояниями
- * - Cinematic timing и easing curves
- * - 60fps optimized performance
+ * 📱 FULL MOBILE OPTIMIZATION:
+ * - Responsive typography scaling
+ * - Adaptive visual layouts
+ * - Touch-friendly interactions
+ * - Performance-optimized animations
+ * - Conditional rendering for different viewports
  */
 
 // Premium иконки для workflow этапов
@@ -37,12 +35,12 @@ const CINEMATIC_CONFIG = {
   parallax: { strength: 50, smoothness: 0.1 }
 };
 
-// Премиум компонент интерактивной карточки этапа
+// Премиум компонент интерактивной карточки этапа - mobile optimized
 const PremiumWorkflowCard = ({ step, index, isInView, theme }: any) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
   
-  // Магнитный эффект
+  // Магнитный эффект - disabled on mobile for performance
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
   
@@ -58,6 +56,9 @@ const PremiumWorkflowCard = ({ step, index, isInView, theme }: any) => {
     mouseY.set((e.clientY - centerY) * 0.3);
   }, [mouseX, mouseY]);
   
+  // Check if mobile device
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+  
   const iconConfig = PREMIUM_WORKFLOW_ICONS[index] || PREMIUM_WORKFLOW_ICONS[0];
   const { Icon, gradient, shadow } = iconConfig;
   
@@ -65,43 +66,43 @@ const PremiumWorkflowCard = ({ step, index, isInView, theme }: any) => {
     <motion.div
       ref={cardRef}
       className="group cursor-pointer perspective-1000"
-      initial={{ opacity: 0, y: 80, rotateX: 15 }}
+      initial={{ opacity: 0, y: 60, rotateX: isMobile ? 0 : 15 }}
       animate={isInView ? { 
         opacity: 1, 
         y: 0, 
         rotateX: 0
       } : {}}
       transition={{ 
-        duration: CINEMATIC_CONFIG.duration.slow,
-        delay: index * CINEMATIC_CONFIG.stagger,
+        duration: isMobile ? CINEMATIC_CONFIG.duration.medium : CINEMATIC_CONFIG.duration.slow,
+        delay: index * (isMobile ? 0.1 : CINEMATIC_CONFIG.stagger),
         ease: CINEMATIC_CONFIG.ease
       }}
-      whileHover={{ 
+      whileHover={!isMobile ? { 
         scale: 1.03,
         y: -8,
         transition: { duration: CINEMATIC_CONFIG.duration.fast }
-      }}
-      onMouseMove={handleMouseMove}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => {
+      } : {}}
+      onMouseMove={!isMobile ? handleMouseMove : undefined}
+      onMouseEnter={!isMobile ? () => setIsHovered(true) : undefined}
+      onMouseLeave={!isMobile ? () => {
         setIsHovered(false);
         mouseX.set(0);
         mouseY.set(0);
-      }}
+      } : undefined}
       style={{
-        rotateX,
-        rotateY,
+        rotateX: isMobile ? 0 : rotateX,
+        rotateY: isMobile ? 0 : rotateY,
         transformStyle: 'preserve-3d',
       }}
     >
       <motion.div 
-        className="relative p-4 sm:p-6 lg:p-8 bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl rounded-2xl lg:rounded-3xl border border-white/20 dark:border-gray-800/30 overflow-hidden"
+        className="relative p-4 sm:p-5 md:p-6 bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl rounded-xl sm:rounded-2xl border border-white/20 dark:border-gray-800/30 overflow-hidden"
         style={{
           transform: 'translateZ(0)',
           willChange: 'transform',
         }}
         animate={{
-          boxShadow: isHovered 
+          boxShadow: !isMobile && isHovered 
             ? `0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.1)`
             : `0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.05)`
         }}
@@ -114,49 +115,31 @@ const PremiumWorkflowCard = ({ step, index, isInView, theme }: any) => {
           }}
         />
         
-        {/* Floating particles on hover */}
-        <motion.div
-          className="absolute inset-0 pointer-events-none"
-          initial={false}
-          animate={isHovered ? {
-            background: [
-              'radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.1) 0%, transparent 50%)',
-              'radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.1) 0%, transparent 50%)',
-              'radial-gradient(circle at 40% 80%, rgba(236, 72, 153, 0.1) 0%, transparent 50%)',
-            ]
-          } : {}}
-          transition={{
-            duration: 3,
-            repeat: Infinity,
-            repeatType: 'reverse'
-          }}
-        />
-        
-        <div className="flex items-start gap-3 sm:gap-4 lg:gap-6 relative z-10">
+        <div className="flex items-start gap-3 sm:gap-4 relative z-10">
           {/* 3D Animated Icon */}
           <motion.div 
-            className={`shrink-0 w-16 h-16 rounded-2xl flex items-center justify-center text-white ${shadow} transition-all duration-500`}
+            className={`shrink-0 w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl flex items-center justify-center text-white ${shadow} transition-all duration-500`}
             style={{
               background: `linear-gradient(135deg, ${iconConfig.gradient.includes('amber') ? '#f59e0b, #ea580c' : iconConfig.gradient.includes('purple') ? '#a855f7, #ec4899' : iconConfig.gradient.includes('blue') ? '#3b82f6, #06b6d4' : '#10b981, #14b8a6'})`,
               transform: 'translateZ(20px)',
             }}
             animate={{
-              rotateY: isHovered ? [0, 360] : 0,
-              scale: isHovered ? 1.1 : 1,
+              rotateY: !isMobile && isHovered ? [0, 360] : 0,
+              scale: !isMobile && isHovered ? 1.1 : 1,
             }}
             transition={{
               rotateY: { duration: 1, ease: 'easeInOut' },
               scale: { duration: CINEMATIC_CONFIG.duration.fast }
             }}
           >
-            <Icon size={28} strokeWidth={1.5} />
+            <Icon size={20} strokeWidth={1.5} />
           </motion.div>
           
           {/* Content */}
           <div className="flex-1" style={{ transform: 'translateZ(10px)' }}>
-            <motion.div className="flex items-center gap-3 mb-3">
+            <motion.div className="flex items-center gap-2 mb-2">
               <motion.h3 
-                className="text-lg sm:text-xl lg:text-2xl font-bold"
+                className="text-base sm:text-lg md:text-xl font-bold leading-tight"
                 style={{
                   backgroundImage: theme === 'dark' 
                     ? 'linear-gradient(to right, #ffffff, #d1d5db)' 
@@ -166,29 +149,18 @@ const PremiumWorkflowCard = ({ step, index, isInView, theme }: any) => {
                   color: 'transparent'
                 }}
                 animate={{
-                  x: isHovered ? 8 : 0
+                  x: !isMobile && isHovered ? 8 : 0
                 }}
                 transition={{ duration: CINEMATIC_CONFIG.duration.fast }}
               >
                 {step.title}
               </motion.h3>
-              
-              {/* Animated arrow */}
-              <motion.div
-                animate={{
-                  x: isHovered ? 5 : 0,
-                  opacity: isHovered ? 1 : 0.6
-                }}
-                transition={{ duration: CINEMATIC_CONFIG.duration.fast }}
-              >
-                <ArrowRight size={20} className="text-blue-500" />
-              </motion.div>
             </motion.div>
             
             <motion.p 
-              className="text-gray-600 dark:text-gray-400 leading-relaxed"
+              className="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed"
               animate={{
-                x: isHovered ? 4 : 0
+                x: !isMobile && isHovered ? 4 : 0
               }}
               transition={{ 
                 duration: CINEMATIC_CONFIG.duration.fast,
@@ -200,14 +172,14 @@ const PremiumWorkflowCard = ({ step, index, isInView, theme }: any) => {
             
             {/* Step number indicator */}
             <motion.div
-              className="absolute -top-3 -right-3 w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-bold shadow-lg"
+              className="absolute -top-2 -right-2 w-6 h-6 sm:w-7 sm:h-7 rounded-full flex items-center justify-center text-white text-xs sm:text-sm font-bold shadow-sm"
               style={{
                 background: 'linear-gradient(135deg, #3b82f6, #8b5cf6)',
                 transform: 'translateZ(30px)'
               }}
               animate={{
-                scale: isHovered ? 1.2 : 1,
-                rotate: isHovered ? 360 : 0
+                scale: !isMobile && isHovered ? 1.2 : 1,
+                rotate: !isMobile && isHovered ? 360 : 0
               }}
               transition={{
                 scale: { duration: CINEMATIC_CONFIG.duration.fast },
@@ -221,12 +193,12 @@ const PremiumWorkflowCard = ({ step, index, isInView, theme }: any) => {
         
         {/* Progress indicator */}
         <motion.div
-          className="absolute bottom-0 left-0 h-1 rounded-full"
+          className="absolute bottom-0 left-0 h-0.5 rounded-full"
           style={{
             background: 'linear-gradient(to right, #3b82f6, #8b5cf6)'
           }}
           initial={{ width: '0%' }}
-          animate={{ width: isHovered ? '100%' : '0%' }}
+          animate={{ width: !isMobile && isHovered ? '100%' : '0%' }}
           transition={{ duration: 0.6, ease: 'easeInOut' }}
         />
       </motion.div>
@@ -234,45 +206,48 @@ const PremiumWorkflowCard = ({ step, index, isInView, theme }: any) => {
   );
 };
 
-// Премиум компонент кинематографического визуала
+// Премиум компонент кинематографического визуала - mobile optimized
 const CinematicWorkflowVisual = ({ theme, isInView, workflowData }: any) => {
   const visualRef = useRef<HTMLDivElement>(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   
-  // Scroll parallax эффекты
+  // Check if mobile device
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+  
+  // Scroll parallax эффекты - simplified for mobile
   const { scrollYProgress } = useScroll({
     target: visualRef,
     offset: ["start end", "end start"]
   });
   
-  const y1 = useTransform(scrollYProgress, [0, 1], [0, -100]);
-  const y2 = useTransform(scrollYProgress, [0, 1], [0, 100]);
-  const rotate = useTransform(scrollYProgress, [0, 1], [0, 360]);
-  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.8, 1, 0.8]);
+  const y1 = useTransform(scrollYProgress, [0, 1], [0, isMobile ? -50 : -100]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [0, isMobile ? 50 : 100]);
+  const rotate = useTransform(scrollYProgress, [0, 1], [0, isMobile ? 180 : 360]);
+  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [isMobile ? 0.9 : 0.8, 1, isMobile ? 0.9 : 0.8]);
   
-  // Mouse tracking для параллакса
+  // Mouse tracking для параллакса - disabled on mobile
   const handleMouseMove = useCallback((e: React.MouseEvent) => {
-    if (!visualRef.current) return;
+    if (!visualRef.current || isMobile) return;
     const rect = visualRef.current.getBoundingClientRect();
     const x = ((e.clientX - rect.left) / rect.width - 0.5) * 100;
     const y = ((e.clientY - rect.top) / rect.height - 0.5) * 100;
     setMousePosition({ x, y });
-  }, []);
+  }, [isMobile]);
   
   return (
     <motion.div
       ref={visualRef}
-      className="relative h-[300px] sm:h-[400px] lg:h-[600px] rounded-2xl lg:rounded-3xl overflow-hidden"
+      className="relative h-[250px] sm:h-[350px] md:h-[450px] lg:h-[600px] rounded-xl sm:rounded-2xl md:rounded-3xl overflow-hidden"
       style={{ scale }}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={() => setMousePosition({ x: 0, y: 0 })}
+      onMouseMove={!isMobile ? handleMouseMove : undefined}
+      onMouseLeave={!isMobile ? () => setMousePosition({ x: 0, y: 0 }) : undefined}
     >
       {/* Main background image */}
       <motion.div
         className="absolute inset-0"
         style={{
           y: y1,
-          x: mousePosition.x * 0.1,
+          x: isMobile ? 0 : mousePosition.x * 0.1,
         }}
       >
         <Image
@@ -300,25 +275,25 @@ const CinematicWorkflowVisual = ({ theme, isInView, workflowData }: any) => {
         />
       </motion.div>
       
-      {/* Floating geometric shapes */}
-      {[...Array(6)].map((_, i) => (
+      {/* Floating geometric shapes - reduced count on mobile */}
+      {[...Array(isMobile ? 4 : 6)].map((_, i) => (
         <motion.div
           key={`shape-${i}`}
-          className="absolute w-4 h-4 rounded-full opacity-60"
+          className="absolute w-3 h-3 rounded-full opacity-50"
           style={{
             background: 'linear-gradient(135deg, #60a5fa, #a78bfa)',
-            left: `${20 + i * 15}%`,
-            top: `${30 + (i % 2) * 40}%`,
+            left: `${20 + i * (isMobile ? 20 : 15)}%`,
+            top: `${30 + (i % 2) * (isMobile ? 35 : 40)}%`,
             y: i % 2 === 0 ? y1 : y2,
-            x: mousePosition.x * (0.05 + i * 0.01),
+            x: isMobile ? 0 : mousePosition.x * (0.05 + i * 0.01),
             rotate: rotate,
           }}
           animate={{
-            scale: [1, 1.5],
-            opacity: [0.6, 1],
+            scale: [1, 1.3],
+            opacity: [0.5, 0.8],
           }}
           transition={{
-            duration: 3 + i * 0.5,
+            duration: isMobile ? 2 : 3 + i * 0.5,
             repeat: Infinity,
             repeatType: "reverse",
             delay: i * 0.2,
@@ -343,7 +318,7 @@ const CinematicWorkflowVisual = ({ theme, isInView, workflowData }: any) => {
           </linearGradient>
           
           <filter id="glow">
-            <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+            <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
             <feMerge> 
               <feMergeNode in="coloredBlur"/>
               <feMergeNode in="SourceGraphic"/>
@@ -351,17 +326,17 @@ const CinematicWorkflowVisual = ({ theme, isInView, workflowData }: any) => {
           </filter>
         </defs>
         
-        {/* Main timeline with glow */}
+        {/* Main timeline with glow - simplified on mobile */}
         <motion.path
-          d="M 15 50 Q 35 30 50 50 T 85 50"
+          d={isMobile ? "M 20 50 Q 40 35 50 50 T 80 50" : "M 15 50 Q 35 30 50 50 T 85 50"}
           stroke="url(#premiumTimeline)"
-          strokeWidth="0.5"
+          strokeWidth={isMobile ? "0.3" : "0.5"}
           fill="none"
           filter="url(#glow)"
           initial={{ pathLength: 0, opacity: 0 }}
           animate={isInView ? { pathLength: 1, opacity: 1 } : {}}
           transition={{
-            duration: 2,
+            duration: isMobile ? 1.5 : 2,
             delay: 0.5,
             ease: "easeInOut"
           }}
@@ -371,9 +346,9 @@ const CinematicWorkflowVisual = ({ theme, isInView, workflowData }: any) => {
         {workflowData.steps?.map((step: any, index: number) => (
           <motion.g key={`timeline-node-${index}`}>
             <motion.circle
-              cx={15 + index * 23.3}
+              cx={isMobile ? 20 + index * 20 : 15 + index * 23.3}
               cy="50"
-              r="1.5"
+              r={isMobile ? "1" : "1.5"}
               fill="url(#premiumTimeline)"
               filter="url(#glow)"
               initial={{ scale: 0, opacity: 0 }}
@@ -390,41 +365,47 @@ const CinematicWorkflowVisual = ({ theme, isInView, workflowData }: any) => {
                 damping: 15
               }}
             />
-            
-            {/* Pulsing rings */}
-            <motion.circle
-              cx={15 + index * 23.3}
-              cy="50"
-              r="3"
-              fill="none"
-              stroke="url(#premiumTimeline)"
-              strokeWidth="0.2"
-              opacity="0.5"
-              animate={isInView ? {
-                r: [3, 6, 3],
-                opacity: [0.5, 0, 0.5]
-              } : {}}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                delay: 1.5 + index * 0.3,
-              }}
-            />
           </motion.g>
         ))}
       </svg>
       
-      {/* Premium Dialog Messages */}
+      {/* Premium Dialog Messages - mobile optimized */}
       {workflowData.steps?.map((step: any, index: number) => {
         const dialogDelay = 2 + index * 0.3;
-        const clientDialog = step.description?.split('.')[0] + '?' || `Этап ${step.step}`;
-        const qaspilabDialog = step.title || 'Готово!';
+        // Shorter dialog texts for better fit
+        const clientDialogs = [
+          "Need idea?", 
+          "Want design?", 
+          "Ready to build?", 
+          "Time to launch?"
+        ];
+        const qaspilabDialogs = [
+          "Let's research!", 
+          "Creating UI!", 
+          "Building now!", 
+          "Going live!"
+        ];
+        const clientDialog = clientDialogs[index] || `Step ${step.step}`;
+        const qaspilabDialog = qaspilabDialogs[index] || 'Done!';
+        
+        // Improved positioning to stay within bounds
+        const maxLeft = isMobile ? 70 : 75; // Prevent overflow
+        const clientTop = isMobile ? (index % 2 === 0 ? '15%' : '70%') : (index % 2 === 0 ? '20%' : '75%');
+        const qaspilabTop = isMobile ? (index % 2 === 0 ? '60%' : '30%') : (index % 2 === 0 ? '65%' : '25%');
+        const clientLeft = `${Math.min(10 + index * (isMobile ? 18 : 15), maxLeft)}%`;
+        const qaspilabLeft = `${Math.min(15 + index * (isMobile ? 18 : 15), maxLeft)}%`;
+        
+        // Compact sizes to fit better
+        const clientMaxWidth = isMobile ? 'max-w-16' : 'max-w-20';
+        const qaspilabMaxWidth = isMobile ? 'max-w-16' : 'max-w-20';
+        const fontSize = 'text-xs';
+        const padding = isMobile ? 'px-1.5 py-1' : 'px-2 py-1.5';
         
         return (
           <div key={`premium-dialog-${index}`}>
             {/* Premium Client Dialog */}
             <motion.div
-              className="absolute backdrop-blur-xl rounded-xl lg:rounded-2xl px-2 py-1 sm:px-3 sm:py-2 lg:px-4 lg:py-3 shadow-2xl max-w-[100px] sm:max-w-[120px] lg:max-w-[140px] z-20"
+              className={`absolute backdrop-blur-lg rounded-lg ${padding} shadow-xl ${clientMaxWidth} z-20`}
               style={{
                 background: theme === 'dark' 
                   ? 'rgba(30, 41, 59, 0.95)' 
@@ -432,13 +413,13 @@ const CinematicWorkflowVisual = ({ theme, isInView, workflowData }: any) => {
                 border: `1px solid ${theme === 'dark' 
                   ? 'rgba(71, 85, 105, 0.3)' 
                   : 'rgba(226, 232, 240, 0.5)'}`,
-                left: `${15 + index * 20}%`,
-                top: index % 2 === 0 ? '15%' : '70%',
+                left: clientLeft,
+                top: clientTop,
                 boxShadow: theme === 'dark'
-                  ? '0 25px 50px -12px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.05)'
-                  : '0 25px 50px -12px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.1)'
+                  ? '0 15px 30px -10px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.05)'
+                  : '0 15px 30px -10px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.1)'
               }}
-              initial={{ opacity: 0, y: 30, scale: 0.8, rotateX: 15 }}
+              initial={{ opacity: 0, y: 20, scale: 0.8, rotateX: 15 }}
               animate={isInView ? { 
                 opacity: 1, 
                 y: 0, 
@@ -446,53 +427,49 @@ const CinematicWorkflowVisual = ({ theme, isInView, workflowData }: any) => {
                 rotateX: 0 
               } : {}}
               transition={{
-                duration: 0.8,
+                duration: 0.6,
                 delay: dialogDelay,
                 ease: "easeOut"
               }}
-              whileHover={{
-                scale: 1.05,
-                y: -5,
-                rotateX: -5,
-                transition: { duration: 0.2 }
-              }}
             >
-              <p className={`text-sm font-medium ${theme === 'dark' ? 'text-gray-100' : 'text-gray-700'}`}>
+              <p className={`font-medium ${fontSize} ${theme === 'dark' ? 'text-gray-100' : 'text-gray-700'} leading-tight wrap-break-word overflow-hidden`}>
                 {clientDialog}
               </p>
-              {/* Premium dialog tail */}
-              <div 
-                className="absolute w-3 h-3 rotate-45"
-                style={{
-                  background: theme === 'dark' 
-                    ? 'rgba(30, 41, 59, 0.95)' 
-                    : 'rgba(255, 255, 255, 0.95)',
-                  borderTop: 'none',
-                  borderLeft: 'none',
-                  borderRight: `1px solid ${theme === 'dark' 
-                    ? 'rgba(71, 85, 105, 0.3)' 
-                    : 'rgba(226, 232, 240, 0.5)'}`,
-                  borderBottom: `1px solid ${theme === 'dark' 
-                    ? 'rgba(71, 85, 105, 0.3)' 
-                    : 'rgba(226, 232, 240, 0.5)'}`,
-                  bottom: index % 2 === 0 ? '-6px' : 'auto',
-                  top: index % 2 === 0 ? 'auto' : '-6px',
-                  left: '24px'
-                }}
-              />
+              {/* Premium dialog tail - mobile optimized */}
+              {!isMobile && (
+                <div 
+                  className="absolute w-2 h-2 sm:w-3 sm:h-3 rotate-45"
+                  style={{
+                    background: theme === 'dark' 
+                      ? 'rgba(30, 41, 59, 0.95)' 
+                      : 'rgba(255, 255, 255, 0.95)',
+                    borderTop: 'none',
+                    borderLeft: 'none',
+                    borderRight: `1px solid ${theme === 'dark' 
+                      ? 'rgba(71, 85, 105, 0.3)' 
+                      : 'rgba(226, 232, 240, 0.5)'}`,
+                    borderBottom: `1px solid ${theme === 'dark' 
+                      ? 'rgba(71, 85, 105, 0.3)' 
+                      : 'rgba(226, 232, 240, 0.5)'}`,
+                    bottom: index % 2 === 0 ? '-4px' : 'auto',
+                    top: index % 2 === 0 ? 'auto' : '-4px',
+                    left: '16px'
+                  }}
+                />
+              )}
             </motion.div>
 
             {/* Premium Qaspilab Dialog */}
             <motion.div
-              className="absolute backdrop-blur-xl rounded-xl lg:rounded-2xl px-2 py-1 sm:px-3 sm:py-2 lg:px-4 lg:py-3 shadow-2xl max-w-[110px] sm:max-w-[130px] lg:max-w-[150px] z-20"
+              className={`absolute backdrop-blur-lg rounded-lg ${padding} shadow-xl ${qaspilabMaxWidth} z-20`}
               style={{
                 background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.95), rgba(139, 92, 246, 0.95))',
                 border: '1px solid rgba(255, 255, 255, 0.2)',
-                left: `${20 + index * 20}%`,
-                top: index % 2 === 0 ? '60%' : '20%',
-                boxShadow: '0 25px 50px -12px rgba(59, 130, 246, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1)'
+                left: qaspilabLeft,
+                top: qaspilabTop,
+                boxShadow: '0 15px 30px -10px rgba(59, 130, 246, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1)'
               }}
-              initial={{ opacity: 0, y: 30, scale: 0.8, rotateX: -15 }}
+              initial={{ opacity: 0, y: 20, scale: 0.8, rotateX: -15 }}
               animate={isInView ? { 
                 opacity: 1, 
                 y: 0, 
@@ -500,54 +477,50 @@ const CinematicWorkflowVisual = ({ theme, isInView, workflowData }: any) => {
                 rotateX: 0 
               } : {}}
               transition={{
-                duration: 0.8,
-                delay: dialogDelay + 0.3,
+                duration: 0.6,
+                delay: dialogDelay + 0.2,
                 ease: "easeOut"
               }}
-              whileHover={{
-                scale: 1.05,
-                y: -5,
-                rotateX: 5,
-                transition: { duration: 0.2 }
-              }}
             >
-              <p className="text-sm text-white font-semibold">
+              <p className={`${fontSize} text-white font-semibold leading-tight wrap-break-word overflow-hidden`}>
                 {qaspilabDialog}
               </p>
-              {/* Premium dialog tail */}
-              <div 
-                className="absolute w-3 h-3 rotate-45"
-                style={{
-                  background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.95), rgba(139, 92, 246, 0.95))',
-                  borderTop: 'none',
-                  borderLeft: 'none',
-                  borderRight: '1px solid rgba(255, 255, 255, 0.2)',
-                  borderBottom: '1px solid rgba(255, 255, 255, 0.2)',
-                  bottom: index % 2 === 0 ? 'auto' : '-6px',
-                  top: index % 2 === 0 ? '-6px' : 'auto',
-                  right: '24px'
-                }}
-              />
+              {/* Premium dialog tail - mobile optimized */}
+              {!isMobile && (
+                <div 
+                  className="absolute w-2 h-2 sm:w-3 sm:h-3 rotate-45"
+                  style={{
+                    background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.95), rgba(139, 92, 246, 0.95))',
+                    borderTop: 'none',
+                    borderLeft: 'none',
+                    borderRight: '1px solid rgba(255, 255, 255, 0.2)',
+                    borderBottom: '1px solid rgba(255, 255, 255, 0.2)',
+                    bottom: index % 2 === 0 ? 'auto' : '-4px',
+                    top: index % 2 === 0 ? '-4px' : 'auto',
+                    right: '16px'
+                  }}
+                />
+              )}
             </motion.div>
           </div>
         );
       })}
       
-      {/* Interactive sparkles */}
+      {/* Interactive sparkles - mobile optimized */}
       <motion.div
-        className="absolute top-4 right-4"
+        className="absolute top-3 right-3 sm:top-4 sm:right-4"
         animate={{
           rotate: [0, 360],
-          scale: [1, 1.2],
+          scale: [1, 1.1],
         }}
         transition={{
-          duration: 4,
+          duration: isMobile ? 3 : 4,
           repeat: Infinity,
           repeatType: "reverse",
           ease: 'easeInOut'
         }}
       >
-        <Sparkles className="w-6 h-6 text-yellow-400 opacity-80" />
+        <Sparkles className={`w-4 h-4 sm:w-6 sm:h-6 text-yellow-400 opacity-80`} />
       </motion.div>
     </motion.div>
   );
@@ -562,9 +535,17 @@ export default function WorkflowSectionPremium() {
   // Состояние для предотвращения ошибок гидратации
   const [mounted, setMounted] = useState(false);
   const [isInView, setIsInView] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     setMounted(true);
+    // Detect mobile on mount
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
   useEffect(() => {
@@ -596,7 +577,28 @@ export default function WorkflowSectionPremium() {
   const workflowData = useMemo(() => {
     return {
       title: t.workflow?.title || "We create as we think. Simple. Transparent. Fast.",
-      steps: t.workflow?.steps || []
+      steps: t.workflow?.steps || [
+        {
+          step: "1",
+          title: "Idea & Research",
+          description: "We dive deep into your business needs and market opportunities."
+        },
+        {
+          step: "2", 
+          title: "Design & Prototype",
+          description: "Creating intuitive interfaces with user-centered design approach."
+        },
+        {
+          step: "3",
+          title: "Build & Test",
+          description: "Developing robust solutions with quality assurance at every step."
+        },
+        {
+          step: "4",
+          title: "Launch & Support",
+          description: "Deploying your product and providing ongoing maintenance."
+        }
+      ]
     };
   }, [t.workflow]);
 
@@ -621,7 +623,7 @@ export default function WorkflowSectionPremium() {
   return (
     <section 
       ref={sectionRef} 
-      className="relative min-h-screen py-16 sm:py-24 lg:py-32 overflow-hidden"
+      className="relative min-h-screen py-12 sm:py-16 md:py-24 lg:py-32 overflow-hidden"
       style={{
         ...premiumBackgroundStyles,
         willChange: 'transform',
@@ -652,11 +654,11 @@ export default function WorkflowSectionPremium() {
         <motion.div
           className="absolute inset-0 opacity-20"
           animate={{
-            x: [-30, 30],
-            y: [-30, 30],
+            x: [-20, 20],
+            y: [-20, 20],
           }}
           transition={{
-            duration: 20,
+            duration: 15,
             repeat: Infinity,
             ease: 'linear'
           }}
@@ -669,33 +671,24 @@ export default function WorkflowSectionPremium() {
 
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <motion.div 
-          className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-center"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-12 lg:gap-20 items-center"
           style={{ y: contentY }}
         >
           
-          {/* Premium Visual Block */}
-          <div className="relative order-2 lg:order-1 mb-8 lg:mb-0">
-            <CinematicWorkflowVisual 
-              theme={theme} 
-              isInView={isInView}
-              workflowData={workflowData}
-            />
-          </div>
-
           {/* Premium Content Block */}
           <div className="z-10 order-1 lg:order-2">
-            {/* Cinematic title */}
+            {/* Cinematic title - mobile optimized */}
             <motion.div
-              initial={{ opacity: 0, y: 60 }}
+              initial={{ opacity: 0, y: 40 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ 
-                duration: CINEMATIC_CONFIG.duration.slow,
+                duration: CINEMATIC_CONFIG.duration.medium,
                 delay: 0.2,
                 ease: "easeInOut"
               }}
             >
               <motion.h2 
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-4 lg:mb-6"
+                className={`font-black mb-3 sm:mb-4 ${isMobile ? 'text-2xl sm:text-3xl' : 'text-3xl sm:text-4xl md:text-5xl lg:text-6xl'} leading-tight`}
                 style={{
                   backgroundImage: theme === 'dark'
                     ? 'linear-gradient(135deg, #ffffff 0%, #e2e8f0 50%, #cbd5e1 100%)'
@@ -709,14 +702,14 @@ export default function WorkflowSectionPremium() {
                 {workflowData.title}
               </motion.h2>
               
-              {/* Premium subtitle */}
+              {/* Premium subtitle - mobile optimized */}
               <motion.p
-                className="text-lg sm:text-xl text-muted-foreground mb-8 lg:mb-16 max-w-lg"
-                initial={{ opacity: 0, y: 30 }}
+                className={`text-muted-foreground mb-6 sm:mb-8 ${isMobile ? 'text-sm sm:text-base' : 'text-lg sm:text-xl'} max-w-lg`}
+                initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ 
                   duration: CINEMATIC_CONFIG.duration.medium,
-                  delay: 0.4,
+                  delay: 0.3,
                   ease: "easeInOut"
                 }}
               >
@@ -725,7 +718,7 @@ export default function WorkflowSectionPremium() {
             </motion.div>
             
             {/* Premium Workflow Cards */}
-            <div className="space-y-4 lg:space-y-8">
+            <div className="space-y-3 sm:space-y-4 md:space-y-6">
               {workflowData.steps?.map((step: any, index: number) => (
                 <PremiumWorkflowCard
                   key={`premium-step-${index}`}
@@ -737,39 +730,38 @@ export default function WorkflowSectionPremium() {
               ))}
             </div>
 
-            {/* Call-to-action */}
+            {/* Call-to-action - mobile optimized */}
             <motion.div
-              className="mt-8 lg:mt-16"
-              initial={{ opacity: 0, y: 40 }}
+              className="mt-6 sm:mt-8 md:mt-12"
+              initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ 
                 duration: CINEMATIC_CONFIG.duration.medium,
-                delay: 0.8,
+                delay: 0.7,
                 ease: "easeInOut"
               }}
             >
               <motion.button
-                className="group relative px-8 py-4 rounded-2xl text-white font-semibold overflow-hidden"
+                className="group relative w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 rounded-xl sm:rounded-2xl text-white font-semibold overflow-hidden"
                 style={{
                   background: 'linear-gradient(to right, #2563eb, #7c3aed)'
                 }}
-                whileHover={{ 
-                  scale: 1.05,
+                whileHover={!isMobile ? { 
+                  scale: 1.03,
                   boxShadow: "0 25px 50px -12px rgba(59, 130, 246, 0.25)"
-                }}
-                whileTap={{ scale: 0.95 }}
+                } : {}}
+                whileTap={{ scale: 0.98 }}
               >
                 <a href="#contact">
-
-                <span className="relative z-10 flex items-center gap-2">
-                  {t.mission.startPremiumJourney}
-                  <motion.div
-                    animate={{ x: [0, 5, 0] }}
-                    transition={{ duration: 1.5, repeat: Infinity }}
-                  >
-                    <Zap size={20} />
-                  </motion.div>
-                </span>
+                  <span className="relative z-10 flex items-center justify-center sm:justify-start gap-2">
+                    {t.mission?.startPremiumJourney || "Start Premium Journey"}
+                    <motion.div
+                      animate={{ x: [0, 4, 0] }}
+                      transition={{ duration: 1.5, repeat: Infinity }}
+                    >
+                      <Zap size={isMobile ? 16 : 20} />
+                    </motion.div>
+                  </span>
                 </a>
                 
                 {/* Animated background */}
@@ -779,29 +771,24 @@ export default function WorkflowSectionPremium() {
                     background: 'linear-gradient(to right, #7c3aed, #ec4899)'
                   }}
                   initial={{ x: '-100%' }}
-                  whileHover={{ x: '0%' }}
+                  whileHover={!isMobile ? { x: '0%' } : { x: '-100%' }}
                   transition={{ duration: 0.3 }}
                 />
               </motion.button>
             </motion.div>
           </div>
 
+          {/* Premium Visual Block - mobile order adjustment */}
+          <div className="relative order-2 lg:order-1 mb-8 lg:mb-0">
+            <CinematicWorkflowVisual 
+              theme={theme} 
+              isInView={isInView}
+              workflowData={workflowData}
+            />
+          </div>
+
         </motion.div>
       </div>
-
-      {/* Floating action indicators */}
-      <motion.div
-        className="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 z-50 hidden sm:block"
-        animate={{
-          y: [0, -10, 0],
-        }}
-        transition={{
-          duration: 2,
-          repeat: Infinity,
-          ease: 'easeInOut'
-        }}
-      >
-      </motion.div>
     </section>
   );
 }
