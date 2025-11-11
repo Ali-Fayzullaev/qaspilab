@@ -133,7 +133,7 @@ export default function GlobalReachSectionPremium() {
             </h3>
             
             <p className="text-lg mb-8 text-slate-300 dark:text-slate-300" suppressHydrationWarning>
-              Connected with clients and partners across continents, delivering excellence from Kazakhstan to the world.
+              {t.globalReach.globalConnectionDescription || 'Связь с экспертами по всему миру для реализации вашей идеи.'}
             </p>
           <a href="#contact">
 

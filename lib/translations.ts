@@ -148,12 +148,13 @@ export const translations = {
         {
           title: "24/7 Support",
           description:
-            "Round-the-clock support to keep your systems running smoothly",
+          "Round-the-clock support to keep your systems running smoothly",
         },
       ],
     },
     globalReach: {
       title: "Global Reach, Local Expertise",
+      globalConnectionDescription: "Connect with experts worldwide to bring your idea to life.",
       subtitle: "Serving Clients Worldwide",
       description:
         "From our base in Almaty, Kazakhstan, we've successfully delivered projects for clients across continents, bringing world-class technology solutions to businesses of all sizes.",
@@ -201,7 +202,6 @@ export const translations = {
         { value: "1000000+", label: "Over 1,000,000 ₸" },
         { value: "discuss", label: "Discussed individually" },
       ],
-
       submitLoading: "🚀 Sending your idea...",
       submitError: "An error occurred while sending. Please try again.",
       successTitle: "🎉 Great!",
@@ -372,6 +372,7 @@ export const translations = {
     globalReach: {
       title: "Глобальный охват, местная экспертиза",
       subtitle: "Обслуживаем клиентов по всему миру",
+      globalConnectionDescription: "Связь с экспертами по всему миру для реализации вашей идеи.",
       description:
         "Из нашего офиса в Алматы, Казахстан, мы успешно реализовали проекты для клиентов на разных континентах, предоставляя технологические решения мирового класса компаниям любого размера.",
       stats: {
@@ -418,7 +419,6 @@ export const translations = {
         { value: "1000000+", label: "Свыше 1,000,000 ₸" },
         { value: "discuss", label: "Обсуждается индивидуально" },
       ],
-
       submitLoading: "🚀 Отправляем вашу идею...",
       submitError:
         "Произошла ошибка при отправке. Пожалуйста, попробуйте еще раз.",
@@ -590,6 +590,7 @@ export const translations = {
       ],
     },
     globalReach: {
+      globalConnectionDescription: "Идеяңызды жүзеге асыру үшін әлем бойынша сарапшылармен байланысыңыз.",
       title: "Жаһандық қол жетімділік, жергілікті сараптама",
       subtitle: "Бүкіл әлемдегі клиенттерге қызмет көрсету",
       description:
@@ -640,7 +641,6 @@ export const translations = {
         { value: "1000000+", label: "1,000,000 ₸ астам" },
         { value: "discuss", label: "Жеке талқыланады" },
       ],
-
       submitLoading: "🚀 Идеяңыз жіберілуде...",
       submitError: "Жіберу кезінде қате пайда болды. Қайталап көріңіз.",
       successTitle: "🎉 Керемет!",

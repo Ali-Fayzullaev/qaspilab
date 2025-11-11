@@ -2,6 +2,7 @@
 
 import { createContext, useContext, useState, useEffect } from 'react';
 import { translations, type Locale, type Translation } from './translations';
+import { safeLocalStorage, isClientSide } from './storage';
 
 interface LanguageContextType {
   locale: Locale;
@@ -16,17 +17,20 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [locale, setLocale] = useState<Locale>('ru');
 
   useEffect(() => {
-    // МАКСИМАЛЬНО ПРОСТАЯ логика
-    const saved = localStorage.getItem('locale') as Locale;
+    // Проверяем, что мы на клиенте (где доступен localStorage)
+    if (!isClientSide()) return;
+    
+    // МАКСИМАЛЬНО ПРОСТАЯ логика с безопасным localStorage
+    const saved = safeLocalStorage.getItem('locale') as Locale;
     
     if (saved && translations[saved]) {
       // Есть сохранённый язык - используем его
       setLocale(saved);
-      console.log('� Loaded saved locale:', saved);
+      console.log('📱 Loaded saved locale:', saved);
     } else {
       // Нет сохранённого языка - устанавливаем русский
       setLocale('ru');
-      localStorage.setItem('locale', 'ru');
+      safeLocalStorage.setItem('locale', 'ru');
       console.log('🇷🇺 Set default Russian locale');
     }
   }, []);
@@ -34,7 +38,9 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const handleSetLocale = (newLocale: Locale) => {
     console.log('🔄 Language switch:', locale, '→', newLocale);
     setLocale(newLocale);
-    localStorage.setItem('locale', newLocale);
+    
+    // Сохраняем с безопасным localStorage
+    safeLocalStorage.setItem('locale', newLocale);
   };
 
   const value = {
@@ -43,13 +49,13 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     setLocale: handleSetLocale,
   };
 
-  // Дебаг информация в development
-  if (process.env.NODE_ENV === 'development') {
+  // Дебаг информация в development (только на клиенте)
+  if (process.env.NODE_ENV === 'development' && isClientSide()) {
     console.log('🌍 LanguageProvider - Current locale:', locale);
     console.log('📚 Available translations:', Object.keys(translations));
     console.log('🔍 Settings version check passed');
-    console.log('💾 localStorage locale:', localStorage.getItem('locale'));
-    console.log('🌐 Browser language:', navigator.language);
+    console.log('💾 localStorage locale:', safeLocalStorage.getItem('locale'));
+    console.log('🌐 Browser language:', navigator?.language || 'unknown');
   }
 
   return (
