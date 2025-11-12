@@ -1,11 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from 'next/font/google';
-import { LanguageProvider } from '@/lib/language-context';
-import Header from '@/components/layout/header';
-import Footer from '@/components/layout/footer';
 import "./globals.css";
-import { ThemeProvider } from "@/components/theme-provider";
-import ClientLayout from '@/app/client-layout';
 
 const inter = Inter({ 
   subsets: ['latin', 'cyrillic'],
