@@ -58,7 +58,7 @@ export default function Footer() {
       <footer className="border-t bg-background/95 backdrop-blur py-8">
         <div className="container mx-auto px-4">
           <div className="text-center text-sm text-muted-foreground">
-            © 2024 Qaspilab. All rights reserved.
+            © 2025 Qaspilab. All rights reserved.
           </div>
         </div>
       </footer>

@@ -15,8 +15,8 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "Создание сайтов и веб-приложений | Qaspilab - IT Лаборатория Казахстан",
-  description: "Разработка сайтов, мобильных приложений и IT-решений в Алматы. Полный цикл создания цифровых продуктов от идеи до запуска. Заказать сайт недорого.",
-  keywords: "создание сайтов, разработка сайтов, веб-разработка, мобильные приложения, IT услуги, Алматы, Казахстан, заказать сайт, разработка под ключ, веб-дизайн",
+  description: "Разработка сайтов, мобильных приложений и IT-решений в Астане и по всему Казахстану. Полный цикл создания цифровых продуктов от идеи до запуска. Заказать сайт недорого.",
+  keywords: "создание сайтов, разработка сайтов, веб-разработка, мобильные приложения, IT услуги, Астана, Алматы, Караганда, Шымкент, Казахстан, заказать сайт, разработка под ключ, веб-дизайн",
   authors: [{ name: "Qaspilab Team" }],
   creator: "Qaspilab Innovation Laboratory",
   publisher: "Qaspilab",
@@ -78,9 +78,9 @@ export default function RootLayout({
         <meta name="google-site-verification" content="GXcy-fPu9QDGdvjz7TreRFt2PgmTASsHFQQX3cUxcIs" />
         <link rel="canonical" href="https://qaspilab.com" />
         <meta name="geo.region" content="KZ" />
-        <meta name="geo.placename" content="Алматы" />
-        <meta name="geo.position" content="43.238949;76.889709" />
-        <meta name="ICBM" content="43.238949, 76.889709" />
+        <meta name="geo.placename" content="Астана" />
+        <meta name="geo.position" content="51.1694;71.4491" />
+        <meta name="ICBM" content="51.1694, 71.4491" />
         
         {/* Структурированные данные JSON-LD */}
         <script
@@ -91,24 +91,24 @@ export default function RootLayout({
               "@type": "LocalBusiness",
               "name": "Qaspilab",
               "alternateName": "Qaspilab Innovation Laboratory",
-              "description": "Разработка сайтов, мобильных приложений и IT-решений в Алматы. Полный цикл создания цифровых продуктов от идеи до запуска.",
+              "description": "Разработка сайтов, мобильных приложений и IT-решений в Астане и по всему Казахстану. Полный цикл создания цифровых продуктов от идеи до запуска.",
               "url": "https://qaspilab.com",
               "logo": "https://qaspilab.com/logo.png",
               "image": "https://qaspilab.com/og-image.jpg",
-              "telephone": "+7 (727) 123-4567",
+              "telephone": "+7 (717) 123-4567",
               "email": "hello@qaspilab.com",
               "address": {
                 "@type": "PostalAddress",
-                "streetAddress": "ул. Примерная, 123",
-                "addressLocality": "Алматы",
-                "addressRegion": "Алматинская область",
-                "postalCode": "050000",
+                "streetAddress": "ул. Кабанбай батыра, 53",
+                "addressLocality": "Астана",
+                "addressRegion": "Акмолинская область",
+                "postalCode": "010000",
                 "addressCountry": "KZ"
               },
               "geo": {
                 "@type": "GeoCoordinates",
-                "latitude": 43.238949,
-                "longitude": 76.889709
+                "latitude": 51.1694,
+                "longitude": 71.4491
               },
               "openingHoursSpecification": {
                 "@type": "OpeningHoursSpecification",
@@ -131,8 +131,24 @@ export default function RootLayout({
                   "name": "Kazakhstan"
                 },
                 {
-                  "@type": "Country", 
-                  "name": "Russia"
+                  "@type": "City",
+                  "name": "Астана"
+                },
+                {
+                  "@type": "City",
+                  "name": "Алматы"
+                },
+                {
+                  "@type": "City",
+                  "name": "Шымкент"
+                },
+                {
+                  "@type": "City",
+                  "name": "Актобе"
+                },
+                {
+                  "@type": "City",
+                  "name": "Караганда"
                 },
                 {
                   "@type": "AdministrativeArea",
@@ -266,24 +282,7 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.variable} font-sans antialiased`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <LanguageProvider>
-            <div className="min-h-screen flex flex-col">
-              <Header />
-              <main className="flex-1">
-                <ClientLayout>
-                  {children}
-                </ClientLayout>
-              </main>
-              <Footer />
-            </div>
-          </LanguageProvider>
-        </ThemeProvider>
+        {children}
       </body>
     </html>
   );
