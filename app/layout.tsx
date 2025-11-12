@@ -95,7 +95,7 @@ export default function RootLayout({
               "url": "https://qaspilab.com",
               "logo": "https://qaspilab.com/logo.png",
               "image": "https://qaspilab.com/og-image.jpg",
-              "telephone": "+7 (717) 123-4567",
+              "telephone": "+7 775 941 9359",
               "email": "hello@qaspilab.com",
               "address": {
                 "@type": "PostalAddress",
