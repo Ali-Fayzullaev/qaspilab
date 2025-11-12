@@ -524,60 +524,7 @@ useEffect(() => {
             <ThemeToggle />
           </motion.div>
 
-          <motion.div
-            className="flex items-center justify-between p-4 rounded-2xl"
-            style={{
-              background:
-                theme === "dark"
-                  ? "rgba(139,92,246,0.08)"
-                  : "rgba(139,92,246,0.05)",
-              border: `1px solid ${
-                theme === "dark"
-                  ? "rgba(139,92,246,0.15)"
-                  : "rgba(139,92,246,0.1)"
-              }`,
-            }}
-            initial={{ y: 50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.9, duration: 0.5 }}
-          >
-            {/* Мобильный стильный переключатель языков */}
-            <div className="space-y-3">
-              <p className="font-medium text-foreground">Язык / Language</p>
-              <div className="grid gap-2">
-                {locales.map((localeOption) => (
-                  <motion.button
-                    key={localeOption.code}
-                    onClick={() => {
-                      setLocale(localeOption.code);
-                      setMobileMenuOpen(false);
-                    }}
-                    className={`flex items-center gap-3 p-3 rounded-xl text-left transition-all duration-300 ${
-                      locale === localeOption.code
-                        ? "bg-primary text-primary-foreground shadow-lg"
-                        : "bg-background/50 text-foreground hover:bg-background/80"
-                    }`}
-                    whileHover={{ scale: 1.02, x: 4 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    <span className="text-xl">{localeOption.flag}</span>
-                    <div className="flex-1">
-                      <div className="font-medium">{localeOption.name}</div>
-                      <div className="text-sm opacity-70">{localeOption.code.toUpperCase()}</div>
-                    </div>
-                    {locale === localeOption.code && (
-                      <motion.div
-                        className="w-2 h-2 rounded-full bg-current"
-                        initial={{ scale: 0 }}
-                        animate={{ scale: 1 }}
-                        transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                      />
-                    )}
-                  </motion.button>
-                ))}
-              </div>
-            </div>
-          </motion.div>
+        
 
           {/* Декоративный элемент */}
           <motion.div
