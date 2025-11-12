@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <!-- Главная страница на русском (основная) -->
+  <url>
+    <loc>https://qaspilab.com/</loc>
+    <lastmod>2024-12-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://qaspilab.com/ru" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://qaspilab.com/en" />
+    <xhtml:link rel="alternate" hreflang="kk" href="https://qaspilab.com/kk" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://qaspilab.com/" />
+  </url>
+  
+  <!-- Русская версия -->
+  <url>
+    <loc>https://qaspilab.com/ru</loc>
+    <lastmod>2024-12-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://qaspilab.com/ru" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://qaspilab.com/en" />
+    <xhtml:link rel="alternate" hreflang="kk" href="https://qaspilab.com/kk" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://qaspilab.com/" />
+  </url>
+  
+  <!-- Английская версия -->
+  <url>
+    <loc>https://qaspilab.com/en</loc>
+    <lastmod>2024-12-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://qaspilab.com/ru" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://qaspilab.com/en" />
+    <xhtml:link rel="alternate" hreflang="kk" href="https://qaspilab.com/kk" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://qaspilab.com/" />
+  </url>
+  
+  <!-- Казахская версия -->
+  <url>
+    <loc>https://qaspilab.com/kk</loc>
+    <lastmod>2024-12-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://qaspilab.com/ru" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://qaspilab.com/en" />
+    <xhtml:link rel="alternate" hreflang="kk" href="https://qaspilab.com/kk" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://qaspilab.com/" />
+  </url>
+  
+  <!-- Разделы сайта на русском -->
+  <url>
+    <loc>https://qaspilab.com/ru#about</loc>
+    <lastmod>2024-12-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://qaspilab.com/ru#services</loc>
+    <lastmod>2024-12-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://qaspilab.com/ru#contact</loc>
+    <lastmod>2024-12-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Разделы сайта на английском -->
+  <url>
+    <loc>https://qaspilab.com/en#about</loc>
+    <lastmod>2024-12-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://qaspilab.com/en#services</loc>
+    <lastmod>2024-12-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://qaspilab.com/en#contact</loc>
+    <lastmod>2024-12-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <!-- Разделы сайта на казахском -->
+  <url>
+    <loc>https://qaspilab.com/kk#about</loc>
+    <lastmod>2024-12-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://qaspilab.com/kk#services</loc>
+    <lastmod>2024-12-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://qaspilab.com/kk#contact</loc>
+    <lastmod>2024-12-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+</urlset>

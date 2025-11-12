@@ -6,7 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "seo:check": "node scripts/seo-monitor.js --quick",
+    "seo:monitor": "node scripts/seo-monitor.js",
+    "seo:gsc": "python scripts/gsc-automation.py --quick",
+    "seo:full": "python scripts/gsc-automation.py"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.15",
