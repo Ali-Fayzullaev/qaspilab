@@ -6,67 +6,84 @@ import {
   useTransform,
   useSpring,
   useReducedMotion,
-  useMotionValue,
-  useMotionTemplate,
+  useInView,
   AnimatePresence
 } from 'framer-motion';
 import { useRef, useState, useEffect, useMemo, useCallback } from 'react';
-import { useLanguage } from '@/lib/language-context';
 import { useTheme } from 'next-themes';
 import Image from 'next/image';
-import { Zap, Handshake, Brain, Sparkles, Star, ArrowRight, Atom } from 'lucide-react';
+import { 
+  Zap, Handshake, Brain, Sparkles, Star, Atom, 
+  Droplets, Wifi, Lightbulb, Flame, Waves, 
+  ZapIcon, Cpu, Beaker, FlaskConical
+} from 'lucide-react';
+import { useLanguage } from '@/lib/language-context';
+
+// Define types
+interface Advantage {
+  title: string;
+  description: string;
+  icon?: any;
+  id?: number;
+}
+
+interface IconConfig {
+  Icon: any;
+  gradient: string;
+  glow: string;
+  color: string;
+}
 
 /**
  * PREMIUM WhyUsSection - Голливудские анимации в стиле кинематографа
- * 
- * 🎬 ГОЛЛИВУДСКИЕ ЭФФЕКТЫ:
- * - Unified premium background как в других секциях
- * - Cinematic card animations с 3D трансформациями
- * - Magnetic hover effects с физикой пружин
- * - Particle system с realistic physics
- * - Hollywood-level timing и choreography
- * - 60fps optimized performance
- * - Interactive laboratory environment
+ * с акцентом на параллель между лабораторией и процессом творчества
  */
-
-// Premium иконки с расширенным набором
-const PREMIUM_ADVANTAGE_ICONS = [
+const PREMIUM_ADVANTAGE_ICONS: IconConfig[] = [
   { Icon: Zap, gradient: 'from-yellow-400 to-orange-500', glow: 'shadow-yellow-500/30', color: '#f59e0b' },
   { Icon: Handshake, gradient: 'from-green-400 to-emerald-500', glow: 'shadow-emerald-500/30', color: '#10b981' },
   { Icon: Brain, gradient: 'from-purple-400 to-pink-500', glow: 'shadow-purple-500/30', color: '#8b5cf6' },
   { Icon: Sparkles, gradient: 'from-blue-400 to-cyan-500', glow: 'shadow-blue-500/30', color: '#3b82f6' },
 ] as const;
 
-// Голливудские параметры анимации
 const HOLLYWOOD_CONFIG = {
   spring: { stiffness: 120, damping: 25, restDelta: 0.001 },
-  ease: [0.25, 0.1, 0.25, 1] as const,
+  ease: "easeOut" as const,
   duration: { epic: 2.0, slow: 1.5, medium: 1.0, fast: 0.6, lightning: 0.3 },
   stagger: 0.2,
   magnetic: { strength: 25, damping: 0.8 },
   particles: { count: 12, velocity: 0.5 }
 };
 
-// Premium компонент карточки преимущества с голливудскими эффектами
-const HollywoodAdvantageCard = ({ advantage, index, isInView, theme }: any) => {
+const HollywoodAdvantageCard = ({ 
+  advantage, 
+  index, 
+  isInView, 
+  theme 
+}: { 
+  advantage: Advantage; 
+  index: number; 
+  isInView: boolean; 
+  theme: string | undefined;
+}) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   
-  // Magnetic hover эффект
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
+  const mouseX = useSpring(0, HOLLYWOOD_CONFIG.spring);
+  const mouseY = useSpring(0, HOLLYWOOD_CONFIG.spring);
   
   const rotateX = useTransform(mouseY, [-100, 100], [15, -15]);
   const rotateY = useTransform(mouseX, [-100, 100], [-15, 15]);
   
-  // Gradient следует за мышью
   const gradientX = useTransform(mouseX, [-100, 100], [0, 100]);
   const gradientY = useTransform(mouseY, [-100, 100], [0, 100]);
   
-  const backgroundGradient = useMotionTemplate`radial-gradient(circle at ${gradientX}% ${gradientY}%, rgba(59, 130, 246, 0.1) 0%, transparent 50%)`;
+  const backgroundGradient = useTransform(
+    [gradientX, gradientY], 
+    ([x, y]) => `radial-gradient(circle at ${x}% ${y}%, rgba(59, 130, 246, 0.1) 0%, transparent 50%)`
+  );
   
-  const handleMouseMove = useCallback((e: React.MouseEvent) => {
+  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
     if (!cardRef.current) return;
     const rect = cardRef.current.getBoundingClientRect();
     const centerX = rect.left + rect.width / 2;
@@ -127,7 +144,7 @@ const HollywoodAdvantageCard = ({ advantage, index, isInView, theme }: any) => {
       }}
     >
       <motion.div 
-        className="relative p-8 backdrop-blur-xl  rounded-3xl border border-white/30 dark:border-gray-800/40 overflow-hidden"
+        className="relative p-8 backdrop-blur-xl rounded-3xl border border-white/30 dark:border-gray-800/40 overflow-hidden"
         style={{
           background: backgroundGradient,
           transform: 'translateZ(0)',
@@ -137,15 +154,6 @@ const HollywoodAdvantageCard = ({ advantage, index, isInView, theme }: any) => {
             : `0 15px 35px -5px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.05)`
         }}
       >
-        {/* Hollywood background effects */}
-        <motion.div
-          className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-1000"
-          style={{
-            background: `conic-gradient(from 0deg at ${mousePosition.x}% ${mousePosition.y}%, ${color}, transparent, ${color})`
-          }}
-        />
-        
-        {/* Particle burst on hover */}
         <AnimatePresence>
           {isHovered && (
             <motion.div className="absolute inset-0 pointer-events-none">
@@ -177,7 +185,6 @@ const HollywoodAdvantageCard = ({ advantage, index, isInView, theme }: any) => {
         </AnimatePresence>
         
         <div className="flex items-start gap-6 relative z-10">
-          {/* 3D Premium Icon */}
           <motion.div 
             className={`shrink-0 w-20 h-20 rounded-3xl flex items-center justify-center text-white relative`}
             style={{
@@ -195,8 +202,6 @@ const HollywoodAdvantageCard = ({ advantage, index, isInView, theme }: any) => {
             }}
           >
             <Icon size={32} strokeWidth={2} />
-            
-            {/* Orbital rings */}
             <motion.div
               className="absolute inset-0 rounded-3xl"
               style={{border: '2px solid rgba(255, 255, 255, 0.2)'}}
@@ -212,7 +217,6 @@ const HollywoodAdvantageCard = ({ advantage, index, isInView, theme }: any) => {
             />
           </motion.div>
           
-          {/* Content with premium typography */}
           <div className="flex-1" style={{ transform: 'translateZ(20px)' }}>
             <motion.div className="flex items-center gap-3 mb-4">
               <motion.h3 
@@ -236,7 +240,6 @@ const HollywoodAdvantageCard = ({ advantage, index, isInView, theme }: any) => {
                 {advantage.title}
               </motion.h3>
               
-              {/* Premium status indicator */}
               <motion.div
                 animate={{
                   scale: isHovered ? 1.3 : 1,
@@ -263,7 +266,6 @@ const HollywoodAdvantageCard = ({ advantage, index, isInView, theme }: any) => {
           </div>
         </div>
         
-        {/* Premium progress indicator */}
         <motion.div
           className="absolute bottom-0 left-0 h-2 rounded-b-3xl"
           style={{
@@ -274,7 +276,6 @@ const HollywoodAdvantageCard = ({ advantage, index, isInView, theme }: any) => {
           transition={{ duration: 0.8, ease: 'easeInOut' }}
         />
         
-        {/* Corner accent */}
         <motion.div
           className="absolute top-4 right-4 w-3 h-3 rounded-full"
           style={{ background: color }}
@@ -294,58 +295,30 @@ const HollywoodAdvantageCard = ({ advantage, index, isInView, theme }: any) => {
   );
 };
 
-// Hollywood лабораторные эффекты
-const HollywoodLabEffects = ({ theme, isInView, scrollProgress }: any) => {
-  const shouldReduceMotion = useReducedMotion();
-  
-  if (shouldReduceMotion) return null;
-
+// Creative lab effects with living elements
+const CreativeLabEffects = ({ 
+  theme, 
+  isInView 
+}: { 
+  theme: string | undefined; 
+  isInView: boolean; 
+}) => {
   return (
     <div className="absolute inset-0 pointer-events-none">
-      {/* DNA Helix Animation */}
-      <motion.div
-        className="absolute top-1/2 left-1/4 transform -translate-y-1/2"
-        initial={{ opacity: 0, scale: 0 }}
-        animate={isInView ? { opacity: 1, scale: 1 } : {}}
-        transition={{ duration: 2, delay: 1 }}
-      >
-        {[...Array(8)].map((_, i) => (
-          <motion.div
-            key={`helix-${i}`}
-            className="absolute w-2 h-2 rounded-full"
-            style={{
-              background: `hsl(${200 + i * 20}, 70%, 60%)`,
-              left: Math.cos(i * 0.5) * 30,
-              top: i * 15,
-            }}
-            animate={{
-              rotateZ: [0, 360],
-              scale: [1, 1.3],
-            }}
-            transition={{
-              duration: 8,
-              repeatType: "reverse",
-              repeat: Infinity,
-              delay: i * 0.2
-            }}
-          />
-        ))}
-      </motion.div>
-
-      {/* Quantum particles */}
-      {[...Array(15)].map((_, i) => (
+      {/* Living Light Elements - Floating orbs */}
+      {[...Array(12)].map((_, i) => (
         <motion.div
-          key={`quantum-${i}`}
-          className="absolute w-1 h-1 rounded-full bg-blue-400"
+          key={`light-${i}`}
+          className="absolute w-1.5 h-1.5 rounded-full opacity-70"
           style={{
-            left: `${20 + Math.random() * 60}%`,
-            top: `${20 + Math.random() * 60}%`,
+            background: theme === 'dark' ? 'rgba(96, 165, 250, 0.9)' : 'rgba(59, 130, 246, 0.7)',
+            left: `${15 + Math.random() * 70}%`,
+            top: `${10 + Math.random() * 80}%`,
           }}
           animate={{
-            scale: [0, 1],
-            opacity: [0, 1],
-            x: Math.sin(i) * 50,
-            y: Math.cos(i) * 50,
+            y: [0, -25, 0],
+            opacity: [0.3, 0.9, 0.3],
+            scale: [0.8, 1.3, 0.8]
           }}
           transition={{
             duration: 4 + Math.random() * 3,
@@ -355,59 +328,114 @@ const HollywoodLabEffects = ({ theme, isInView, scrollProgress }: any) => {
         />
       ))}
 
-      {/* Central reactor core */}
-      <motion.div
-        className="absolute top-1/2 right-1/4 transform -translate-y-1/2"
-        initial={{ scale: 0, opacity: 0 }}
-        animate={isInView ? { scale: 1, opacity: 1 } : {}}
-        transition={{ duration: 1.5, delay: 2 }}
-      >
+      {/* Creative Data Streams - Flowing lines */}
+      {[...Array(6)].map((_, i) => (
         <motion.div
-          className="relative w-24 h-24"
+          key={`data-${i}`}
+          className="absolute h-0.5 rounded-full"
+          style={{
+            background: `linear-gradient(90deg, transparent, ${theme === 'dark' ? '#60a5fa' : '#2563eb'}, transparent)`,
+            width: `${80 + Math.random() * 40}px`,
+            top: `${25 + i * 12}%`,
+            left: '-120px'
+          }}
           animate={{
-            rotate: [0, 360]
+            x: [0, '120vw'],
+            opacity: [0, 1, 0]
           }}
           transition={{
-            duration: 20,
+            duration: 5 + Math.random() * 2,
             repeat: Infinity,
-            ease: "linear"
+            delay: i * 1.2,
+            ease: "easeInOut"
+          }}
+        />
+      ))}
+
+      {/* Idea Sparks - Pulsing stars */}
+      {[...Array(8)].map((_, i) => (
+        <motion.div
+          key={`spark-${i}`}
+          className="absolute"
+          style={{
+            left: `${30 + Math.random() * 50}%`,
+            top: `${55 + Math.random() * 35}%`,
+            color: theme === 'dark' ? '#fbbf24' : '#ca8a04'
+          }}
+          animate={{
+            scale: [0, 1.2, 0],
+            rotate: [0, 180, 360],
+            opacity: [0, 1, 0]
+          }}
+          transition={{
+            duration: 2.5,
+            repeat: Infinity,
+            delay: Math.random() * 4
           }}
         >
-          <Atom className="w-full h-full text-purple-400" />
-          
-          {/* Energy rings */}
-          {[...Array(3)].map((_, i) => (
-            <motion.div
-              key={`ring-${i}`}
-              className="absolute inset-0 rounded-full"
-              style={{
-                border: '2px solid rgba(168, 85, 247, 0.3)',
-                scale: 1 + i * 0.3
-              }}
-              animate={{
-                rotate: [0, -360],
-                opacity: [0.3, 0.8, 0.3]
-              }}
-              transition={{
-                duration: 3 + i,
-                repeat: Infinity,
-                ease: "linear"
-              }}
-            />
-          ))}
+          <Star size={10} fill="currentColor" />
         </motion.div>
-      </motion.div>
+      ))}
+
+      {/* Liquid Motion - Flowing droplets */}
+      {[...Array(7)].map((_, i) => (
+        <motion.div
+          key={`droplet-${i}`}
+          className="absolute"
+          style={{
+            left: `${5 + Math.random() * 25}%`,
+            top: '-30px',
+            color: theme === 'dark' ? '#06b6d4' : '#0891b2'
+          }}
+          animate={{
+            y: ['0vh', '130vh'],
+            x: [0, Math.sin(i * 0.5) * 40],
+            opacity: [0, 1, 0]
+          }}
+          transition={{
+            duration: 7 + Math.random() * 3,
+            repeat: Infinity,
+            delay: Math.random() * 4,
+            ease: "easeInOut"
+          }}
+        >
+          <Droplets size={16} />
+        </motion.div>
+      ))}
+
+      {/* Energy Waves - Concentric circles */}
+      {[...Array(3)].map((_, i) => (
+        <motion.div
+          key={`wave-${i}`}
+          className="absolute rounded-full"
+          style={{
+            width: '80px',
+            height: '80px',
+            border: `1px solid ${theme === 'dark' ? 'rgba(139, 92, 246, 0.4)' : 'rgba(99, 102, 241, 0.3)'}`,
+            left: '70%',
+            top: '40%',
+          }}
+          animate={{
+            scale: [0.8, 2.5],
+            opacity: [0.6, 0]
+          }}
+          transition={{
+            duration: 3 + i,
+            repeat: Infinity,
+            delay: i * 1.5,
+            ease: "easeOut"
+          }}
+        />
+      ))}
     </div>
   );
 };
 
 export default function WhyUsSectionPremium() {
-  const { t } = useLanguage();
   const { theme } = useTheme();
   const sectionRef = useRef<HTMLElement>(null);
   const shouldReduceMotion = useReducedMotion();
-
-  // Прогрессивная анимация при скролле
+  const { t } = useLanguage();
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"]
@@ -415,7 +443,6 @@ export default function WhyUsSectionPremium() {
   
   const scrollProgress = useSpring(scrollYProgress, HOLLYWOOD_CONFIG.spring);
 
-  // Состояние для предотвращения ошибок гидратации
   const [mounted, setMounted] = useState(false);
   const [isInView, setIsInView] = useState(false);
 
@@ -439,22 +466,19 @@ export default function WhyUsSectionPremium() {
     return () => observer.disconnect();
   }, [mounted]);
 
-  // Мемоизированные данные из переводов
-  const whyUsData = useMemo(() => {
-    if (!t.whyUs) return { title: "Why Choose Qaspilab", reasons: [] };
-    
-    return {
-      title: t.whyUs.title,
-      subtitle: t.whyUs.subtitle || "Excellence in Every Detail",
-      reasons: t.whyUs.reasons.map((reason, index) => ({
-        ...reason,
-        icon: PREMIUM_ADVANTAGE_ICONS[index]?.Icon || Sparkles,
-        id: index + 1
-      }))
-    };
-  }, [t.whyUs]);
+  // Mock data - replace with actual translation data
+  const whyUsData = {
+  title: t.whyUs.title,
+  subtitle: t.whyUs.subtitle,
+  reasons: [
+    t.whyUs.reasons[0],
+    t.whyUs.reasons[1],
+    t.whyUs.reasons[2],
+    t.whyUs.reasons[3]
+  ]
+};
 
-  // Premium background стили (единые с другими секциями)
+
   const premiumBackgroundStyles = useMemo(() => ({
     background: theme === 'dark' 
       ? 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%)'
@@ -462,7 +486,6 @@ export default function WhyUsSectionPremium() {
     color: theme === 'dark' ? '#ffffff' : '#1e293b'
   }), [theme]);
 
-  // Cinematic parallax effects
   const backgroundY = useTransform(scrollProgress, [0, 1], ['0%', '25%']);
   const contentY = useTransform(scrollProgress, [0, 1], ['0%', '-8%']);
   const labY = useTransform(scrollProgress, [0, 1], ['0%', '-15%']);
@@ -487,12 +510,10 @@ export default function WhyUsSectionPremium() {
         transform: 'translateZ(0)',
       }}
     >
-      {/* Premium animated background */}
       <motion.div
         className="absolute inset-0 -z-10"
         style={{ y: backgroundY }}
       >
-        {/* Gradient mesh background */}
         <div className="absolute inset-0 opacity-30">
           <div 
             className="absolute inset-0"
@@ -507,7 +528,6 @@ export default function WhyUsSectionPremium() {
           />
         </div>
         
-        {/* Animated grid pattern */}
         <motion.div
           className="absolute inset-0 opacity-10"
           animate={{
@@ -532,10 +552,7 @@ export default function WhyUsSectionPremium() {
           className="grid lg:grid-cols-2 gap-20 items-center"
           style={{ y: contentY }}
         >
-          
-          {/* Premium Content Block */}
           <div className="z-10 order-2 lg:order-1">
-            {/* Hollywood title sequence */}
             <motion.div
               initial={{ opacity: 0, y: 80 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -561,7 +578,7 @@ export default function WhyUsSectionPremium() {
               </motion.h2>
               
               <motion.p
-                className="text-xl text-muted-foreground mb-16 max-w-lg"
+                className="text-xl text-gray-600 dark:text-gray-400 mb-16 max-w-lg"
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ 
@@ -573,7 +590,6 @@ export default function WhyUsSectionPremium() {
               </motion.p>
             </motion.div>
             
-            {/* Premium advantage cards */}
             <div className="space-y-8">
               {whyUsData.reasons.map((reason, index) => (
                 <HollywoodAdvantageCard
@@ -587,95 +603,151 @@ export default function WhyUsSectionPremium() {
             </div>
           </div>
 
-          {/* Premium Laboratory Visualization */}
+          {/* Premium Laboratory Visualization with actual image */}
           <motion.div 
             className="relative order-1 lg:order-2 h-[700px]"
             style={{ y: labY }}
           >
-            {/* Main lab image */}
+            {/* Main lab image container with parallax */}
             <motion.div
-              className="relative w-full h-full rounded-3xl overflow-hidden"
-              initial={{ opacity: 0, scale: 0.9, rotateY: 15 }}
+              className="relative w-full h-full rounded-3xl overflow-hidden shadow-2xl"
+              initial={{ opacity: 0, scale: 0.85, rotateY: 20 }}
               animate={isInView ? { opacity: 1, scale: 1, rotateY: 0 } : {}}
               transition={{ 
                 duration: HOLLYWOOD_CONFIG.duration.epic,
-                delay: 0.5,
+                delay: 0.3,
                 ease: HOLLYWOOD_CONFIG.ease
               }}
               style={{
                 willChange: 'transform, opacity',
-                transform: 'translateZ(0)',
+                transformStyle: 'preserve-3d',
               }}
             >
-              <Image
-                src="/lab.jpg"
-                alt="Premium Qaspilab Laboratory"
-                fill
-                className="object-cover"
-                style={{
-                  filter: theme === 'dark' 
-                    ? 'brightness(0.5) contrast(1.2) saturate(1.1)' 
-                    : 'brightness(0.7) contrast(1.1) saturate(0.9)'
-                }}
-                priority={false}
-                loading="lazy"
-              />
+              {/* Actual lab image with proper loading */}
+              <div className="absolute inset-0">
+                <Image
+                  src="/lab.jpg"
+                  alt="Premium Qaspilab Laboratory"
+                  fill
+                  className="object-cover"
+                  style={{
+                    filter: theme === 'dark' 
+                      ? 'brightness(0.6) contrast(1.3) saturate(1.2)' 
+                      : 'brightness(0.8) contrast(1.1) saturate(0.9)'
+                  }}
+                  priority={false}
+                  loading="lazy"
+                />
+              </div>
               
-              {/* Cinematic overlay */}
+              {/* Clean laboratory overlay - representing purity */}
+              <div className="absolute inset-0 bg-white/8 backdrop-blur-sm" />
+              
+              {/* Cinematic color overlay */}
               <motion.div 
                 className="absolute inset-0"
                 style={{
                   background: theme === 'dark'
-                    ? 'linear-gradient(135deg, rgba(15, 23, 42, 0.7) 0%, rgba(30, 41, 59, 0.5) 50%, rgba(51, 65, 85, 0.7) 100%)'
-                    : 'linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(248, 250, 252, 0.6) 50%, rgba(226, 232, 240, 0.8) 100%)'
+                    ? 'linear-gradient(135deg, rgba(15, 23, 42, 0.6) 0%, rgba(30, 41, 59, 0.4) 50%, rgba(51, 65, 85, 0.6) 100%)'
+                    : 'linear-gradient(135deg, rgba(255, 255, 255, 0.7) 0%, rgba(248, 250, 252, 0.5) 50%, rgba(226, 232, 240, 0.7) 100%)'
                 }}
               />
             </motion.div>
 
-            {/* Hollywood lab effects */}
-            <HollywoodLabEffects 
+            {/* Creative living elements overlay */}
+            <CreativeLabEffects 
               theme={theme} 
-              isInView={isInView} 
-              scrollProgress={scrollProgress} 
+              isInView={isInView}
             />
 
-            {/* Floating UI elements */}
+            {/* Clean floating UI elements representing lab systems */}
             <motion.div
-              className="absolute top-6 right-6 bg-blue-500/20 backdrop-blur-sm rounded-2xl p-4 border border-blue-500/30"
+              className="absolute top-6 right-6 bg-blue-500/25 backdrop-blur-md rounded-2xl p-4 border border-blue-500/40"
               initial={{ opacity: 0, x: 50 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ delay: 2, duration: 1 }}
             >
               <div className="flex items-center gap-2 text-blue-400 text-sm font-semibold">
                 <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-                Lab Status: Active
+                {t.whyUs.labStatus}
+              </div>
+            </motion.div>
+
+            <motion.div
+              className="absolute top-24 left-6 bg-purple-500/25 backdrop-blur-md rounded-2xl p-4 border border-purple-500/40"
+              initial={{ opacity: 0, y: 50 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 2.2, duration: 1 }}
+            >
+              <div className="flex items-center gap-2 text-purple-400 text-sm font-semibold">
+                <Lightbulb size={16} className="text-yellow-400" />
+                {t.whyUs.ideasGenerating}
+              </div>
+            </motion.div>
+
+            <motion.div
+              className="absolute bottom-24 right-6 bg-cyan-500/25 backdrop-blur-md rounded-2xl p-4 border border-cyan-500/40"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={isInView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ delay: 2.4, duration: 0.8 }}
+            >
+              <div className="flex items-center gap-2 text-cyan-400 text-sm font-semibold">
+                <Wifi size={16} />
+                {t.whyUs.dataFlow}
+              </div>
+            </motion.div>
+
+            <motion.div
+              className="absolute bottom-6 left-6 bg-teal-500/25 backdrop-blur-md rounded-2xl p-4 border border-teal-500/40"
+              initial={{ opacity: 0, rotate: -15 }}
+              animate={isInView ? { opacity: 1, rotate: 0 } : {}}
+              transition={{ delay: 2.6, duration: 0.8 }}
+            >
+              <div className="flex items-center gap-2 text-teal-400 text-sm font-semibold">
+                <Droplets size={16} className="text-cyan-400" />
+                {t.whyUs.liquidAnalysis}
+              </div>
+            </motion.div>
+
+            {/* Central creative spark */}
+            <motion.div
+              className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={isInView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ 
+                duration: HOLLYWOOD_CONFIG.duration.slow,
+                delay: 2.8,
+                ease: HOLLYWOOD_CONFIG.ease 
+              }}
+            >
+              <div className="bg-black/30 backdrop-blur-xl rounded-full p-5 border-2 border-yellow-400/50">
+                <Sparkles className="w-6 h-6 text-yellow-400 animate-pulse" />
               </div>
             </motion.div>
           </motion.div>
-
         </motion.div>
       </div>
 
-      {/* Floating action indicator */}
+      {/* Floating creative indicator */}
       <motion.div
         className="fixed bottom-8 left-8 z-50"
         animate={{
-          y: [0, -10, 0],
-          rotate: [0, 5, -5, 0]
+          y: [0, -12, 0],
+          rotate: [0, 8, -8, 0]
         }}
         transition={{
-          duration: 3,
+          duration: 3.5,
           repeat: Infinity,
           ease: 'easeInOut'
         }}
       >
         <div 
-          className="w-14 h-14 rounded-full flex items-center justify-center shadow-2xl backdrop-blur-sm"
+          className="w-16 h-16 rounded-full flex items-center justify-center shadow-2xl backdrop-blur-sm"
           style={{
-            background: 'linear-gradient(135deg, #10b981, #059669)'
+            background: 'linear-gradient(135deg, #8b5cf6, #ec4899)'
           }}
         >
-          <Sparkles className="text-white" size={24} />
+          <FlaskConical className="text-white" size={28} />
         </div>
       </motion.div>
     </section>

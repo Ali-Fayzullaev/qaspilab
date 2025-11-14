@@ -8,14 +8,10 @@ import { useTheme } from 'next-themes';
 import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import ContactModal from '@/components/modals/ContactModal';
 
-
 // ============= PERFORMANCE OPTIMIZED ANIMATIONS =============
-
-// Мемоизированные константы анимации
 const ANIMATION_VARIANTS = {
-  // Оптимизированная пульсация (только transform)
   titlePulse: {
-    scale: [1, 1.002], // Минимальная пульсация для GPU
+    scale: [1, 1.002],
     transition: { 
       duration: 4, 
       repeat: Infinity, 
@@ -23,8 +19,6 @@ const ANIMATION_VARIANTS = {
       repeatType: "reverse" as const 
     }
   },
-
-  // Появление без layout reflow
   fadeUpOptimized: (delay = 0) => ({
     initial: { 
       opacity: 0, 
@@ -40,47 +34,35 @@ const ANIMATION_VARIANTS = {
       ease: [0.25, 0.1, 0.25, 1] as const
     }
   }),
-
-  // Орбы (только transform)
   orb1: {
     scale: [1, 1.1],
     rotate: [0, 10],
     transition: { duration: 15, repeat: Infinity, repeatType: "reverse" as const, ease: "linear" as const }
   },
-
   orb2: {
     scale: [1, 0.9],
     rotate: [0, -15],
     transition: { duration: 18, repeat: Infinity, repeatType: "reverse" as const, ease: "linear" as const, delay: 2 }
   },
-
-  // Луч света (только scaleY)
   lightBeam: {
     initial: { scaleY: 0 },
     animate: { scaleY: 1 },
     transition: { duration: 1.5, delay: 0.8, ease: [0.25, 0.1, 0.25, 1] as const }
   },
-
-  // Мерцание луча (только opacity)
   lightBeamGlow: {
     opacity: [0.2, 0.4, 0.2],
     transition: { duration: 3, repeat: Infinity, ease: [0.4, 0, 0.6, 1] as const }
   },
-
-  // Частицы (только transform)
   particle: {
     x: [0, 100, -50, 0],
     y: [0, -100, 50, 0],
     opacity: [0, 0.5, 0],
     transition: { duration: 10, repeat: Infinity, ease: "linear" as const, delay: 3 }
   },
-
-  // Индикатор прокрутки
   scrollLine: {
     scaleY: [1, 0.5, 1],
     transition: { duration: 2, repeat: Infinity, ease: [0.4, 0, 0.6, 1] as const }
   },
-
   scrollDot: {
     y: [0, 15, 0],
     transition: { duration: 2, repeat: Infinity, ease: [0.4, 0, 0.6, 1] as const }
@@ -91,16 +73,26 @@ export default function HeroSection() {
   const { t } = useLanguage();
   const { theme } = useTheme();
   
-  // Состояния
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [blinkingIndex, setBlinkingIndex] = useState(-1);
+  const [isMobile, setIsMobile] = useState(false);
   
-  // Refs для оптимизации
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Мемоизированные значения
+  // Определение мобильного устройства
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   const title = useMemo(() => "Qaspilab", []);
   
   const themeStyles = useMemo(() => ({
@@ -133,7 +125,6 @@ export default function HeroSection() {
     color: '#ffffff'
   }), [theme]);
 
-  // Оптимизированные колбэки
   const handleModalOpen = useCallback(() => {
     setIsModalOpen(true);
   }, []);
@@ -142,12 +133,10 @@ export default function HeroSection() {
     setIsModalOpen(false);
   }, []);
 
-  // Оптимизированный нейронный эффект
   const startNeuralEffect = useCallback(() => {
     if (intervalRef.current) clearInterval(intervalRef.current);
     
     intervalRef.current = setInterval(() => {
-      // Уменьшили частоту проверки для производительности
       if (Math.random() < 0.15) { 
         const randomIndex = Math.floor(Math.random() * title.length);
         setBlinkingIndex(randomIndex);
@@ -155,10 +144,9 @@ export default function HeroSection() {
         if (timeoutRef.current) clearTimeout(timeoutRef.current);
         timeoutRef.current = setTimeout(() => setBlinkingIndex(-1), 100); 
       }
-    }, 1000); // Увеличили интервал до 1s
+    }, 1000);
   }, [title.length]);
 
-  // Effects
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -174,7 +162,7 @@ export default function HeroSection() {
     };
   }, [mounted, startNeuralEffect]);
 
-  // Мемоизированный рендер символов заголовка
+  // Адаптивный рендер символов заголовка
   const titleChars = useMemo(() => 
     title.split('').map((char, index) => {
       const isBlinking = index === blinkingIndex;
@@ -196,7 +184,7 @@ export default function HeroSection() {
           animate={{ opacity: isBlinking ? 0.3 : 1, y: 0 }}
           transition={{ 
             duration: 0.5, 
-            delay: 0.2 + index * 0.08,
+            delay: 0.2 + index * (isMobile ? 0.12 : 0.08), // Меньше задержка на мобилках
             ease: [0.25, 0.1, 0.25, 1] as const
           }}
         >
@@ -204,32 +192,39 @@ export default function HeroSection() {
         </motion.span>
       );
     })
-  , [title, blinkingIndex, theme]);
+  , [title, blinkingIndex, theme, isMobile]);
 
-  // Мемоизированный рендер слов слогана
+  // Адаптивный рендер слов слогана
   const sloganWords = useMemo(() => {
     const sloganText = t.hero?.slogan || "Мы создаём технологии, которые превращают мечты в продукты.";
-    return sloganText.split(' ').map((word, index) => (
-      <motion.span
-        key={`slogan-word-${index}-${word}-hero`}
-        className="hero-slogan-word"
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{
-          duration: 0.4,
-          delay: 1.5 + index * 0.05,
-        }}
-      >
-        {word}
-      </motion.span>
-    ));
-  }, [t.hero?.slogan]);
+    const words = sloganText.split(' ');
+    
+    return (
+      <div className="hero-slogan-container">
+        {words.map((word, index) => (
+          <motion.span
+            key={`slogan-word-${index}-${word}-hero`}
+            className="hero-slogan-word"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 0.4,
+              delay: 1.5 + index * (isMobile ? 0.08 : 0.05), // Адаптивная задержка
+            }}
+          >
+            {word}
+            {index < words.length - 1 && ' '}
+          </motion.span>
+        ))}
+      </div>
+    );
+  }, [t.hero?.slogan, isMobile]);
 
   if (!mounted) {
     return (
       <section className="hero-container performance-optimized">
         <div className="text-center gpu-accelerated">
-          <h1 className="text-8xl font-bold optimized-text">Qaspilab</h1>
+          <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold optimized-text">Qaspilab</h1>
         </div>
       </section>
     );
@@ -244,7 +239,7 @@ export default function HeroSection() {
         
         {/* ============= BACKGROUND EFFECTS ============= */}
         <div className="absolute inset-0 gpu-accelerated">
-          {/* Оптимизированные градиентные орбы */}
+          {/* Градиентные орбы - скрываем на очень маленьких экранах */}
           <motion.div 
             className="gradient-orb gradient-orb-1"
             animate={ANIMATION_VARIANTS.orb1}
@@ -254,7 +249,7 @@ export default function HeroSection() {
             animate={ANIMATION_VARIANTS.orb2}
           />
 
-          {/* Оптимизированный луч света */}
+          {/* Луч света - упрощаем на мобилках */}
           <motion.div
             className="light-beam"
             style={lightBeamStyles}
@@ -269,34 +264,36 @@ export default function HeroSection() {
             />
           </motion.div>
           
-          {/* Оптимизированные частицы */}
-          <motion.div 
-            className="floating-particle" 
-            style={{
-              background: theme === 'dark' ? 'rgba(6, 182, 212, 0.5)' : 'rgba(59, 130, 246, 0.4)',
-              top: '20%',
-              left: '15%'
-            }}
-            animate={ANIMATION_VARIANTS.particle}
-          />
+          {/* Частицы - меньше на мобилках */}
+          {!isMobile && (
+            <motion.div 
+              className="floating-particle" 
+              style={{
+                background: theme === 'dark' ? 'rgba(6, 182, 212, 0.5)' : 'rgba(59, 130, 246, 0.4)',
+                top: '20%',
+                left: '15%'
+              }}
+              animate={ANIMATION_VARIANTS.particle}
+            />
+          )}
         </div>
 
         {/* ============= MAIN CONTENT ============= */}
-        <div className="container relative mx-auto px-6 h-screen flex items-center justify-center z-10 gpu-accelerated">
-          <div className="text-center max-w-5xl">
+        <div className="container relative mx-auto px-4 sm:px-6 h-screen flex items-center justify-center z-10 gpu-accelerated">
+          <div className="text-center max-w-4xl lg:max-w-5xl w-full">
             
-            {/* Оптимизированный заголовок */}
+            {/* Адаптивный заголовок */}
             <motion.h1
-              className="hero-title text-6xl md:text-8xl font-extrabold mb-4 optimized-text"
+              className="hero-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold mb-3 sm:mb-4 md:mb-6 optimized-text leading-tight sm:leading-normal"
               style={titleStyles}
-              animate={ANIMATION_VARIANTS.titlePulse}
+              animate={isMobile ? {} : ANIMATION_VARIANTS.titlePulse} // Отключаем пульсацию на мобилках
             >
               {titleChars}
             </motion.h1>
 
-            {/* Подзаголовок */}
+            {/* Адаптивный подзаголовок */}
             <motion.p
-              className="hero-subtitle text-xl md:text-2xl mb-4 font-light tracking-widest uppercase optimized-text"
+              className="hero-subtitle text-sm sm:text-lg md:text-xl lg:text-2xl mb-3 sm:mb-4 md:mb-6 font-light tracking-wide sm:tracking-widest uppercase optimized-text leading-relaxed"
               style={{
                 color: theme === 'dark' ? 'rgba(226, 232, 240, 0.8)' : 'rgba(30, 41, 59, 0.7)'
               }}
@@ -305,9 +302,9 @@ export default function HeroSection() {
               {t.hero?.subtitle || "Born in Kazakhstan. Built for the world."}
             </motion.p>
             
-            {/* Оптимизированный слоган */}
+            {/* Адаптивный слоган */}
             <motion.div
-              className="text-lg max-w-3xl mx-auto mb-12 leading-relaxed font-normal optimized-text"
+              className="text-sm sm:text-base md:text-lg lg:text-xl max-w-2xl lg:max-w-3xl mx-auto mb-6 sm:mb-8 md:mb-10 lg:mb-12 leading-relaxed sm:leading-loose font-normal optimized-text px-2 sm:px-0"
               style={{
                 color: theme === 'dark' ? 'rgba(148, 163, 184, 0.8)' : 'rgba(71, 85, 105, 0.8)'
               }}
@@ -315,74 +312,57 @@ export default function HeroSection() {
               {sloganWords}
             </motion.div>
 
-            {/* Оптимизированная кнопка CTA */}
+            {/* Адаптивная кнопка CTA */}
             <motion.div
               {...ANIMATION_VARIANTS.fadeUpOptimized(2.2)}
               whileHover={{ 
-                scale: 1.05,
+                scale: isMobile ? 1.02 : 1.05, // Меньший scale на мобилках
                 boxShadow: theme === 'dark'
                   ? "0 0 25px rgba(6, 182, 212, 0.4), 0 0 5px rgba(6, 182, 212, 0.8)"
                   : "0 0 25px rgba(59, 130, 246, 0.4), 0 0 5px rgba(59, 130, 246, 0.6)"
               }}
               whileTap={{ scale: 0.95 }}
+              className="px-2 sm:px-0"
             >
-              {/* <Button 
-                size="lg" 
-                onClick={handleModalOpen}
-                className="hero-cta-button px-8 py-6 text-xl font-bold transition-all duration-300 shadow-xl group"
-                style={buttonStyles}
-              >
-                {t.hero?.cta || "Обсудить проект"}
-                <motion.div
-                  className="hero-cta-arrow ml-3"
-                  animate={{ x: [0, 6, 0] }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: [0.4, 0, 0.6, 1] as const,
-                    delay: 0.5
-                  }}
+              <a href="#contact" className="block w-full sm:w-auto">
+                <Button 
+                  className="hero-cta-button w-full sm:w-auto px-4 sm:px-6 md:px-8 py-4 sm:py-5 md:py-6 text-base sm:text-lg md:text-xl font-bold transition-all duration-300 shadow-xl group"
+                  style={buttonStyles}
                 >
-                  <ArrowRight className="h-6 w-6 group-hover:translate-x-1 transition-transform duration-300" />
-                </motion.div>
-              </Button> */}
-                <a href="#contact">
-              <Button className="hero-cta-button px-8 py-6 text-xl font-bold transition-all duration-300 shadow-xl group"
-                style={buttonStyles}>
-
-                {t.hero?.cta}
-                <ArrowRight className="h-6 w-6 group-hover:translate-x-1 transition-transform duration-300" />
-              </Button>
-                </a>
+                  {t.hero?.cta}
+                  <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 ml-2 sm:ml-3 group-hover:translate-x-1 transition-transform duration-300" />
+                </Button>
+              </a>
             </motion.div>
           </div>
         </div>
 
-        {/* ============= SCROLL INDICATOR ============= */}
-        <motion.div
-          className="scroll-indicator"
-          {...ANIMATION_VARIANTS.fadeUpOptimized(3)}
-        >
+        {/* Индикатор прокрутки - скрываем на мобилках */}
+        {!isMobile && (
           <motion.div
-            className="scroll-line"
-            style={{
-              background: theme === 'dark'
-                ? 'linear-gradient(to bottom, rgba(6, 182, 212, 0.8), transparent)'
-                : 'linear-gradient(to bottom, rgba(59, 130, 246, 0.6), transparent)'
-            }}
-            animate={ANIMATION_VARIANTS.scrollLine}
-          />
-          <motion.div
-            className="scroll-dot"
-            style={{
-              background: theme === 'dark' ? '#06B6D4' : '#3B82F6'
-            }}
-            animate={ANIMATION_VARIANTS.scrollDot}
-          />
-        </motion.div>
+            className="scroll-indicator"
+            {...ANIMATION_VARIANTS.fadeUpOptimized(3)}
+          >
+            <motion.div
+              className="scroll-line"
+              style={{
+                background: theme === 'dark'
+                  ? 'linear-gradient(to bottom, rgba(6, 182, 212, 0.8), transparent)'
+                  : 'linear-gradient(to bottom, rgba(59, 130, 246, 0.6), transparent)'
+              }}
+              animate={ANIMATION_VARIANTS.scrollLine}
+            />
+            <motion.div
+              className="scroll-dot"
+              style={{
+                background: theme === 'dark' ? '#06B6D4' : '#3B82F6'
+              }}
+              animate={ANIMATION_VARIANTS.scrollDot}
+            />
+          </motion.div>
+        )}
       </section>
 
-      {/* Модальное окно */}
       <ContactModal 
         isOpen={isModalOpen} 
         onClose={handleModalClose} 

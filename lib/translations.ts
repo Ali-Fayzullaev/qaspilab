@@ -130,6 +130,11 @@ export const translations = {
     whyUs: {
       title: "Why Choose Qaspilab",
       subtitle: "Excellence in Every Detail",
+      ideasGenerating: "Ideas: Generating",
+      dataFlow: "Data Flow",
+      liquidAnalysis: "Liquid Analysis: Active",
+      premiumLabAlt: "Premium Qaspilab Laboratory",
+      labStatus: "Lab Status: Active",
       reasons: [
         {
           title: "Proven Expertise",
@@ -347,6 +352,11 @@ export const translations = {
     whyUs: {
       title: "Почему выбирают Qaspilab",
       subtitle: "Превосходство в каждой детали",
+      ideasGenerating: "Идеи: Генерируются",
+      dataFlow: "Поток данных: 12.5 Гбит/с",
+      liquidAnalysis: "Анализ жидкости: Активен",
+      premiumLabAlt: "Премиальная лаборатория Qaspilab",
+      labStatus: "Статус лаборатории: Активен",
       reasons: [
         {
           title: "Проверенная экспертиза",
@@ -567,6 +577,11 @@ export const translations = {
     whyUs: {
       title: "Неліктен Qaspilab таңдайды",
       subtitle: "Әрбір деталдағы керемет",
+      ideasGenerating: "Идеялар: Генерациялануда",
+      dataFlow: "Деректер ағыны: 12.5 Гбит/с",
+      liquidAnalysis: "Сұйықтық талдауы: Активті",
+      premiumLabAlt: "Премиум Qaspilab зертханасы",
+      labStatus: "Зертхана күйі: Активті",
       reasons: [
         {
           title: "Дәлелденген сараптама",
