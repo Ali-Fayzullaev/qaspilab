@@ -502,12 +502,13 @@ export default function WhyUsSectionPremium() {
 
   return (
     <section 
-      ref={sectionRef} 
-      className="relative min-h-screen py-32 overflow-hidden"
+       ref={sectionRef}
+      className="relative py-24 sm:py-32 transition-all duration-500 overflow-hidden"
       style={{
-        ...premiumBackgroundStyles,
-        willChange: 'transform',
-        transform: 'translateZ(0)',
+        background: theme === 'dark' 
+          ? 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%)'
+          : 'linear-gradient(135deg, #ffffff 0%, #f8fafc 50%, #e2e8f0 100%)',
+        color: theme === 'dark' ? '#ffffff' : '#1e293b'
       }}
     >
       <motion.div

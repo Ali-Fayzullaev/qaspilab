@@ -89,13 +89,13 @@ export default function MissionSection() {
 
   return (
     <section 
-      ref={sectionRef} 
-      className="relative py-24 sm:py-32 transition-colors duration-700 overflow-hidden"
+       ref={sectionRef}
+      className="relative py-24 sm:py-32 transition-all duration-500 overflow-hidden"
       style={{
         background: theme === 'dark' 
-          ? 'radial-gradient(circle at 30% 30%, #0c1a2d 0%, #1a2d47 50%, #2a3d5a 100%)'
-          : 'radial-gradient(circle at 70% 70%, #ffffff 0%, #f0f9ff 50%, #e0f2fe 100%)',
-        color: theme === 'dark' ? '#ffffff' : '#0f172a'
+          ? 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%)'
+          : 'linear-gradient(135deg, #ffffff 0%, #f8fafc 50%, #e2e8f0 100%)',
+        color: theme === 'dark' ? '#ffffff' : '#1e293b'
       }}
     >
       <div className="container mx-auto px-6 relative z-10">
@@ -140,12 +140,9 @@ export default function MissionSection() {
                 custom={4}
                 className="pt-6 font-semibold text-foreground/95 text-xl"
                 style={{
-                  background: theme === 'dark' 
+                  color: theme === 'dark' 
                     ? 'linear-gradient(90deg, #66ccff, #ff00ff)' 
                     : 'linear-gradient(90deg, #2563eb, #7c3aed)',
-                  backgroundClip: 'text',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent'
                 }}
               >
                 {texts.p4}

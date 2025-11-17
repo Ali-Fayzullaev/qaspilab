@@ -170,6 +170,43 @@ export const translations = {
         experience: "5+ Years Experience",
       },
     },
+    faq: {
+      badge: "Answers",
+      title: "Frequently Asked Questions",
+      subtitle: "Everything you need to know about building with Qaspilab",
+      items: [
+        {
+          question: "How quickly can you launch a new website?",
+          answer:
+            "Most landing pages go live within 3-4 days. Complex products with integrations can take 6-10 weeks depending on scope.",
+        },
+        {
+          question: "Do you handle strategy and design as well?",
+          answer:
+            "Yes. We start with a discovery sprint, define positioning, craft UX/UI, and then move into development and QA.",
+        },
+        {
+          question: "What industries do you work with most often?",
+          answer:
+            "We collaborate with tech startups, service companies, education, fintech, and manufacturing teams across Kazakhstan and beyond.",
+        },
+        {
+          question: "Will you help with SEO and analytics setup?",
+          answer:
+            "Every project ships with on-page SEO, Google Search Console integration, analytics dashboards, and performance monitoring.",
+        },
+        {
+          question: "Can you integrate with our existing systems?",
+          answer:
+            "Our engineers handle CRM, ERP, payment gateways, and custom APIs. We design reliable middleware when needed.",
+        },
+        {
+          question: "How do we start working together?",
+          answer:
+            "Share your idea through the contact form or email. We'll schedule a workshop, align budgets, and sign a project roadmap.",
+        },
+      ],
+    },
     cta: {
       title: "Ready to Transform Your Ideas?",
       subtitle: "Let's Build Something Amazing Together",
@@ -391,6 +428,43 @@ export const translations = {
         countries: "15+ обслуживаемых стран",
         experience: "5+ лет опыта",
       },
+    },
+    faq: {
+      badge: "Вопросы",
+      title: "Ответы на популярные вопросы",
+      subtitle: "Что важно знать перед запуском проекта с Qaspilab",
+      items: [
+        {
+          question: "Сколько времени занимает создание сайта?",
+          answer:
+            "Лендинги мы запускаем за 3-4 дня. Для сложных платформ с интеграциями срок обычно 6-10 недель в зависимости от объема.",
+        },
+        {
+          question: "Вы помогаете с аналитикой и стратегией?",
+          answer:
+            "Да. Стартуем с discovery-сессии, прорабатываем позиционирование, делаем UX/UI, подключаем аналитику и готовим план продвижения.",
+        },
+        {
+          question: "С какими нишами вы чаще всего работаете?",
+          answer:
+            "Работаем с IT-стартапами, сервисными компаниями, образованием, финтехом и производственными командами по всему Казахстану.",
+        },
+        {
+          question: "Настраиваете ли вы SEO и подключаете поисковые сервисы?",
+          answer:
+            "Каждый проект включает on-page SEO, подключение Google Search Console, настройку аналитики и мониторинг скорости.",
+        },
+        {
+          question: "Можете ли вы интегрироваться с существующими системами?",
+          answer:
+            "Инженеры подключают CRM, ERP, платежные сервисы и кастомные API. При необходимости проектируем надежные интеграционные слои.",
+        },
+        {
+          question: "Как начать сотрудничество?",
+          answer:
+            "Оставьте заявку через форму или напишите на почту. Назначим встречу, согласуем бюджет и подготовим дорожную карту проекта.",
+        },
+      ],
     },
     cta: {
       title: "Готовы воплотить свои идеи?",
@@ -616,6 +690,43 @@ export const translations = {
         countries: "15+ қызмет көрсетілетін ел",
         experience: "5+ жыл тәжірибе",
       },
+    },
+    faq: {
+      badge: "Сұрақтар",
+      title: "Жиі қойылатын сұрақтар",
+      subtitle: "Qaspilab-пен жұмыс бастар алдындағы негізгі жауаптар",
+      items: [
+        {
+          question: "Жаңа сайтты қанша уақытта іске қосасыз?",
+          answer:
+            "Көптеген лендингтерді 3-4 күнде жариялаймыз. Интеграциялары бар күрделі платформалар әдетте 6-10 аптада дайын болады.",
+        },
+        {
+          question: "Стратегия мен дизайнды да бірге жасайсыз ба?",
+          answer:
+            "Иә. Біз discovery-сессиядан бастаймыз, позициялауын анықтаймыз, UX/UI дайындаймыз, содан кейін әзірлеу мен тестілеуге көшеміз.",
+        },
+        {
+          question: "Қандай салалармен көбірек жұмыс істейсіздер?",
+          answer:
+            "Қазақстандағы IT-стартаптармен, сервис компанияларымен, білім, финтех және өндіріс бағыттарымен жиі серіктесеміз.",
+        },
+        {
+          question: "SEO және аналитиканы баптайсыздар ма?",
+          answer:
+            "Әр жобаға on-page SEO, Google Search Console қосу, аналитика панельдері және өнімділік мониторингі кіреді.",
+        },
+        {
+          question: "Біздің жүйелермен интеграция жасай аласыздар ма?",
+          answer:
+            "Инженерлеріміз CRM, ERP, төлем сервистері және кастом API-лерді қосады. Қажет болса, сенімді аралық шешімдер жасаймыз.",
+        },
+        {
+          question: "Қалай бірге жұмыс бастауды ұсынасыз?",
+          answer:
+            "Идеяңызды форма арқылы немесе почтаға жіберіңіз. Біз кездесу ұйымдастырып, бюджет пен жол картасын бекітеміз.",
+        },
+      ],
     },
     cta: {
       title: "Өз идеяларыңызды іске асыруға дайынсыз ба?",

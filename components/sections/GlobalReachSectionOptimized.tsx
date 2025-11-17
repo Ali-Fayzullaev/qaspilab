@@ -272,9 +272,14 @@ const GlobalReachSectionOptimized = memo(() => {
 
   return (
     <section 
-      ref={sectionRef} 
-      className="relative py-24 sm:py-32 bg-background transition-colors duration-500 overflow-hidden globalreach-gpu-accelerated"
-      style={sectionStyles}
+      ref={sectionRef}
+      className="relative py-24 sm:py-32 transition-colors duration-700 overflow-hidden"
+      style={{
+        background: theme === 'dark' 
+          ? 'radial-gradient(circle at 30% 30%, #0c1a2d 0%, #1a2d47 50%, #2a3d5a 100%)'
+          : 'radial-gradient(circle at 70% 70%, #ffffff 0%, #f0f9ff 50%, #e0f2fe 100%)',
+        color: theme === 'dark' ? '#ffffff' : '#0f172a'
+      }}
     >
       <div className="container mx-auto px-6">
         <motion.div 
@@ -351,7 +356,8 @@ const GlobalReachSectionOptimized = memo(() => {
                 transform: 'translateZ(0)',
               }}
             >
-              {globalData.title}
+              {/* {globalReach.title} */}
+              {t.globalReach.title}
             </motion.h2>
             
             {/* Описание */}
@@ -365,7 +371,8 @@ const GlobalReachSectionOptimized = memo(() => {
                 transform: 'translateZ(0)',
               }}
             >
-              {globalData.description}
+              {t.globalReach.description}
+              
             </motion.div>
 
             {/* Оптимизированная статистика */}

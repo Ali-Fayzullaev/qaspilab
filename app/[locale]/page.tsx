@@ -25,7 +25,11 @@ const WhyUsSection = dynamic(() => import('@/components/sections/WhyUsSectionPre
   loading: () => <div className="h-96 animate-pulse bg-gray-100 dark:bg-gray-900" />
 });
 
-const GlobalReachSection = dynamic(() => import('@/components/sections/GlobalReachSectionPremium'), {
+const GlobalReachSection = dynamic(() => import('@/components/sections/GlobalReachSectionOptimized'), {
+  loading: () => <div className="h-96 animate-pulse bg-gray-100 dark:bg-gray-900" />
+});
+
+const FAQSection = dynamic(() => import('@/components/sections/FAQSection'), {
   loading: () => <div className="h-96 animate-pulse bg-gray-100 dark:bg-gray-900" />
 });
 
@@ -79,6 +83,12 @@ export default function Home({ params }: Props) {
         </Suspense>
       </div>
       
+      <Suspense fallback={<div className="h-96 animate-pulse bg-gray-100 dark:bg-gray-900" />}>
+        <div id="faq" className="scroll-mt-16">
+          <FAQSection />
+        </div>
+      </Suspense>
+
       <Suspense fallback={<div className="h-96 animate-pulse bg-gray-100 dark:bg-gray-900" />}>
         <div id="contact" className="scroll-mt-16">
           <CTASection />

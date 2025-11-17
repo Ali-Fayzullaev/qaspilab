@@ -623,11 +623,12 @@ export default function WorkflowSectionPremium() {
   return (
     <section 
       ref={sectionRef} 
-      className="relative min-h-screen py-12 sm:py-16 md:py-24 lg:py-32 overflow-hidden"
+      className="relative py-24 sm:py-32 transition-colors duration-700 overflow-hidden"
       style={{
-        ...premiumBackgroundStyles,
-        willChange: 'transform',
-        transform: 'translateZ(0)',
+        background: theme === 'dark' 
+          ? 'radial-gradient(circle at 30% 30%, #0c1a2d 0%, #1a2d47 50%, #2a3d5a 100%)'
+          : 'radial-gradient(circle at 70% 70%, #ffffff 0%, #f0f9ff 50%, #e0f2fe 100%)',
+        color: theme === 'dark' ? '#ffffff' : '#0f172a'
       }}
     >
       {/* Premium animated background */}
