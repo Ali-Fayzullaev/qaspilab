@@ -14,11 +14,15 @@ interface FAQItem {
 export default function FAQSection() {
   const { t } = useLanguage();
   const faqs: FAQItem[] = t.faq?.items ?? [];
-  const { theme } = useTheme();
+  const { theme, resolvedTheme } = useTheme();
   const [openIndex, setOpenIndex] = useState<number | null>(0);
   const [mounted, setMounted] = useState(false);
-    const sectionRef = useRef(null);
-  // Правильное использование useEffect для отслеживания монтирования
+  const sectionRef = useRef<HTMLElement>(null);
+
+  // Определяем текущую тему после монтирования
+  const currentTheme = mounted ? (resolvedTheme || theme) : 'dark';
+  const isDark = currentTheme === 'dark';
+
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -35,29 +39,35 @@ export default function FAQSection() {
     []
   );
 
-  // Определяем текущую тему с учетом монтирования
-  const currentTheme = mounted ? theme : 'light';
-
   // Используем useMemo для стилей, чтобы избежать предупреждения
   const headingStyles = useMemo(() => ({
-    backgroundImage: currentTheme === 'dark'
+    backgroundImage: isDark
       ? 'linear-gradient(135deg, #ffffff 0%, #e2e8f0 50%, #cbd5e1 100%)'
       : 'linear-gradient(135deg, #0f172a 0%, #475569 50%, #64748b 100%)',
     backgroundClip: 'text',
     WebkitBackgroundClip: 'text',
     color: 'transparent',
     willChange: 'transform'
-  }), [currentTheme]);
+  }), [isDark]);
+
+  if (!mounted) {
+    return (
+      <section 
+        ref={sectionRef} 
+        className="relative py-24 sm:py-32 transition-colors duration-700 overflow-hidden"
+      />
+    );
+  }
 
   return (
-    <section id="faq" 
- ref={sectionRef}
-      className="relative py-24 sm:py-32 transition-all duration-500 overflow-hidden"
+    <section
+      ref={sectionRef} 
+      className="relative py-24 sm:py-32 transition-colors duration-700 overflow-hidden"
       style={{
-        background: theme === 'dark' 
-          ? 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%)'
-          : 'linear-gradient(135deg, #ffffff 0%, #f8fafc 50%, #e2e8f0 100%)',
-        color: theme === 'dark' ? '#ffffff' : '#1e293b'
+        background: isDark
+          ? 'radial-gradient(circle at 30% 30%, #0c1a2d 0%, #1a2d47 50%, #2a3d5a 100%)'
+          : 'radial-gradient(circle at 70% 70%, #ffffff 0%, #f0f9ff 50%, #e0f2fe 100%)',
+        color: isDark ? '#ffffff' : '#0f172a'
       }}
     >
       <div className="pointer-events-none absolute inset-0 -z-10" style={backgroundStyles} />
@@ -73,14 +83,18 @@ export default function FAQSection() {
           >
             {t.faq?.title}
           </h2>
-          <p className="mt-4 text-base text-slate-600 dark:text-slate-300 sm:text-lg">
+          <p className={`mt-4 text-base sm:text-lg ${isDark ? 'text-slate-300' : 'text-slate-600'}`}>
             {t.faq?.subtitle}
           </p>
         </div>
 
         <div className="mx-auto mt-16 max-w-4xl">
-          <div className="rounded-3xl border border-slate-200/60 bg-white/70 shadow-xl backdrop-blur dark:border-white/10 dark:bg-slate-900/70">
-            <ul className="divide-y divide-slate-200/70 dark:divide-white/10">
+          <div
+            className={`rounded-3xl shadow-xl backdrop-blur border transition-colors duration-300 ${
+              isDark ? 'border-white/10 bg-slate-900/70' : 'border-slate-200/60 bg-white/80'
+            }`}
+          >
+            <ul className={`divide-y ${isDark ? 'divide-white/10' : 'divide-slate-200/70'}`}>
               {faqs.map((item, index) => {
                 const isOpen = openIndex === index;
                 return (
@@ -91,11 +105,17 @@ export default function FAQSection() {
                       className="group flex w-full items-center justify-between gap-6 px-6 py-5 text-left sm:px-8 sm:py-6"
                     >
                       <div>
-                        <h3 className="text-base font-semibold text-slate-900 transition-colors group-hover:text-primary dark:text-white sm:text-lg">
+                        <h3
+                          className={`text-base font-semibold transition-colors group-hover:text-primary sm:text-lg ${
+                            isDark ? 'text-white' : 'text-slate-900'
+                          }`}
+                        >
                           {item.question}
                         </h3>
                         <p
-                          className={`mt-3 text-sm text-slate-600 transition-all duration-300 ease-in-out dark:text-slate-300 sm:text-base ${
+                          className={`mt-3 text-sm transition-all duration-300 ease-in-out sm:text-base ${
+                            isDark ? 'text-slate-300' : 'text-slate-600'
+                          } ${
                             isOpen ? 'max-h-[400px] opacity-100' : 'max-h-0 opacity-0'
                           }`}
                           style={{ overflow: 'hidden' }}
@@ -104,9 +124,11 @@ export default function FAQSection() {
                         </p>
                       </div>
                       <span
-                        className={`flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-500 transition-transform duration-300 ease-out group-hover:border-primary group-hover:text-primary dark:border-white/10 dark:bg-slate-800 dark:text-slate-200 ${
-                          isOpen ? 'rotate-180' : ''
-                        }`}
+                        className={`flex h-10 w-10 items-center justify-center rounded-full transition-all duration-300 ease-out group-hover:border-primary group-hover:text-primary ${
+                          isDark
+                            ? 'border border-white/10 bg-slate-800 text-slate-200'
+                            : 'border border-slate-200 bg-white text-slate-500'
+                        } ${isOpen ? 'rotate-180' : ''}`}
                       >
                         <ChevronDown className="h-5 w-5" />
                       </span>
