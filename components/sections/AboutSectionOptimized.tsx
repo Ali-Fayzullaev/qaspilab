@@ -23,37 +23,67 @@ export default function AboutSection() {
   const [direction, setDirection] = useState(0); // -1 left, 1 right
 
  const teamImages = [
-    {
-      src: "/team/img1.jpg",
-      alt: t.about?.teamImages?.[0]?.alt || "Команда Qaspilab за работой",
-      title: t.about?.teamImages?.[0]?.title || "Наша команда",
-      description: t.about?.teamImages?.[0]?.description || "Талантливые разработчики, дизайнеры и инженеры, создающие будущее технологий"
-    },
-    {
-      src: "/team/img2.png", 
-      alt: t.about?.teamImages?.[1]?.alt || "Член команды Qaspilab",
-      title: t.about?.teamImages?.[1]?.title || "Инновационный подход",
-      description: t.about?.teamImages?.[1]?.description || "Каждый участник команды привносит уникальные навыки и креативность"
-    },
-    {
-      src: "/team/img3.png",
-      alt: t.about?.teamImages?.[2]?.alt || "Рабочий процесс команды", 
-      title: t.about?.teamImages?.[2]?.title || "Совместная работа",
-      description: t.about?.teamImages?.[2]?.description || "Мы верим в силу коллективного творчества и взаимной поддержки"
-    },
-    {
-      src: "/team/img4.jpg",
-      alt: t.about?.teamImages?.[3]?.alt || "Творческий процесс",
-      title: t.about?.teamImages?.[3]?.title || "Творческий процесс", 
-      description: t.about?.teamImages?.[3]?.description || "От идеи до реализации - каждый этап проходит с вниманием к деталям"
-    },
-    {
-      src: "/team/img5.jpg",
-      alt: t.about?.teamImages?.[4]?.alt || "Команда Qaspilab",
-      title: t.about?.teamImages?.[4]?.title || "Единая цель",
-      description: t.about?.teamImages?.[4]?.description || "Объединенные общей миссией создания выдающихся продуктов"
-    }
-  ];
+  {
+    src: "/team/img1.jpg",
+    alt: t.about?.teamImages?.[0]?.alt || "Команда Qaspilab за работой",
+    title: t.about?.teamImages?.[0]?.title || "Наша команда",
+    description: t.about?.teamImages?.[0]?.description || "Талантливые разработчики, дизайнеры и инженеры, создающие будущее технологий"
+  },
+  {
+    src: "/team/img2.png", 
+    alt: t.about?.teamImages?.[1]?.alt || "Член команды Qaspilab",
+    title: t.about?.teamImages?.[1]?.title || "Инновационный подход",
+    description: t.about?.teamImages?.[1]?.description || "Каждый участник команды привносит уникальные навыки и креативность"
+  },
+  {
+    src: "/team/img3.png",
+    alt: t.about?.teamImages?.[2]?.alt || "Рабочий процесс команды", 
+    title: t.about?.teamImages?.[2]?.title || "Совместная работа",
+    description: t.about?.teamImages?.[2]?.description || "Мы верим в силу коллективного творчества и взаимной поддержки"
+  },
+  {
+    src: "/team/img4.jpg",
+    alt: t.about?.teamImages?.[3]?.alt || "Творческий процесс",
+    title: t.about?.teamImages?.[3]?.title || "Творческий процесс", 
+    description: t.about?.teamImages?.[3]?.description || "От идеи до реализации — каждый этап проходит с вниманием к деталям"
+  },
+  {
+    src: "/team/img5.jpg",
+    alt: t.about?.teamImages?.[4]?.alt || "Команда Qaspilab",
+    title: t.about?.teamImages?.[4]?.title || "Единая цель",
+    description: t.about?.teamImages?.[4]?.description || "Объединённые общей миссией создания выдающихся продуктов"
+  },
+  {
+    src: "/team/img6.png",
+    alt: t.about?.teamImages?.[5]?.alt || "Брейншторм в Qaspilab",
+    title: t.about?.teamImages?.[5]?.title || "Генерация идей",
+    description: t.about?.teamImages?.[5]?.description || "Открытая атмосфера для смелых решений и нестандартного мышления"
+  },
+  {
+    src: "/team/img7.png",
+    alt: t.about?.teamImages?.[6]?.alt || "Дизайнер за работой",
+    title: t.about?.teamImages?.[6]?.title || "Эстетика и функциональность",
+    description: t.about?.teamImages?.[6]?.description || "Каждый пиксель продуман с заботой о пользовательском опыте"
+  },
+  {
+    src: "/team/img8.png",
+    alt: t.about?.teamImages?.[7]?.alt || "Разработка в процессе",
+    title: t.about?.teamImages?.[7]?.title || "Техническое мастерство",
+    description: t.about?.teamImages?.[7]?.description || "Чистый код, масштабируемая архитектура и внимание к каждой детали"
+  },
+  {
+    src: "/team/img9.png",
+    alt: t.about?.teamImages?.[8]?.alt || "Командная встреча",
+    title: t.about?.teamImages?.[8]?.title || "Коллаборация",
+    description: t.about?.teamImages?.[8]?.description || "Регулярные обсуждения, чтобы каждый голос был услышан"
+  },
+  {
+    src: "/team/img11.png",
+    alt: t.about?.teamImages?.[10]?.alt || "Команда Qaspilab празднует успех",
+    title: t.about?.teamImages?.[10]?.title || "Радость результата",
+    description: t.about?.teamImages?.[10]?.description || "Каждый запуск — повод для гордости и вдохновения"
+  }
+];
 
 
   // Автоплей карусели
