@@ -5,33 +5,20 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all duration-300 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:ring-2 focus-visible:ring-offset-2",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
   {
     variants: {
       variant: {
-        // Qaspilab Primary - Graphite
-        default: "bg-brand-graphite text-brand-white hover:bg-brand-graphite/90 hover:shadow-lg focus-visible:ring-brand-graphite/50",
-        
-        // Qaspilab Secondary - Purple
-        secondary: "bg-brand-purple text-brand-white hover:bg-brand-purple/90 hover:shadow-glow-purple focus-visible:ring-brand-purple/50",
-        
-        // Qaspilab Accent - Neon Blue
-        accent: "bg-brand-neon text-brand-graphite hover:bg-brand-neon/90 hover:shadow-glow-neon focus-visible:ring-brand-neon/50",
-        
-        // Ghost variants with hover effects
-        ghost: "hover:bg-brand-purple/10 hover:text-brand-purple transition-all duration-300 focus-visible:ring-brand-purple/30",
-        "ghost-neon": "hover:bg-brand-neon/10 hover:text-brand-neon transition-all duration-300 focus-visible:ring-brand-neon/30",
-        
-        // Outline variants
-        outline: "border border-brand-graphite/20 bg-transparent hover:bg-brand-graphite hover:text-brand-white focus-visible:ring-brand-graphite/50",
-        "outline-purple": "border border-brand-purple bg-transparent text-brand-purple hover:bg-brand-purple hover:text-brand-white hover:shadow-glow-purple focus-visible:ring-brand-purple/50",
-        "outline-neon": "border border-brand-neon bg-transparent text-brand-neon hover:bg-brand-neon hover:text-brand-graphite hover:shadow-glow-neon focus-visible:ring-brand-neon/50",
-        
-        // Destructive
-        destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90 focus-visible:ring-destructive/50",
-        
-        // Link
-        link: "text-brand-purple underline-offset-4 hover:underline hover:text-brand-neon focus-visible:ring-brand-purple/50",
+        default: "bg-primary text-primary-foreground hover:bg-primary/90",
+        destructive:
+          "bg-destructive text-white hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60",
+        outline:
+          "border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50",
+        secondary:
+          "bg-secondary text-secondary-foreground hover:bg-secondary/80",
+        ghost:
+          "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
+        link: "text-primary underline-offset-4 hover:underline",
       },
       size: {
         default: "h-9 px-4 py-2 has-[>svg]:px-3",
