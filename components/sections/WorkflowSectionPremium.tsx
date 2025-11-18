@@ -5,7 +5,7 @@ import { useRef, useState, useEffect, useMemo, useCallback } from 'react';
 import { useLanguage } from '@/lib/language-context';
 import { useTheme } from 'next-themes';
 import Image from 'next/image';
-import { Lightbulb, PuzzleIcon, Code, Rocket, ArrowRight, Zap, Sparkles } from 'lucide-react';
+import { Lightbulb, PuzzleIcon, Code, Rocket, Zap, Sparkles } from 'lucide-react';
 
 /**
  * PREMIUM WorkflowSection - Mobile-optimized cinematic experience
@@ -61,7 +61,17 @@ const PremiumWorkflowCard = ({ step, index, isInView, theme }: any) => {
   
   const iconConfig = PREMIUM_WORKFLOW_ICONS[index] || PREMIUM_WORKFLOW_ICONS[0];
   const { Icon, gradient, shadow } = iconConfig;
-  
+
+  // Принудительно пересчитываем стили при изменении темы
+  const cardStyles = useMemo(() => ({
+    background: theme === 'dark' 
+      ? 'rgba(17, 24, 39, 0.8)' 
+      : 'rgba(255, 255, 255, 0.95)',
+    border: theme === 'dark' 
+      ? '1px solid rgba(255, 255, 255, 0.1)' 
+      : '1px solid rgba(0, 0, 0, 0.1)'
+  }), [theme]);
+
   return (
     <motion.div
       ref={cardRef}
@@ -96,22 +106,28 @@ const PremiumWorkflowCard = ({ step, index, isInView, theme }: any) => {
       }}
     >
       <motion.div 
-        className="relative p-4 sm:p-5 md:p-6 bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl rounded-xl sm:rounded-2xl border border-white/20 dark:border-gray-800/30 overflow-hidden"
+        className="relative p-4 sm:p-5 md:p-6 backdrop-blur-xl rounded-xl sm:rounded-2xl overflow-hidden"
         style={{
           transform: 'translateZ(0)',
           willChange: 'transform',
+          backgroundColor: theme === 'dark' ? 'rgba(17, 24, 39, 0.8)' : 'rgba(255, 255, 255, 0.95)',
+          border: theme === 'dark' ? '1px solid rgba(255, 255, 255, 0.1)' : '1px solid rgba(0, 0, 0, 0.1)',
         }}
         animate={{
           boxShadow: !isMobile && isHovered 
-            ? `0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.1)`
-            : `0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.05)`
+            ? theme === 'dark' 
+              ? `0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.1)`
+              : `0 25px 50px -12px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.1)`
+            : theme === 'dark'
+              ? `0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.05)`
+              : `0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(0, 0, 0, 0.05)`
         }}
       >
         {/* Premium background glow */}
-        <motion.div
+        <motion.div 
           className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-700"
           style={{
-            background: `linear-gradient(135deg, ${theme === 'dark' ? '#3b82f6' : '#6366f1'} 0%, ${theme === 'dark' ? '#8b5cf6' : '#a855f7'} 100%)`
+            background: `linear-gradient(135deg, ${theme === 'dark' ? '#3b82f6' : '#93c5fd'} 0%, ${theme === 'dark' ? '#8b5cf6' : '#d8b4fe'} 100%)`
           }}
         />
         
@@ -120,7 +136,15 @@ const PremiumWorkflowCard = ({ step, index, isInView, theme }: any) => {
           <motion.div 
             className={`shrink-0 w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl flex items-center justify-center text-white ${shadow} transition-all duration-500`}
             style={{
-              background: `linear-gradient(135deg, ${iconConfig.gradient.includes('amber') ? '#f59e0b, #ea580c' : iconConfig.gradient.includes('purple') ? '#a855f7, #ec4899' : iconConfig.gradient.includes('blue') ? '#3b82f6, #06b6d4' : '#10b981, #14b8a6'})`,
+              background: `linear-gradient(135deg, ${
+                iconConfig.gradient.includes('amber') 
+                  ? theme === 'dark' ? '#f59e0b, #ea580c' : '#fbbf24, #f59e0b'
+                  : iconConfig.gradient.includes('purple') 
+                  ? theme === 'dark' ? '#a855f7, #ec4899' : '#c084fc, #e879f9'
+                  : iconConfig.gradient.includes('blue') 
+                  ? theme === 'dark' ? '#3b82f6, #06b6d4' : '#60a5fa, #22d3ee'
+                  : theme === 'dark' ? '#10b981, #14b8a6' : '#34d399, #2dd4bf'
+              })`,
               transform: 'translateZ(20px)',
             }}
             animate={{
@@ -143,7 +167,7 @@ const PremiumWorkflowCard = ({ step, index, isInView, theme }: any) => {
                 style={{
                   backgroundImage: theme === 'dark' 
                     ? 'linear-gradient(to right, #ffffff, #d1d5db)' 
-                    : 'linear-gradient(to right, #111827, #4b5563)',
+                    : 'linear-gradient(to right, #1f2937, #374151)',
                   backgroundClip: 'text',
                   WebkitBackgroundClip: 'text',
                   color: 'transparent'
@@ -158,7 +182,9 @@ const PremiumWorkflowCard = ({ step, index, isInView, theme }: any) => {
             </motion.div>
             
             <motion.p 
-              className="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed"
+              className={`text-sm sm:text-base leading-relaxed ${
+                theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+              }`}
               animate={{
                 x: !isMobile && isHovered ? 4 : 0
               }}
@@ -174,7 +200,7 @@ const PremiumWorkflowCard = ({ step, index, isInView, theme }: any) => {
             <motion.div
               className="absolute -top-2 -right-2 w-6 h-6 sm:w-7 sm:h-7 rounded-full flex items-center justify-center text-white text-xs sm:text-sm font-bold shadow-sm"
               style={{
-                background: 'linear-gradient(135deg, #3b82f6, #8b5cf6)',
+                background: `linear-gradient(135deg, ${theme === 'dark' ? '#3b82f6, #8b5cf6' : '#60a5fa, #a78bfa'})`,
                 transform: 'translateZ(30px)'
               }}
               animate={{
@@ -195,7 +221,7 @@ const PremiumWorkflowCard = ({ step, index, isInView, theme }: any) => {
         <motion.div
           className="absolute bottom-0 left-0 h-0.5 rounded-full"
           style={{
-            background: 'linear-gradient(to right, #3b82f6, #8b5cf6)'
+            background: `linear-gradient(to right, ${theme === 'dark' ? '#3b82f6, #8b5cf6' : '#60a5fa, #a78bfa'})`
           }}
           initial={{ width: '0%' }}
           animate={{ width: !isMobile && isHovered ? '100%' : '0%' }}
@@ -206,6 +232,7 @@ const PremiumWorkflowCard = ({ step, index, isInView, theme }: any) => {
   );
 };
 
+// Премиум компонент кинематографического визуала - mobile optimized
 // Премиум компонент кинематографического визуала - mobile optimized
 const CinematicWorkflowVisual = ({ theme, isInView, workflowData }: any) => {
   const visualRef = useRef<HTMLDivElement>(null);
@@ -242,7 +269,7 @@ const CinematicWorkflowVisual = ({ theme, isInView, workflowData }: any) => {
       onMouseMove={!isMobile ? handleMouseMove : undefined}
       onMouseLeave={!isMobile ? () => setMousePosition({ x: 0, y: 0 }) : undefined}
     >
-      {/* Main background image */}
+      {/* Main background image - ИСПРАВЛЕННЫЕ ФИЛЬТРЫ */}
       <motion.div
         className="absolute inset-0"
         style={{
@@ -257,20 +284,30 @@ const CinematicWorkflowVisual = ({ theme, isInView, workflowData }: any) => {
           className="object-cover"
           style={{
             filter: theme === 'dark' 
-              ? 'brightness(0.4) contrast(1.3) saturate(1.2)' 
-              : 'brightness(0.7) contrast(1.1) saturate(0.9)'
+              ? 'brightness(1) contrast(1.3) saturate(1.2)' 
+              : 'brightness(1) contrast(1.1) saturate(1.1)' // УВЕЛИЧИЛ brightness для светлой темы
           }}
           priority={false}
           loading="lazy"
         />
         
-        {/* Cinematic overlay */}
+        {/* Cinematic overlay - ИСПРАВЛЕННЫЙ ОВЕРЛЕЙ */}
         <motion.div 
           className="absolute inset-0"
           style={{
             background: theme === 'dark'
               ? 'linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(30, 41, 59, 0.6) 50%, rgba(51, 65, 85, 0.8) 100%)'
-              : 'linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 250, 252, 0.7) 50%, rgba(226, 232, 240, 0.9) 100%)'
+              : 'linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(248, 250, 252, 0.3) 50%, rgba(226, 232, 240, 0.4) 100%)' // УМЕНЬШИЛ opacity
+          }}
+        />
+        
+        {/* Дополнительный градиент для лучшей читаемости текста */}
+        <motion.div 
+          className="absolute inset-0"
+          style={{
+            background: theme === 'dark'
+              ? 'linear-gradient(135deg, rgba(15, 23, 42, 0.3) 0%, transparent 50%, rgba(51, 65, 85, 0.3) 100%)'
+              : 'linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, transparent 50%, rgba(248, 250, 252, 0.2) 100%)'
           }}
         />
       </motion.div>
@@ -403,21 +440,21 @@ const CinematicWorkflowVisual = ({ theme, isInView, workflowData }: any) => {
         
         return (
           <div key={`premium-dialog-${index}`}>
-            {/* Premium Client Dialog */}
+            {/* Premium Client Dialog - ИСПРАВЛЕННЫЙ ФОН для светлой темы */}
             <motion.div
               className={`absolute backdrop-blur-lg rounded-lg ${padding} shadow-xl ${clientMaxWidth} z-20`}
               style={{
                 background: theme === 'dark' 
                   ? 'rgba(30, 41, 59, 0.95)' 
-                  : 'rgba(255, 255, 255, 0.95)',
+                  : 'rgba(255, 255, 255, 0.98)', // УВЕЛИЧИЛ opacity для лучшей читаемости
                 border: `1px solid ${theme === 'dark' 
                   ? 'rgba(71, 85, 105, 0.3)' 
-                  : 'rgba(226, 232, 240, 0.5)'}`,
+                  : 'rgba(203, 213, 225, 0.8)'}`, // УСИЛИЛ границу для светлой темы
                 left: clientLeft,
                 top: clientTop,
                 boxShadow: theme === 'dark'
                   ? '0 15px 30px -10px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.05)'
-                  : '0 15px 30px -10px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.1)'
+                  : '0 15px 30px -10px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(203, 213, 225, 0.5)' // УСИЛИЛ тень для светлой темы
               }}
               initial={{ opacity: 0, y: 20, scale: 0.8, rotateX: 15 }}
               animate={isInView ? { 
@@ -432,7 +469,7 @@ const CinematicWorkflowVisual = ({ theme, isInView, workflowData }: any) => {
                 ease: "easeOut"
               }}
             >
-              <p className={`font-medium ${fontSize} ${theme === 'dark' ? 'text-gray-100' : 'text-gray-700'} leading-tight wrap-break-word overflow-hidden`}>
+              <p className={`font-medium ${fontSize} ${theme === 'dark' ? 'text-gray-100' : 'text-gray-800'} leading-tight wrap-break-word overflow-hidden`}>
                 {clientDialog}
               </p>
               {/* Premium dialog tail - mobile optimized */}
@@ -442,15 +479,15 @@ const CinematicWorkflowVisual = ({ theme, isInView, workflowData }: any) => {
                   style={{
                     background: theme === 'dark' 
                       ? 'rgba(30, 41, 59, 0.95)' 
-                      : 'rgba(255, 255, 255, 0.95)',
+                      : 'rgba(255, 255, 255, 0.98)',
                     borderTop: 'none',
                     borderLeft: 'none',
                     borderRight: `1px solid ${theme === 'dark' 
                       ? 'rgba(71, 85, 105, 0.3)' 
-                      : 'rgba(226, 232, 240, 0.5)'}`,
+                      : 'rgba(203, 213, 225, 0.8)'}`,
                     borderBottom: `1px solid ${theme === 'dark' 
                       ? 'rgba(71, 85, 105, 0.3)' 
-                      : 'rgba(226, 232, 240, 0.5)'}`,
+                      : 'rgba(203, 213, 225, 0.8)'}`,
                     bottom: index % 2 === 0 ? '-4px' : 'auto',
                     top: index % 2 === 0 ? 'auto' : '-4px',
                     left: '16px'
@@ -464,10 +501,10 @@ const CinematicWorkflowVisual = ({ theme, isInView, workflowData }: any) => {
               className={`absolute backdrop-blur-lg rounded-lg ${padding} shadow-xl ${qaspilabMaxWidth} z-20`}
               style={{
                 background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.95), rgba(139, 92, 246, 0.95))',
-                border: '1px solid rgba(255, 255, 255, 0.2)',
+                border: '1px solid rgba(255, 255, 255, 0.3)', // УСИЛИЛ границу
                 left: qaspilabLeft,
                 top: qaspilabTop,
-                boxShadow: '0 15px 30px -10px rgba(59, 130, 246, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1)'
+                boxShadow: '0 15px 30px -10px rgba(59, 130, 246, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.2)' // УСИЛИЛ тень
               }}
               initial={{ opacity: 0, y: 20, scale: 0.8, rotateX: -15 }}
               animate={isInView ? { 
@@ -493,8 +530,8 @@ const CinematicWorkflowVisual = ({ theme, isInView, workflowData }: any) => {
                     background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.95), rgba(139, 92, 246, 0.95))',
                     borderTop: 'none',
                     borderLeft: 'none',
-                    borderRight: '1px solid rgba(255, 255, 255, 0.2)',
-                    borderBottom: '1px solid rgba(255, 255, 255, 0.2)',
+                    borderRight: '1px solid rgba(255, 255, 255, 0.3)',
+                    borderBottom: '1px solid rgba(255, 255, 255, 0.3)',
                     bottom: index % 2 === 0 ? 'auto' : '-4px',
                     top: index % 2 === 0 ? '-4px' : 'auto',
                     right: '16px'
@@ -520,7 +557,7 @@ const CinematicWorkflowVisual = ({ theme, isInView, workflowData }: any) => {
           ease: 'easeInOut'
         }}
       >
-        <Sparkles className={`w-4 h-4 sm:w-6 sm:h-6 text-yellow-400 opacity-80`} />
+        <Sparkles className={`w-4 h-4 sm:w-6 sm:h-6 ${theme === 'dark' ? 'text-yellow-400' : 'text-yellow-500'}`} />
       </motion.div>
     </motion.div>
   );
@@ -653,7 +690,7 @@ export default function WorkflowSectionPremium() {
         
         {/* Animated noise texture */}
         <motion.div
-          className="absolute inset-0 opacity-20"
+          className="absolute inset-0"
           animate={{
             x: [-20, 20],
             y: [-20, 20],

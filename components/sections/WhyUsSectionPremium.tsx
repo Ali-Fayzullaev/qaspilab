@@ -13,9 +13,8 @@ import { useRef, useState, useEffect, useMemo, useCallback } from 'react';
 import { useTheme } from 'next-themes';
 import Image from 'next/image';
 import { 
-  Zap, Handshake, Brain, Sparkles, Star, Atom, 
-  Droplets, Wifi, Lightbulb, Flame, Waves, 
-  ZapIcon, Cpu, Beaker, FlaskConical
+  Zap, Handshake, Brain, Sparkles, Star,
+  Droplets, Wifi, Lightbulb, FlaskConical
 } from 'lucide-react';
 import { useLanguage } from '@/lib/language-context';
 
