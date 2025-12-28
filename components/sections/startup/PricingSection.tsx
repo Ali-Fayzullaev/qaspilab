@@ -34,7 +34,7 @@ export default function PricingSection() {
       y: 0,
       transition: {
         duration: 0.8,
-        ease: [0.23, 1, 0.32, 1],
+        ease: [0.23, 1, 0.32, 1] as const,
         delay: 0.2
       }
     }
@@ -130,7 +130,7 @@ export default function PricingSection() {
                   {t.startupLaunch.pricing.package.includes.map((item, index) => (
                     <div key={index} className="flex items-center">
                       <div 
-                        className="w-6 h-6 rounded-full flex items-center justify-center mr-4 flex-shrink-0"
+                        className="w-6 h-6 rounded-full flex items-center justify-center mr-4 shrink-0"
                         style={{
                           background: theme === 'dark' ? '#22c55e' : '#15803d',
                         }}

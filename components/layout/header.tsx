@@ -24,6 +24,16 @@ export default function Header() {
   const [languageDropdownOpen, setLanguageDropdownOpen] = useState(false);
   const { scrollY } = useScroll();
 
+  // Навигационные ссылки
+  const navLinks = [
+    { href: "#", label: t.common.home, icon: null },
+    { href: "#about", label: t.common.about, icon: null },
+    { href: "#services", label: t.common.services, icon: null },
+    { href: "#cases", label: t.common.cases, icon: null },
+    { href: "#team", label: t.common.team, icon: null },
+    { href: "#contact", label: t.common.contact, icon: null },
+  ];
+
   // Эффект размытия при скролле
   const headerOpacity = useTransform(scrollY, [0, 100], [0.95, 0.85]);
   const headerBlur = useTransform(scrollY, [0, 100], [8, 16]);
@@ -47,37 +57,24 @@ export default function Header() {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [languageDropdownOpen]);
 
-  // Навигационные ссылки
-  const navLinks = [
-    { href: "#", label: t.common.home, icon: null },
-    { href: "#about", label: t.common.about, icon: null },
-    { href: "#services", label: t.common.services, icon: null },
-    { href: "#cases", label: t.common.cases, icon: null },
-    { href: "#team", label: t.common.team, icon: null },
-    { href: "#contact", label: t.common.contact, icon: null },
-  ];
-  
   // Добавьте этот эффект
-useEffect(() => {
-  if (mobileMenuOpen) {
-    // Прокручиваем наверх при открытии меню
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    document.body.style.overflow = 'hidden';
-  } else {
-    document.body.style.overflow = 'unset';
-  }
-  
-  return () => {
-    document.body.style.overflow = 'unset';
-  };
-}, [mobileMenuOpen]);
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      // Прокручиваем наверх при открытии меню
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [mobileMenuOpen]);
 
   // Плавная прокрутка к секции или переход по ссылке
-  const handleNavigation = (href: string, isExternal?: boolean) => {
-    if (isExternal) {
-      // Для внешних ссылок используем Next.js роутинг
-      window.location.href = `/${locale}${href}`;
-    } else if (href === "#") {
+  const handleNavigation = (href: string) => {
+    if (href === "#") {
       window.scrollTo({ top: 0, behavior: "smooth" });
     } else {
       const element = document.querySelector(href);
@@ -185,7 +182,7 @@ useEffect(() => {
                 key={index}
                 onClick={(e) => {
                   e.preventDefault();
-                  handleNavigation(link.href, link.isExternal);
+                  handleNavigation(link.href);
                 }}
                 className="relative text-foreground/80 hover:text-foreground transition-colors duration-300 font-medium group"
                 whileHover={{ y: -2 }}
@@ -426,7 +423,7 @@ useEffect(() => {
               key={index}
               onClick={(e) => {
                 e.preventDefault();
-                handleNavigation(link.href, link.isExternal);
+                handleNavigation(link.href);
               }}
               className="group w-full text-left p-4 rounded-2xl transition-all duration-300 relative overflow-hidden"
               style={{

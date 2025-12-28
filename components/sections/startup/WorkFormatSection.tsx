@@ -43,7 +43,7 @@ export default function WorkFormatSection() {
       y: 0,
       transition: {
         duration: 0.8,
-        ease: [0.23, 1, 0.32, 1]
+        ease: [0.23, 1, 0.32, 1] as const
       }
     }
   };
@@ -63,7 +63,7 @@ export default function WorkFormatSection() {
           className="text-center mb-16"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
+          transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] as const }}
         >
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-foreground mb-6">
             {t.startupLaunch.workFormat.title}

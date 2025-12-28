@@ -5,6 +5,19 @@ import { useRef, useState, useEffect, useMemo } from 'react';
 import { useLanguage } from '@/lib/language-context';
 import { useTheme } from 'next-themes';
 import Image from 'next/image';
+import { 
+  Users, 
+  Target, 
+  Rocket, 
+  TrendingUp, 
+  Code, 
+  BarChart3, 
+  BookOpen, 
+  CheckCircle, 
+  DollarSign, 
+  MapPin, 
+  ArrowRight 
+} from 'lucide-react';
 
 /**
  * Секция "Наша миссия" 
@@ -29,11 +42,13 @@ export default function MissionSection() {
 
   const texts = {
     title: t.missionSection.title,
-    p1: t.missionSection.p1,
-    p2: t.missionSection.p2,
-    p3: t.missionSection.p3,
-    p4: t.missionSection.p4,
-    p5: t.missionSection.p5
+    subtitle: t.missionSection.subtitle,
+    teamQualities: t.missionSection.teamQualities,
+    promise: t.missionSection.promise,
+    services: t.missionSection.services,
+    pricing: t.missionSection.pricing,
+    location: t.missionSection.location,
+    cta: t.missionSection.cta
   };
 
   const kazakhstanCities = useMemo(() => [
@@ -101,9 +116,9 @@ export default function MissionSection() {
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center min-h-[500px]">
           
-          {/* --- 1. Текстовый блок с кинематографическими анимациями --- */}
+          {/* --- 1. Текстовый блок с новым контентом про капитал и команду --- */}
           <motion.div
-            className="order-2 lg:order-1"
+            className="order-2 lg:order-1 max-w-full overflow-hidden"
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ 
@@ -112,44 +127,176 @@ export default function MissionSection() {
               delay: 0.2
             }}
           >
+            {/* Заголовок */}
             <motion.h2 
-              className="text-4xl md:text-5xl lg:text-6xl font-black text-foreground mb-8 leading-tight tracking-tight"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-foreground mb-8 leading-tight tracking-tight max-w-full"
               variants={titleAnimation}
               initial="hidden"
               animate={isInView ? "visible" : "hidden"}
+              style={{
+                wordWrap: 'break-word',
+                hyphens: 'auto',
+                overflowWrap: 'break-word'
+              }}
             >
               {texts.title}
             </motion.h2>
             
-            <motion.div 
-              className="space-y-4 text-lg md:text-xl text-muted-foreground max-w-2xl"
-              initial="hidden"
-              animate={isInView ? "visible" : "hidden"}
+            {/* Подзаголовок */}
+            <motion.p 
+              className="text-lg sm:text-xl md:text-2xl font-semibold text-muted-foreground mb-8"
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ 
+                duration: 0.8,
+                delay: 0.4
+              }}
             >
-              <motion.p variants={textAnimation} custom={1}>
-                {texts.p1}
-              </motion.p>
-              <motion.p variants={textAnimation} custom={2}>
-                {texts.p2}
-              </motion.p>
-              <motion.p variants={textAnimation} custom={3}>
-                {texts.p3}
-              </motion.p>
-              <motion.p 
-                variants={textAnimation} 
-                custom={4}
-                className="pt-6 font-semibold text-foreground/95 text-xl"
+              {texts.subtitle}
+            </motion.p>
+
+            {/* Качества команды с иконками */}
+            <motion.div
+              className="space-y-4 mb-8"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.6 }}
+            >
+              {texts.teamQualities.map((quality, index) => {
+                const icons = [Users, Target, Rocket, CheckCircle];
+                const Icon = icons[index] || Users;
+                const colors = [
+                  'text-blue-500 dark:text-blue-400',
+                  'text-purple-500 dark:text-purple-400',
+                  'text-green-500 dark:text-green-400',
+                  'text-orange-500 dark:text-orange-400'
+                ];
+                
+                return (
+                  <motion.div
+                    key={index}
+                    className="flex items-center gap-4 text-lg sm:text-xl font-medium"
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={isInView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ 
+                      duration: 0.6,
+                      delay: 0.8 + index * 0.1
+                    }}
+                  >
+                    <Icon className={`w-6 h-6 ${colors[index]}`} />
+                    <span className="text-foreground">{quality}</span>
+                  </motion.div>
+                );
+              })}
+            </motion.div>
+
+            {/* Обещание о запуске стартапов */}
+            <motion.p
+              className="text-xl sm:text-2xl font-bold text-foreground mb-8"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 1.2 }}
+            >
+              {texts.promise}
+            </motion.p>
+
+            {/* Услуги с иконками */}
+            <motion.div
+              className="grid grid-cols-2 gap-4 mb-8"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 1.4 }}
+            >
+              {texts.services.map((service, index) => {
+                const serviceIcons = [Code, BarChart3, BookOpen, CheckCircle];
+                const Icon = serviceIcons[index] || Code;
+                const colors = [
+                  'text-cyan-500 dark:text-cyan-400',
+                  'text-pink-500 dark:text-pink-400',
+                  'text-yellow-500 dark:text-yellow-400',
+                  'text-emerald-500 dark:text-emerald-400'
+                ];
+                
+                return (
+                  <motion.div
+                    key={index}
+                    className="flex items-center gap-3 text-lg font-medium"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                    transition={{ 
+                      duration: 0.6,
+                      delay: 1.6 + index * 0.1
+                    }}
+                  >
+                    <Icon className={`w-5 h-5 ${colors[index]}`} />
+                    <span className="text-foreground">{service}</span>
+                  </motion.div>
+                );
+              })}
+            </motion.div>
+
+            {/* Информация о цене и локации */}
+            <motion.div
+              className="space-y-4 mb-8"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 2.0 }}
+            >
+              <div className="flex items-center gap-3 text-2xl sm:text-3xl font-bold text-green-600 dark:text-green-400">
+                <DollarSign className="w-8 h-8" />
+                {texts.pricing}
+              </div>
+              
+              <div className="flex items-center gap-3 text-lg sm:text-xl font-medium text-blue-600 dark:text-blue-400">
+                <MapPin className="w-6 h-6" />
+                {texts.location}
+              </div>
+            </motion.div>
+
+            {/* CTA кнопка */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 2.2 }}
+            >
+              <motion.button
+                className="group relative w-full sm:w-auto px-8 py-4 rounded-2xl text-white font-bold text-lg sm:text-xl overflow-hidden"
                 style={{
-                  color: theme === 'dark' 
-                    ? 'linear-gradient(90deg, #66ccff, #ff00ff)' 
-                    : 'linear-gradient(90deg, #2563eb, #7c3aed)',
+                  background: 'linear-gradient(135deg, #2563eb, #7c3aed, #ec4899)'
+                }}
+                whileHover={{ 
+                  scale: 1.05,
+                  boxShadow: "0 25px 50px -12px rgba(59, 130, 246, 0.3)"
+                }}
+                whileTap={{ scale: 0.98 }}
+                onClick={() => {
+                  const element = document.querySelector('#contact');
+                  if (element) {
+                    const headerHeight = 80;
+                    const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+                    window.scrollTo({
+                      top: elementPosition - headerHeight,
+                      behavior: 'smooth',
+                    });
+                  }
                 }}
               >
-                {texts.p4}
-              </motion.p>
-              <motion.p variants={textAnimation} custom={5}>
-                {texts.p5}
-              </motion.p>
+                <span className="relative z-10 flex items-center justify-center sm:justify-start gap-2">
+                  {texts.cta}
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                </span>
+                
+                {/* Animated background */}
+                <motion.div
+                  className="absolute inset-0"
+                  style={{
+                    background: 'linear-gradient(135deg, #7c3aed, #ec4899, #f59e0b)'
+                  }}
+                  initial={{ x: '-100%' }}
+                  whileHover={{ x: '0%' }}
+                  transition={{ duration: 0.3 }}
+                />
+              </motion.button>
             </motion.div>
           </motion.div>
 

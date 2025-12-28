@@ -45,7 +45,7 @@ export default function HowWeWorkSection() {
       x: 0,
       transition: {
         duration: 0.8,
-        ease: [0.23, 1, 0.32, 1]
+        ease: [0.23, 1, 0.32, 1] as const
       }
     }
   };
@@ -129,7 +129,7 @@ export default function HowWeWorkSection() {
                 </div>
 
                 {/* Визуальный элемент */}
-                <div className="flex-shrink-0 mb-8 lg:mb-0">
+                <div className="shrink-0 mb-8 lg:mb-0">
                   <div className="relative">
                     {/* Основной круг с иконкой */}
                     <div 

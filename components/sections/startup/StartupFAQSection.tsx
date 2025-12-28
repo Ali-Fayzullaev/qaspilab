@@ -53,7 +53,7 @@ export default function StartupFAQSection() {
       y: 0,
       transition: {
         duration: 0.6,
-        ease: [0.23, 1, 0.32, 1]
+        ease: [0.23, 1, 0.32, 1] as const
       }
     }
   };
@@ -73,7 +73,7 @@ export default function StartupFAQSection() {
           className="text-center mb-16"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
+          transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] as const }}
         >
           <div 
             className="inline-block px-4 py-2 rounded-full text-sm font-semibold mb-6"
@@ -131,7 +131,7 @@ export default function StartupFAQSection() {
                     </h3>
                     
                     <div 
-                      className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300"
+                      className="shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300"
                       style={{
                         background: isOpen 
                           ? (theme === 'dark' ? '#3b82f6' : '#1d4ed8')

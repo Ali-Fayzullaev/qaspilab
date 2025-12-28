@@ -1,3 +1,4 @@
+// components/sections/WhyUsSectionPremium.tsx
 'use client';
 
 import { 
@@ -474,7 +475,14 @@ export default function WhyUsSectionPremium() {
     t.whyUs.reasons[1],
     t.whyUs.reasons[2],
     t.whyUs.reasons[3]
-  ]
+  ],
+  steps: t.whyUs.steps,
+  result: t.whyUs.result,
+  outcomes: t.whyUs.outcomes,
+  pricing: t.whyUs.pricing,
+  location: t.whyUs.location,
+  format: t.whyUs.format,
+  cta: t.whyUs.cta
 };
 
 
@@ -552,7 +560,7 @@ export default function WhyUsSectionPremium() {
           className="grid lg:grid-cols-2 gap-20 items-center"
           style={{ y: contentY }}
         >
-          <div className="z-10 order-2 lg:order-1">
+          <div className="z-10 order-2 lg:order-1 max-w-full overflow-hidden">
             <motion.div
               initial={{ opacity: 0, y: 80 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -563,7 +571,7 @@ export default function WhyUsSectionPremium() {
               }}
             >
               <motion.h2 
-                className="text-5xl md:text-6xl font-black mb-4"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight max-w-full"
                 style={{
                   backgroundImage: theme === 'dark'
                     ? 'linear-gradient(135deg, #ffffff 0%, #e2e8f0 50%, #cbd5e1 100%)'
@@ -572,13 +580,16 @@ export default function WhyUsSectionPremium() {
                   WebkitBackgroundClip: 'text',
                   color: 'transparent',
                   willChange: 'transform',
+                  wordWrap: 'break-word',
+                  hyphens: 'auto',
+                  overflowWrap: 'break-word'
                 }}
               >
                 {whyUsData.title}
               </motion.h2>
               
               <motion.p
-                className="text-xl text-gray-600 dark:text-gray-400 mb-16 max-w-lg"
+                className="text-lg sm:text-xl md:text-2xl text-gray-600 dark:text-gray-400 mb-8 max-w-full"
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ 
@@ -588,19 +599,133 @@ export default function WhyUsSectionPremium() {
               >
                 {whyUsData.subtitle}
               </motion.p>
+
+              {/* Этапы честного запуска */}
+              <motion.div 
+                className="mb-8 space-y-3"
+                initial={{ opacity: 0, y: 30 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ 
+                  duration: HOLLYWOOD_CONFIG.duration.medium,
+                  delay: 0.6
+                }}
+              >
+                {whyUsData.steps.map((step, index) => (
+                  <motion.div
+                    key={index}
+                    className="text-lg sm:text-xl font-semibold text-green-600 dark:text-green-400"
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={isInView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ 
+                      duration: 0.6,
+                      delay: 0.8 + index * 0.1
+                    }}
+                  >
+                    {step}
+                  </motion.div>
+                ))}
+              </motion.div>
+
+              {/* Результат через 60 дней */}
+              <motion.div
+                className="mb-8"
+                initial={{ opacity: 0, y: 30 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ 
+                  duration: HOLLYWOOD_CONFIG.duration.medium,
+                  delay: 1.2
+                }}
+              >
+                <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-4">
+                  {whyUsData.result}
+                </h3>
+                <div className="space-y-2">
+                  {whyUsData.outcomes.map((outcome, index) => (
+                    <motion.div
+                      key={index}
+                      className="text-lg sm:text-xl font-medium text-blue-600 dark:text-blue-400"
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={isInView ? { opacity: 1, x: 0 } : {}}
+                      transition={{ 
+                        duration: 0.6,
+                        delay: 1.4 + index * 0.1
+                      }}
+                    >
+                      {outcome}
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+
+              {/* Информация о цене и формате */}
+              <motion.div
+                className="space-y-4 mb-8"
+                initial={{ opacity: 0, y: 30 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ 
+                  duration: HOLLYWOOD_CONFIG.duration.medium,
+                  delay: 1.8
+                }}
+              >
+                <div className="text-2xl sm:text-3xl font-bold text-green-600 dark:text-green-400">
+                  {whyUsData.pricing}
+                </div>
+                <div className="text-lg sm:text-xl text-blue-600 dark:text-blue-400 font-medium">
+                  {whyUsData.location}
+                </div>
+                <div className="text-lg sm:text-xl text-purple-600 dark:text-purple-400 font-medium">
+                  {whyUsData.format}
+                </div>
+              </motion.div>
+
+              {/* CTA кнопка */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ 
+                  duration: HOLLYWOOD_CONFIG.duration.medium,
+                  delay: 2.0
+                }}
+              >
+                <motion.button
+                  className="group relative w-full sm:w-auto px-8 py-4 rounded-2xl text-white font-bold text-lg overflow-hidden"
+                  style={{
+                    background: 'linear-gradient(135deg, #2563eb, #7c3aed, #ec4899)'
+                  }}
+                  whileHover={{ 
+                    scale: 1.05,
+                    boxShadow: "0 25px 50px -12px rgba(59, 130, 246, 0.3)"
+                  }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={() => {
+                    const element = document.querySelector('#contact');
+                    if (element) {
+                      const headerHeight = 80;
+                      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+                      window.scrollTo({
+                        top: elementPosition - headerHeight,
+                        behavior: 'smooth',
+                      });
+                    }
+                  }}
+                >
+                  <span className="relative z-10 flex items-center justify-center sm:justify-start gap-2">
+                    {whyUsData.cta}
+                  </span>
+                  
+                  {/* Animated background */}
+                  <motion.div
+                    className="absolute inset-0"
+                    style={{
+                      background: 'linear-gradient(135deg, #7c3aed, #ec4899, #f59e0b)'
+                    }}
+                    initial={{ x: '-100%' }}
+                    whileHover={{ x: '0%' }}
+                    transition={{ duration: 0.3 }}
+                  />
+                </motion.button>
+              </motion.div>
             </motion.div>
-            
-            <div className="space-y-8">
-              {whyUsData.reasons.map((reason, index) => (
-                <HollywoodAdvantageCard
-                  key={`premium-advantage-${index}`}
-                  advantage={reason}
-                  index={index}
-                  isInView={isInView}
-                  theme={theme}
-                />
-              ))}
-            </div>
           </div>
 
           {/* Premium Laboratory Visualization with actual image */}

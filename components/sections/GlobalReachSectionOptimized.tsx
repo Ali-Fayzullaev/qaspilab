@@ -1,10 +1,22 @@
 'use client';
 
-import { motion, useInView, useScroll, useTransform, useSpring, useReducedMotion } from 'framer-motion';
+import { 
+  motion, useInView, useScroll, useTransform, useSpring, useReducedMotion 
+} from 'framer-motion';
 import { useRef, useState, useEffect, useMemo, useCallback, memo } from 'react';
 import { useLanguage } from '@/lib/language-context';
 import { useTheme } from 'next-themes';
 import Image from 'next/image';
+import { 
+  Lightbulb, 
+  Target, 
+  Rocket, 
+  TrendingUp, 
+  Users, 
+  DollarSign, 
+  MapPin, 
+  ArrowRight 
+} from 'lucide-react';
 
 // Мемоизированный компонент светового луча для лучшей производительности
 const LightBeamEffect = memo(({ theme, isInView }: { 
@@ -334,9 +346,9 @@ const GlobalReachSectionOptimized = memo(() => {
             <DigitalEffects theme={theme} isInView={isInView} />
           </div>
 
-          {/* Текстовый блок с переводами */}
+          {/* Текстовый блок с новым контентом про фаундер-команду */}
           <motion.div
-            className="z-10 order-2 lg:order-2 globalreach-gpu-accelerated"
+            className="z-10 order-2 lg:order-2 globalreach-gpu-accelerated max-w-full overflow-hidden"
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.1 }}
@@ -345,24 +357,26 @@ const GlobalReachSectionOptimized = memo(() => {
               transform: 'translateZ(0)',
             }}
           >
-            {/* Заголовок с переводами */}
+            {/* Заголовок */}
             <motion.h2 
-              className="text-4xl md:text-5xl font-extrabold text-foreground mb-8"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground mb-8 leading-tight max-w-full"
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.2 }}
               style={{
                 willChange: 'transform, opacity',
                 transform: 'translateZ(0)',
+                wordWrap: 'break-word',
+                hyphens: 'auto',
+                overflowWrap: 'break-word'
               }}
             >
-              {/* {globalReach.title} */}
-              {t.globalReach.title}
+              {globalData.title}
             </motion.h2>
             
-            {/* Описание */}
-            <motion.div 
-              className="text-xl text-muted-foreground leading-relaxed mb-12"
+            {/* Подзаголовок */}
+            <motion.p 
+              className="text-lg sm:text-xl md:text-2xl text-muted-foreground mb-8 font-semibold"
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.3 }}
@@ -371,68 +385,121 @@ const GlobalReachSectionOptimized = memo(() => {
                 transform: 'translateZ(0)',
               }}
             >
-              {t.globalReach.description}
-              
-            </motion.div>
+              {globalData.subtitle}
+            </motion.p>
 
-            {/* Оптимизированная статистика */}
+            {/* Этапы работы с иконками */}
             <motion.div
-              className="grid grid-cols-2 gap-8"
+              className="space-y-4 mb-8"
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.4 }}
-              style={{
-                willChange: 'transform, opacity',
-                transform: 'translateZ(0)',
-              }}
             >
-              <div className="text-center globalreach-gpu-accelerated">
-                <motion.div
-                  className="text-3xl font-bold mb-2"
-                  style={{ color: theme === 'dark' ? '#00d4ff' : '#3b82f6' }}
-                  animate={isInView && !prefersReducedMotion ? {
-                    textShadow: [
-                      '0 0 0px transparent',
-                      `0 0 10px ${theme === 'dark' ? '#00d4ff40' : '#3b82f640'}`,
-                      '0 0 0px transparent'
-                    ]
-                  } : {}}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    delay: 1.5
-                  }}
-                >
-                  {globalData.stats?.projects || "100+"}
-                </motion.div>
-                <p className="text-sm text-muted-foreground">
-                  Projects Delivered
-                </p>
+              {globalData.steps.map((step, index) => {
+                const icons = [Target, Lightbulb, Rocket, TrendingUp];
+                const Icon = icons[index] || Target;
+                const colors = [
+                  'text-blue-500 dark:text-blue-400',
+                  'text-yellow-500 dark:text-yellow-400', 
+                  'text-green-500 dark:text-green-400',
+                  'text-purple-500 dark:text-purple-400'
+                ];
+                
+                return (
+                  <motion.div
+                    key={index}
+                    className="flex items-center gap-4 text-lg sm:text-xl font-medium"
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={isInView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ 
+                      duration: 0.6,
+                      delay: 0.6 + index * 0.1
+                    }}
+                  >
+                    <Icon className={`w-6 h-6 ${colors[index]}`} />
+                    <span className="text-foreground">{step}</span>
+                  </motion.div>
+                );
+              })}
+            </motion.div>
+
+            {/* Описание без иллюзий */}
+            <motion.p
+              className="text-lg sm:text-xl font-bold text-orange-600 dark:text-orange-400 mb-8 italic"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 1.0 }}
+            >
+              {globalData.description}
+            </motion.p>
+
+            {/* Информация о формате и цене */}
+            <motion.div
+              className="space-y-4 mb-8"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 1.2 }}
+            >
+              <div className="flex items-center gap-3 text-lg sm:text-xl font-medium text-purple-600 dark:text-purple-400">
+                <Users className="w-6 h-6" />
+                {globalData.format}
               </div>
               
-              <div className="text-center globalreach-gpu-accelerated">
-                <motion.div
-                  className="text-3xl font-bold mb-2"
-                  style={{ color: theme === 'dark' ? '#8b5cf6' : '#8b5cf6' }}
-                  animate={isInView && !prefersReducedMotion ? {
-                    textShadow: [
-                      '0 0 0px transparent',
-                      `0 0 10px ${theme === 'dark' ? '#8b5cf640' : '#8b5cf640'}`,
-                      '0 0 0px transparent'
-                    ]
-                  } : {}}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    delay: 2
-                  }}
-                >
-                  🇰🇿
-                </motion.div>
-                <p className="text-sm text-muted-foreground">
-                  Kazakhstan
-                </p>
+              <div className="flex items-center gap-3 text-2xl sm:text-3xl font-bold text-green-600 dark:text-green-400">
+                <DollarSign className="w-8 h-8" />
+                {globalData.pricing}
               </div>
+              
+              <div className="flex items-center gap-3 text-lg sm:text-xl font-medium text-blue-600 dark:text-blue-400">
+                <MapPin className="w-6 h-6" />
+                {globalData.location}
+              </div>
+            </motion.div>
+
+            {/* CTA кнопка */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 1.4 }}
+            >
+              <motion.button
+                className="group relative w-full sm:w-auto px-8 py-4 rounded-2xl text-white font-bold text-lg sm:text-xl overflow-hidden"
+                style={{
+                  background: 'linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899)'
+                }}
+                whileHover={{ 
+                  scale: 1.05,
+                  boxShadow: "0 25px 50px -12px rgba(59, 130, 246, 0.3)"
+                }}
+                whileTap={{ scale: 0.98 }}
+                onClick={() => {
+                  const element = document.querySelector('#contact');
+                  if (element) {
+                    const headerHeight = 80;
+                    const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+                    window.scrollTo({
+                      top: elementPosition - headerHeight,
+                      behavior: 'smooth',
+                    });
+                  }
+                }}
+              >
+                <span className="relative z-10 flex items-center justify-center sm:justify-start gap-2">
+                  {globalData.cta}
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                </span>
+                
+                {/* Animated background */}
+                <motion.div
+                  className="absolute inset-0"
+                  style={{
+                    background: 'linear-gradient(135deg, #8b5cf6, #ec4899, #f59e0b)'
+                  }}
+                  initial={{ x: '-100%' }}
+                  whileHover={{ x: '0%' }}
+                  transition={{ duration: 0.3 }}
+                />
+              </motion.button>
             </motion.div>
           </motion.div>
 
