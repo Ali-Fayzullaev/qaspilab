@@ -145,6 +145,7 @@ export default function AboutSection() {
           : 'radial-gradient(circle at 70% 70%, #ffffff 0%, #f0f9ff 50%, #e0f2fe 100%)',
         color: theme === 'dark' ? '#ffffff' : '#0f172a'
       }}
+      id='team'
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 md:gap-16 items-center">
