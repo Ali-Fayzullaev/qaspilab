@@ -6,18 +6,181 @@ export const translations = {
       home: "Home",
       about: "About",
       services: "Services",
+      startupLaunch: "Startup Launch",
+      cases: "Cases",
+      team: "Team",
       contact: "Contact",
       language: "Language",
       viewGallery: "View Gallery",
     },
     hero: {
-      title: "Qaspilab",
-      subtitle: "Born in Kazakhstan. Built for the world.",
-      slogan:
-        "We create technologies that shape the future of digital innovation",
-      description: "Transforming ideas into cutting-edge solutions",
-      cta: "Discuss Project",
+      title: "Business Idea Launch in 60 Days",
+      subtitle: "From idea → to MVP and first commercial signals",
+      slogan: "We validate ideas with market, create products, launch go-to-market and support at the start.",
+      description: "Work format: 2 stages of 30 days each.",
+      cta: "Book Idea Analysis",
+      learnMore: "Learn Conditions",
+      priceFrom: "From 3.9 million ₸",
+      paymentTerms: "50% - at development start, 50% - after first market testing"
     },
+    
+    // Новая секция startup launch
+    startupLaunch: {
+      whyImportant: {
+        title: "Why This Is Important",
+        subtitle: "Problems we solve with our service",
+        problems: [
+          {
+            title: "Self-launch mistakes",
+            description: "Avoid costly errors when launching independently"
+          },
+          {
+            title: "High team costs", 
+            description: "No need to hire expensive full-time team"
+          },
+          {
+            title: "Long timelines",
+            description: "We deliver results in just 60 days"
+          },
+          {
+            title: "Result uncertainty",
+            description: "Clear process with market validation"
+          }
+        ]
+      },
+      
+      howWeWork: {
+        title: "How We Work",
+        subtitle: "Step-by-step process",
+        steps: [
+          {
+            step: "01",
+            title: "Idea Analysis", 
+            description: "CustDev, hypothesis validation, market and pain analysis"
+          },
+          {
+            step: "02",
+            title: "UVP Formation",
+            description: "Left/right sides positioning"  
+          },
+          {
+            step: "03", 
+            title: "MVP Development",
+            description: "UI/UX, prototype, technical implementation"
+          },
+          {
+            step: "04",
+            title: "Go-to-Market",
+            description: "Marketing setup, ad campaign testing, lead generation"
+          },
+          {
+            step: "05",
+            title: "Mentorship & Handover", 
+            description: "Strategic support, documentation, scaling recommendations"
+          }
+        ]
+      },
+      
+      whatClientGets: {
+        title: "What Client Gets",
+        deliverables: [
+          "MVP / working product",
+          "Market validation",
+          "First customer feedback", 
+          "Marketing tests",
+          "Development strategy"
+        ]
+      },
+      
+      workFormat: {
+        title: "Work Format + Timelines",
+        stages: [
+          {
+            stage: "Stage 1",
+            tasks: "Development and packaging",
+            timeline: "30 days"
+          },
+          {
+            stage: "Stage 2", 
+            tasks: "Validation and marketing testing",
+            timeline: "30 days"
+          }
+        ],
+        payment: {
+          title: "Payment:",
+          terms: ["50% prepayment", "50% after first month market entry"]
+        }
+      },
+      
+      pricing: {
+        title: "Pricing",
+        package: {
+          name: "Venture Launch",
+          price: "From 3,900,000 ₸", 
+          duration: "60 days",
+          includes: [
+            "5 core deliverables",
+            "Mentorship",
+            "Market validation",
+            "Go-to-market strategy"
+          ]
+        },
+        cta: "Book Idea Analysis"
+      },
+      
+      whyQaspilab: {
+        title: "Why Qaspilab",
+        reasons: [
+          {
+            title: "5+ years product development experience",
+            description: "Proven track record in creating successful products"
+          },
+          {
+            title: "Real case studies", 
+            description: "Portfolio of launched startups and MVPs"
+          },
+          {
+            title: "Expert team",
+            description: "Experienced developers, designers, and strategists"
+          },
+          {
+            title: "Work as temporary founders",
+            description: "We treat your project as our own"
+          },
+          {
+            title: "Transparency and clear stages",
+            description: "Regular reporting and milestone tracking"
+          }
+        ]
+      },
+      
+      faq: {
+        title: "Frequently Asked Questions",
+        items: [
+          {
+            question: "What's included in MVP?",
+            answer: "Core functionality, user interface, basic integrations, and market-ready product version for initial testing."
+          },
+          {
+            question: "How is success measured?",
+            answer: "Market validation metrics, user engagement, conversion rates, and feedback quality from real users."
+          },
+          {
+            question: "What if project doesn't succeed?",
+            answer: "We provide honest market validation. Success isn't guaranteed, but you get clear data and recommendations."
+          },
+          {
+            question: "What guarantees do you provide?",
+            answer: "We guarantee delivery of all agreed deliverables within timeline and quality standards."
+          },
+          {
+            question: "Why 60 days?",
+            answer: "Optimal timeframe for MVP development and initial market validation without losing momentum."
+          }
+        ]
+      }
+    },
+    
     about: {
       title: "We're not an agency. We're a laboratory.",
       subtitle: "Innovation at the Heart of Everything We Do",
@@ -25,7 +188,8 @@ export const translations = {
         "Qaspilab is where ideas take shape. Where entrepreneurs, designers and engineers come together to create not just code — but living products.",
       expertise: "Our Expertise",
       expertiseItems: [
-        "Full-Stack Web Development",
+        "Startup Launch & MVP Development",
+        "Full-Stack Web Development", 
         "Mobile App Development",
         "AI & Machine Learning Solutions",
         "Cloud Infrastructure & DevOps",
@@ -262,34 +426,199 @@ export const translations = {
       madeWith: "Made with ❤️ in Kazakhstan",
     },
   },
+  
   ru: {
     common: {
       home: "Главная",
-      about: "О нас",
+      about: "О нас", 
       services: "Услуги",
+      startupLaunch: "Запуск стартапов",
+      cases: "Кейсы",
+      team: "Команда", 
       contact: "Контакты",
       language: "Язык",
       viewGallery: "Посмотреть галерею",
     },
     hero: {
-      title: "Создание сайтов и мобильных приложений | Qaspilab",
-      subtitle: "Сделать сайт в Казахстане. Разработка под ключ от 50 000 ₸",
-      slogan:
-        "Создаём сайты, которые продают. Разрабатываем мобильные приложения и IT-решения для бизнеса по всему Казахстану",
-      description: "Превращаем ваши идеи в готовые цифровые продукты. Работаем из Астаны с клиентами по всей стране",
-      cta: "Заказать сайт",
+      title: "Запуск бизнес-идей за 60 дней",
+      subtitle: "От идеи → до MVP и первых коммерческих сигналов",
+      slogan: "Проверяем идеи рынком, делаем продукт, запускаем go-to-market и сопровождаем на старте.",
+      description: "Формат работы: 2 этапа по 30 дней.",
+      cta: "Записаться на разбор идеи",
+      learnMore: "Узнать условия",
+      priceFrom: "От 3.9 млн ₸",
+      paymentTerms: "50% — при старте разработки, 50% — после первого тестирования выхода на рынок"
     },
+    
+    // Новая секция запуска стартапов
+    startupLaunch: {
+      whyImportant: {
+        title: "Почему это важно",
+        subtitle: "Проблемы, которые решает наш сервис",
+        problems: [
+          {
+            title: "Ошибки при самостоятельном запуске",
+            description: "Избежание дорогостоящих ошибок при самостоятельном запуске"
+          },
+          {
+            title: "Высокие затраты на команду",
+            description: "Не нужно нанимать дорогую штатную команду"
+          },
+          {
+            title: "Долгие сроки", 
+            description: "Мы доставляем результат всего за 60 дней"
+          },
+          {
+            title: "Неопределённость результата",
+            description: "Четкий процесс с проверкой рынком"
+          }
+        ]
+      },
+      
+      howWeWork: {
+        title: "Как мы работаем",
+        subtitle: "Пошаговый процесс",
+        steps: [
+          {
+            step: "01",
+            title: "Анализ идеи",
+            description: "CustDev, валидация гипотезы, анализ рынка и боли"
+          },
+          {
+            step: "02", 
+            title: "Формирование УТП",
+            description: "Левая/правая стороны, позиционирование"
+          },
+          {
+            step: "03",
+            title: "Разработка MVP", 
+            description: "UI/UX, прототип, техническая реализация"
+          },
+          {
+            step: "04",
+            title: "Go-to-Market",
+            description: "Настройка маркетинга, тест рекламных кампаний, сбор лидов"
+          },
+          {
+            step: "05",
+            title: "Менторство и передача",
+            description: "Стратегическое сопровождение, документация, рекомендации по масштабированию"
+          }
+        ]
+      },
+      
+      whatClientGets: {
+        title: "Что получает клиент", 
+        deliverables: [
+          "MVP / работающий продукт",
+          "Проверка рынка",
+          "Первая обратная связь от клиентов",
+          "Маркетинговые тесты", 
+          "Стратегия развития"
+        ]
+      },
+      
+      workFormat: {
+        title: "Формат работ + сроки",
+        stages: [
+          {
+            stage: "Этап 1",
+            tasks: "Разработка и упаковка", 
+            timeline: "30 дней"
+          },
+          {
+            stage: "Этап 2",
+            tasks: "Валидация и тест маркетинга",
+            timeline: "30 дней"
+          }
+        ],
+        payment: {
+          title: "Оплата:",
+          terms: ["50% предоплата", "50% после первого месяца выхода на рынок"]
+        }
+      },
+      
+      pricing: {
+        title: "Стоимость",
+        package: {
+          name: "Venture Launch",
+          price: "От 3 900 000 ₸",
+          duration: "60 дней",
+          includes: [
+            "5 базовых deliverables", 
+            "Менторство",
+            "Проверка рынка",
+            "Go-to-market стратегия"
+          ]
+        },
+        cta: "Записаться на разбор идеи"
+      },
+      
+      whyQaspilab: {
+        title: "Почему Qaspilab",
+        reasons: [
+          {
+            title: "5+ лет опыта в разработке продуктов",
+            description: "Доказанный послужной список создания успешных продуктов"
+          },
+          {
+            title: "Реальные кейсы",
+            description: "Портфолио запущенных стартапов и MVP"
+          },
+          {
+            title: "Команда экспертов", 
+            description: "Опытные разработчики, дизайнеры и стратеги"
+          },
+          {
+            title: "Работаем как временные фаундеры",
+            description: "Относимся к вашему проекту как к своему"
+          },
+          {
+            title: "Отчётность и прозрачные этапы",
+            description: "Регулярная отчетность и отслеживание этапов"
+          }
+        ]
+      },
+      
+      faq: {
+        title: "Частые вопросы",
+        items: [
+          {
+            question: "Что входит в MVP?",
+            answer: "Основной функционал, пользовательский интерфейс, базовые интеграции и готовая к рынку версия продукта для первичного тестирования."
+          },
+          {
+            question: "Как оценивается успех?", 
+            answer: "Метрики валидации рынка, вовлеченность пользователей, конверсии и качество обратной связи от реальных пользователей."
+          },
+          {
+            question: "Что если проект не выстрелит?",
+            answer: "Мы предоставляем честную валидацию рынка. Успех не гарантирован, но вы получите четкие данные и рекомендации."
+          },
+          {
+            question: "Какие гарантии?",
+            answer: "Гарантируем поставку всех согласованных deliverables в срок и с соблюдением стандартов качества."
+          },
+          {
+            question: "Почему 60 дней?",
+            answer: "Оптимальные сроки для разработки MVP и первичной валидации рынка без потери импульса."
+          }
+        ]
+      }
+    },
+    
     about: {
-      title: "Почему выбирают нас для создания сайтов?",
-      subtitle: "Мы делаем сайты, которые работают на результат",
+      title: "Мы не агентство. Мы лаборатория.",
+      subtitle: "Инновации в основе всего, что мы делаем",
       description:
-        "Qaspilab — это IT-лаборатория в Астане, которая создаёт современные сайты и веб-приложения для клиентов по всему Казахстану. Наша команда разработчиков, дизайнеров и маркетологов превратит вашу идею в успешный цифровой продукт.",
-      expertise: "Что мы умеем",
+        "Qaspilab — это IT-лаборатория, где идеи обретают форму. Здесь предприниматели, дизайнеры и инженеры объединяются для создания не просто кода — а живых продуктов.",
+      expertise: "Наша экспертиза",
       expertiseItems: [
-        "Создание сайтов на WordPress и Next.js",
-        "Разработка интернет-магазинов и лендингов",
-        "Мобильные приложения iOS и Android",
-        "SEO-оптимизация и продвижение сайтов",
+        "Запуск стартапов и разработка MVP",
+        "Full-Stack веб-разработка",
+        "Разработка мобильных приложений", 
+        "AI и Machine Learning решения",
+        "Облачная инфраструктура и DevOps",
         "UI/UX дизайн и брендинг",
       ],
       teamImages: [
@@ -522,34 +851,199 @@ export const translations = {
       madeWith: "Сделано с ❤️ в Казахстане",
     },
   },
+  
   kk: {
     common: {
       home: "Басты бет",
       about: "Біз туралы",
       services: "Қызметтер",
+      startupLaunch: "Стартап іске қосу",
+      cases: "Кейстер", 
+      team: "Команда",
       contact: "Байланыс",
       language: "Тіл",
       viewGallery: "Галереяны көру",
     },
     hero: {
-      title: "Qaspilab",
-      subtitle: "Қазақстанда туған. Әлем үшін жасалған.",
-      slogan:
-        "Біз цифрлық инновацияның болашағын қалыптастыратын технологиялар жасаймыз",
-      description: "Идеяларды озық шешімдерге айналдырамыз",
-      cta: "Жобаны талқылау",
+      title: "Бизнес-идеяларды 60 күнде іске қосу",
+      subtitle: "Идеядан → MVP және алғашқы коммерциялық сигналдарға дейін",
+      slogan: "Идеяларды нарықпен тексереміз, өнім жасаймыз, go-to-market іске қосамыз және бастапқыда қолдаймыз.",
+      description: "Жұмыс форматы: 30 күнден 2 кезең.",
+      cta: "Идеяны талдауға жазылу",
+      learnMore: "Шарттарды білу", 
+      priceFrom: "3.9 млн ₸ бастап",
+      paymentTerms: "50% — әзірлеуді бастағанда, 50% — нарыққа шығудың алғашқы тестілеуінен кейін"
     },
+    
+    // Жаңа стартап іске қосу бөлімі
+    startupLaunch: {
+      whyImportant: {
+        title: "Бұл неліктен маңызды",
+        subtitle: "Біздің қызметіміз шешетін мәселелер",
+        problems: [
+          {
+            title: "Өз бетінше іске қосу кезіндегі қателер",
+            description: "Өз бетінше іске қосу кезіндегі қымбат қателерден аулақ болу"
+          },
+          {
+            title: "Командаға жоғары шығындар",
+            description: "Қымбат тұрақты команданы жалдау қажеттілігі жоқ"
+          },
+          {
+            title: "Ұзақ мерзімдер",
+            description: "Біз тек 60 күнде нәтиже жеткіземіз"
+          },
+          {
+            title: "Нәтиже белгісіздігі", 
+            description: "Нарықпен тексерумен айқын процесс"
+          }
+        ]
+      },
+      
+      howWeWork: {
+        title: "Біз қалай жұмыс істейміз",
+        subtitle: "Қадамдық процесс", 
+        steps: [
+          {
+            step: "01",
+            title: "Идеяны талдау",
+            description: "CustDev, гипотезаны растау, нарық пен ауырсынуды талдау"
+          },
+          {
+            step: "02",
+            title: "УТП қалыптастыру",
+            description: "Сол/оң жақтар, позициялау"
+          },
+          {
+            step: "03", 
+            title: "MVP әзірлеу",
+            description: "UI/UX, прототип, техникалық іске асыру"
+          },
+          {
+            step: "04",
+            title: "Go-to-Market", 
+            description: "Маркетингті баптау, жарнама науқандарын тестілеу, лидтерді жинау"
+          },
+          {
+            step: "05",
+            title: "Менторство және беру",
+            description: "Стратегиялық сүйемелдеу, құжаттама, масштабтау бойынша ұсыныстар"
+          }
+        ]
+      },
+      
+      whatClientGets: {
+        title: "Клиент не алады",
+        deliverables: [
+          "MVP / жұмыс істейтін өнім",
+          "Нарықты тексеру", 
+          "Клиенттерден алғашқы кері байланыс",
+          "Маркетингтік тестілеулер",
+          "Дамыту стратегиясы"
+        ]
+      },
+      
+      workFormat: {
+        title: "Жұмыс форматы + мерзімдер",
+        stages: [
+          {
+            stage: "1-кезең",
+            tasks: "Әзірлеу және қаптау",
+            timeline: "30 күн"
+          },
+          {
+            stage: "2-кезең",
+            tasks: "Растау және маркетинг тестілеуі", 
+            timeline: "30 күн"
+          }
+        ],
+        payment: {
+          title: "Төлем:",
+          terms: ["50% алдын ала төлем", "50% нарыққа шыққаннан кейінгі алғашқы айдан кейін"]
+        }
+      },
+      
+      pricing: {
+        title: "Құны",
+        package: {
+          name: "Venture Launch",
+          price: "3 900 000 ₸ бастап",
+          duration: "60 күн",
+          includes: [
+            "5 негізгі deliverables",
+            "Менторство", 
+            "Нарықты тексеру",
+            "Go-to-market стратегиясы"
+          ]
+        },
+        cta: "Идеяны талдауға жазылу"
+      },
+      
+      whyQaspilab: {
+        title: "Неліктен Qaspilab",
+        reasons: [
+          {
+            title: "Өнім әзірлеудегі 5+ жыл тәжірибе",
+            description: "Сәтті өнімдер жасаудағы дәлелденген нәтижелер"
+          },
+          {
+            title: "Нақты кейстер",
+            description: "Іске қосылған стартаптар мен MVP портфолиосы"
+          },
+          {
+            title: "Сарапшылар командасы",
+            description: "Тәжірибелі әзірлеушілер, дизайнерлер және стратегтер"
+          },
+          {
+            title: "Уақытша негізгі иелер ретінде жұмыс істейміз",
+            description: "Сіздің жобаңызға өз жобамыздай қараймыз"
+          },
+          {
+            title: "Есептілік және айқын кезеңдер", 
+            description: "Тұрақты есептілік және кезеңдерді бақылау"
+          }
+        ]
+      },
+      
+      faq: {
+        title: "Жиі қойылатын сұрақтар",
+        items: [
+          {
+            question: "MVP-ға не кіреді?",
+            answer: "Негізгі функционал, пайдаланушы интерфейсі, базалық интеграциялар және алғашқы тестілеу үшін нарыққа дайын өнім нұсқасы."
+          },
+          {
+            question: "Табыс қалай бағаланады?",
+            answer: "Нарық растау метрикалары, пайдаланушы тартылуы, конверсиялар және нақты пайдаланушылардан кері байланыс сапасы."
+          },
+          {
+            question: "Жоба сәтсіз болса не болады?", 
+            answer: "Біз адал нарық растауын қамтамасыз етеміз. Табыс кепілдендірілмейді, бірақ сіз нақты деректер мен ұсыныстарды аласыз."
+          },
+          {
+            question: "Қандай кепілдіктер?",
+            answer: "Келісілген барлық deliverables мерзімінде және сапа стандарттарын сақтай отырып жеткізуге кепілдік береміз."
+          },
+          {
+            question: "Неліктен 60 күн?",
+            answer: "MVP әзірлеу және алғашқы нарық растау үшін импульсты жоғалтпай оңтайлы мерзім."
+          }
+        ]
+      }
+    },
+    
     about: {
       title: "Біз агенттік емеспіз. Біз зертханамыз.",
       subtitle: "Біз істейтін барлық нәрсенің негізінде инновация",
       description:
-        "Qaspilab - бұл идеялардың пішін алатын жері. Кәсіпкерлер, дизайнерлер мен инженерлер жай ғана код емес - тірі өнім жасау үшін жиналатын жер.",
-      expertise: "Біздің сараптама",
+        "Qaspilab — бұл идеялардың пішін алатын IT зертханасы. Мұнда кәсіпкерлер, дизайнерлер мен инженерлер жай ғана код емес — тірі өнімдер жасау үшін біріккен жер.",
+      expertise: "Біздің сараптамамыз",
       expertiseItems: [
-        "Толық веб-әзірлеу",
+        "Стартаптарды іске қосу және MVP әзірлеу",
+        "Full-Stack веб-әзірлеу",
         "Мобильді қолданбаларды әзірлеу",
-        "Жасанды интеллект және машиналық оқыту",
-        "Бұлт инфрақұрылымы және DevOps",
+        "AI және Machine Learning шешімдері",
+        "Бұлт инфрақұрылымы және DevOps", 
         "UI/UX дизайн және брендинг",
       ],
       teamImages: [

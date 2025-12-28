@@ -291,48 +291,90 @@ export default function HeroSection() {
               {titleChars}
             </motion.h1>
 
-            {/* Адаптивный подзаголовок */}
+            {/* Адаптивный подзаголовок - ОБНОВЛЕН */}
             <motion.p
-              className="hero-subtitle text-sm sm:text-lg md:text-xl lg:text-2xl mb-3 sm:mb-4 md:mb-6 font-light tracking-wide sm:tracking-widest uppercase optimized-text leading-relaxed"
+              className="hero-subtitle text-lg sm:text-xl md:text-2xl lg:text-3xl mb-4 sm:mb-6 md:mb-8 font-semibold tracking-wide leading-relaxed"
               style={{
-                color: theme === 'dark' ? 'rgba(226, 232, 240, 0.8)' : 'rgba(30, 41, 59, 0.7)'
+                color: theme === 'dark' ? 'rgba(226, 232, 240, 0.9)' : 'rgba(30, 41, 59, 0.8)'
               }}
               {...ANIMATION_VARIANTS.fadeUpOptimized(1.2)}
             >
-              {t.hero?.subtitle || "Born in Kazakhstan. Built for the world."}
+              {t.hero?.subtitle || "Запуск бизнес-идей за 60 дней"}
             </motion.p>
             
-            {/* Адаптивный слоган */}
+            {/* Адаптивный слоган - ОБНОВЛЕН */}
             <motion.div
-              className="text-sm sm:text-base md:text-lg lg:text-xl max-w-2xl lg:max-w-3xl mx-auto mb-6 sm:mb-8 md:mb-10 lg:mb-12 leading-relaxed sm:leading-loose font-normal optimized-text px-2 sm:px-0"
+              className="text-base sm:text-lg md:text-xl lg:text-2xl max-w-3xl lg:max-w-4xl mx-auto mb-8 sm:mb-10 md:mb-12 leading-relaxed font-medium px-2 sm:px-0"
               style={{
-                color: theme === 'dark' ? 'rgba(148, 163, 184, 0.8)' : 'rgba(71, 85, 105, 0.8)'
+                color: theme === 'dark' ? 'rgba(148, 163, 184, 0.9)' : 'rgba(71, 85, 105, 0.9)'
               }}
             >
               {sloganWords}
             </motion.div>
 
-            {/* Адаптивная кнопка CTA */}
+            {/* Блок с ценой - НОВЫЙ */}
             <motion.div
-              {...ANIMATION_VARIANTS.fadeUpOptimized(2.2)}
-              whileHover={{ 
-                scale: isMobile ? 1.02 : 1.05, // Меньший scale на мобилках
-                boxShadow: theme === 'dark'
-                  ? "0 0 25px rgba(6, 182, 212, 0.4), 0 0 5px rgba(6, 182, 212, 0.8)"
-                  : "0 0 25px rgba(59, 130, 246, 0.4), 0 0 5px rgba(59, 130, 246, 0.6)"
+              className="bg-card/50 backdrop-blur-sm border rounded-2xl p-6 md:p-8 mb-8 md:mb-12 max-w-2xl mx-auto"
+              {...ANIMATION_VARIANTS.fadeUpOptimized(2.0)}
+              style={{
+                borderColor: theme === 'dark' ? 'rgba(59, 130, 246, 0.3)' : 'rgba(29, 78, 216, 0.3)',
+                boxShadow: theme === 'dark' 
+                  ? '0 20px 40px rgba(59, 130, 246, 0.1)' 
+                  : '0 20px 40px rgba(29, 78, 216, 0.1)'
               }}
-              whileTap={{ scale: 0.95 }}
-              className="px-2 sm:px-0"
             >
-              <a href="#contact" className="block w-full sm:w-auto">
+              <div className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-3">
+                {t.hero?.priceFrom || "От 3.9 млн ₸"}
+              </div>
+              <div className="text-sm md:text-base text-muted-foreground">
+                {t.hero?.paymentTerms || "50% — при старте разработки, 50% — после первого тестирования"}
+              </div>
+            </motion.div>
+
+            {/* Адаптивные кнопки CTA - ОБНОВЛЕНЫ */}
+            <motion.div
+              className="flex flex-col sm:flex-row gap-4 justify-center items-center px-2 sm:px-0"
+              {...ANIMATION_VARIANTS.fadeUpOptimized(2.4)}
+            >
+              <motion.div
+                whileHover={{ 
+                  scale: isMobile ? 1.02 : 1.05,
+                  boxShadow: theme === 'dark'
+                    ? "0 0 25px rgba(59, 130, 246, 0.4)"
+                    : "0 0 25px rgba(29, 78, 216, 0.4)"
+                }}
+                whileTap={{ scale: 0.95 }}
+              >
                 <Button 
-                  className="hero-cta-button w-full sm:w-auto px-4 sm:px-6 md:px-8 py-4 sm:py-5 md:py-6 text-base sm:text-lg md:text-xl font-bold transition-all duration-300 shadow-xl group"
-                  style={buttonStyles}
+                  className="w-full sm:w-auto px-6 md:px-8 py-4 md:py-5 text-base md:text-lg font-bold transition-all duration-300 shadow-xl group rounded-xl"
+                  style={{
+                    background: theme === 'dark' 
+                      ? 'linear-gradient(135deg, #3b82f6, #8b5cf6)' 
+                      : 'linear-gradient(135deg, #1d4ed8, #6d28d9)',
+                    color: 'white'
+                  }}
+                  onClick={handleModalOpen}
                 >
-                  {t.hero?.cta}
-                  <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 ml-2 sm:ml-3 group-hover:translate-x-1 transition-transform duration-300" />
+                  {t.hero?.cta || "Записаться на разбор идеи"}
+                  <ArrowRight className="h-5 w-5 ml-3 group-hover:translate-x-1 transition-transform duration-300" />
                 </Button>
-              </a>
+              </motion.div>
+              
+              <motion.div
+                whileHover={{ scale: isMobile ? 1.02 : 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Button 
+                  variant="outline"
+                  className="w-full sm:w-auto px-6 md:px-8 py-4 md:py-5 text-base md:text-lg font-bold border-2 transition-all duration-300 rounded-xl"
+                  style={{
+                    borderColor: theme === 'dark' ? '#3b82f6' : '#1d4ed8',
+                    color: theme === 'dark' ? '#3b82f6' : '#1d4ed8'
+                  }}
+                >
+                  {t.hero?.learnMore || "Узнать условия"}
+                </Button>
+              </motion.div>
             </motion.div>
           </div>
         </div>

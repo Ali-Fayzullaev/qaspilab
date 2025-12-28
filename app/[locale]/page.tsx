@@ -8,7 +8,15 @@ import dynamic from 'next/dynamic';
 // Оптимизированный импорт HeroSection
 import HeroSection from '@/components/sections/HeroSection';
 
-// Ленивая загрузка тяжелых секций для улучшения производительности
+// Импорт секций startup-launch
+import WhyImportantSection from '@/components/sections/startup/WhyImportantSection';
+import HowWeWorkSection from '@/components/sections/startup/HowWeWorkSection';
+import WhatClientGetsSection from '@/components/sections/startup/WhatClientGetsSection';
+import WorkFormatSection from '@/components/sections/startup/WorkFormatSection';
+import PricingSection from '@/components/sections/startup/PricingSection';
+import WhyQaspilabSection from '@/components/sections/startup/WhyQaspilabSection';
+
+// Ленивая загрузка остальных секций
 const AboutSection = dynamic(() => import('@/components/sections/AboutSectionOptimized'), {
   loading: () => <div className="h-96 animate-pulse bg-gray-100 dark:bg-gray-900" />
 });
@@ -29,7 +37,8 @@ const GlobalReachSection = dynamic(() => import('@/components/sections/GlobalRea
   loading: () => <div className="h-96 animate-pulse bg-gray-100 dark:bg-gray-900" />
 });
 
-const FAQSection = dynamic(() => import('@/components/sections/FAQSection'), {
+// Новый FAQ с startup вопросами
+const StartupFAQSection = dynamic(() => import('@/components/sections/startup/StartupFAQSection'), {
   loading: () => <div className="h-96 animate-pulse bg-gray-100 dark:bg-gray-900" />
 });
 
@@ -55,6 +64,16 @@ export default function Home({ params }: Props) {
     <div className="relative overflow-x-hidden">
       {/* HeroSection загружается сразу для критического контента */}
       <HeroSection />
+      
+      {/* НОВЫЕ СЕКЦИИ STARTUP-LAUNCH */}
+      <div id="startup-launch" className="scroll-mt-16">
+        <WhyImportantSection />
+        <HowWeWorkSection />
+        <WhatClientGetsSection />
+        <WorkFormatSection />
+        <PricingSection />
+        <WhyQaspilabSection />
+      </div>
       
       {/* Остальные секции с ленивой загрузкой и Suspense */}
       <Suspense fallback={<div className="h-96 animate-pulse bg-gray-100 dark:bg-gray-900" />}>
@@ -83,9 +102,10 @@ export default function Home({ params }: Props) {
         </Suspense>
       </div>
       
+      {/* ОБНОВЛЕННЫЙ FAQ С STARTUP ВОПРОСАМИ */}
       <Suspense fallback={<div className="h-96 animate-pulse bg-gray-100 dark:bg-gray-900" />}>
         <div id="faq" className="scroll-mt-16">
-          <FAQSection />
+          <StartupFAQSection />
         </div>
       </Suspense>
 

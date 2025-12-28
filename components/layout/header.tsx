@@ -52,6 +52,8 @@ export default function Header() {
     { href: "#", label: t.common.home, icon: null },
     { href: "#about", label: t.common.about, icon: null },
     { href: "#services", label: t.common.services, icon: null },
+    { href: "#cases", label: t.common.cases, icon: null },
+    { href: "#team", label: t.common.team, icon: null },
     { href: "#contact", label: t.common.contact, icon: null },
   ];
   
@@ -70,9 +72,12 @@ useEffect(() => {
   };
 }, [mobileMenuOpen]);
 
-  // Плавная прокрутка к секции
-  const scrollToSection = (href: string) => {
-    if (href === "#") {
+  // Плавная прокрутка к секции или переход по ссылке
+  const handleNavigation = (href: string, isExternal?: boolean) => {
+    if (isExternal) {
+      // Для внешних ссылок используем Next.js роутинг
+      window.location.href = `/${locale}${href}`;
+    } else if (href === "#") {
       window.scrollTo({ top: 0, behavior: "smooth" });
     } else {
       const element = document.querySelector(href);
@@ -128,7 +133,7 @@ useEffect(() => {
               href="#"
               onClick={(e) => {
                 e.preventDefault();
-                scrollToSection("#");
+                handleNavigation("#");
               }}
               className="flex items-center group"
             >
@@ -180,7 +185,7 @@ useEffect(() => {
                 key={index}
                 onClick={(e) => {
                   e.preventDefault();
-                  scrollToSection(link.href);
+                  handleNavigation(link.href, link.isExternal);
                 }}
                 className="relative text-foreground/80 hover:text-foreground transition-colors duration-300 font-medium group"
                 whileHover={{ y: -2 }}
@@ -421,7 +426,7 @@ useEffect(() => {
               key={index}
               onClick={(e) => {
                 e.preventDefault();
-                scrollToSection(link.href);
+                handleNavigation(link.href, link.isExternal);
               }}
               className="group w-full text-left p-4 rounded-2xl transition-all duration-300 relative overflow-hidden"
               style={{
