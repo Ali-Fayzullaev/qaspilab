@@ -294,10 +294,11 @@ export default function StartupHeroSection() {
             transition={{ duration: 0.8, delay: 0.8 }}
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
-            <Button
+            <a href="#contact">
+              <Button
               size="lg"
               className={cn(
-                "relative px-10 py-6 text-lg font-bold rounded-xl",
+                "relative px-10 py-6 text-lg font-bold rounded-xl cursor-pointer",
                 "bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700",
                 "shadow-lg hover:shadow-xl hover:shadow-blue-500/25",
                 "transition-all duration-300 transform hover:scale-105 active:scale-95",
@@ -324,11 +325,13 @@ export default function StartupHeroSection() {
               />
             </Button>
 
-            <Button
+            </a>
+            <a href="#contact">
+              <Button
               variant="outline"
               size="lg"
               className={cn(
-                "px-10 py-6 text-lg font-bold rounded-xl border-2",
+                "px-10 py-6 text-lg font-bold rounded-xl border-2 cursor-pointer",
                 "bg-transparent border-blue-500/30 hover:border-blue-500/50",
                 "text-foreground hover:text-blue-400",
                 "backdrop-blur-sm hover:bg-blue-500/10",
@@ -343,6 +346,7 @@ export default function StartupHeroSection() {
                 <MousePointerClick className="w-4 h-4 group-hover:animate-pulse" />
               </span>
             </Button>
+            </a>
           </motion.div>
         </div>
       </div>

@@ -6,4 +6,3 @@ export { default as CTASection } from './CTASection';
 export { default as GlobalReachSection } from './GlobalReachSectionOptimized';
 export { default as WhyUsSection } from './WhyUsSectionPremium';
 export { default as WorkflowSection } from './WorkflowSectionPremium';
-export { default as FAQSection } from './FAQSection';

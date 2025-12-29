@@ -16,14 +16,16 @@ export const translations = {
     hero: {
       title: "Business Idea Launch in 60 Days",
       subtitle: "From idea → to MVP and first commercial signals",
-      slogan: "We validate ideas with market, create products, launch go-to-market and support at the start.",
+      slogan:
+        "We validate ideas with market, create products, launch go-to-market and support at the start.",
       description: "Work format: 2 stages of 30 days each.",
       cta: "Book Idea Analysis",
       learnMore: "Learn Conditions",
       priceFrom: "From 3.9 million ₸",
-      paymentTerms: "50% - at development start, 50% - after first market testing"
+      paymentTerms:
+        "50% - at development start, 50% - after first market testing",
     },
-    
+
     // Новая секция startup launch
     startupLaunch: {
       whyImportant: {
@@ -32,136 +34,198 @@ export const translations = {
         problems: [
           {
             title: "Self-launch mistakes",
-            description: "Avoid costly errors when launching independently"
+            description: "Avoid costly errors when launching independently",
           },
           {
-            title: "High team costs", 
-            description: "No need to hire expensive full-time team"
+            title: "High team costs",
+            description: "No need to hire expensive full-time team",
           },
           {
             title: "Long timelines",
-            description: "We deliver results in just 60 days"
+            description: "We deliver results in just 60 days",
           },
           {
             title: "Result uncertainty",
-            description: "Clear process with market validation"
-          }
+            description: "Clear process with market validation",
+          },
         ],
         importantInfo: "IMPORTANT INFORMATION",
         seriousness: "Serious",
         failureRate: {
           percentage: "90%",
-          text: "of startups fail"
+          text: "of startups fail",
         },
         hopefulMessage: "But this can be changed with the right approach",
-        ourGoal: "Our goal is to make you part of the successful 10%"
+        ourGoal: "Our goal is to make you part of the successful 10%",
       },
-      
+
       howWeWork: {
         title: "How We Work",
         subtitle: "Step-by-step process",
+        moredetailed: "More detailed",
         steps: [
           {
             step: "01",
-            title: "Idea Analysis", 
-            description: "CustDev, hypothesis validation, market and pain analysis"
+            title: "Idea Analysis",
+            description:
+              "CustDev, hypothesis validation, market and pain analysis",
           },
           {
             step: "02",
             title: "UVP Formation",
-            description: "Left/right sides positioning"  
+            description: "Left/right sides positioning",
           },
           {
-            step: "03", 
+            step: "03",
             title: "MVP Development",
-            description: "UI/UX, prototype, technical implementation"
+            description: "UI/UX, prototype, technical implementation",
           },
           {
             step: "04",
             title: "Go-to-Market",
-            description: "Marketing setup, ad campaign testing, lead generation"
+            description:
+              "Marketing setup, ad campaign testing, lead generation",
           },
           {
             step: "05",
-            title: "Mentorship & Handover", 
-            description: "Strategic support, documentation, scaling recommendations"
-          }
-        ]
+            title: "Mentorship & Handover",
+            description:
+              "Strategic support, documentation, scaling recommendations",
+          },
+        ],
+        processLabel: "WORK PROCESS",
+        learnMore: "Learn more",
+        readyToStart: "Ready to get started?",
+        startProject: "Start Project",
+        noHiddenFees: "No hidden fees",
+        qualityGuarantee: "Quality guarantee",
+        quickStart: "Quick start",
       },
-      
+
       whatClientGets: {
         title: "What Client Gets",
+        subtitle: "Complete package for quick start and business scaling",
+        badgeLabel: "COMPREHENSIVE SOLUTION",
         deliverables: [
           "MVP / working product",
           "Market validation",
-          "First customer feedback", 
+          "First customer feedback",
           "Marketing tests",
-          "Development strategy"
-        ]
+          "Development strategy",
+        ],
+        features: {
+          mvp: ["Backend API", "Frontend SPA", "Database"],
+          mobile: ["iOS/Android", "Push notifications", "Offline work"],
+          admin: ["Analytics", "Management", "Reports"],
+          docs: ["API docs", "Architecture", "Deploy guide"],
+          support: ["Deploy", "Monitoring", "First 30 days"],
+        },
+        includedInPackage: "Included in package",
+        additionalBenefits: {
+          readyProduct: "Ready product",
+          readyProductDesc: "Right after work completion",
+          support30Days: "30 days support",
+          support30DaysDesc: "Free fixes and consultations",
+          qualityGuarantee: "Quality guarantee",
+          qualityGuaranteeDesc: "Testing and code review",
+        },
       },
-      
+
       workFormat: {
         title: "Work Format + Timelines",
+        subtitle: "Transparent process from idea to product launch",
+        processLabel: "WORK PROCESS",
+        stagesTitle: "Work Stages",
         stages: [
           {
             stage: "Stage 1",
             tasks: "Development and packaging",
-            timeline: "30 days"
+            timeline: "30 days",
           },
           {
-            stage: "Stage 2", 
+            stage: "Stage 2",
             tasks: "Validation and marketing testing",
-            timeline: "30 days"
-          }
+            timeline: "30 days",
+          },
         ],
         payment: {
           title: "Payment:",
-          terms: ["50% prepayment", "50% after first month market entry"]
-        }
+          terms: ["50% prepayment", "50% after first month market entry"],
+        },
+        timeline: {
+          totalTitle: "Total timeframe: 60 days",
+          milestones: ["Start", "30 days", "60 days"],
+          phases: ["Analysis", "Development", "Launch"],
+        },
+        guarantees: {
+          deadlineGuarantee: "Deadline guarantee",
+          fixedSchedule: "Fixed schedule",
+          weeklyReports: "Weekly reports",
+          processTransparency: "Process transparency",
+        },
+        readyToStart: "Ready to get started? Contact us for consultation",
+        stageLabel: "Stage",
       },
-      
+
       pricing: {
         title: "Pricing",
         package: {
           name: "Venture Launch",
-          price: "From 3,900,000 ₸", 
+          price: "From 3,900,000 ₸",
           duration: "60 days",
           includes: [
             "5 core deliverables",
             "Mentorship",
             "Market validation",
-            "Go-to-market strategy"
-          ]
+            "Go-to-market strategy",
+          ],
         },
-        cta: "Book Idea Analysis"
+        cta: "Book Idea Analysis",
       },
-      
+
       whyQaspilab: {
         title: "Why Qaspilab",
+        badgeLabel: "ADVANTAGES",
         reasons: [
           {
             title: "5+ years product development experience",
-            description: "Proven track record in creating successful products"
+            description: "Proven track record in creating successful products",
           },
           {
-            title: "Real case studies", 
-            description: "Portfolio of launched startups and MVPs"
+            title: "Real case studies",
+            description: "Portfolio of launched startups and MVPs",
           },
           {
             title: "Expert team",
-            description: "Experienced developers, designers, and strategists"
+            description: "Experienced developers, designers, and strategists",
           },
           {
             title: "Work as temporary founders",
-            description: "We treat your project as our own"
+            description: "We treat your project as our own",
           },
           {
             title: "Transparency and clear stages",
-            description: "Regular reporting and milestone tracking"
-          }
-        ]
+            description: "Regular reporting and milestone tracking",
+          },
+        ],
+        features: {
+          professionalism: ["Certified specialists", "5+ years experience", "Project portfolio"],
+          reliability: ["Fixed deadlines", "Transparent terms", "Quality guarantee"],
+          results: ["MVP in 60 days", "Scalable architecture", "Technical support"],
+          speed: ["Quick start", "Agile methodologies", "Efficient processes"],
+          team: ["Fullstack developers", "UI/UX designers", "Project managers"],
+          approach: ["Client-oriented", "Iterative development", "Data-driven solutions"]
+        },
+        metrics: {
+          projects: "Projects",
+          years: "Years", 
+          clients: "Satisfied clients",
+          days: "Days"
+        },
+        ourStandard: "Our standard",
+        trustUs: "Trust your project to professionals"
       },
-      
+
       faq: {
         title: "Frequently Asked Questions",
         cat: "Have questions? Contact us for a free consultation",
@@ -170,28 +234,33 @@ export const translations = {
         items: [
           {
             question: "What's included in MVP?",
-            answer: "Core functionality, user interface, basic integrations, and market-ready product version for initial testing."
+            answer:
+              "Core functionality, user interface, basic integrations, and market-ready product version for initial testing.",
           },
           {
             question: "How is success measured?",
-            answer: "Market validation metrics, user engagement, conversion rates, and feedback quality from real users."
+            answer:
+              "Market validation metrics, user engagement, conversion rates, and feedback quality from real users.",
           },
           {
             question: "What if project doesn't succeed?",
-            answer: "We provide honest market validation. Success isn't guaranteed, but you get clear data and recommendations."
+            answer:
+              "We provide honest market validation. Success isn't guaranteed, but you get clear data and recommendations.",
           },
           {
             question: "What guarantees do you provide?",
-            answer: "We guarantee delivery of all agreed deliverables within timeline and quality standards."
+            answer:
+              "We guarantee delivery of all agreed deliverables within timeline and quality standards.",
           },
           {
             question: "Why 60 days?",
-            answer: "Optimal timeframe for MVP development and initial market validation without losing momentum."
-          }
-        ]
-      }
+            answer:
+              "Optimal timeframe for MVP development and initial market validation without losing momentum.",
+          },
+        ],
+      },
     },
-    
+
     about: {
       title: "We're not an agency. We're a laboratory.",
       subtitle: "Innovation at the Heart of Everything We Do",
@@ -200,7 +269,7 @@ export const translations = {
       expertise: "Our Expertise",
       expertiseItems: [
         "Startup Launch & MVP Development",
-        "Full-Stack Web Development", 
+        "Full-Stack Web Development",
         "Mobile App Development",
         "AI & Machine Learning Solutions",
         "Cloud Infrastructure & DevOps",
@@ -216,8 +285,7 @@ export const translations = {
         {
           alt: "Qaspilab team member",
           title: "Innovative Approach",
-          description:
-            "Every team member brings unique skills and creativity",
+          description: "Every team member brings unique skills and creativity",
         },
         {
           alt: "Team workflow process",
@@ -262,20 +330,21 @@ export const translations = {
       ],
     },
     missionSection: {
-      title: "If you have capital and an idea — you don't need a course and presentation.",
+      title:
+        "If you have capital and an idea — you don't need a course and presentation.",
       subtitle: "You need a team that:",
       teamQualities: [
         "— thinks like a founder",
         "— builds the product",
         "— brings it to market",
-        "— and takes responsibility for results"
+        "— and takes responsibility for results",
       ],
       promise: "We launch startups in 60 days from idea to first sales.",
       services: [
         "Development",
         "Marketing",
         "Mentorship",
-        "Handover of finished project"
+        "Handover of finished project",
       ],
       pricing: "Starting from 3.9 million ₸",
       location: "Working in Astana",
@@ -320,20 +389,21 @@ export const translations = {
       ],
     },
     whyUs: {
-      title: "90% стартапов умирают не потому что идея плохая, а потому что её не проверили.",
+      title:
+        "90% стартапов умирают не потому что идея плохая, а потому что её не проверили.",
       subtitle: "Мы не обещаем «успех». Мы делаем честный запуск:",
       honestLaunch: "Мы делаем честный запуск:",
       steps: [
         "✔ Анализ идеи",
-        "✔ MVP", 
+        "✔ MVP",
         "✔ Тест рынка",
-        "✔ Первые клиенты или честный стоп"
+        "✔ Первые клиенты или честный стоп",
       ],
       result: "Через 60 дней вы точно знаете:",
       outcomes: [
         "👉 масштабировать",
-        "👉 менять модель", 
-        "👉 или не тратить деньги дальше"
+        "👉 менять модель",
+        "👉 или не тратить деньги дальше",
       ],
       pricing: "💰 От 3.9 млн ₸",
       location: "📍 Астана",
@@ -357,25 +427,29 @@ export const translations = {
         },
         {
           title: "Agile методология",
-          description: "Гибкий, итеративный подход, обеспечивающий успех проекта",
+          description:
+            "Гибкий, итеративный подход, обеспечивающий успех проекта",
         },
         {
           title: "Поддержка 24/7",
           description:
-          "Круглосуточная поддержка для бесперебойной работы ваших систем",
+            "Круглосуточная поддержка для бесперебойной работы ваших систем",
         },
       ],
     },
     globalReach: {
-      title: "Do you have an idea but don't want to waste time, money and nerves?",
+      title:
+        "Do you have an idea but don't want to waste time, money and nerves?",
       subtitle: "We act as a temporary founder team and in 60 days:",
-      globalConnectionDescription: "Connect with experts worldwide to bring your idea to life.",
-      description: "No illusions. No 'we'll finish later'. Only facts and figures.",
+      globalConnectionDescription:
+        "Connect with experts worldwide to bring your idea to life.",
+      description:
+        "No illusions. No 'we'll finish later'. Only facts and figures.",
       steps: [
         "— validate the idea with the market",
         "— create MVP",
         "— launch marketing",
-        "— get first sales signals"
+        "— get first sales signals",
       ],
       format: "Format for entrepreneurs and investors",
       pricing: "Cost from 3.9 million ₸",
@@ -425,8 +499,41 @@ export const translations = {
       submitLoading: "🚀 Sending your idea...",
       submitError: "An error occurred while sending. Please try again.",
       successTitle: "🎉 Great!",
-      successMessage: "Your idea has been successfully submitted! We will contact you soon to discuss the project.",
-      successThankYou: "Thank you for trusting our laboratory! Your idea is already in the reliable hands of our experts."
+      successMessage:
+        "Your idea has been successfully submitted! We will contact you soon to discuss the project.",
+      successThankYou:
+        "Thank you for trusting our laboratory! Your idea is already in the reliable hands of our experts.",
+    },
+    faq: {
+      badge: "FAQ",
+      title: "Frequently Asked Questions",
+      subtitle: "Find answers to common questions about our startup launch service",
+      items: [
+        {
+          question: "How long does the startup launch process take?",
+          answer: "The full process takes exactly 60 days, divided into two stages of 30 days each. First stage focuses on market validation and MVP development, second stage on launch and initial market testing."
+        },
+        {
+          question: "What do I get at the end of 60 days?",
+          answer: "You get a validated MVP, market feedback, launch strategy, initial user base, and clear next steps for scaling your startup with concrete metrics and insights."
+        },
+        {
+          question: "Do you work with all types of business ideas?",
+          answer: "We specialize in tech startups, SaaS products, mobile apps, and digital platforms. We evaluate each idea for market potential and technical feasibility before acceptance."
+        },
+        {
+          question: "What is the payment structure?",
+          answer: "50% payment upfront when we start development, 50% after completing the first market testing phase. This ensures alignment of our interests with your success."
+        },
+        {
+          question: "What happens after the 60-day period?",
+          answer: "You can continue independently with our detailed handover documentation, or extend cooperation for scaling phase. We provide 3 months of free consultations post-launch."
+        },
+        {
+          question: "How do you validate market demand?",
+          answer: "We use real market testing with actual users, competitor analysis, customer interviews, landing page validation, and pre-order campaigns to validate demand."
+        }
+      ]
     },
     // --- КОНЕЦ НОВОГО БЛОКА ---
     footer: {
@@ -440,15 +547,15 @@ export const translations = {
       madeWith: "Made with ❤️ in Kazakhstan",
     },
   },
-  
+
   ru: {
     common: {
       home: "Главная",
-      about: "О нас", 
+      about: "О нас",
       services: "Услуги",
       startupLaunch: "Запуск стартапов",
       cases: "Кейсы",
-      team: "Команда", 
+      team: "Команда",
       contact: "Контакты",
       language: "Язык",
       viewGallery: "Посмотреть галерею",
@@ -456,14 +563,16 @@ export const translations = {
     hero: {
       title: "Запуск бизнес-идей за 60 дней",
       subtitle: "От идеи → до MVP и первых коммерческих сигналов",
-      slogan: "Проверяем идеи рынком, делаем продукт, запускаем go-to-market и сопровождаем на старте.",
+      slogan:
+        "Проверяем идеи рынком, делаем продукт, запускаем go-to-market и сопровождаем на старте.",
       description: "Формат работы: 2 этапа по 30 дней.",
       cta: "Записаться на разбор идеи",
       learnMore: "Узнать условия",
       priceFrom: "От 3.9 млн ₸",
-      paymentTerms: "50% — при старте разработки, 50% — после первого тестирования выхода на рынок"
+      paymentTerms:
+        "50% — при старте разработки, 50% — после первого тестирования выхода на рынок",
     },
-    
+
     // Новая секция запуска стартапов
     startupLaunch: {
       whyImportant: {
@@ -472,94 +581,140 @@ export const translations = {
         problems: [
           {
             title: "Ошибки при самостоятельном запуске",
-            description: "Избежание дорогостоящих ошибок при самостоятельном запуске"
+            description:
+              "Избежание дорогостоящих ошибок при самостоятельном запуске",
           },
           {
             title: "Высокие затраты на команду",
-            description: "Не нужно нанимать дорогую штатную команду"
+            description: "Не нужно нанимать дорогую штатную команду",
           },
           {
-            title: "Долгие сроки", 
-            description: "Мы доставляем результат всего за 60 дней"
+            title: "Долгие сроки",
+            description: "Мы доставляем результат всего за 60 дней",
           },
           {
             title: "Неопределённость результата",
-            description: "Четкий процесс с проверкой рынком"
-          }
+            description: "Четкий процесс с проверкой рынком",
+          },
         ],
         importantInfo: "ВАЖНАЯ ИНФОРМАЦИЯ",
         seriousness: "Серьезно",
         failureRate: {
           percentage: "90%",
-          text: "стартапов терпят неудачу"
+          text: "стартапов терпят неудачу",
         },
         hopefulMessage: "Но это можно изменить с правильным подходом",
-        ourGoal: "Наша цель — сделать вас частью успешных 10%"
+        ourGoal: "Наша цель — сделать вас частью успешных 10%",
       },
-      
+
       howWeWork: {
         title: "Как мы работаем",
         subtitle: "Пошаговый процесс",
+        moredetailed: "Подробнее",
         steps: [
           {
             step: "01",
             title: "Анализ идеи",
-            description: "CustDev, валидация гипотезы, анализ рынка и боли"
+            description: "CustDev, валидация гипотезы, анализ рынка и боли",
           },
           {
-            step: "02", 
+            step: "02",
             title: "Формирование УТП",
-            description: "Левая/правая стороны, позиционирование"
+            description: "Левая/правая стороны, позиционирование",
           },
           {
             step: "03",
-            title: "Разработка MVP", 
-            description: "UI/UX, прототип, техническая реализация"
+            title: "Разработка MVP",
+            description: "UI/UX, прототип, техническая реализация",
           },
           {
             step: "04",
             title: "Go-to-Market",
-            description: "Настройка маркетинга, тест рекламных кампаний, сбор лидов"
+            description:
+              "Настройка маркетинга, тест рекламных кампаний, сбор лидов",
           },
           {
             step: "05",
             title: "Менторство и передача",
-            description: "Стратегическое сопровождение, документация, рекомендации по масштабированию"
-          }
-        ]
+            description:
+              "Стратегическое сопровождение, документация, рекомендации по масштабированию",
+          },
+        ],
+        processLabel: "ПРОЦЕСС РАБОТЫ",
+        learnMore: "Подробнее",
+        readyToStart: "Готовы начать работу?",
+        startProject: "Начать проект",
+        noHiddenFees: "Без скрытых платежей",
+        qualityGuarantee: "Гарантия качества",
+        quickStart: "Быстрый старт",
       },
-      
+
       whatClientGets: {
-        title: "Что получает клиент", 
+        title: "Что получает клиент",
+        subtitle:
+          "Полный пакет для быстрого старта и масштабирования вашего бизнеса",
+        badgeLabel: "КОМПЛЕКСНОЕ РЕШЕНИЕ",
         deliverables: [
           "MVP / работающий продукт",
           "Проверка рынка",
           "Первая обратная связь от клиентов",
-          "Маркетинговые тесты", 
-          "Стратегия развития"
-        ]
+          "Маркетинговые тесты",
+          "Стратегия развития",
+        ],
+        features: {
+          mvp: ["Backend API", "Frontend SPA", "База данных"],
+          mobile: ["iOS/Android", "Push-уведомления", "Offline работа"],
+          admin: ["Аналитика", "Управление", "Отчеты"],
+          docs: ["API docs", "Архитектура", "Deploy guide"],
+          support: ["Деплой", "Мониторинг", "Первые 30 дней"],
+        },
+        includedInPackage: "Включено в пакет",
+        additionalBenefits: {
+          readyProduct: "Готовый продукт",
+          readyProductDesc: "Сразу после завершения работы",
+          support30Days: "Поддержка 30 дней",
+          support30DaysDesc: "Бесплатные правки и консультации",
+          qualityGuarantee: "Гарантия качества",
+          qualityGuaranteeDesc: "Тестирование и код-ревью",
+        },
       },
-      
+
       workFormat: {
         title: "Формат работ + сроки",
+        subtitle: "Прозрачный процесс от идеи до запуска продукта",
+        processLabel: "ПРОЦЕСС РАБОТЫ",
+        stagesTitle: "Этапы работы",
         stages: [
           {
             stage: "Этап 1",
-            tasks: "Разработка и упаковка", 
-            timeline: "30 дней"
+            tasks: "Разработка и упаковка",
+            timeline: "30 дней",
           },
           {
             stage: "Этап 2",
             tasks: "Валидация и тест маркетинга",
-            timeline: "30 дней"
-          }
+            timeline: "30 дней",
+          },
         ],
         payment: {
           title: "Оплата:",
-          terms: ["50% предоплата", "50% после первого месяца выхода на рынок"]
-        }
+          terms: ["50% предоплата", "50% после первого месяца выхода на рынок"],
+        },
+        timeline: {
+          totalTitle: "Общие сроки: 60 дней",
+          milestones: ["Старт", "30 дней", "60 дней"],
+          phases: ["Анализ", "Разработка", "Запуск"],
+        },
+        guarantees: {
+          deadlineGuarantee: "Гарантия сроков",
+          fixedSchedule: "Фиксированный график",
+          weeklyReports: "Еженедельные отчеты",
+          processTransparency: "Прозрачность процесса",
+        },
+        readyToStart: "Готовы начать? Свяжитесь с нами для консультации",
+        stageLabel: "Этап",
       },
-      
+
       pricing: {
         title: "Стоимость",
         package: {
@@ -567,71 +722,94 @@ export const translations = {
           price: "От 3 900 000 ₸",
           duration: "60 дней",
           includes: [
-            "5 базовых deliverables", 
+            "5 базовых deliverables",
             "Менторство",
             "Проверка рынка",
-            "Go-to-market стратегия"
-          ]
+            "Go-to-market стратегия",
+          ],
         },
-        cta: "Записаться"
+        cta: "Записаться",
       },
-      
+
       whyQaspilab: {
         title: "Почему Qaspilab",
+        badgeLabel: "ПРЕИМУЩЕСТВА",
         reasons: [
           {
             title: "5+ лет опыта в разработке продуктов",
-            description: "Доказанный послужной список создания успешных продуктов"
+            description:
+              "Доказанный послужной список создания успешных продуктов",
           },
           {
             title: "Реальные кейсы",
-            description: "Портфолио запущенных стартапов и MVP"
+            description: "Портфолио запущенных стартапов и MVP",
           },
           {
-            title: "Команда экспертов", 
-            description: "Опытные разработчики, дизайнеры и стратеги"
+            title: "Команда экспертов",
+            description: "Опытные разработчики, дизайнеры и стратеги",
           },
           {
             title: "Работаем как временные фаундеры",
-            description: "Относимся к вашему проекту как к своему"
+            description: "Относимся к вашему проекту как к своему",
           },
           {
             title: "Отчётность и прозрачные этапы",
-            description: "Регулярная отчетность и отслеживание этапов"
-          }
-        ]
+            description: "Регулярная отчетность и отслеживание этапов",
+          },
+        ],
+        features: {
+          professionalism: ["Сертифицированные специалисты", "5+ лет опыта", "Портфолио проектов"],
+          reliability: ["Фиксированные сроки", "Прозрачные условия", "Гарантия качества"],
+          results: ["MVP за 60 дней", "Масштабируемая архитектура", "Техподдержка"],
+          speed: ["Быстрый старт", "Гибкие методологии", "Эффективные процессы"],
+          team: ["Fullstack разработчики", "UI/UX дизайнеры", "Project-менеджеры"],
+          approach: ["Клиентоориентированность", "Итеративная разработка", "Data-driven решения"]
+        },
+        metrics: {
+          projects: "Проектов",
+          years: "Лет", 
+          clients: "Довольных клиентов",
+          days: "Дней"
+        },
+        ourStandard: "Наш стандарт",
+        trustUs: "Доверьте свой проект профессионалам"
       },
-      
+
       faq: {
         title: "Частые вопросы",
         cat: "Остались вопросы? Свяжитесь с нами для бесплатной консультации",
-      catFree: "Бесплатная консультация",
+        catFree: "Бесплатная консультация",
         badge: "Вопросы",
         items: [
           {
             question: "Что входит в MVP?",
-            answer: "Основной функционал, пользовательский интерфейс, базовые интеграции и готовая к рынку версия продукта для первичного тестирования."
+            answer:
+              "Основной функционал, пользовательский интерфейс, базовые интеграции и готовая к рынку версия продукта для первичного тестирования.",
           },
           {
-            question: "Как оценивается успех?", 
-            answer: "Метрики валидации рынка, вовлеченность пользователей, конверсии и качество обратной связи от реальных пользователей."
+            question: "Как оценивается успех?",
+            answer:
+              "Метрики валидации рынка, вовлеченность пользователей, конверсии и качество обратной связи от реальных пользователей.",
           },
           {
             question: "Что если проект не выстрелит?",
-            answer: "Мы предоставляем честную валидацию рынка. Успех не гарантирован, но вы получите четкие данные и рекомендации."
+            answer:
+              "Мы предоставляем честную валидацию рынка. Успех не гарантирован, но вы получите четкие данные и рекомендации.",
           },
           {
             question: "Какие гарантии?",
-            answer: "Гарантируем поставку всех согласованных deliverables в срок и с соблюдением стандартов качества."
+            answer:
+              "Гарантируем поставку всех согласованных deliverables в срок и с соблюдением стандартов качества.",
           },
           {
             question: "Почему 60 дней?",
-            answer: "Оптимальные сроки для разработки MVP и первичной валидации рынка без потери импульса."
-          }
-        ]
-      }
+            answer:
+              "Оптимальные сроки для разработки MVP и первичной валидации рынка без потери импульса.",
+          },
+        ],
+      },
     },
-    
+
     about: {
       title: "Мы не агентство. Мы лаборатория.",
       subtitle: "Инновации в основе всего, что мы делаем",
@@ -641,7 +819,7 @@ export const translations = {
       expertiseItems: [
         "Запуск стартапов и разработка MVP",
         "Full-Stack веб-разработка",
-        "Разработка мобильных приложений", 
+        "Разработка мобильных приложений",
         "AI и Machine Learning решения",
         "Облачная инфраструктура и DevOps",
         "UI/UX дизайн и брендинг",
@@ -702,20 +880,21 @@ export const translations = {
       ],
     },
     missionSection: {
-      title: "Если у вас есть капитал и идея — вам не нужен курс и презентация.",
+      title:
+        "Если у вас есть капитал и идея — вам не нужен курс и презентация.",
       subtitle: "Вам нужна команда, которая:",
       teamQualities: [
         "— думает как фаундер",
-        "— делает продукт", 
+        "— делает продукт",
         "— выводит на рынок",
-        "— и отвечает за результат"
+        "— и отвечает за результат",
       ],
       promise: "Мы запускаем стартапы за 60 дней от идеи до первых продаж.",
       services: [
         "Разработка",
         "Маркетинг",
-        "Менторство", 
-        "Передача готового проекта"
+        "Менторство",
+        "Передача готового проекта",
       ],
       pricing: "Чек от 3.9 млн ₸",
       location: "Работаем в Астане",
@@ -748,7 +927,8 @@ export const translations = {
         {
           step: "03",
           title: "Разработка и тестирование",
-          description: "Создание надёжных решений с тщательным контролем качества",
+          description:
+            "Создание надёжных решений с тщательным контролем качества",
         },
         {
           step: "04",
@@ -758,20 +938,21 @@ export const translations = {
       ],
     },
     whyUs: {
-      title: "90% стартапов умирают не потому что идея плохая, а потому что её не проверили.",
+      title:
+        "90% стартапов умирают не потому что идея плохая, а потому что её не проверили.",
       subtitle: "Мы не обещаем «успех». Мы делаем честный запуск:",
       honestLaunch: "Мы делаем честный запуск:",
       steps: [
         "✔ Анализ идеи",
-        "✔ MVP", 
+        "✔ MVP",
         "✔ Тест рынка",
-        "✔ Первые клиенты или честный стоп"
+        "✔ Первые клиенты или честный стоп",
       ],
       result: "Через 60 дней вы точно знаете:",
       outcomes: [
         "👉 масштабировать",
-        "👉 менять модель", 
-        "👉 или не тратить деньги дальше"
+        "👉 менять модель",
+        "👉 или не тратить деньги дальше",
       ],
       pricing: "💰 От 3.9 млн ₸",
       location: "📍 Астана",
@@ -795,7 +976,8 @@ export const translations = {
         },
         {
           title: "Agile методология",
-          description: "Гибкий, итеративный подход, обеспечивающий успех проекта",
+          description:
+            "Гибкий, итеративный подход, обеспечивающий успех проекта",
         },
         {
           title: "Поддержка 24/7",
@@ -807,13 +989,14 @@ export const translations = {
     globalReach: {
       title: "У вас есть идея, но вы не хотите терять время, деньги и нервы?",
       subtitle: "Мы заходим как временная фаундер-команда и за 60 дней:",
-      globalConnectionDescription: "Идеяңызды жүзеге асыру үшін әлем бойынша сарапшылармен байланысыңыз.",
+      globalConnectionDescription:
+        "Идеяңызды жүзеге асыру үшін әлем бойынша сарапшылармен байланысыңыз.",
       description: "Без иллюзий. Без «потом доделаем». Только факты и цифры.",
       steps: [
         "— проверяем идею с рынком",
         "— создаём MVP",
-        "— запускаем маркетинг", 
-        "— получаем первые сигналы продаж"
+        "— запускаем маркетинг",
+        "— получаем первые сигналы продаж",
       ],
       format: "Формат для предпринимателей и инвесторов",
       pricing: "От 3.9 млн ₸",
@@ -839,7 +1022,8 @@ export const translations = {
     ctaForm: {
       title: "У вас есть идея?",
       subtitle: "Приходите в лабораторию.",
-      description: "Мы превратим её в продукт, которым будут пользоваться люди.",
+      description:
+        "Мы превратим её в продукт, которым будут пользоваться люди.",
       buttonText: "Отправить идею",
 
       nameLabel: "💫 Ваше имя *",
@@ -864,8 +1048,41 @@ export const translations = {
       submitError:
         "Произошла ошибка при отправке. Пожалуйста, попробуйте еще раз.",
       successTitle: "🎉 Отлично!",
-      successMessage: "Ваша идея успешно отправлена! Мы свяжемся с вами в ближайшее время для обсуждения проекта.",
-      successThankYou: "Спасибо за доверие к нашей лаборатории! Ваша идея уже в надежных руках наших экспертов."
+      successMessage:
+        "Ваша идея успешно отправлена! Мы свяжемся с вами в ближайшее время для обсуждения проекта.",
+      successThankYou:
+        "Спасибо за доверие к нашей лаборатории! Ваша идея уже в надежных руках наших экспертов.",
+    },
+    faq: {
+      badge: "FAQ",
+      title: "Часто задаваемые вопросы",
+      subtitle: "Найдите ответы на популярные вопросы о нашем сервисе запуска стартапов",
+      items: [
+        {
+          question: "Сколько времени занимает процесс запуска стартапа?",
+          answer: "Полный процесс занимает ровно 60 дней, разделенных на два этапа по 30 дней каждый. Первый этап фокусируется на валидации рынка и разработке MVP, второй — на запуске и первичном тестировании рынка."
+        },
+        {
+          question: "Что я получу в конце 60 дней?",
+          answer: "Вы получите валидированный MVP, обратную связь рынка, стратегию запуска, первоначальную пользовательскую базу и четкие следующие шаги для масштабирования стартапа с конкретными метриками и инсайтами."
+        },
+        {
+          question: "Работаете ли вы со всеми типами бизнес-идей?",
+          answer: "Мы специализируемся на технологических стартапах, SaaS продуктах, мобильных приложениях и цифровых платформах. Каждую идею мы оцениваем на рыночный потенциал и техническую реализуемость перед принятием."
+        },
+        {
+          question: "Какая структура оплаты?",
+          answer: "50% предоплата при начале разработки, 50% после завершения первой фазы тестирования рынка. Это обеспечивает совпадение наших интересов с вашим успехом."
+        },
+        {
+          question: "Что происходит после 60-дневного периода?",
+          answer: "Вы можете продолжить самостоятельно с нашей детальной документацией передачи, или продлить сотрудничество для фазы масштабирования. Мы предоставляем 3 месяца бесплатных консультаций после запуска."
+        },
+        {
+          question: "Как вы валидируете рыночный спрос?",
+          answer: "Мы используем реальное тестирование рынка с реальными пользователями, анализ конкурентов, интервью с клиентами, валидацию лендинговых страниц и кампании предзаказов для валидации спроса."
+        }
+      ]
     },
     // --- КОНЕЦ НОВОГО БЛОКА ---
     footer: {
@@ -879,14 +1096,14 @@ export const translations = {
       madeWith: "Сделано с ❤️ в Казахстане",
     },
   },
-  
+
   kk: {
     common: {
       home: "Басты бет",
       about: "Біз туралы",
       services: "Қызметтер",
       startupLaunch: "Стартап іске қосу",
-      cases: "Кейстер", 
+      cases: "Кейстер",
       team: "Команда",
       contact: "Байланыс",
       language: "Тіл",
@@ -895,14 +1112,16 @@ export const translations = {
     hero: {
       title: "Бизнес-идеяларды 60 күнде іске қосу",
       subtitle: "Идеядан → MVP және алғашқы коммерциялық сигналдарға дейін",
-      slogan: "Идеяларды нарықпен тексереміз, өнім жасаймыз, go-to-market іске қосамыз және бастапқыда қолдаймыз.",
+      slogan:
+        "Идеяларды нарықпен тексереміз, өнім жасаймыз, go-to-market іске қосамыз және бастапқыда қолдаймыз.",
       description: "Жұмыс форматы: 30 күнден 2 кезең.",
       cta: "Жазылу идеяны талдау",
-      learnMore: "Шарттарды білу", 
+      learnMore: "Шарттарды білу",
       priceFrom: "3.9 млн ₸ бастап",
-      paymentTerms: "50% — әзірлеуді бастағанда, 50% — нарыққа шығудың алғашқы тестілеуінен кейін"
+      paymentTerms:
+        "50% — әзірлеуді бастағанда, 50% — нарыққа шығудың алғашқы тестілеуінен кейін",
     },
-    
+
     // Жаңа стартап іске қосу бөлімі
     startupLaunch: {
       whyImportant: {
@@ -911,94 +1130,144 @@ export const translations = {
         problems: [
           {
             title: "Өз бетінше іске қосу кезіндегі қателер",
-            description: "Өз бетінше іске қосу кезіндегі қымбат қателерден аулақ болу"
+            description:
+              "Өз бетінше іске қосу кезіндегі қымбат қателерден аулақ болу",
           },
           {
             title: "Командаға жоғары шығындар",
-            description: "Қымбат тұрақты команданы жалдау қажеттілігі жоқ"
+            description: "Қымбат тұрақты команданы жалдау қажеттілігі жоқ",
           },
           {
             title: "Ұзақ мерзімдер",
-            description: "Біз тек 60 күнде нәтиже жеткіземіз"
+            description: "Біз тек 60 күнде нәтиже жеткіземіз",
           },
           {
-            title: "Нәтиже белгісіздігі", 
-            description: "Нарықпен тексерумен айқын процесс"
-          }
+            title: "Нәтиже белгісіздігі",
+            description: "Нарықпен тексерумен айқын процесс",
+          },
         ],
         importantInfo: "МАҢЫЗДЫ АҚПАРАТ",
         seriousness: "Ауыр",
         failureRate: {
           percentage: "90%",
-          text: "стартаптардың сәтсіздікке ұшырайды"
+          text: "стартаптардың сәтсіздікке ұшырайды",
         },
         hopefulMessage: "Бірақ мұны дұрыс тәсілмен өзгертуге болады",
-        ourGoal: "Біздің мақсат — сізді табысты 10% құрамына кіргізу"
+        ourGoal: "Біздің мақсат — сізді табысты 10% құрамына кіргізу",
       },
-      
+
       howWeWork: {
         title: "Біз қалай жұмыс істейміз",
-        subtitle: "Қадамдық процесс", 
+        subtitle: "Қадамдық процесс",
+        moredetailed: "Толығырақ",
         steps: [
           {
             step: "01",
             title: "Идеяны талдау",
-            description: "CustDev, гипотезаны растау, нарық пен ауырсынуды талдау"
+            description:
+              "CustDev, гипотезаны растау, нарық пен ауырсынуды талдау",
           },
           {
             step: "02",
             title: "УТП қалыптастыру",
-            description: "Сол/оң жақтар, позициялау"
+            description: "Сол/оң жақтар, позициялау",
           },
           {
-            step: "03", 
+            step: "03",
             title: "MVP әзірлеу",
-            description: "UI/UX, прототип, техникалық іске асыру"
+            description: "UI/UX, прототип, техникалық іске асыру",
           },
           {
             step: "04",
-            title: "Go-to-Market", 
-            description: "Маркетингті баптау, жарнама науқандарын тестілеу, лидтерді жинау"
+            title: "Go-to-Market",
+            description:
+              "Маркетингті баптау, жарнама науқандарын тестілеу, лидтерді жинау",
           },
           {
             step: "05",
             title: "Менторство және беру",
-            description: "Стратегиялық сүйемелдеу, құжаттама, масштабтау бойынша ұсыныстар"
-          }
-        ]
+            description:
+              "Стратегиялық сүйемелдеу, құжаттама, масштабтау бойынша ұсыныстар",
+          },
+        ],
+        processLabel: "ЖҰМЫС ПРОЦЕСІ",
+        learnMore: "Толығырақ",
+        readyToStart: "Жұмысты бастауға дайынсыз ба?",
+        startProject: "Жобаны бастау",
+        noHiddenFees: "Жасырын төлемдер жоқ",
+        qualityGuarantee: "Сапа кепілдігі",
+        quickStart: "Жылдам бастау",
       },
-      
+
       whatClientGets: {
         title: "Клиент не алады",
+        subtitle: "Жылдам бастау және бизнесті масштабтау үшін толық пакет",
+        badgeLabel: "КЕШЕНДІ ШЕШІМ",
         deliverables: [
           "MVP / жұмыс істейтін өнім",
-          "Нарықты тексеру", 
+          "Нарықты тексеру",
           "Клиенттерден алғашқы кері байланыс",
           "Маркетингтік тестілеулер",
-          "Дамыту стратегиясы"
-        ]
+          "Дамыту стратегиясы",
+        ],
+        features: {
+          mvp: ["Backend API", "Frontend SPA", "Деректер базасы"],
+          mobile: ["iOS/Android", "Push хабарландырулар", "Offline жұмыс"],
+          admin: ["Аналитика", "Басқару", "Есептер"],
+          docs: ["API docs", "Архитектура", "Deploy нұсқаулығы"],
+          support: ["Орналастыру", "Бақылау", "Алғашқы 30 күн"],
+        },
+        includedInPackage: "Пакетке кіреді",
+        additionalBenefits: {
+          readyProduct: "Дайын өнім",
+          readyProductDesc: "Жұмыс аяқталғаннан кейін лезде",
+          support30Days: "30 күн қолдау",
+          support30DaysDesc: "Тегін түзетулер және консультациялар",
+          qualityGuarantee: "Сапа кепілдігі",
+          qualityGuaranteeDesc: "Тестілеу және код-ревью",
+        },
       },
-      
+
       workFormat: {
         title: "Жұмыс форматы + мерзімдер",
+        subtitle: "Идеядан өнімді іске қосуға дейінгі ашық процесс",
+        processLabel: "ЖҰМЫС ПРОЦЕСІ",
+        stagesTitle: "Жұмыс кезеңдері",
         stages: [
           {
             stage: "1-кезең",
             tasks: "Әзірлеу және қаптау",
-            timeline: "30 күн"
+            timeline: "30 күн",
           },
           {
             stage: "2-кезең",
-            tasks: "Растау және маркетинг тестілеуі", 
-            timeline: "30 күн"
-          }
+            tasks: "Растау және маркетинг тестілеуі",
+            timeline: "30 күн",
+          },
         ],
         payment: {
           title: "Төлем:",
-          terms: ["50% алдын ала төлем", "50% нарыққа шыққаннан кейінгі алғашқы айдан кейін"]
-        }
+          terms: [
+            "50% алдын ала төлем",
+            "50% нарыққа шыққаннан кейінгі алғашқы айдан кейін",
+          ],
+        },
+        timeline: {
+          totalTitle: "Жалпы мерзімдер: 60 күн",
+          milestones: ["Бастау", "30 күн", "60 күн"],
+          phases: ["Талдау", "Әзірлеу", "Іске қосу"],
+        },
+        guarantees: {
+          deadlineGuarantee: "Мерзім кепілдігі",
+          fixedSchedule: "Тұрақты кесте",
+          weeklyReports: "Апта сайынғы есептер",
+          processTransparency: "Процесс ашықтығы",
+        },
+        readyToStart:
+          "Бастауға дайынсыз ба? Консультация үшін бізбен байланысыңыз",
+        stageLabel: "Кезең",
       },
-      
+
       pricing: {
         title: "Құны",
         package: {
@@ -1007,40 +1276,57 @@ export const translations = {
           duration: "60 күн",
           includes: [
             "5 негізгі deliverables",
-            "Менторство", 
+            "Менторство",
             "Нарықты тексеру",
-            "Go-to-market стратегиясы"
-          ]
+            "Go-to-market стратегиясы",
+          ],
         },
-        cta: "Жазылу"
+        cta: "Жазылу",
       },
-      
+
       whyQaspilab: {
         title: "Неліктен Qaspilab",
+        badgeLabel: "АРТЫҚШЫЛЫҚТАР",
         reasons: [
           {
             title: "Өнім әзірлеудегі 5+ жыл тәжірибе",
-            description: "Сәтті өнімдер жасаудағы дәлелденген нәтижелер"
+            description: "Сәтті өнімдер жасаудағы дәлелденген нәтижелер",
           },
           {
             title: "Нақты кейстер",
-            description: "Іске қосылған стартаптар мен MVP портфолиосы"
+            description: "Іске қосылған стартаптар мен MVP портфолиосы",
           },
           {
             title: "Сарапшылар командасы",
-            description: "Тәжірибелі әзірлеушілер, дизайнерлер және стратегтер"
+            description: "Тәжірибелі әзірлеушілер, дизайнерлер және стратегтер",
           },
           {
             title: "Уақытша негізгі иелер ретінде жұмыс істейміз",
-            description: "Сіздің жобаңызға өз жобамыздай қараймыз"
+            description: "Сіздің жобаңызға өз жобамыздай қараймыз",
           },
           {
-            title: "Есептілік және айқын кезеңдер", 
-            description: "Тұрақты есептілік және кезеңдерді бақылау"
-          }
-        ]
+            title: "Есептілік және айқын кезеңдер",
+            description: "Тұрақты есептілік және кезеңдерді бақылау",
+          },
+        ],
+        features: {
+          professionalism: ["Сертификатталған мамандар", "5+ жыл тәжірибе", "Жоба портфолиосы"],
+          reliability: ["Бекітілген мерзімдер", "Ашық шарттар", "Сапа кепілдігі"],
+          results: ["60 күнде MVP", "Масштабталатын архитектура", "Техникалық қолдау"],
+          speed: ["Жылдам бастау", "Икемді әдістемелер", "Тиімді процестер"],
+          team: ["Fullstack әзірлеушілер", "UI/UX дизайнерлер", "Жоба менеджерлері"],
+          approach: ["Клиентке бағдарланған", "Қайталанбалы әзірлеу", "Деректерге негізделген шешімдер"]
+        },
+        metrics: {
+          projects: "Жобалар",
+          years: "Жыл", 
+          clients: "Ризық клиенттер",
+          days: "Күн"
+        },
+        ourStandard: "Біздің стандарт",
+        trustUs: "Жобаңызды профессионалдарға сеніп тапсырыңыз"
       },
-      
+
       faq: {
         title: "Жиі қойылатын сұрақтар",
         cat: "Сұрақтар қалды ма? Тегін кеңес алу үшін бізге хабарласыңыз",
@@ -1049,28 +1335,33 @@ export const translations = {
         items: [
           {
             question: "MVP-ға не кіреді?",
-            answer: "Негізгі функционал, пайдаланушы интерфейсі, базалық интеграциялар және алғашқы тестілеу үшін нарыққа дайын өнім нұсқасы."
+            answer:
+              "Негізгі функционал, пайдаланушы интерфейсі, базалық интеграциялар және алғашқы тестілеу үшін нарыққа дайын өнім нұсқасы.",
           },
           {
             question: "Табыс қалай бағаланады?",
-            answer: "Нарық растау метрикалары, пайдаланушы тартылуы, конверсиялар және нақты пайдаланушылардан кері байланыс сапасы."
+            answer:
+              "Нарық растау метрикалары, пайдаланушы тартылуы, конверсиялар және нақты пайдаланушылардан кері байланыс сапасы.",
           },
           {
-            question: "Жоба сәтсіз болса не болады?", 
-            answer: "Біз адал нарық растауын қамтамасыз етеміз. Табыс кепілдендірілмейді, бірақ сіз нақты деректер мен ұсыныстарды аласыз."
+            question: "Жоба сәтсіз болса не болады?",
+            answer:
+              "Біз адал нарық растауын қамтамасыз етеміз. Табыс кепілдендірілмейді, бірақ сіз нақты деректер мен ұсыныстарды аласыз.",
           },
           {
             question: "Қандай кепілдіктер?",
-            answer: "Келісілген барлық deliverables мерзімінде және сапа стандарттарын сақтай отырып жеткізуге кепілдік береміз."
+            answer:
+              "Келісілген барлық deliverables мерзімінде және сапа стандарттарын сақтай отырып жеткізуге кепілдік береміз.",
           },
           {
             question: "Неліктен 60 күн?",
-            answer: "MVP әзірлеу және алғашқы нарық растау үшін импульсты жоғалтпай оңтайлы мерзім."
-          }
-        ]
-      }
+            answer:
+              "MVP әзірлеу және алғашқы нарық растау үшін импульсты жоғалтпай оңтайлы мерзім.",
+          },
+        ],
+      },
     },
-    
+
     about: {
       title: "Біз агенттік емеспіз. Біз зертханамыз.",
       subtitle: "Біз істейтін барлық нәрсенің негізінде инновация",
@@ -1082,7 +1373,7 @@ export const translations = {
         "Full-Stack веб-әзірлеу",
         "Мобильді қолданбаларды әзірлеу",
         "AI және Machine Learning шешімдері",
-        "Бұлт инфрақұрылымы және DevOps", 
+        "Бұлт инфрақұрылымы және DevOps",
         "UI/UX дизайн және брендинг",
       ],
       teamImages: [
@@ -1113,8 +1404,7 @@ export const translations = {
         {
           alt: "Qaspilab командасы",
           title: "Бірыңғай мақсат",
-          description:
-            "Керемет өнімдер жасаудың ортақ миссиясымен біріккен",
+          description: "Керемет өнімдер жасаудың ортақ миссиясымен біріккен",
         },
       ],
     },
@@ -1132,7 +1422,8 @@ export const translations = {
         },
         {
           title: "Сапа керемет",
-          description: "Сенімді, масштабталатын және қолдауға болатын код жасау",
+          description:
+            "Сенімді, масштабталатын және қолдауға болатын код жасау",
         },
         {
           title: "Клиенттердің табысы",
@@ -1142,20 +1433,21 @@ export const translations = {
       ],
     },
     missionSection: {
-      title: "Если у вас есть капитал и идея — вам не нужен курс и презентация.",
+      title:
+        "Если у вас есть капитал и идея — вам не нужен курс и презентация.",
       subtitle: "Вам нужна команда, которая:",
       teamQualities: [
         "— думает как фаундер",
-        "— делает продукт", 
+        "— делает продукт",
         "— выводит на рынок",
-        "— и отвечает за результат"
+        "— и отвечает за результат",
       ],
       promise: "Мы запускаем стартапы за 60 дней от идеи до первых продаж.",
       services: [
         "Разработка",
         "Маркетинг",
-        "Менторство", 
-        "Передача готового проекта"
+        "Менторство",
+        "Передача готового проекта",
       ],
       pricing: "Чек от 3.9 млн ₸",
       location: "Работаем в Астане",
@@ -1199,20 +1491,21 @@ export const translations = {
       ],
     },
     whyUs: {
-      title: "90% стартаптар идея жаман болғаны үшін емес, оны тексермегені үшін өледі.",
+      title:
+        "90% стартаптар идея жаман болғаны үшін емес, оны тексермегені үшін өледі.",
       subtitle: "Біз «табыстыны» уәде бермейміз. Біз адал запуск жасаймыз:",
       honestLaunch: "Біз адал запуск жасаймыз:",
       steps: [
         "✔ Идеяны талдау",
-        "✔ MVP", 
+        "✔ MVP",
         "✔ Нарықты тест",
-        "✔ Алғашқы клиенттер немесе адал тоқтау"
+        "✔ Алғашқы клиенттер немесе адал тоқтау",
       ],
       result: "60 күннен кейін сіз нақты білесіз:",
       outcomes: [
         "👉 масштабтау",
-        "👉 модельді өзгерту", 
-        "👉 немесе ақшаны одан әрі жұмсамау"
+        "👉 модельді өзгерту",
+        "👉 немесе ақшаны одан әрі жұмсамау",
       ],
       pricing: "💰 3.9 млн ₸ бастап",
       location: "📍 Астана",
@@ -1236,7 +1529,8 @@ export const translations = {
         },
         {
           title: "Agile әдіснамасы",
-          description: "Жоба табысын қамтамасыз ететін икемді, итеративті тәсіл",
+          description:
+            "Жоба табысын қамтамасыз ететін икемді, итеративті тәсіл",
         },
         {
           title: "24/7 қолдау",
@@ -1248,13 +1542,14 @@ export const translations = {
     globalReach: {
       title: "У вас есть идея, но вы не хотите терять время, деньги и нервы?",
       subtitle: "Мы заходим как временная фаундер-команда и за 60 дней:",
-      globalConnectionDescription: "Идеяңызды жүзеге асыру үшін әлем бойынша сарапшылармен байланысыңыз.",
+      globalConnectionDescription:
+        "Идеяңызды жүзеге асыру үшін әлем бойынша сарапшылармен байланысыңыз.",
       description: "Без иллюзий. Без «потом доделаем». Только факты и цифры.",
       steps: [
         "— идеяны нарықпен тексереміз",
         "— MVP жасаймыз",
-        "— маркетинг іске қосамыз", 
-        "— алғашқы сату сигналдарын аламыз"
+        "— маркетинг іске қосамыз",
+        "— алғашқы сату сигналдарын аламыз",
       ],
       format: "Кәсіпкерлер мен инвесторлар үшін формат",
       pricing: "Құны 3.9 млн ₸ бастап",
@@ -1276,7 +1571,7 @@ export const translations = {
         address: "Алматы, Қазақстан",
       },
     },
-    
+
     // --- НОВЫЙ БЛОК ---
     ctaForm: {
       title: "Идеяңыз бар ма?",
@@ -1292,7 +1587,6 @@ export const translations = {
       descriptionPlaceholder:
         "Идеяңыз туралы, не жасағыңыз келетінін, қандай функциялары болуы керектігін егжей-тегжейлі айтып беріңіз...",
       budgetLabel: "💰 Болжамды бюджет",
-      
 
       budgetOptions: [
         { value: "", label: "Бюджетті таңдаңыз" },
@@ -1306,8 +1600,41 @@ export const translations = {
       submitLoading: "🚀 Идеяңыз жіберілуде...",
       submitError: "Жіберу кезінде қате пайда болды. Қайталап көріңіз.",
       successTitle: "🎉 Керемет!",
-      successMessage: "Сіздің идеяңыз сәтті жіберілді! Жобаны талқылау үшін жақын арада сізбен хабарласамыз.",
-      successThankYou: "Біздің зертханамызға сенім артқаныңыз үшін рахмет! Сіздің идеяңыз біздің сарапшылардың сенімді қолында."
+      successMessage:
+        "Сіздің идеяңыз сәтті жіберілді! Жобаны талқылау үшін жақын арада сізбен хабарласамыз.",
+      successThankYou:
+        "Біздің зертханамызға сенім артқаныңыз үшін рахмет! Сіздің идеяңыз біздің сарапшылардың сенімді қолында.",
+    },
+    faq: {
+      badge: "FAQ",
+      title: "Жиі қойылатын сұрақтар",
+      subtitle: "Біздің стартап іске қосу қызметі туралы көп қойылатын сұрақтарға жауап табыңыз",
+      items: [
+        {
+          question: "Стартапты іске қосу процесі қанша уақыт алады?",
+          answer: "Толық процесс дәл 60 күн алады, әрқайсысы 30 күннен екі кезеңге бөлінеді. Бірінші кезең нарықты валидациялау және MVP дамытуға, екінші кезең іске қосу және алғашқы нарық тестіне бағытталған."
+        },
+        {
+          question: "60 күн соңында мен не аламын?",
+          answer: "Сіз валидацияланған MVP, нарық кері байланысы, іске қосу стратегиясы, алғашқы пайдаланушы базасы және нақты көрсеткіштер мен түсініктермен стартапыңызды масштабтаудың нақты келесі қадамдарын аласыз."
+        },
+        {
+          question: "Сіздер бизнес-идеялардың барлық түрлерімен жұмыс істейсіз бе?",
+          answer: "Біз технологиялық стартаптар, SaaS өнімдері, мобильді қолданбалар және цифрлық платформаларға мамандандық. Әр идеяны қабылдау алдында нарықтық әлеует пен техникалық іске асырылуын бағалаймыз."
+        },
+        {
+          question: "Төлем құрылымы қандай?",
+          answer: "Дамытуды бастағанда 50% алдын ала төлем, нарықты тестілеудің бірінші кезеңін аяқтағаннан кейін 50%. Бұл біздің мүдделеріміздің сіздің табысыңызбен сәйкестігін қамтамасыз етеді."
+        },
+        {
+          question: "60 күндік кезеңнен кейін не болады?",
+          answer: "Сіз біздің толық тапсыру құжаттамасымен дербес жалғастыра аласыз, немесе масштабтау кезеңі үшін ынтымақтастықты ұзарта аласыз. Біз іске қосылғаннан кейін 3 ай тегін кеңестер береміз."
+        },
+        {
+          question: "Сіздер нарықтық сұранысты қалай валидациялайсыз?",
+          answer: "Біз нақты пайдаланушылармен нақты нарық тестілеуін, бәсекелестер талдауын, тұтынушылармен сұхбаттарды, тарту беттерін валидациялауды және сұранысты валидациялау үшін алдын ала тапсырыс кампанияларын пайдаланамыз."
+        }
+      ]
     },
     // --- КОНЕЦ НОВОГО БЛОКА ---
     footer: {

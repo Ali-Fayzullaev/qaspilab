@@ -1,3 +1,4 @@
+// qaspilab/components/sections/startup/WorkFormatSection.tsx
 'use client';
 
 import { motion, useInView } from 'framer-motion';
@@ -193,7 +194,7 @@ export default function WorkFormatSection() {
           >
             <Calendar className="w-4 h-4" style={{ color: isDarkMode ? '#60a5fa' : '#2563eb' }} />
             <span className="text-sm font-medium bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
-              ПРОЦЕСС РАБОТЫ
+              {t.startupLaunch.workFormat.processLabel}
             </span>
             <Clock className="w-4 h-4" style={{ color: isDarkMode ? '#c084fc' : '#9333ea' }} />
           </div>
@@ -208,7 +209,7 @@ export default function WorkFormatSection() {
             "text-xl sm:text-2xl max-w-3xl mx-auto leading-relaxed",
             isDarkMode ? "text-gray-300" : "text-gray-600"
           )}>
-            Прозрачный процесс от идеи до запуска продукта
+            {t.startupLaunch.workFormat.subtitle}
           </p>
         </motion.div>
 
@@ -234,7 +235,7 @@ export default function WorkFormatSection() {
                   "text-2xl font-bold",
                   isDarkMode ? "text-white" : "text-gray-900"
                 )}>
-                  Этапы работы
+                  {t.startupLaunch.workFormat.stagesTitle}
                 </h3>
               </div>
               
@@ -423,7 +424,7 @@ export default function WorkFormatSection() {
                                 color: term.color
                               }}
                             >
-                              Этап {index + 1}
+                              {t.startupLaunch.workFormat.stageLabel} {index + 1}
                             </div>
                           </div>
                         </div>
@@ -449,7 +450,7 @@ export default function WorkFormatSection() {
                     "text-2xl font-bold",
                     isDarkMode ? "text-white" : "text-gray-900"
                   )}>
-                    Общие сроки: 60 дней
+                    {t.startupLaunch.workFormat.timeline.totalTitle}
                   </h3>
                 </div>
 
@@ -485,7 +486,7 @@ export default function WorkFormatSection() {
                     
                     {/* Точки этапов */}
                     <div className="flex justify-between mt-6">
-                      {['Старт', '30 дней', '60 дней'].map((label, index) => {
+                      {t.startupLaunch.workFormat.timeline.milestones.map((label, index) => {
                         const pointColor = index === 0 ? (isDarkMode ? '#3b82f6' : '#2563eb') : 
                                           index === 1 ? (isDarkMode ? '#a855f7' : '#9333ea') : 
                                           (isDarkMode ? '#10b981' : '#059669');
@@ -509,7 +510,7 @@ export default function WorkFormatSection() {
                               "text-xs",
                               isDarkMode ? "text-gray-400" : "text-gray-600"
                             )}>
-                              {index === 0 ? 'Анализ' : index === 1 ? 'Разработка' : 'Запуск'}
+                              {t.startupLaunch.workFormat.timeline.phases[index]}
                             </p>
                           </div>
                         );
@@ -526,13 +527,13 @@ export default function WorkFormatSection() {
                           "text-sm font-medium",
                           isDarkMode ? "text-white" : "text-gray-900"
                         )}>
-                          Гарантия сроков
+                          {t.startupLaunch.workFormat.guarantees.deadlineGuarantee}
                         </p>
                         <p className={cn(
                           "text-xs",
                           isDarkMode ? "text-gray-400" : "text-gray-500"
                         )}>
-                          Фиксированный график
+                          {t.startupLaunch.workFormat.guarantees.fixedSchedule}
                         </p>
                       </div>
                     </div>
@@ -543,13 +544,13 @@ export default function WorkFormatSection() {
                           "text-sm font-medium",
                           isDarkMode ? "text-white" : "text-gray-900"
                         )}>
-                          Еженедельные отчеты
+                          {t.startupLaunch.workFormat.guarantees.weeklyReports}
                         </p>
                         <p className={cn(
                           "text-xs",
                           isDarkMode ? "text-gray-400" : "text-gray-500"
                         )}>
-                          Прозрачность процесса
+                          {t.startupLaunch.workFormat.guarantees.processTransparency}
                         </p>
                       </div>
                     </div>
@@ -583,7 +584,7 @@ export default function WorkFormatSection() {
               "text-lg font-medium",
               isDarkMode ? "text-white" : "text-gray-900"
             )}>
-              Готовы начать? Свяжитесь с нами для консультации
+              {t.startupLaunch.workFormat.readyToStart}
             </span>
             </a>
           </div>

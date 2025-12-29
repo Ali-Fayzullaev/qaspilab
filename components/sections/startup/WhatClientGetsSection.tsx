@@ -1,3 +1,4 @@
+// qaspilab/components/sections/startup/WhatClientGetsSection.tsx
 'use client';
 
 import { motion, useInView } from 'framer-motion';
@@ -48,38 +49,38 @@ export default function WhatClientGetsSection() {
   const deliverables = [
     {
       icon: Code,
-      title: t.startupLaunch.whatClientGets.deliverables[0] || "Полностью рабочий MVP",
+      title: t.startupLaunch.whatClientGets.deliverables[0] || "MVP / working product",
       color: isDarkMode ? "from-blue-500 to-cyan-500" : "from-blue-600 to-cyan-600",
       accentColor: isDarkMode ? "#3b82f6" : "#2563eb",
-      features: ["Backend API", "Frontend SPA", "База данных"]
+      features: t.startupLaunch.whatClientGets.features.mvp
     },
     {
       icon: Smartphone,
-      title: t.startupLaunch.whatClientGets.deliverables[1] || "Мобильное приложение",
+      title: t.startupLaunch.whatClientGets.deliverables[1] || "Market validation",
       color: isDarkMode ? "from-purple-500 to-pink-500" : "from-purple-600 to-pink-600",
       accentColor: isDarkMode ? "#a855f7" : "#9333ea",
-      features: ["iOS/Android", "Push-уведомления", "Offline работа"]
+      features: t.startupLaunch.whatClientGets.features.mobile
     },
     {
       icon: Globe,
-      title: t.startupLaunch.whatClientGets.deliverables[2] || "Админ-панель",
+      title: t.startupLaunch.whatClientGets.deliverables[2] || "First customer feedback",
       color: isDarkMode ? "from-emerald-500 to-teal-500" : "from-emerald-600 to-teal-600",
       accentColor: isDarkMode ? "#10b981" : "#059669",
-      features: ["Аналитика", "Управление", "Отчеты"]
+      features: t.startupLaunch.whatClientGets.features.admin
     },
     {
       icon: Shield,
-      title: t.startupLaunch.whatClientGets.deliverables[3] || "Техдокументация",
+      title: t.startupLaunch.whatClientGets.deliverables[3] || "Marketing tests",
       color: isDarkMode ? "from-amber-500 to-orange-500" : "from-amber-600 to-orange-600",
       accentColor: isDarkMode ? "#f59e0b" : "#d97706",
-      features: ["API docs", "Архитектура", "Deploy guide"]
+      features: t.startupLaunch.whatClientGets.features.docs
     },
     {
       icon: Rocket,
-      title: t.startupLaunch.whatClientGets.deliverables[4] || "Запуск и поддержка",
+      title: t.startupLaunch.whatClientGets.deliverables[4] || "Development strategy",
       color: isDarkMode ? "from-rose-500 to-red-500" : "from-rose-600 to-red-600",
       accentColor: isDarkMode ? "#ef4444" : "#dc2626",
-      features: ["Деплой", "Мониторинг", "Первые 30 дней"]
+      features: t.startupLaunch.whatClientGets.features.support
     }
   ];
 
@@ -200,7 +201,7 @@ export default function WhatClientGetsSection() {
           >
             <Package className="w-4 h-4" style={{ color: isDarkMode ? '#60a5fa' : '#2563eb' }} />
             <span className="text-sm font-medium bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
-              КОМПЛЕКСНОЕ РЕШЕНИЕ
+              {t.startupLaunch.whatClientGets.badgeLabel}
             </span>
             <CheckCircle className="w-4 h-4" style={{ color: isDarkMode ? '#c084fc' : '#9333ea' }} />
           </div>
@@ -215,7 +216,7 @@ export default function WhatClientGetsSection() {
             "text-xl sm:text-2xl max-w-3xl mx-auto leading-relaxed",
             isDarkMode ? "text-gray-300" : "text-gray-600"
           )}>
-            Полный пакет для быстрого старта и масштабирования вашего бизнеса
+            {t.startupLaunch.whatClientGets.subtitle}
           </p>
         </motion.div>
 
@@ -332,7 +333,7 @@ export default function WhatClientGetsSection() {
                     "text-sm",
                     isDarkMode ? "text-gray-400" : "text-gray-500"
                   )}>
-                    Включено в пакет
+                    {t.startupLaunch.whatClientGets.includedInPackage}
                   </span>
                 </div>
               </div>
@@ -394,13 +395,13 @@ export default function WhatClientGetsSection() {
                   "text-lg font-medium",
                   isDarkMode ? "text-white" : "text-gray-900"
                 )}>
-                  Готовый продукт
+                  {t.startupLaunch.whatClientGets.additionalBenefits.readyProduct}
                 </p>
                 <p className={cn(
                   "text-sm",
                   isDarkMode ? "text-gray-400" : "text-gray-600"
                 )}>
-                  Сразу после завершения работы
+                  {t.startupLaunch.whatClientGets.additionalBenefits.readyProductDesc}
                 </p>
               </div>
             </div>
@@ -420,13 +421,13 @@ export default function WhatClientGetsSection() {
                   "text-lg font-medium",
                   isDarkMode ? "text-white" : "text-gray-900"
                 )}>
-                  Поддержка 30 дней
+                  {t.startupLaunch.whatClientGets.additionalBenefits.support30Days}
                 </p>
                 <p className={cn(
                   "text-sm",
                   isDarkMode ? "text-gray-400" : "text-gray-600"
                 )}>
-                  Бесплатные правки и консультации
+                  {t.startupLaunch.whatClientGets.additionalBenefits.support30DaysDesc}
                 </p>
               </div>
             </div>
@@ -446,13 +447,13 @@ export default function WhatClientGetsSection() {
                   "text-lg font-medium",
                   isDarkMode ? "text-white" : "text-gray-900"
                 )}>
-                  Гарантия качества
+                  {t.startupLaunch.whatClientGets.additionalBenefits.qualityGuarantee}
                 </p>
                 <p className={cn(
                   "text-sm",
                   isDarkMode ? "text-gray-400" : "text-gray-600"
                 )}>
-                  Тестирование и код-ревью
+                  {t.startupLaunch.whatClientGets.additionalBenefits.qualityGuaranteeDesc}
                 </p>
               </div>
             </div>

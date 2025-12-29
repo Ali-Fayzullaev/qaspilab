@@ -351,12 +351,13 @@ export default function PricingSection() {
                 ))}
               </div>
 
-              {/* Кнопка CTA */}
+              <a href="#contact">
+                {/* Кнопка CTA */}
               <div className="text-center">
                 <Button
                   size="lg"
                   className={cn(
-                    "relative px-12 py-6 text-xl font-bold rounded-2xl",
+                    "relative px-12 py-6 text-xl font-bold rounded-2xl  cursor-pointer",
                     "shadow-xl hover:shadow-2xl transition-all duration-300 transform",
                     "hover:scale-105 active:scale-95 group"
                   )}
@@ -391,6 +392,7 @@ export default function PricingSection() {
                   )}
                 </Button>
               </div>
+              </a>
             </div>
 
             {/* Декоративные элементы */}

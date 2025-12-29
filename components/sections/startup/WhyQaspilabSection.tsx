@@ -1,3 +1,4 @@
+// qaspilab/components/sections/startup/WhatClientGetsSection.tsx
 'use client';
 
 import { motion, useInView } from 'framer-motion';
@@ -49,59 +50,59 @@ export default function WhyQaspilabSection() {
   const reasons = [
     {
       icon: Award,
-      title: t.startupLaunch.whyQaspilab.reasons[0]?.title || "Профессионализм",
+      title: t.startupLaunch.whyQaspilab.reasons[0]?.title || "Professionalism",
       description: t.startupLaunch.whyQaspilab.reasons[0]?.description || "",
       color: isDarkMode ? "from-blue-500 to-cyan-500" : "from-blue-600 to-cyan-600",
       accentColor: isDarkMode ? "#3b82f6" : "#2563eb",
-      features: ["Сертифицированные специалисты", "5+ лет опыта", "Портфолио проектов"]
+      features: t.startupLaunch.whyQaspilab.features.professionalism
     },
     {
       icon: Shield,
-      title: t.startupLaunch.whyQaspilab.reasons[1]?.title || "Надежность",
+      title: t.startupLaunch.whyQaspilab.reasons[1]?.title || "Reliability",
       description: t.startupLaunch.whyQaspilab.reasons[1]?.description || "",
       color: isDarkMode ? "from-purple-500 to-pink-500" : "from-purple-600 to-pink-600",
       accentColor: isDarkMode ? "#a855f7" : "#9333ea",
-      features: ["Фиксированные сроки", "Прозрачные условия", "Гарантия качества"]
+      features: t.startupLaunch.whyQaspilab.features.reliability
     },
     {
       icon: Target,
-      title: t.startupLaunch.whyQaspilab.reasons[2]?.title || "Результат",
+      title: t.startupLaunch.whyQaspilab.reasons[2]?.title || "Results",
       description: t.startupLaunch.whyQaspilab.reasons[2]?.description || "",
       color: isDarkMode ? "from-emerald-500 to-teal-500" : "from-emerald-600 to-teal-600",
       accentColor: isDarkMode ? "#10b981" : "#059669",
-      features: ["MVP за 60 дней", "Масштабируемая архитектура", "Техподдержка"]
+      features: t.startupLaunch.whyQaspilab.features.results
     },
     {
       icon: Zap,
-      title: t.startupLaunch.whyQaspilab.reasons[3]?.title || "Скорость",
+      title: t.startupLaunch.whyQaspilab.reasons[3]?.title || "Speed",
       description: t.startupLaunch.whyQaspilab.reasons[3]?.description || "",
       color: isDarkMode ? "from-amber-500 to-orange-500" : "from-amber-600 to-orange-600",
       accentColor: isDarkMode ? "#f59e0b" : "#d97706",
-      features: ["Быстрый старт", "Гибкие методологии", "Эффективные процессы"]
+      features: t.startupLaunch.whyQaspilab.features.speed
     },
     {
       icon: TeamIcon,
-      title: t.startupLaunch.whyQaspilab.reasons[4]?.title || "Команда",
+      title: t.startupLaunch.whyQaspilab.reasons[4]?.title || "Team",
       description: t.startupLaunch.whyQaspilab.reasons[4]?.description || "",
       color: isDarkMode ? "from-rose-500 to-red-500" : "from-rose-600 to-red-600",
       accentColor: isDarkMode ? "#ef4444" : "#dc2626",
-      features: ["Fullstack разработчики", "UI/UX дизайнеры", "Project-менеджеры"]
+      features: t.startupLaunch.whyQaspilab.features.team
     },
     {
       icon: TrendingUp,
-      title: t.startupLaunch.whyQaspilab.reasons[5]?.title || "Подход",
+      title: t.startupLaunch.whyQaspilab.reasons[5]?.title || "Approach",
       description: t.startupLaunch.whyQaspilab.reasons[5]?.description || "",
       color: isDarkMode ? "from-indigo-500 to-blue-500" : "from-indigo-600 to-blue-600",
       accentColor: isDarkMode ? "#4f46e5" : "#4338ca",
-      features: ["Клиентоориентированность", "Итеративная разработка", "Data-driven решения"]
+      features: t.startupLaunch.whyQaspilab.features.approach
     }
   ];
 
   const metrics = [
-    { number: "50+", label: "Проектов", icon: Briefcase, color: isDarkMode ? "#3b82f6" : "#2563eb" },
-    { number: "5+", label: "Лет", icon: Clock, color: isDarkMode ? "#a855f7" : "#9333ea" },
-    { number: "98%", label: "Довольных клиентов", icon: UserCheck, color: isDarkMode ? "#10b981" : "#059669" },
-    { number: "60", label: "Дней", icon: CheckCircle, color: isDarkMode ? "#f59e0b" : "#d97706" }
+    { number: "50+", label: t.startupLaunch.whyQaspilab.metrics.projects, icon: Briefcase, color: isDarkMode ? "#3b82f6" : "#2563eb" },
+    { number: "5+", label: t.startupLaunch.whyQaspilab.metrics.years, icon: Clock, color: isDarkMode ? "#a855f7" : "#9333ea" },
+    { number: "98%", label: t.startupLaunch.whyQaspilab.metrics.clients, icon: UserCheck, color: isDarkMode ? "#10b981" : "#059669" },
+    { number: "60", label: t.startupLaunch.whyQaspilab.metrics.days, icon: CheckCircle, color: isDarkMode ? "#f59e0b" : "#d97706" }
   ];
 
  // Создаем геометрический паттерн
@@ -229,7 +230,7 @@ export default function WhyQaspilabSection() {
           >
             <Star className="w-4 h-4" style={{ color: isDarkMode ? '#60a5fa' : '#2563eb' }} />
             <span className="text-sm font-medium bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent">
-              ПРЕИМУЩЕСТВА
+              {t.startupLaunch.whyQaspilab.badgeLabel}
             </span>
           </motion.div>
           
@@ -346,7 +347,7 @@ export default function WhyQaspilabSection() {
                     "text-sm",
                     isDarkMode ? "text-gray-400" : "text-gray-500"
                   )}>
-                    Наш стандарт
+                    {t.startupLaunch.whyQaspilab.ourStandard}
                   </span>
                 </div>
               </div>
@@ -474,7 +475,7 @@ export default function WhyQaspilabSection() {
               "text-lg font-medium",
               isDarkMode ? "text-white" : "text-gray-900"
             )}>
-              Доверьте свой проект профессионалам
+              {t.startupLaunch.whyQaspilab.trustUs}
             </span>
           </div>
         </motion.div>
