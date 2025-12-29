@@ -345,7 +345,9 @@ export default function HeroSection() {
                 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Button 
+                <a href='#contact'>
+                <Button
+                  
                   className="w-full sm:w-auto px-6 md:px-8 py-4 md:py-5 text-base md:text-lg font-bold transition-all duration-300 shadow-xl group rounded-xl"
                   style={{
                     background: theme === 'dark' 
@@ -353,17 +355,19 @@ export default function HeroSection() {
                       : 'linear-gradient(135deg, #1d4ed8, #6d28d9)',
                     color: 'white'
                   }}
-                  onClick={handleModalOpen}
                 >
-                  {t.hero?.cta || "Записаться на разбор идеи"}
+                  {t.hero?.cta || "Записаться"}
                   <ArrowRight className="h-5 w-5 ml-3 group-hover:translate-x-1 transition-transform duration-300" />
                 </Button>
+
+                </a>
               </motion.div>
               
               <motion.div
                 whileHover={{ scale: isMobile ? 1.02 : 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
+                <a href="#contact">
                 <Button 
                   variant="outline"
                   className="w-full sm:w-auto px-6 md:px-8 py-4 md:py-5 text-base md:text-lg font-bold border-2 transition-all duration-300 rounded-xl"
@@ -374,6 +378,7 @@ export default function HeroSection() {
                 >
                   {t.hero?.learnMore || "Узнать условия"}
                 </Button>
+                </a>
               </motion.div>
             </motion.div>
           </div>

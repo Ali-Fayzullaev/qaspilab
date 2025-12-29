@@ -84,7 +84,7 @@ export default function StartupFAQSection() {
               color: theme === 'dark' ? '#3b82f6' : '#1d4ed8'
             }}
           >
-            {t.faq?.badge || "Вопросы"}
+            {t.startupLaunch.faq.badge || "Вопросы"}
           </div>
           
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-foreground mb-6">
@@ -194,17 +194,17 @@ export default function StartupFAQSection() {
           transition={{ duration: 0.8, delay: 0.6 }}
         >
           <p className="text-muted-foreground mb-4">
-            Остались вопросы? Свяжитесь с нами для бесплатной консультации
+            {t.startupLaunch.faq.cat || "Остались вопросы? Свяжитесь с нами для бесплатной консультации"}
           </p>
-          <div 
+          <a href='#contact'
             className="inline-flex items-center px-6 py-3 rounded-xl border-2 transition-all duration-300 hover:scale-105"
             style={{
               borderColor: theme === 'dark' ? '#3b82f6' : '#1d4ed8',
               color: theme === 'dark' ? '#3b82f6' : '#1d4ed8'
             }}
           >
-            📞 Бесплатная консультация
-          </div>
+            {t.startupLaunch.faq.catFree || "Бесплатная консультация"}
+          </a>
         </motion.div>
       </div>
     </section>
