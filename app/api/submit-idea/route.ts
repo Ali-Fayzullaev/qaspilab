@@ -65,20 +65,6 @@ function formatContact(contact: string): string {
   return contact; // Возвращаем оригинал, если формат не распознан
 }
 
-// Функция для форматирования бюджета
-function formatBudget(budget: string): string {
-  const budgetRanges: { [key: string]: string } = {
-    "0-50000": "До 50,000 ₸",
-    "50000-200000": "50,000 - 200,000 ₸",
-    "200000-500000": "200,000 - 500,000 ₸",
-    "500000-1000000": "500,000 - 1,000,000 ₸",
-    "1000000+": "Свыше 1,000,000 ₸",
-    discuss: "Обсуждается индивидуально",
-  };
-
-  return budgetRanges[budget] || budget;
-}
-
 // Добавляем переводы напрямую (или получаем из другого источника)
 const translations = {
   ctaForm: {
@@ -122,7 +108,6 @@ export async function POST(request: NextRequest) {
 
     // Форматируем контакт
     const formattedContact = formatContact(contact);
-    const formattedBudget = budget ? formatBudget(budget) : "Не указан";
 
     // Формируем сообщение для WhatsApp
     const message = `🚀 Новая идея от клиента!
@@ -144,7 +129,6 @@ ${description}
       name,
       contact: formattedContact,
       description,
-      budget: formattedBudget,
       timestamp: new Date().toISOString(),
     });
 
