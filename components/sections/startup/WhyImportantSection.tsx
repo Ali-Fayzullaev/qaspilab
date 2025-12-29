@@ -315,12 +315,7 @@ export default function WhyImportantSection() {
                       transition={{ duration: 0.3 }}
                     />
                   </div>
-                  <span
-                    className="text-xs font-medium"
-                    style={{ color: problem.accentColor }}
-                  >
-                    {t.startupLaunch.whyImportant.seriousness}
-                  </span>
+                  
                 </div>
               </div>
 
@@ -370,7 +365,6 @@ export default function WhyImportantSection() {
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.8, delay: 0.8 }}
         >
-          <a href="#contact">
             <motion.div
             className="inline-flex items-center gap-4 px-8 py-4 rounded-2xl mb-8"
             style={{
@@ -390,7 +384,6 @@ export default function WhyImportantSection() {
             </span>
             <ZapOff className="w-6 h-6 text-red-400" />
           </motion.div>
-          </a>
 
           <motion.div
             className="max-w-3xl mx-auto"

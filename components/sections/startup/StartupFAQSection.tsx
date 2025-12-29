@@ -4,28 +4,44 @@ import { motion, useInView } from 'framer-motion';
 import { useRef, useState, useEffect } from 'react';
 import { useLanguage } from '@/lib/language-context';
 import { useTheme } from 'next-themes';
-import { Plus, Minus } from 'lucide-react';
+import { Plus, Minus, HelpCircle, Sparkles, Zap, MessageSquare, ArrowRight } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 export default function StartupFAQSection() {
   const { t } = useLanguage();
-  const { theme } = useTheme();
+  const { theme, resolvedTheme } = useTheme();
   
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { 
     once: true,
-    amount: 0.2 
+    amount: 0.1,
+    margin: "-50px"
   });
 
   const [mounted, setMounted] = useState(false);
   const [openItems, setOpenItems] = useState<number[]>([]);
+  const [hoveredItem, setHoveredItem] = useState<number | null>(null);
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
   if (!mounted) {
-    return <section ref={sectionRef} className="h-96 bg-background" />;
+    const isDarkMode = theme === 'dark' || resolvedTheme === 'dark';
+    return (
+      <section 
+        ref={sectionRef} 
+        className="h-[600px]"
+        style={{ 
+          background: isDarkMode 
+            ? 'linear-gradient(135deg, #112036 0%, #243753 100%)'
+            : 'linear-gradient(135deg, #ffffff 0%, #f8fafc 100%)'
+        }}
+      />
+    );
   }
+
+  const isDarkMode = theme === 'dark' || resolvedTheme === 'dark';
 
   const toggleItem = (index: number) => {
     setOpenItems(prev => 
@@ -35,107 +51,213 @@ export default function StartupFAQSection() {
     );
   };
 
-  const containerAnimation = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2
-      }
-    }
-  };
-
-  const itemAnimation = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: [0.23, 1, 0.32, 1] as const
-      }
-    }
-  };
+  // Создаем квадратный паттерн для фона
+  const squarePattern = isDarkMode 
+    ? `linear-gradient(45deg, rgba(255, 255, 255, 0.03) 25%, transparent 25%),
+       linear-gradient(-45deg, rgba(255, 255, 255, 0.03) 25%, transparent 25%),
+       linear-gradient(45deg, transparent 75%, rgba(255, 255, 255, 0.03) 75%),
+       linear-gradient(-45deg, transparent 75%, rgba(255, 255, 255, 0.03) 75%)`
+    : `linear-gradient(45deg, rgba(0, 0, 0, 0.03) 25%, transparent 25%),
+       linear-gradient(-45deg, rgba(0, 0, 0, 0.03) 25%, transparent 25%),
+       linear-gradient(45deg, transparent 75%, rgba(0, 0, 0, 0.03) 75%),
+       linear-gradient(-45deg, transparent 75%, rgba(0, 0, 0, 0.03) 75%)`;
 
   return (
     <section 
       ref={sectionRef}
-      className="py-24 sm:py-32"
-      style={{
-        background: theme === 'dark' 
-          ? 'linear-gradient(180deg, #1e293b 0%, #0f172a 100%)'
-          : 'linear-gradient(180deg, #f8fafc 0%, #ffffff 100%)',
+      className="relative py-28 sm:py-36 overflow-hidden"
+      style={{ 
+        background: isDarkMode 
+          ? 'linear-gradient(135deg, #112036 0%, #243753 100%)'
+          : 'linear-gradient(135deg, #ffffff 0%, #f8fafc 100%)'
       }}
     >
-      <div className="container mx-auto px-6">
-        <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] as const }}
-        >
+      {/* Фоновые элементы */}
+      <div className="absolute inset-0 -z-10">
+        {/* Градиентный оверлей */}
+        {isDarkMode && (
           <div 
-            className="inline-block px-4 py-2 rounded-full text-sm font-semibold mb-6"
+            className="absolute inset-0 opacity-40"
             style={{
-              background: theme === 'dark' 
-                ? 'rgba(59, 130, 246, 0.1)' 
-                : 'rgba(29, 78, 216, 0.1)',
-              color: theme === 'dark' ? '#3b82f6' : '#1d4ed8'
+              background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%)'
+            }}
+          />
+        )}
+
+        {/* Квадратный паттерн */}
+        <div 
+          className="absolute inset-0 opacity-10"
+          style={{
+            backgroundImage: squarePattern,
+            backgroundSize: '80px 80px',
+            backgroundPosition: '0 0, 0 40px, 40px -40px, -40px 0px',
+            maskImage: 'radial-gradient(ellipse at center, black 40%, transparent 70%)'
+          }}
+        />
+
+        {/* Плавающие элементы */}
+        {isDarkMode && (
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            {[...Array(6)].map((_, i) => (
+              <motion.div
+                key={i}
+                className="absolute rounded-full"
+                style={{
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
+                  width: `${Math.random() * 3 + 1}px`,
+                  height: `${Math.random() * 3 + 1}px`,
+                  backgroundColor: i % 3 === 0 ? '#10b981' : 
+                                  i % 3 === 1 ? '#3b82f6' : 
+                                  '#a855f7',
+                  opacity: 0.2
+                }}
+                animate={{
+                  y: [0, -30, 0],
+                  x: [0, Math.cos(i) * 15, 0],
+                  opacity: [0.2, 0.4, 0.2]
+                }}
+                transition={{
+                  duration: Math.random() * 3 + 2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: i * 0.4
+                }}
+              />
+            ))}
+          </div>
+        )}
+      </div>
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl relative z-10">
+        {/* Заголовок */}
+        <motion.div
+          className="text-center mb-20"
+          initial={{ opacity: 0, y: 40 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-8"
+            style={{ 
+              background: isDarkMode 
+                ? 'linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(59, 130, 246, 0.1))'
+                : 'linear-gradient(135deg, rgba(5, 150, 105, 0.1), rgba(37, 99, 235, 0.1))',
+              border: isDarkMode 
+                ? '1px solid rgba(16, 185, 129, 0.2)' 
+                : '1px solid rgba(5, 150, 105, 0.2)'
             }}
           >
-            {t.startupLaunch.faq.badge || "Вопросы"}
+            <HelpCircle className="w-4 h-4" style={{ color: isDarkMode ? '#34d399' : '#059669' }} />
+            <span className="text-sm font-medium bg-gradient-to-r from-emerald-500 to-blue-500 bg-clip-text text-transparent">
+              FAQ
+            </span>
+            <Sparkles className="w-4 h-4" style={{ color: isDarkMode ? '#60a5fa' : '#2563eb' }} />
           </div>
           
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-foreground mb-6">
-            {t.startupLaunch.faq.title}
+          <h2 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 tracking-tight">
+            <span className="bg-gradient-to-r from-emerald-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
+              {t.startupLaunch.faq.title}
+            </span>
           </h2>
-          
-          <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">
-            Что важно знать о запуске стартапов с Qaspilab
-          </p>
         </motion.div>
 
+        {/* FAQ элементы */}
         <motion.div
-          className="max-w-4xl mx-auto"
-          variants={containerAnimation}
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
+          className="space-y-4"
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ 
+            duration: 0.8,
+            staggerChildren: 0.1,
+            delayChildren: 0.3
+          }}
         >
           {t.startupLaunch.faq.items.map((item, index) => {
             const isOpen = openItems.includes(index);
+            const accentColor = index % 3 === 0 ? (isDarkMode ? '#10b981' : '#059669') :
+                              index % 3 === 1 ? (isDarkMode ? '#3b82f6' : '#2563eb') :
+                              (isDarkMode ? '#a855f7' : '#9333ea');
             
             return (
               <motion.div
                 key={index}
-                className="mb-4"
-                variants={itemAnimation}
+                className="relative group"
+                initial={{ opacity: 0, y: 30 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ 
+                  duration: 0.6, 
+                  delay: index * 0.1,
+                  ease: [0.16, 1, 0.3, 1]
+                }}
+                onMouseEnter={() => setHoveredItem(index)}
+                onMouseLeave={() => setHoveredItem(null)}
               >
                 <div 
-                  className="bg-card/50 backdrop-blur-sm border rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-lg"
+                  className={cn(
+                    "relative rounded-2xl overflow-hidden transition-all duration-500",
+                    "border",
+                    isDarkMode 
+                      ? "border-white/10 hover:border-white/20" 
+                      : "border-gray-200 hover:border-gray-300",
+                    hoveredItem === index ? "scale-[1.02]" : ""
+                  )}
                   style={{
-                    borderColor: theme === 'dark' 
-                      ? 'rgba(59, 130, 246, 0.2)' 
-                      : 'rgba(29, 78, 216, 0.2)',
-                    boxShadow: theme === 'dark' 
-                      ? '0 4px 20px rgba(59, 130, 246, 0.1)' 
-                      : '0 4px 20px rgba(29, 78, 216, 0.1)'
+                    background: isDarkMode 
+                      ? 'rgba(30, 41, 59, 0.6)' 
+                      : 'rgba(255, 255, 255, 0.8)',
+                    backdropFilter: 'blur(20px)',
+                    boxShadow: hoveredItem === index 
+                      ? `0 20px 60px ${accentColor}30`
+                      : isDarkMode 
+                        ? '0 4px 20px rgba(0, 0, 0, 0.2)'
+                        : '0 4px 20px rgba(0, 0, 0, 0.1)'
                   }}
                 >
+                  {/* Акцентная полоса */}
+                  <div 
+                    className="absolute top-0 left-0 w-1 h-full transition-all duration-500"
+                    style={{ 
+                      backgroundColor: accentColor,
+                      height: isOpen ? '100%' : '0%'
+                    }}
+                  />
+
                   <button
                     onClick={() => toggleItem(index)}
-                    className="w-full p-6 md:p-8 text-left flex items-center justify-between group"
+                    className="w-full p-6 md:p-8 text-left flex items-start justify-between group/button relative"
                   >
-                    <h3 className="text-lg md:text-xl font-bold text-foreground pr-4 group-hover:text-primary transition-colors duration-300">
-                      {item.question}
-                    </h3>
+                    {/* Иконка номера */}
+                    <div className="absolute -left-4 top-6 w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm text-white shadow-lg"
+                      style={{ backgroundColor: accentColor }}
+                    >
+                      {index + 1}
+                    </div>
+
+                    <div className="ml-8 flex-1">
+                      <div className="flex items-center gap-3 mb-2">
+                        <div className="p-2 rounded-lg"
+                          style={{ 
+                            background: `linear-gradient(135deg, ${accentColor}20, ${accentColor}10)`
+                          }}
+                        >
+                          <MessageSquare className="w-5 h-5" style={{ color: accentColor }} />
+                        </div>
+                        <h3 className={cn(
+                          "text-xl md:text-2xl font-bold text-left leading-tight",
+                          "transition-colors duration-300 group-hover/button:text-blue-400",
+                          isDarkMode ? "text-white" : "text-gray-900"
+                        )}>
+                          {item.question}
+                        </h3>
+                      </div>
+                    </div>
                     
+                    {/* Иконка переключения */}
                     <div 
-                      className="shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300"
+                      className="shrink-0 w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 group-hover/button:scale-110 ml-4"
                       style={{
-                        background: isOpen 
-                          ? (theme === 'dark' ? '#3b82f6' : '#1d4ed8')
-                          : (theme === 'dark' ? 'rgba(59, 130, 246, 0.1)' : 'rgba(29, 78, 216, 0.1)'),
+                        background: `linear-gradient(135deg, ${accentColor}20, ${accentColor}10)`,
+                        border: `1px solid ${accentColor}30`
                       }}
                     >
                       <motion.div
@@ -143,17 +265,15 @@ export default function StartupFAQSection() {
                         transition={{ duration: 0.3 }}
                       >
                         {isOpen ? (
-                          <Minus className="w-4 h-4 text-white" />
+                          <Minus className="w-5 h-5" style={{ color: accentColor }} />
                         ) : (
-                          <Plus 
-                            className="w-4 h-4" 
-                            style={{ color: theme === 'dark' ? '#3b82f6' : '#1d4ed8' }}
-                          />
+                          <Plus className="w-5 h-5" style={{ color: accentColor }} />
                         )}
                       </motion.div>
                     </div>
                   </button>
                   
+                  {/* Контент ответа */}
                   <motion.div
                     initial={false}
                     animate={{
@@ -162,25 +282,73 @@ export default function StartupFAQSection() {
                     }}
                     transition={{
                       duration: 0.3,
-                      ease: [0.23, 1, 0.32, 1]
+                      ease: [0.16, 1, 0.3, 1]
                     }}
                     className="overflow-hidden"
                   >
-                    <div className="px-6 md:px-8 pb-6 md:pb-8">
-                      <div 
-                        className="w-full h-px mb-6"
-                        style={{
-                          background: theme === 'dark' 
-                            ? 'rgba(59, 130, 246, 0.2)' 
-                            : 'rgba(29, 78, 216, 0.2)'
+                    <div className="px-6 md:px-8 pb-6 md:pb-8 ml-8">
+                      {/* Разделительная линия */}
+                      <div className="w-full h-px mb-6"
+                        style={{ 
+                          background: isDarkMode 
+                            ? 'linear-gradient(90deg, rgba(255, 255, 255, 0.1), transparent)'
+                            : 'linear-gradient(90deg, rgba(0, 0, 0, 0.1), transparent)'
                         }}
                       />
-                      <p className="text-muted-foreground text-base md:text-lg leading-relaxed">
+                      
+                      {/* Ответ */}
+                      <motion.p 
+                        className={cn(
+                          "text-lg leading-relaxed",
+                          isDarkMode ? "text-gray-300" : "text-gray-600"
+                        )}
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={isOpen ? { opacity: 1, y: 0 } : {}}
+                        transition={{ duration: 0.3, delay: 0.1 }}
+                      >
                         {item.answer}
-                      </p>
+                      </motion.p>
+
+                      {/* Индикатор */}
+                      {isOpen && (
+                        <motion.div 
+                          className="flex items-center gap-2 mt-6 pt-4 border-t"
+                          style={{ 
+                            borderColor: isDarkMode 
+                              ? 'rgba(255, 255, 255, 0.1)' 
+                              : 'rgba(0, 0, 0, 0.1)'
+                          }}
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          transition={{ delay: 0.2 }}
+                        >
+                          <Zap className="w-4 h-4" style={{ color: accentColor }} />
+                          <span className={cn(
+                            "text-sm",
+                            isDarkMode ? "text-gray-400" : "text-gray-500"
+                          )}>
+                            Полезная информация
+                          </span>
+                        </motion.div>
+                      )}
                     </div>
                   </motion.div>
                 </div>
+
+                {/* Эффект свечения */}
+                {isDarkMode && hoveredItem === index && (
+                  <motion.div
+                    className="absolute inset-0 rounded-2xl -z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                    style={{
+                      background: `radial-gradient(circle at center, ${accentColor}15 0%, transparent 70%)`,
+                      filter: 'blur(20px)'
+                    }}
+                    animate={{
+                      opacity: [0.1, 0.2, 0.1]
+                    }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                  />
+                )}
               </motion.div>
             );
           })}
@@ -188,25 +356,61 @@ export default function StartupFAQSection() {
 
         {/* Дополнительная информация */}
         <motion.div
-          className="text-center mt-16"
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.6 }}
+          className="text-center mt-16 pt-8 border-t"
+          style={{ 
+            borderColor: isDarkMode 
+              ? 'rgba(255, 255, 255, 0.1)' 
+              : 'rgba(0, 0, 0, 0.1)'
+          }}
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.8, delay: 0.8 }}
         >
-          <p className="text-muted-foreground mb-4">
-            {t.startupLaunch.faq.cat || "Остались вопросы? Свяжитесь с нами для бесплатной консультации"}
+          <p className={cn(
+            "text-lg mb-6",
+            isDarkMode ? "text-gray-300" : "text-gray-600"
+          )}>
+            {t.startupLaunch.faq.cat}
           </p>
-          <a href='#contact'
-            className="inline-flex items-center px-6 py-3 rounded-xl border-2 transition-all duration-300 hover:scale-105"
+          
+          <motion.a 
+            href="#contact"
+            className="inline-flex items-center gap-3 px-8 py-4 rounded-xl transition-all duration-500 group"
             style={{
-              borderColor: theme === 'dark' ? '#3b82f6' : '#1d4ed8',
-              color: theme === 'dark' ? '#3b82f6' : '#1d4ed8'
+              background: isDarkMode 
+                ? 'linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(59, 130, 246, 0.1))'
+                : 'linear-gradient(135deg, rgba(5, 150, 105, 0.1), rgba(37, 99, 235, 0.1))',
+              border: isDarkMode 
+                ? '1px solid rgba(16, 185, 129, 0.2)' 
+                : '1px solid rgba(5, 150, 105, 0.2)'
             }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
-            {t.startupLaunch.faq.catFree || "Бесплатная консультация"}
-          </a>
+            <span className={cn(
+              "font-semibold",
+              isDarkMode ? "text-white" : "text-gray-900"
+            )}>
+              {t.startupLaunch.faq.catFree}
+            </span>
+            <ArrowRight className="w-5 h-5 transition-all duration-500 group-hover:translate-x-1"
+              style={{ 
+                color: isDarkMode ? '#34d399' : '#059669' 
+              }}
+            />
+          </motion.a>
         </motion.div>
       </div>
+
+      {/* Декоративная линия */}
+      {isDarkMode && (
+        <motion.div
+          className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-emerald-500/30 to-transparent"
+          initial={{ scaleX: 0 }}
+          animate={isInView ? { scaleX: 1 } : {}}
+          transition={{ duration: 1.5, delay: 0.5 }}
+        />
+      )}
     </section>
   );
 }

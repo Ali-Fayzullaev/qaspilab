@@ -328,25 +328,6 @@ export default function HowWeWorkSection() {
                     <p className="text-lg text-muted-foreground leading-relaxed mb-6">
                       {step.description}
                     </p>
-
-                    <motion.div 
-                      className={cn(
-                        "flex items-center font-medium",
-                        isEven ? "justify-end" : "justify-start"
-                      )}
-                      style={{
-                        color: glow === 'blue' ? '#3b82f6' :
-                               glow === 'purple' ? '#a855f7' :
-                               glow === 'green' ? '#22c55e' :
-                               glow === 'orange' ? '#f97316' :
-                               '#ec4899'
-                      }}
-                      initial={false}
-                      animate={{ opacity: activeStep === index ? 1 : 0.7 }}
-                    >
-                      <span className="mr-2">Подробнее</span>
-                      <ArrowRight className="w-4 h-4" />
-                    </motion.div>
                   </motion.div>
                 </div>
 
