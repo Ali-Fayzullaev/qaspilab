@@ -129,7 +129,6 @@ export async function POST(request: NextRequest) {
 
 👤 Имя: ${name}
 📞 Контакт: ${formattedContact}
-💰 Бюджет: ${formattedBudget}
 
 💡 Описание идеи:
 ${description}
