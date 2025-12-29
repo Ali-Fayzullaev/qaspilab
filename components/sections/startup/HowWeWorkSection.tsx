@@ -73,7 +73,7 @@ export default function HowWeWorkSection() {
       ref={sectionRef}
       className="relative py-28 sm:py-36 overflow-hidden"
       style={{
-        backgroundColor: isDarkMode ? '#0A0F1C' : '#ffffff'
+        backgroundColor: isDarkMode ? '#112036' : '#ffffff'
       }}
     >
       {/* Квадратный паттерн */}
@@ -450,7 +450,8 @@ export default function HowWeWorkSection() {
           <p className="text-lg text-muted-foreground mb-4">
             Готовы начать работу?
           </p>
-          <motion.button
+         <a href="#contact">
+           <motion.button
             className="mt-4 px-8 py-4 rounded-full text-white font-semibold text-lg hover:shadow-xl transition-all duration-300"
             style={{
               background: 'linear-gradient(135deg, #3b82f6, #8b5cf6)',
@@ -465,6 +466,7 @@ export default function HowWeWorkSection() {
             Начать проект 
             <ArrowRight className="inline ml-2 w-5 h-5" />
           </motion.button>
+         </a>
           
           {/* Дополнительные преимущества */}
           <div className="flex flex-wrap justify-center gap-6 mt-8">

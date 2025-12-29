@@ -46,7 +46,15 @@ export const translations = {
             title: "Result uncertainty",
             description: "Clear process with market validation"
           }
-        ]
+        ],
+        importantInfo: "IMPORTANT INFORMATION",
+        seriousness: "Serious",
+        failureRate: {
+          percentage: "90%",
+          text: "of startups fail"
+        },
+        hopefulMessage: "But this can be changed with the right approach",
+        ourGoal: "Our goal is to make you part of the successful 10%"
       },
       
       howWeWork: {
@@ -478,7 +486,15 @@ export const translations = {
             title: "Неопределённость результата",
             description: "Четкий процесс с проверкой рынком"
           }
-        ]
+        ],
+        importantInfo: "ВАЖНАЯ ИНФОРМАЦИЯ",
+        seriousness: "Серьезно",
+        failureRate: {
+          percentage: "90%",
+          text: "стартапов терпят неудачу"
+        },
+        hopefulMessage: "Но это можно изменить с правильным подходом",
+        ourGoal: "Наша цель — сделать вас частью успешных 10%"
       },
       
       howWeWork: {
@@ -909,7 +925,15 @@ export const translations = {
             title: "Нәтиже белгісіздігі", 
             description: "Нарықпен тексерумен айқын процесс"
           }
-        ]
+        ],
+        importantInfo: "МАҢЫЗДЫ АҚПАРАТ",
+        seriousness: "Ауыр",
+        failureRate: {
+          percentage: "90%",
+          text: "стартаптардың сәтсіздікке ұшырайды"
+        },
+        hopefulMessage: "Бірақ мұны дұрыс тәсілмен өзгертуге болады",
+        ourGoal: "Біздің мақсат — сізді табысты 10% құрамына кіргізу"
       },
       
       howWeWork: {

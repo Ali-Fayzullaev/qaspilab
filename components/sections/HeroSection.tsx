@@ -36,7 +36,7 @@ export default function StartupHeroSection() {
   }, []);
 
   if (!mounted) {
-    return <section ref={sectionRef} className="h-screen bg-[#0A0F1C]" />;
+    return <section ref={sectionRef} className="h-screen bg-[#1C233A]" />;
   }
 
   const isDarkMode = theme === 'dark' || resolvedTheme === 'dark';
@@ -79,7 +79,7 @@ export default function StartupHeroSection() {
       ref={sectionRef}
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
       style={{
-        backgroundColor: isDarkMode ? '#0A0F1C' : '#ffffff',
+        backgroundColor: isDarkMode ? '#1C233A' : '#ffffff',
       }}
     >
       {/* Основной фоновый градиент */}
@@ -88,7 +88,7 @@ export default function StartupHeroSection() {
           className="absolute inset-0 opacity-100"
           style={{
             background: isDarkMode
-              ? 'linear-gradient(135deg, #0A0F1C 0%, #1C2739 50%, #0F172A 100%)'
+              ? 'linear-gradient(135deg, #1C233A 0%, #1C2739 50%, #0F172A 100%)'
               : 'linear-gradient(135deg, #ffffff 0%, #f8fafc 50%, #f1f5f9 100%)'
           }}
         />
