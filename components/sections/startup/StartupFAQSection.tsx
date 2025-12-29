@@ -1,3 +1,4 @@
+// qaspilab/components/sections/startup/StartupFAQSection.tsx
 'use client';
 
 import { motion, useInView } from 'framer-motion';
@@ -27,15 +28,13 @@ export default function StartupFAQSection() {
   }, []);
 
   if (!mounted) {
-    const isDarkMode = theme === 'dark' || resolvedTheme === 'dark';
+    // Используем светлую тему по умолчанию до монтирования для избежания мигания
     return (
       <section 
         ref={sectionRef} 
         className="h-[600px]"
         style={{ 
-          background: isDarkMode 
-            ? 'linear-gradient(135deg, #112036 0%, #243753 100%)'
-            : 'linear-gradient(135deg, #ffffff 0%, #f8fafc 100%)'
+          background: 'linear-gradient(135deg, #ffffff 0%, #f8fafc 100%)'
         }}
       />
     );
